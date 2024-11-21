@@ -14,6 +14,7 @@
 #include <utility>
 #include <cmath>
 #include <Eigen/Dense>
+#define DELTAT 0.01
 using namespace std;
 using namespace Eigen;
 using MatrixD6=Matrix<double, -1, 6>;
