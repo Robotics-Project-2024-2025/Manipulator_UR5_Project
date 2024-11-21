@@ -27,6 +27,7 @@ Matrix3d xRot(double theta);
 Matrix3d yRot(double theta);
 Matrix3d zRot(double theta);
 Matrix3d eul2rotm(Vector3d& phiEf);
+Vector3d rotm2eul(Matrix3d m);
 //Direct Kinematics
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th);
 
