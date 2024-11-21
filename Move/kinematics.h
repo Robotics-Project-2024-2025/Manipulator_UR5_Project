@@ -20,4 +20,10 @@ using namespace Eigen;
 using MatrixD6=Matrix<double, -1, 6>;
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maT, double dt);
 
+Matrix3d xRot(double theta);
+Matrix3d yRot(double theta);
+Matrix3d zRot(double theta);
+
+
 #endif /* kinematics_h */
+
