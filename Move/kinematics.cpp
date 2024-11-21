@@ -41,3 +41,12 @@ Matrix3d zRot(double theta){
     return r;
 }
 
+Matrix44 HomogeneousTransform(double theta, double alpha, double d, double a){  
+    Matrix44 m;
+    m << cos(theta), -sin(theta)*cos(alpha), sin(theta)*sin(alpha), d,
+        sin(theta), cos(theta)*cos(alpha), -cos(theta)*sin(alpha), 0,
+        0, sin(alpha), cos(alpha), a,
+        0,0,0,1;
+    
+}
+
