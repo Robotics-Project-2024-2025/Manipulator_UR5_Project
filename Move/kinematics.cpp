@@ -195,10 +195,10 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     double p41xz_4 = hypot(p41_4[0], p41_4[2]);
 
 //Computation of the 8 possible values for th3
-    double th3_1 = real(acos(((pow(p41xz_1,2)-(A[1]^2)-(A[2]^2))/(2*A[1]*A[2])));
-    double th3_2 = real(acos((p41xz_2^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
-    double th3_3 = real(acos((p41xz_3^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
-    double th3_4 = real(acos((p41xz_4^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
+    double th3_1 = real(acos(pow(p41xz_1,2)-pow(A[1],2)-pow(A[2], 2))/(2*A[1]*A[2]));
+    double th3_2 = real(acos(pow(p41xz_2,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
+    double th3_3 = real(acos(pow(p41xz_3,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
+    double th3_4 = real(acos(pow(p41xz_4,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
 
     th3_5 = -th3_1;
     th3_6 = -th3_2;
