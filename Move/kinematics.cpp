@@ -248,7 +248,16 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
     double th4_8 = real(atan2(Xhat43[1], Xhat43[0]));
 
-
+    Matrix86 Th;
+    Th << th1_1, th2_1, th3_1, th4_1, th5_1, th6_1,
+          th1_1, th2_2, th3_2, th4_2, th5_2, th6_2,
+          th1_2, th2_3, th3_3, th4_3, th5_3, th6_3,
+          th1_2, th2_4, th3_4, th4_4, th5_4, th6_4,
+          th1_1, th2_5, th3_5, th4_5, th5_1, th5_1,
+          th1_1, th2_6, th3_6, th4_6, th5_2, th6_2,
+          th1_2, th2_7, th3_7, th4_7, th5_3, th6_3,
+          th1_2, th2_8, th3_8, th4_8, th5_4, th6_4;
+    return Th;
 
 
 
