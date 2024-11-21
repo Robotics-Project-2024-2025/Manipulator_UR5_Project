@@ -219,6 +219,34 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     vector<double> Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
     double th4_1 = real(atan2(Xhat43[1], Xhat43[0]));
 
+    T43m = ((HomogeneousTransform(2, th3_2, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_2, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_2, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_2, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_2 = real(atan2(Xhat43[1], Xhat43[0]));
+
+
+    T43m = ((HomogeneousTransform(2, th3_3, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_3, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_3, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_3, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_3 = real(atan2(Xhat43[1], Xhat43[0]));
+
+    T43m = ((HomogeneousTransform(2, th3_4, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_4, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_4, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_4, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_4 = real(atan2(Xhat43[1], Xhat43[0]));
+
+    T43m = ((HomogeneousTransform(2, th3_5, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_5, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_1, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_5 = real(atan2(Xhat43[1], Xhat43[0]));
+
+    T43m = ((HomogeneousTransform(2, th3_6, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_6, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_2, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_2, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_6 = real(atan2(Xhat43[1], Xhat43[0]));
+
+    T43m = ((HomogeneousTransform(2, th3_7, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_7, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_3, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_3, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_7 = real(atan2(Xhat43[1], Xhat43[0]));
+
+    T43m = ((HomogeneousTransform(2, th3_8, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_8, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_4, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_4, alfa[4], D[4], A[4])).inverse());
+    Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
+    double th4_8 = real(atan2(Xhat43[1], Xhat43[0]));
 
 
 
