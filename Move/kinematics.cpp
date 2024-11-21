@@ -179,19 +179,19 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
 
 
     Matrix44 T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_1, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
-    vector<double> p41_1 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    vector<double> p41_1 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_1 = hypot(p41_1[0], p41_1[2]);
 
     T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_2, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_2, alfa[4], D[4], A[4])).inverse());
-    vector<double> p41_2 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    vector<double> p41_2 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_2 = hypot(p41_2[0], p41_2[2]);
 
     T41m = ((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_3, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_3, alfa[4], D[4], A[4])).inverse());
-    vector<double> p41_3 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    vector<double> p41_3 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_3 = hypot(p41_3[0], p41_3[2]);
 
     T41m = ((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_4, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_4, alfa[4], D[4], A[4])).inverse());
-    vector<double> p41_4 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    vector<double> p41_4 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_4 = hypot(p41_4[0], p41_4[2]);
 
 //Computation of the 8 possible values for th3
