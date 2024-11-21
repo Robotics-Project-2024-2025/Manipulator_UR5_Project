@@ -18,7 +18,7 @@ Matrix3d eul2rotm(Vector3d& phiEf) {
     return Rz * Ry * Rx;
 }
 
-MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maT, double dt) {
+MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
     MatrixD6 th;
     th.resize(3, 6);
     th << 1, 2, 3, 4, 5, 6,
