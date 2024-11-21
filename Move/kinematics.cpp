@@ -8,14 +8,7 @@
 #include "kinematics.h"
 
 Matrix3d eul2rotm(Vector3d& phiEf) {
-    double roll = phiEf(0);
-    double pitch = phiEf(1);
-    double yaw = phiEf(2);
-    Matrix3d Rx, Ry, Rz;
-    xRot(roll);
-    yRot(pitch);
-    zRot(yaw);
-    return Rz * Ry * Rx;
+    return zRot(phiEf(0)) * yRot(phiEf(1)) * xRot(phiEf(2));
 }
 
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
