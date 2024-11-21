@@ -72,3 +72,27 @@ Matrix44 HomogeneousTransform(int i, double theta, double alpha, double d, doubl
     return m;
 }
 
+pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
+    vector<double> A={0, -0.425, -0.3922, 0, 0, 0};
+    vector<double> D={0.1625, 0, 0, 0.1333, 0.0997, 0.0996};
+    vector<double> alfa={0, M_PI/2, 0, 0, M_PI/2, -M_PI/2};
+    //T[6]={T10, T21, T32, T43, T54, T65}
+    Matrix44 T60;
+    T60 << 1, 0, 0, 0,
+           0, 1, 0, 0,
+           0, 0, 1, 0,
+           0, 0, 0, 1;
+    for (int i=0; i<6; i++) {
+        Matrix44 T=HomogeneousTransform(i, Th[i], alfa[i], D[i], A[i]);
+        T60*=T;
+        cout << i << endl << endl << T60 << endl;
+    }
+    cout << endl << "T60" << endl << endl << T60;
+    Vector3d v;
+    Matrix3d m;
+    v << T60(0, 3), T60(1, 3), T60 (2, 3);
+    m << T60(0, 0), T60(0, 1), T60(0, 2),
+         T60(1, 0), T60(1, 1), T60(1, 2),
+         T60(2, 0), T60(2, 1), T60(2, 2);
+    return make_pair(v, m);
+}
