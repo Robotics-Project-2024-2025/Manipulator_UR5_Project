@@ -26,6 +26,7 @@ MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiE
 Matrix3d xRot(double theta);
 Matrix3d yRot(double theta);
 Matrix3d zRot(double theta);
+Matrix3d eul2rotm(Vector3d& phiEf);
 //Direct Kinematics
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th);
 
