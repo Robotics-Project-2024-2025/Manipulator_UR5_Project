@@ -7,7 +7,7 @@
 
 #include "kinematics.h"
 
-Matrix3d eul2rotm(Vector3d& phiEf) {
+Matrix3d eul2rotm(Vector3d phiEf) {
     return zRot(phiEf(0)) * yRot(phiEf(1)) * xRot(phiEf(2));
 }
 
