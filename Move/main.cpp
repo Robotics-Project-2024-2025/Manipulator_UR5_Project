@@ -5,14 +5,7 @@
 //  Created by Matteo Gottardelli on 21/11/24.
 //
 
-#include <iostream>
 #include "kinematics.h"
-#include <iostream>
-#include <vector>
-#include <utility>
-#include <cmath>
-#include <Eigen/Dense>
-#define DELTAT 0.01
 using namespace std;
 using namespace Eigen;
 int main(int argc, const char * argv[]) {
