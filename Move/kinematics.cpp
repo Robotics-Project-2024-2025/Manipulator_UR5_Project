@@ -41,12 +41,23 @@ Matrix3d zRot(double theta){
     return r;
 }
 
-Matrix44 HomogeneousTransform(double theta, double alpha, double d, double a){  
+Matrix44 HomogeneousTransform(int i, double theta, double alpha, double d, double a){
     Matrix44 m;
-    m << cos(theta), -sin(theta)*cos(alpha), sin(theta)*sin(alpha), d,
+    if (i==4) {
+        d=-d;
+    }
+    if (i<4) {
+        m << cos(theta), -sin(theta)*cos(alpha), sin(theta)*sin(alpha), d,
         sin(theta), cos(theta)*cos(alpha), -cos(theta)*sin(alpha), 0,
         0, sin(alpha), cos(alpha), a,
         0,0,0,1;
-    
+    }
+    else {
+        m << cos(theta), -sin(theta)*cos(alpha), sin(theta)*sin(alpha), 0,
+        sin(theta), cos(theta)*cos(alpha), -cos(theta)*sin(alpha), d,
+        0, sin(alpha), cos(alpha), 0,
+        0,0,0,1;
+    }
+    return m;
 }
 
