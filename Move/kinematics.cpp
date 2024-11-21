@@ -215,7 +215,9 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     double th2_7=real(atan2(-p41_3[2], -p41_3[0])-asin((A[2]*sin(th3_3))/p41xz_3));
     double th2_8=real(atan2(-p41_4[2], -p41_4[0])-asin((A[2]*sin(th3_4))/p41xz_4));
 
-
+    Matrix44 T43m = ((HomogeneousTransform(2, th3_1, alfa[2], D[02], A[2])).inverse())*((HomogeneousTransform(1, th2_1, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
+    vector<double> Xhat43 = {T43m(0,0), T43m(0,1), T43m(0,2)};
+    double th4_1 = real(atan2(Xhat43[1], Xhat43[0]));
 
 
 
