@@ -36,13 +36,42 @@ Vector3d rotm2eul(Matrix3d m) {
 }
 
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
-    MatrixD6 th;
-    th.resize(3, 6);
-    th << 1, 2, 3, 4, 5, 6,
-          1, 2, 3, 4, 5, 6,
-          1, 2, 3, 4, 5, 6;
-    cout << zRot(0.5) <<endl;
-    return th;
+     VectorXd qES = Ur5Inverse(xEs, eul2rotm(phiEs));
+     VectorXd qEF = Ur5Iverse(xEf, eul2rotm(phiEf));
+     Matrix86 qEs = qES.row(0);
+     Matrix86 qEf = qEF.row(0);
+     MatrixXd A(6, 4);
+     for (int i = 0; i < 6; ++i) {
+         MatrixXd M(4, 4);
+         M << 1, minT, minT*minT, minT*minT*minT,
+              0, 1, 2*minT, 3*minT*minT,
+              1, maxT, maxT*maxT, maxT*maxT*maxT,
+              0, 1, 2*maxT, 3*maxT*maxT;
+         VectorXd b(4);
+         b << qEs(i), 0, qEf(i), 0;
+         MatrixXd M_inv = M.inverse();
+         VectorXd coeff = M_inv*b;
+         A.row(i) = coeff.transpose();
+     }
+     MatrixD6 Th;
+     MatrixXd xE;
+     MatrixXd phiE;
+     for (double t = minT; t <= maxT; t += dt) {
+         VectorXd th(6);
+         th(0) = t;
+         Th.conservativeResize(Th.rows() + 1, 6);
+         for (int i = 0; i < 6; ++i) {
+             Th(Th.rows()-1, i)=A(i, 0) + A(i, 1)*t + A(i, 2)*t*t + A(i, 3)*t*t*t;
+         }
+         Matrix61 m61 = Th.row(Th.rows()-1);
+         pair<Vector3d, Matrix3d> pa = Ur5Direct(m61);
+         MatrixXd mx = pa.second;
+         xE.conservativeResize(xE.rows() + 1, 4);
+         xE.row(xE.rows() - 1) << t, mx.transpose();
+         phiE.conservativeResize(phiE.rows() + 1, 4);
+         phiE.row(phiE.rows() - 1) << t, rotm2eul(mx);
+     }
+    return Th;
 }
 
 Matrix3d xRot(double theta){
