@@ -85,9 +85,7 @@ pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
     for (int i=0; i<6; i++) {
         Matrix44 T=HomogeneousTransform(i, Th[i], alfa[i], D[i], A[i]);
         T60*=T;
-        cout << i << endl << endl << T60 << endl;
     }
-    cout << endl << "T60" << endl << endl << T60;
     Vector3d v;
     Matrix3d m;
     v << T60(0, 3), T60(1, 3), T60 (2, 3);
