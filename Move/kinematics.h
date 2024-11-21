@@ -30,7 +30,7 @@ Matrix3d eul2rotm(Vector3d& phiEf);
 Vector3d rotm2eul(Matrix3d m);
 //Direct Kinematics
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th);
-
+Matrix86 Ur5Inverse(Vector3d v, Matrix3d m);
 Matrix44 HomogeneousTransform(double theta, double alpha, double d, double a); 
 
 
