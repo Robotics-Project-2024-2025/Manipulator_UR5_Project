@@ -11,6 +11,30 @@ Matrix3d eul2rotm(Vector3d& phiEf) {
     return zRot(phiEf(0)) * yRot(phiEf(1)) * xRot(phiEf(2));
 }
 
+Vector3d rotm2eul(Matrix3d m) {
+    double x, y, z;
+    if(m(2,0)<1) {
+        if(m(2,0)>-1) {
+            x=atan2(m(2,1), m(2,2));
+            y=asin(-m(2,0));
+            z=atan2(m(1,0), m(0,0));
+        }
+        else {
+            x=0;
+            y=M_PI/2;
+            z=-atan2(-m(1,2), m(1,1));
+        }
+    }
+    else {
+        x=0;
+        y=-M_PI/2;
+        z=-atan2(-m(1,2), m(1,1));
+    }
+    Vector3d ret;
+    ret << z, y, x;
+    return ret;
+}
+
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
     MatrixD6 th;
     th.resize(3, 6);
