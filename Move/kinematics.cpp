@@ -37,7 +37,7 @@ Vector3d rotm2eul(Matrix3d m) {
 
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
      VectorXd qES = Ur5Inverse(xEs, eul2rotm(phiEs));
-     VectorXd qEF = Ur5Iverse(xEf, eul2rotm(phiEf));
+     VectorXd qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
      Matrix86 qEs = qES.row(0);
      Matrix86 qEf = qEF.row(0);
      MatrixXd A(6, 4);
