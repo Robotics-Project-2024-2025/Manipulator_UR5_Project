@@ -140,3 +140,83 @@ pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
          T60(2, 0), T60(2, 1), T60(2, 2);
     return make_pair(v, m);
 }
+
+Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m= matrice rotazionale
+    Matrix44 T60;
+    T60 << m(0,0), m(0,1),m(0,2), v(0),
+                    m(1,0), m(1,1), m(1,1), v(1),
+                    m(2,0), m(2,1), m(2,2), v(2),
+                    0,0,0,1;
+
+    vector<double> A = {0, -0.425, -0.3922, 0, 0, 0};
+    vector<double> D = {0.1625, 0, 0, 0.1333, 0.0997, 0.0996};
+    vector<double> alfa={0, M_PI/2, 0, 0, M_PI/2, -M_PI/2};
+//th1
+    Matrix41 tmp;
+    tmp << 0,0,-D[5],1;
+    Matrix14 p50=T60*tmp;
+    double th1_1 = real((atan2(p50(1), p50(0)) + acos(D[3]/hypot(p50(1), p50(0))))) + M_PI/2;
+    double th1_2 = real((atan2(p50(1), p50(0)) - acos(D[3]/hypot(p50(1), p50(0))))) + M_PI/2;
+//th5
+    double th5_1 = +real((acos((v(0)*sin(th1_1) - v(1)*cos(th1_1)-D[3]) / D[5])));
+    double th5_2 = -real((acos((v(0)*sin(th1_1) - v(1)*cos(th1_1)-D[3]) / D[5])));
+    double th5_3 = +real((acos((v(0)*sin(th1_2) - v(1)*cos(th1_2)-D[3]) / D[5])));
+    double th5_4 = -real((acos((v(0)*sin(th1_2) - v(1)*cos(th1_2)-D[3]) / D[5])));
+
+//related to th11 a th51
+    Matrix44 T06 = T60.inverse();
+    vector<double> Xhat = {T06(0,0), T06(0,1), T06(0,2)};
+    vector<double> Yhat = {T06(1,0), T06(1,1), T06(1,2)};
+
+    double th6_1 = real(atan2(((-Xhat[1]*sin(th1_1)+Yhat[1]*cos(th1_1)))/sin(th5_1), ((Xhat[0]*sin(th1_1)-Yhat[0]*cos(th1_1)))/sin(th5_1)));
+//related to th11 a th52
+    double th6_2 = real(atan2(((-Xhat[1]*sin(th1_1)+Yhat[1]*cos(th1_1))/sin(th5_2)), ((Xhat[0]*sin(th1_1)-Yhat[0]*cos(th1_1))/sin(th5_2))));
+//related to th12 a th53
+    double th6_3 = real(atan2(((-Xhat[1]*sin(th1_2)+Yhat[1]*cos(th1_2))/sin(th5_3)), ((Xhat[0]*sin(th1_2)-Yhat[0]*cos(th1_2))/sin(th5_3))));
+//related to th12 a th54
+    double th6_4 = real(atan2(((-Xhat[1]*sin(th1_2)+Yhat[1]*cos(th1_2))/sin(th5_4)), ((Xhat[0]*sin(th1_2)-Yhat[0]*cos(th1_2))/sin(th5_4))));
+
+
+
+    Matrix44 T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_1, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
+    vector<double> p41_1 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    double p41xz_1 = hypot(p41_1[0], p41_1[2]);
+
+    T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_2, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_2, alfa[4], D[4], A[4])).inverse());
+    vector<double> p41_2 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    double p41xz_2 = hypot(p41_2[0], p41_2[2]);
+
+    T41m = ((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_3, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_3, alfa[4], D[4], A[4])).inverse());
+    vector<double> p41_3 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    double p41xz_3 = hypot(p41_3[0], p41_3[2]);
+
+    T41m = ((HomogeneousTransform(0, th1_2, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_4, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_4, alfa[4], D[4], A[4])).inverse());
+    vector<double> p41_4 = {T41m(3,0), T41m(3,1), T41m(3,2)};
+    double p41xz_4 = hypot(p41_4[0], p41_4[2]);
+
+//Computation of the 8 possible values for th3
+    double th3_1 = real(acos(((pow(p41xz_1,2)-(A[1]^2)-(A[2]^2))/(2*A[1]*A[2])));
+    double th3_2 = real(acos((p41xz_2^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
+    double th3_3 = real(acos((p41xz_3^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
+    double th3_4 = real(acos((p41xz_4^2-A[1]^2-A[2]^2)/(2*A[1]*A[2])));
+
+    th3_5 = -th3_1;
+    th3_6 = -th3_2;
+    th3_7 = -th3_3;
+    th3_8 = -th3_4;
+
+//Computation of eight possible value for th2
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
