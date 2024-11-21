@@ -13,5 +13,31 @@ MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiE
     th << 1, 2, 3, 4, 5, 6,
           1, 2, 3, 4, 5, 6,
           1, 2, 3, 4, 5, 6;
+    cout << zRot(0.5) <<endl;
     return th;
 }
+
+Matrix3d xRot(double theta){
+    Matrix3d r;
+    r << 1, 0, 0,
+         0, cos(theta), -sin(theta),
+         0,sin(theta),cos(theta);
+    return r;
+}
+
+Matrix3d yRot(double theta){
+    Matrix3d r;
+    r << cos(theta), 0, sin(theta),
+         0, 1, 0,
+         -sin(theta),0,cos(theta);
+    return r;
+}
+
+Matrix3d zRot(double theta){
+    Matrix3d r;
+    r << cos(theta), -sin(theta), 0,
+          sin(theta), cos(theta), 0,
+          0,0,1;
+    return r;
+}
+
