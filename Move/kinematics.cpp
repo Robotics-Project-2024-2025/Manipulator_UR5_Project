@@ -43,7 +43,7 @@ Vector3d rotm2eul(Matrix3d m) {
     if(m(2,0)<1) {
         if(m(2,0)>-1) {
             x=atan2(m(2,1), m(2,2));
-            y=adjust_asin(-m(2,0));
+            y=asin(-m(2,0));
             z=atan2(m(1,0), m(0,0));
         }
         else {
@@ -65,6 +65,7 @@ Vector3d rotm2eul(Matrix3d m) {
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
      Matrix86 qES = Ur5Inverse(xEs, eul2rotm(phiEs));
      Matrix86 qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
+    cout << qES << endl << endl;
      VectorXd qEs = qES.row(0);
      VectorXd qEf = qEF.row(0);
      MatrixXd A(6, 4);
@@ -155,10 +156,10 @@ pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
 
 Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m= matrice rotazionale
     Matrix44 T60;
-    T60 << m(0,0), m(0,1),m(0,2), v(0),
-                    m(1,0), m(1,1), m(1,1), v(1),
-                    m(2,0), m(2,1), m(2,2), v(2),
-                    0,0,0,1;
+    T60 << m(0,0), m(0,1), m(0,2), v(0),
+           m(1,0), m(1,1), m(1,2), v(1),
+           m(2,0), m(2,1), m(2,2), v(2),
+           0,0,0,1;
 //th1
     Matrix41 tmp;
     tmp << 0,0,-D[5],1;
@@ -173,9 +174,8 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
 
 //related to th11 a th51
     Matrix44 T06 = T60.inverse();
-    vector<double> Xhat = {T06(0,0), T06(0,1), T06(0,2)};
-    vector<double> Yhat = {T06(1,0), T06(1,1), T06(1,2)};
-
+    vector<double> Xhat = {T06(0,0), T06(1,0), T06(2,0)};
+    vector<double> Yhat = {T06(0,1), T06(1,1), T06(2,1)};
     double th6_1 = real(atan2(((-Xhat[1]*sin(th1_1)+Yhat[1]*cos(th1_1)))/sin(th5_1), ((Xhat[0]*sin(th1_1)-Yhat[0]*cos(th1_1)))/sin(th5_1)));
 //related to th11 a th52
     double th6_2 = real(atan2(((-Xhat[1]*sin(th1_1)+Yhat[1]*cos(th1_1))/sin(th5_2)), ((Xhat[0]*sin(th1_1)-Yhat[0]*cos(th1_1))/sin(th5_2))));
@@ -189,7 +189,9 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     Matrix44 T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_1, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
     vector<double> p41_1 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_1 = hypot(p41_1[0], p41_1[2]);
-
+    cout << T41m << endl;
+    cout << p41xz_1 << endl;
+    
     T41m = ((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*T60*((HomogeneousTransform(5, th6_2, alfa[5], D[5], A[5])).inverse())*((HomogeneousTransform(4, th5_2, alfa[4], D[4], A[4])).inverse());
     vector<double> p41_2 = {T41m(0,3), T41m(1,3), T41m(2,3)};
     double p41xz_2 = hypot(p41_2[0], p41_2[2]);
@@ -203,10 +205,10 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     double p41xz_4 = hypot(p41_4[0], p41_4[2]);
 
 //Computation of the 8 possible values for th3
-    double th3_1 = adjust_acos(pow(p41xz_1,2)-pow(A[1],2)-pow(A[2], 2)/(2*A[1]*A[2]));
-    double th3_2 = adjust_acos(pow(p41xz_2,2)-pow(A[1],2)-pow(A[2],2)/(2*A[1]*A[2]));
-    double th3_3 = adjust_acos(pow(p41xz_3,2)-pow(A[1],2)-pow(A[2],2)/(2*A[1]*A[2]));
-    double th3_4 = adjust_acos(pow(p41xz_4,2)-pow(A[1],2)-pow(A[2],2)/(2*A[1]*A[2]));
+    double th3_1 = adjust_acos((pow(p41xz_1,2)-pow(A[1],2)-pow(A[2], 2))/(2*A[1]*A[2]));
+    double th3_2 = adjust_acos((pow(p41xz_2,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
+    double th3_3 = adjust_acos((pow(p41xz_3,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
+    double th3_4 = adjust_acos((pow(p41xz_4,2)-pow(A[1],2)-pow(A[2],2))/(2*A[1]*A[2]));
 
     double th3_5 = -th3_1;
     double th3_6 = -th3_2;
@@ -214,14 +216,14 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     double th3_8 = -th3_4;
 
 //Computation of eight possible value for th2
-    double th2_1=real(atan2(-p41_1[2], -p41_1[0])-adjust_asin((-A[2]*sin(th3_1))/p41xz_1));
-    double th2_2=real(atan2(-p41_2[2], -p41_2[0])-adjust_asin((-A[2]*sin(th3_2))/p41xz_2));
-    double th2_3=real(atan2(-p41_3[2], -p41_3[0])-adjust_asin((-A[2]*sin(th3_3))/p41xz_3));
-    double th2_4=real(atan2(-p41_4[2], -p41_4[0])-adjust_asin((-A[2]*sin(th3_4))/p41xz_4));
-    double th2_5=real(atan2(-p41_1[2], -p41_1[0])-adjust_asin((A[2]*sin(th3_1))/p41xz_1));
-    double th2_6=real(atan2(-p41_2[2], -p41_2[0])-adjust_asin((A[2]*sin(th3_2))/p41xz_2));
-    double th2_7=real(atan2(-p41_3[2], -p41_3[0])-adjust_asin((A[2]*sin(th3_3))/p41xz_3));
-    double th2_8=real(atan2(-p41_4[2], -p41_4[0])-adjust_asin((A[2]*sin(th3_4))/p41xz_4));
+    double th2_1=real(atan2(-p41_1[2], -p41_1[0])-asin((-A[2]*sin(th3_1))/p41xz_1));
+    double th2_2=real(atan2(-p41_2[2], -p41_2[0])-asin((-A[2]*sin(th3_2))/p41xz_2));
+    double th2_3=real(atan2(-p41_3[2], -p41_3[0])-asin((-A[2]*sin(th3_3))/p41xz_3));
+    double th2_4=real(atan2(-p41_4[2], -p41_4[0])-asin((-A[2]*sin(th3_4))/p41xz_4));
+    double th2_5=real(atan2(-p41_1[2], -p41_1[0])-asin((A[2]*sin(th3_1))/p41xz_1));
+    double th2_6=real(atan2(-p41_2[2], -p41_2[0])-asin((A[2]*sin(th3_2))/p41xz_2));
+    double th2_7=real(atan2(-p41_3[2], -p41_3[0])-asin((A[2]*sin(th3_3))/p41xz_3));
+    double th2_8=real(atan2(-p41_4[2], -p41_4[0])-asin((A[2]*sin(th3_4))/p41xz_4));
     
     Matrix44 T43m = ((HomogeneousTransform(2, th3_1, alfa[2], D[2], A[2])).inverse())*((HomogeneousTransform(1, th2_1, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
         vector<double> Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
@@ -263,6 +265,5 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
           th1_1, th2_6, th3_6, th4_6, th5_2, th6_2,
           th1_2, th2_7, th3_7, th4_7, th5_3, th6_3,
           th1_2, th2_8, th3_8, th4_8, th5_4, th6_4;
-    cout << endl << endl << endl << Th << endl << endl << endl;
     return Th;
 }
