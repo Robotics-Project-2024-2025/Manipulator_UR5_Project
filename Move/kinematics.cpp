@@ -18,10 +18,19 @@ float adjust_value(float x) {
 }
 float adjust_acos(float x) {
     if(x<-1) {
-        return M_PI;
+        return -M_PI_2;
     }
     if(x>1) {
+        return M_PI_2;
+    }
+    return asin(x);
+}
+float adjust_asin(float x) {
+    if(x<-1) {
         return 0;
+    }
+    if(x>1) {
+        return M_PI;
     }
     return acos(x);
 }
@@ -34,7 +43,7 @@ Vector3d rotm2eul(Matrix3d m) {
     if(m(2,0)<1) {
         if(m(2,0)>-1) {
             x=atan2(m(2,1), m(2,2));
-            y=asin(-m(2,0));
+            y=adjust_asin(-m(2,0));
             z=atan2(m(1,0), m(0,0));
         }
         else {
@@ -205,14 +214,14 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m
     double th3_8 = -th3_4;
 
 //Computation of eight possible value for th2
-    double th2_1=real(atan2(-p41_1[2], -p41_1[0])-asin((-A[2]*sin(th3_1))/p41xz_1));
-    double th2_2=real(atan2(-p41_2[2], -p41_2[0])-asin((-A[2]*sin(th3_2))/p41xz_2));
-    double th2_3=real(atan2(-p41_3[2], -p41_3[0])-asin((-A[2]*sin(th3_3))/p41xz_3));
-    double th2_4=real(atan2(-p41_4[2], -p41_4[0])-asin((-A[2]*sin(th3_4))/p41xz_4));
-    double th2_5=real(atan2(-p41_1[2], -p41_1[0])-asin((A[2]*sin(th3_1))/p41xz_1));
-    double th2_6=real(atan2(-p41_2[2], -p41_2[0])-asin((A[2]*sin(th3_2))/p41xz_2));
-    double th2_7=real(atan2(-p41_3[2], -p41_3[0])-asin((A[2]*sin(th3_3))/p41xz_3));
-    double th2_8=real(atan2(-p41_4[2], -p41_4[0])-asin((A[2]*sin(th3_4))/p41xz_4));
+    double th2_1=real(atan2(-p41_1[2], -p41_1[0])-adjust_asin((-A[2]*sin(th3_1))/p41xz_1));
+    double th2_2=real(atan2(-p41_2[2], -p41_2[0])-adjust_asin((-A[2]*sin(th3_2))/p41xz_2));
+    double th2_3=real(atan2(-p41_3[2], -p41_3[0])-adjust_asin((-A[2]*sin(th3_3))/p41xz_3));
+    double th2_4=real(atan2(-p41_4[2], -p41_4[0])-adjust_asin((-A[2]*sin(th3_4))/p41xz_4));
+    double th2_5=real(atan2(-p41_1[2], -p41_1[0])-adjust_asin((A[2]*sin(th3_1))/p41xz_1));
+    double th2_6=real(atan2(-p41_2[2], -p41_2[0])-adjust_asin((A[2]*sin(th3_2))/p41xz_2));
+    double th2_7=real(atan2(-p41_3[2], -p41_3[0])-adjust_asin((A[2]*sin(th3_3))/p41xz_3));
+    double th2_8=real(atan2(-p41_4[2], -p41_4[0])-adjust_asin((A[2]*sin(th3_4))/p41xz_4));
     
     Matrix44 T43m = ((HomogeneousTransform(2, th3_1, alfa[2], D[2], A[2])).inverse())*((HomogeneousTransform(1, th2_1, alfa[1], D[1], A[1])).inverse())*((HomogeneousTransform(0, th1_1, alfa[0], D[0], A[0])).inverse())*((HomogeneousTransform(4, th5_1, alfa[4], D[4], A[4])).inverse());
         vector<double> Xhat43 = {T43m(0,0), T43m(1,0), T43m(2,0)};
