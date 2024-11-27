@@ -16,7 +16,7 @@ float adjust_value(float x) {
     }
     return x;
 }
-float adjust_acos(float x) {
+float adjust_asin(float x) {
     if(x<-1) {
         return -M_PI_2;
     }
@@ -25,7 +25,7 @@ float adjust_acos(float x) {
     }
     return asin(x);
 }
-float adjust_asin(float x) {
+float adjust_acos(float x) {
     if(x<-1) {
         return 0;
     }
