@@ -116,21 +116,10 @@ Matrix3d zRot(double theta){
 }
 Matrix44 HomogeneousTransform(int i, double theta, double alpha, double d, double a){
     Matrix44 m;
-    if (i==4) {
-        d=-d;
-    }
-    if (i<4 && i!=1) {
-            m << adjust_value(cos(theta)), adjust_value(-sin(theta)*cos(alpha)), adjust_value(sin(theta)*sin(alpha)), a,
-            adjust_value(sin(theta)), adjust_value(cos(theta)*cos(alpha)), adjust_value(-cos(theta)*sin(alpha)), 0,
-            0, adjust_value(sin(alpha)), adjust_value(cos(alpha)), d,
-            0,0,0,1;
-        }
-        else {
-            m << adjust_value(cos(theta)), adjust_value(-sin(theta)*cos(alpha)), adjust_value(sin(theta)*sin(alpha)), 0,
-            adjust_value(sin(theta)), adjust_value(cos(theta)*cos(alpha)), adjust_value(-cos(theta)*sin(alpha)), d,
-            0, adjust_value(sin(alpha)), adjust_value(cos(alpha)), 0,
-            0,0,0,1;
-        }
+    m << adjust_value(cos(theta)), adjust_value(-sin(theta)*cos(alpha)), adjust_value(sin(theta)*sin(alpha)), a*adjust_value(cos(theta)),
+    adjust_value(sin(theta)), adjust_value(cos(theta)*cos(alpha)), adjust_value(-cos(theta)*sin(alpha)), a*adjust_value(sin(theta)),
+    0, adjust_value(sin(alpha)), adjust_value(cos(alpha)), d,
+    0,0,0,1;
     return m;
 }
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
@@ -143,18 +132,9 @@ pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
            0, 0, 0, 1;
     Matrix44 T;
     for (int i=0; i<6; i++) {
-        if (i==0) {
-            T=HomogeneousTransform(i, Th[i], alfa[i], D[i], 0);
-            cout << i << ", " << Th[i] << ", " << 0 << ", " << D[i]<< ", " << 0 << endl << endl;
-        }
-        else {
-            T=HomogeneousTransform(i, Th[i], alfa[i], D[i], A[i-1]);
-            cout << i << ", " << Th[i] << ", " << alfa[i-1] << ", " << D[i]<< ", " << A[i-1] << endl << endl;
-        }
-        cout << T << endl << endl;
+        T=HomogeneousTransform(i, Th[i], alfa[i], D[i], A[i]);
         T60*=T;
     }
-    cout << T60 << endl << endl;
     Vector3d v;
     Matrix3d m;
     v << T60(0, 3), T60(1, 3), T60 (2, 3);
