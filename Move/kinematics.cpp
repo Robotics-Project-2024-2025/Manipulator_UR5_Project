@@ -27,10 +27,10 @@ float adjust_asin(float x) {
 }
 float adjust_acos(float x) {
     if(x<-1) {
-        return 0;
+        return M_PI;
     }
     if(x>1) {
-        return M_PI;
+        return 0;
     }
     return acos(x);
 }
