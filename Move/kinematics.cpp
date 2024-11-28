@@ -61,14 +61,34 @@ Vector3d rotm2eul(Matrix3d m) {
     ret << z, y, x;
     return ret;
 }
-
+int findMin (double* array, int size) {
+    int min=array[0];
+    int indexMin=0;
+    for (int i=1; i<size; i++) {
+        if (min>array[i]) {
+            min=array[i];
+            indexMin=i;
+        }
+    }
+    return indexMin;
+}
+int bestInverse(Matrix86 start, Matrix86 end) {
+    double configs[8];
+    for (int i=0; i<8; i++) {
+        configs[i]=0.0;
+        for (int j=0; j<6; j++) {
+            configs[i]+=pow(end(i, j)-start(i, j), 2);
+        }
+    }
+    return findMin(configs, 8);
+}
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt) {
      Matrix86 qES = Ur5Inverse(xEs, eul2rotm(phiEs));
      Matrix86 qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
-     VectorXd qEs = qES.row(0);
-     VectorXd qEf = qEF.row(0);
-    cout << qEs << endl;
-    cout << qEf << endl;
+     int index=bestInverse(qES, qEF);
+     cout << index << endl;
+     VectorXd qEs = qES.row(index);
+     VectorXd qEf = qEF.row(index);
      MatrixXd A(6, 4);
      for (int i = 0; i < 6; ++i) {
          MatrixXd M(4, 4);
@@ -92,7 +112,6 @@ MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiE
          for (int i = 0; i < 6; ++i) {
              Th(Th.rows()-1, i)=A(i, 0) + A(i, 1)*t + A(i, 2)*t*t + A(i, 3)*t*t*t;
          }
-         cout << t << " " << maxT << endl;
          Matrix61 m61 = Th.row(Th.rows()-1);
          pair<Vector3d, Matrix3d> pa = Ur5Direct(m61);
          xE.conservativeResize(xE.rows() + 1, 3);
