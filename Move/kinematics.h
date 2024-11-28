@@ -34,4 +34,5 @@ Matrix86 Ur5Inverse(Vector3d v, Matrix3d m);
 Matrix3d eul2rotm(Vector3d phiEf);
 Vector3d rotm2eul(Matrix3d m);
 float adjust_acos(float x);
+float adjust_asin(float x);
 #endif /* kinematics_h */
