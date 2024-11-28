@@ -24,17 +24,14 @@ using Matrix44=Matrix<double, 4, 4>;
 using Matrix41=Matrix<double, 4, 1>;
 using Matrix14=Matrix<double, 1, 4>;
 MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiEf, double minT, double maxT, double dt);
-//Rotations
 Matrix3d xRot(double theta);
 Matrix3d yRot(double theta);
 Matrix3d zRot(double theta);
-Matrix3d eul2rotm(Vector3d phiEf);
-Vector3d rotm2eul(Matrix3d m);
-//Direct Kinematics
+Matrix44 HomogeneousTransformGen(double theta, double alpha, double d, double a); 
+Matrix44 HomogeneousTransformSpecific(int i, double theta);
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th);
 Matrix86 Ur5Inverse(Vector3d v, Matrix3d m);
-Matrix44 HomogeneousTransform(double theta, double alpha, double d, double a); 
-
-
+Matrix3d eul2rotm(Vector3d phiEf);
+Vector3d rotm2eul(Matrix3d m);
+float adjust_acos(float x);
 #endif /* kinematics_h */
-
