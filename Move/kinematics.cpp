@@ -72,6 +72,7 @@ int findMin (double* array, int size) {
     }
     return indexMin;
 }
+//J(theta)=sum_0_7(theta_end-theta_start)^2
 int bestInverse(Matrix86 start, Matrix86 end) {
     double configs[8];
     for (int i=0; i<8; i++) {
