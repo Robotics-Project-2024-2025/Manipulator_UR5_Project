@@ -85,13 +85,14 @@ MatrixD6 p2pMotionPlan(Vector3d xEs, Vector3d xEf, Vector3d phiEs, Vector3d phiE
      MatrixD6 Th;
      MatrixXd xE;
      MatrixXd phiE;
-     for (double t = minT; t <= maxT; t += dt) {
+     for (double t = minT; t<maxT+dt; t+=dt) {
          VectorXd th(6);
          th(0) = t;
          Th.conservativeResize(Th.rows() + 1, 6);
          for (int i = 0; i < 6; ++i) {
              Th(Th.rows()-1, i)=A(i, 0) + A(i, 1)*t + A(i, 2)*t*t + A(i, 3)*t*t*t;
          }
+         cout << t << " " << maxT << endl;
          Matrix61 m61 = Th.row(Th.rows()-1);
          pair<Vector3d, Matrix3d> pa = Ur5Direct(m61);
          xE.conservativeResize(xE.rows() + 1, 3);
