@@ -6,6 +6,8 @@
 //
 
 #include "kinematics.h"
+#include "kin_communication.h"
+
 using namespace std;
 using namespace Eigen;
 int main(int argc, const char * argv[]) {
