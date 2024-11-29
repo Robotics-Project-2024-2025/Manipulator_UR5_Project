@@ -15,6 +15,7 @@
 #include <cmath>
 #include <Eigen/Dense>
 #define DELTAT 0.01
+
 using namespace std;
 using namespace Eigen;
 using MatrixD6=Matrix<double, -1, 6>;
@@ -31,8 +32,9 @@ Matrix44 HomogeneousTransformGen(double theta, double alpha, double d, double a)
 Matrix44 HomogeneousTransformSpecific(int i, double theta);
 pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th);
 Matrix86 Ur5Inverse(Vector3d v, Matrix3d m);
+int findMin (double* array, int size);
+int bestInverse(Matrix86 start, Matrix86 end);
 Matrix3d eul2rotm(Vector3d phiEf);
 Vector3d rotm2eul(Matrix3d m);
 float adjust_acos(float x);
-float adjust_asin(float x);
 #endif /* kinematics_h */
