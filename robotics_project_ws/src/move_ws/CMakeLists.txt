@@ -1,52 +1,45 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.8)
 project(move)
 
 # Compiler Settings
-add_compile_options(-std=c++11 -fpermissive)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Move Packages and Dependencies
-find_package(move REQUIRED COMPONENTS
-  rclcpp
-  project_utils
-)
-
-# Catkin Package Configuration
-move_package(
-  INCLUDE_DIRS include
-  LIBRARIES move_robot_lib
-)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)  
+find_package(project_utils REQUIRED)
 
 # Include Directories
-include_directories(
-  include
-)
+include_directories(include)
 
-# Build Libraries
-add_library(
+# Source files
+set(SOURCES
   src/kinematics.cpp
   src/main.cpp
 )
 
-## Declare catkin package
-catkin_package()
-
-# Building directories
 include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
 
 # Build Executables
-add_executable(move main.cpp kinematics.cpp kinematics.h kin_communication.h main.cpp)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Link Libraries
-target_link_libraries(move_robot ${catkin_LIBRARIES})
-
-# Install Targets and Headers
-install(TARGETS move_robot_lib
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+# Link dependencies
+ament_target_dependencies(${PROJECT_NAME}
+  rclcpp
+  std_msgs
 )
 
+# Install targets
+install(TARGETS ${PROJECT_NAME}
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install include files
 install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
+  DESTINATION include/${PROJECT_NAME}
 )
+
+# Ament package macros
+ament_package()
