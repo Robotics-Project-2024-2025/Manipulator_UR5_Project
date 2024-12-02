@@ -1,26 +1,52 @@
-cmake_minimum_required(VERSION 3.8)
-project(robotics_project_ws)
+cmake_minimum_required(VERSION 3.0.2)
+project(move)
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+# Compiler Settings
+add_compile_options(-std=c++11 -fpermissive)
 
-# find dependencies
-find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+# Find Move Packages and Dependencies
+find_package(move REQUIRED COMPONENTS
+  rclcpp
+  project_utils
+)
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+# Catkin Package Configuration
+move_package(
+  INCLUDE_DIRS include
+  LIBRARIES move_robot_lib
+)
 
-ament_package()
+# Include Directories
+include_directories(
+  include
+)
+
+# Build Libraries
+add_library(
+  src/kinematics.cpp
+  src/main.cpp
+)
+
+## Declare catkin package
+catkin_package()
+
+# Building directories
+include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
+
+# Build Executables
+add_executable(move main.cpp kinematics.cpp kinematics.h kin_communication.h main.cpp)
+
+# Link Libraries
+target_link_libraries(move_robot ${catkin_LIBRARIES})
+
+# Install Targets and Headers
+install(TARGETS move_robot_lib
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+)
