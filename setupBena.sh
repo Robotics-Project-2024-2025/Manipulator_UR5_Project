@@ -3,8 +3,8 @@ cd /home/ubuntu/ros2_ws/
 
 rosdep install -i --from-path src --rosdistro rolling -y
 
-rm -rf ./build ./install ./log
-
-colcon build
+colcon build --packages-select ros2_ur5_simulation
 
 source install/setup.bash
+
+ros2 launch ros2_ur5_simulation sim.launch.py
