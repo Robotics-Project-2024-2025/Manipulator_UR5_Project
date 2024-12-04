@@ -103,6 +103,9 @@ Now, your are in the folder.<br>
 git submodule init
 git submodule update
 ```
+//SAY TO MODIFY THE PATH IN SH ros2.sh FILE
+
+Now, you have all the material you need on your native machine.<br><br>
 
 [Back to top](#table-of-contents)
 
