@@ -3,7 +3,7 @@ cd /home/ubuntu/ros2_ws/
 
 rosdep install -i --from-path src --rosdistro rolling -y
 
-colcon build move_ws_pkg
+colcon build --packages-select move_ws_pkg
 
 source install/setup.bash
 
