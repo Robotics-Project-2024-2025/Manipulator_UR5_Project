@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-[submodule "robotics_project_ws/vision_ws/yolov5"]
-	path = robotics_project_ws/vision_ws/yolov5
-	url = https://github.com/ultralytics/yolov5.git
-=======
 [submodule "robotics_project_ws/vision_ws"]
 	path = robotics_project_ws/vision_ws/yolov5
 	url = https://github.com/ultralytics/yolov5
->>>>>>> refs/remotes/origin/main
+
