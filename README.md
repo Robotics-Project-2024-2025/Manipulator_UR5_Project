@@ -62,6 +62,48 @@ Project
 
 ## Clone Git
 
+Done the passages above in order:
+
+Access to you Github Account on your terminal, running:
+```bash
+cd ~
+gh auth login
+```
+If it doesn't work, maybe you don't have installed gh. To install it, if you are on:<br>
+MACOS • You can use homebrew. To verify that if it is already installed on your computer, run on terminal:
+```bash
+brew --version
+```
+If that doesn't put out Homebrew and the version, it does mean you haven't installed it, yet. So, to install it run:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+• Now, doing:
+```bash
+brew install <missing command>
+```
+brew will be updated and that command will be integrated in your terminal. So, install with this method gh.<br><br>
+
+WINDOWS //// TO FILL ////<br><br>
+
+2. After the command run successfully, you will have to do some choices. Select Github.com then HTTPS, type Y and press Login with a web browser and then press enter. You can use any other type of method, but I'm going to explain it how I have done it<br>
+3. In the new open panel, insert the credentials and the one-time code generated on terminal and authorize the connection<br>
+4. Insert your passkey and after that you will see on your terminal as last line "Logged in as<br>
+5. Now run this command to clone the above repository:<br>
+```bash
+gh repo clone Robotics-Project-2024-2025/Project
+```
+To see, if you have successfully cloned the repository, try to access to it running:
+```bash
+cd Project
+```
+Now, your are in the folder.<br>
+7. Init and update the submodule of yolo doing:
+```bash
+git submodule init
+git submodule update
+```
+
 [Back to top](#table-of-contents)
 
 ---
