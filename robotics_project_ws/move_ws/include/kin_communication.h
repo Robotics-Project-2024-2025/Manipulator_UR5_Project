@@ -8,19 +8,13 @@
 #ifndef kin_communication_h
 #define kin_communication_h
 #include <rclcpp/rclcpp.hpp>
-#include <rclcpp/init_options.hpp>
+#include <rclcpp/rclcpp.hpp>
+#include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
-#include <trajectory_msgs/msg/joint_trajectory_point.hpp>
-#include <std_msgs/msg/header.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <chrono>
 #include <iostream>
 #include <Eigen/Dense>
-#include <chrono>
-#include <string>
-#include <functional>
-#include <algorithm>
-#include <rcutils/allocator.h>
-#include <tracetools/tracetools.h>
-#include <memory>
 
 /*
  # The header is used to specify the coordinate frame and the reference time for
@@ -48,12 +42,14 @@ using MatrixD6=Matrix<double, -1, 6>;
 
 using namespace std::chrono_literals;
 
-class TrajectoryPublisher : public rclcpp::Node
+class TrajectoryActionClient : public rclcpp::Node
 {
 public:
-    TrajectoryPublisher(MatrixD6 Th);
+    using FollowJointTrajectory = control_msgs::action::FollowJointTrajectory;
+    using GoalHandleFollowJointTrajectory = rclcpp_action::ClientGoalHandle<FollowJointTrajectory>;
+    TrajectoryActionClient(MatrixD6 Th);
 private:
-    rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr trajectory_publisher_;
+    rclcpp_action::Client<FollowJointTrajectory>::SharedPtr action_client_;
     rclcpp::TimerBase::SharedPtr timer_;
     void publish_iter(MatrixD6 Th);
     void init_Trajectory(trajectory_msgs::msg::JointTrajectory* traj_msg);

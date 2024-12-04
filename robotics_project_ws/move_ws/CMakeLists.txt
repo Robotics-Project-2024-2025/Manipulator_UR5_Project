@@ -11,6 +11,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(control_msgs REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 
 # Build Executables
@@ -22,6 +24,8 @@ ament_target_dependencies(
   rclcpp
  trajectory_msgs
 sensor_msgs
+  control_msgs
+  rclcpp_action
 )
 
 # Include directories for the target
