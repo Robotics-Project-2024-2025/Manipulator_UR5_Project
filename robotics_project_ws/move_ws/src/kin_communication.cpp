@@ -153,7 +153,7 @@ Matrix16 receive_joint_state() {
     } else {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
     }
-    rclcpp:shutdown();
+    rclcpp::shutdown();
     ret << 0, -M_PI/2+0.01, 0, 0, 0, 0;
     cout << "Successfully Received Joint State" << endl;
     return ret;
