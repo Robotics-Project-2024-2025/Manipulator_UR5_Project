@@ -112,12 +112,12 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
 }
 
 JointReceiver::JointReceiver() : Node("arm_receiver") {
-    joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>(
-        "/joint_states", 10, [this](std::shared_ptr<sensor_msgs::msg::JointState> msg) {
-            joint_state_ = const_pointer_cast<const sensor_msgs::msg::JointState>(msg);
-            RCLCPP_INFO(this->get_logger(), "Received Joint State message");
-            cout << "Received Joint State message" << endl;
-        });
+        joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>(
+            "/joint_states", 10, [this](std::shared_ptr<sensor_msgs::msg::JointState> msg) {
+                joint_state_ = const_pointer_cast<const sensor_msgs::msg::JointState>(msg);
+                RCLCPP_INFO(this->get_logger(), "Received Joint State message");
+                cout << "Received Joint State message" << endl;
+            });
     while (rclcpp::ok() && !joint_state_) {
         rclcpp::spin_some(this->get_node_base_interface());
     }
@@ -151,7 +151,8 @@ Matrix16 receive_joint_state() {
     if (joint_result!=NULL) {
         for (int i=0; i<NUM_JOINTS; i++) {
             RCLCPP_INFO(rclcpp::get_logger("main"), "JointState received:Position[%d]: %f", i,
-                        joint_result->position.empty() ? 0.0 : joint_result->position[i]);
+                        joint_result->position.empty() ? 0.0 :
+                            joint_result->position[i]);
             int j=i+1;
             if (j<NUM_JOINTS) {
                 ret(j)=joint_result->position[i];
@@ -164,7 +165,6 @@ Matrix16 receive_joint_state() {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
     }
     rclcpp::shutdown();
-    ret << 0, -M_PI/2+0.01, 0, 0, 0, 0;
     cout << "End Joint State Receiving" << endl;
     return ret;
 }
