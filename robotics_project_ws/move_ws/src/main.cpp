@@ -19,22 +19,24 @@ int main(int argc, const char * argv[]) {
         Vector3d xE1;
         Matrix16 qES;
         qES=receive_joint_state();
+        cout << qES << endl;
         /*Vector3d phiE0;
          phiE0 << 0, 0, 0;*/
         Vector3d phiE1;
         phiE1 << 0, 0, 0;
         MatrixD6 th;
-        cout << endl << "Insert values for xE1:" << endl;
         for(int i = 0; i<3; i++){
             double tmp;
+            cout << endl << "Insert value " << i+1 << "for xE1: ";
             cin >> tmp;
-            if(tmp >= -3 && tmp <= 3){
+            if(tmp >= -1 && tmp <= 1){
                 xE1(i) = tmp;
             }
             else{
                 cout << endl << "Invalid value" << endl;
             }
         }
+        cout << "Checking Position" << endl;
         if(checkPosition(xE1, qES)) {
             if(p2pMotionPlan(qES, xE1, phiE1, &th)) {
                 cout << "Moving to HOME" << endl;
