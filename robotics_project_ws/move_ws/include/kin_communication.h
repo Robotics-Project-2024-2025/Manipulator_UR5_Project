@@ -11,6 +11,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
+#include <sensor_msgs/msg/joint_state.hpp>
 #include <rclcpp_action/rclcpp_action.hpp>
 #include <chrono>
 #include <iostream>
