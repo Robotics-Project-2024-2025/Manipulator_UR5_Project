@@ -63,10 +63,10 @@ class JointReceiver : public rclcpp::Node
 {
 public:
     JointReceiver();
-    sensor_msgs::msg::JointState::SharedPtr get_joint_state() const;
+    shared_ptr<sensor_msgs::msg::JointState> get_joint_state() const;
 private:
     rclcpp::Subscription<sensor_msgs::msg::JointState const>::SharedPtr joint_receiver_;
-    sensors_msgs::msg::JointState::SharedPtr joint_state_
+    shared_ptr<sensor_msgs::msg::JointState> joint_state_;
     void getArm();
 };
 Matrix16 receive_joint_state();
