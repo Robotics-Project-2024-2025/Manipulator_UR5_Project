@@ -112,7 +112,7 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
 }
 
 JointReceiver::JointReceiver() : Node("arm_receiver") {
-    joint_receiver_ = this->create_subscription<sensor_msgs::m sg::JointState>("/joint_states", 10, [this](shared_ptr<sensor_msgs::msg::JointState> msg) {
+    joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>("/joint_states", 10, [this](shared_ptr<sensor_msgs::msg::JointState> msg) {
         joint_state_=msg;
         RCLCPP_INFO(this->get_logger(), "Received Joint State message");
     });
