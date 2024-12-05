@@ -112,11 +112,20 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
 }
 
 JointReceiver::JointReceiver() : Node("arm_receiver") {
-    joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>(
-        "/joint_states", 10, [this](shared_ptr<const sensor_msgs::msg::JointState> msg) {
-            joint_state_ = msg;//const_pointer_cast<const sensor_msgs::msg::JointState>(msg); 
-            RCLCPP_INFO(this->get_logger(), "Received Joint State message");
-        });
+        joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>(
+            "/joint_states", 10, [this](std::shared_ptr<sensor_msgs::msg::JointState> msg) {
+                joint_state_ = const_pointer_cast<const sensor_msgs::msg::JointState>(msg);
+                RCLCPP_INFO(this->get_logger(), "Received Joint State message");
+                cout << "Received Joint State message" << endl;
+            });
+    }
+    while (rclcpp::ok() && !joint_state_) {
+        rclcpp::spin_some(this->get_node_base_interface());
+    }
+    if(joint_state_) {
+        RCLCPP_INFO(this->get_logger(), "Successfully Received Joint State");
+        cout << "Successfully Received Joint State" << endl;
+    }
 }
 
 shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() const {
@@ -135,7 +144,6 @@ void setupCommunication(int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
     cout << "Communications Setup Complete" << endl;
 }
-
 Matrix16 receive_joint_state() {
     cout << "Requesting Actual Joint States" << endl;
     auto node= std::make_shared<JointReceiver>();
