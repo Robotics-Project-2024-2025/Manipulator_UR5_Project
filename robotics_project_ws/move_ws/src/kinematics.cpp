@@ -175,16 +175,18 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, MatrixD6* Th) {
     cout << qEF << endl;
      //VectorXd qEf = qEF.row(index);
     for (int i = 0; i < qEF.rows(); ++i) {
-        MatrixD4 A;
+        MatrixD6 A;
         bool error=false;
         for (int j=0; j<qES.rows(); j++) {
-            MatrixXd M(4, 4);
-            M << 1, MINT, MINT*MINT, MINT*MINT*MINT,
-            0, 1, 2*MINT, 3*MINT*MINT,
-            1, MAXT, MAXT*MAXT, MAXT*MAXT*MAXT,
-            0, 1, 2*MAXT, 3*MAXT*MAXT;
-            VectorXd b(4);
-            b << qES(j), 0, qEF(i, j), 0;
+            MatrixXd M(6, 6);
+            M << 1, MINT, pow(MINT, 2), pow(MINT, 3), pow(MINT, 4), pow(MINT, 5),
+            0, 1, 2 * MINT, 3 * pow(MINT, 2), 4 * pow(MINT, 3), 5 * pow(MINT, 4),
+            0, 0, 2, 6 * MINT, 12 * pow(MINT, 2), 20 * pow(MINT, 3),
+            1, MAXT, pow(MAXT, 2), pow(MAXT, 3), pow(MAXT, 4), pow(MAXT, 5),
+            0, 1, 2 * MAXT, 3 * pow(MAXT, 2), 4 * pow(MAXT, 3), 5 * pow(MAXT, 4),
+            0, 0, 2, 6 * MAXT, 12 * pow(MAXT, 2), 20 * pow(MAXT, 3);
+            VectorXd b(6);
+            b << qES(j), 0, 0, qEF(i, j), 0, 0;
             MatrixXd M_inv = M.inverse();
             VectorXd coeff = M_inv*b;
             A.conservativeResize(A.rows()+1, Eigen::NoChange);
@@ -193,7 +195,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, MatrixD6* Th) {
         for (double t = MINT; t<MAXT+DELTAT; t+=DELTAT) {
             VectorXd th(NUM_JOINTS);
             for (int k = 0; k < qES.rows(); k++) {
-                th(k)=A(k, 0) + A(k, 1)*t + A(k, 2)*t*t + A(k, 3)*t*t*t;
+                th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
             }
             //CHECK ANGLES
             if (!checkAngles(th)) {
