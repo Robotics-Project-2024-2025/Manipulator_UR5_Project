@@ -13,8 +13,8 @@ using namespace Eigen;
 int main(int argc, const char * argv[]) {
     /*Vector3d xE0;
     xE0 << 0.1, 0.3, 0.1;*/
+   setupCommunication(argc, argv);
     while(rclcpp::ok()) {
-        setupCommunication(argc, argv);
         cout << "Waiting for Joint States" << endl;
         Vector3d xE1;
         Matrix16 qES;
