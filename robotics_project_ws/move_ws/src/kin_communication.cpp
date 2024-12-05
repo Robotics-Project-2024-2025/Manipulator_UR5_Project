@@ -125,7 +125,7 @@ JointReceiver::JointReceiver() : Node("arm_receiver") {
     publish_iter(Th);
 }
 
-sensor_msgs::msg::JointState::SharedPtr get_joint_state() const {
+shared_ptr<sensor_msgs::msg::JointState> get_joint_state() const {
     return joint_state_;
 }
 
