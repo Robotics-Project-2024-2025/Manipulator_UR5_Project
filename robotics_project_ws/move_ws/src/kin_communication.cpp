@@ -110,14 +110,52 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
         action_client_->async_send_goal(goal_msg, send_goal_options);
 
 }
+
+JointReceiver::JointReceiver() : Node("arm_receiver") {
+    joint_receiver_ = this->create_subscription<sensors_msgs::m sg::JointState>("/joint_states", 10, [this](sensors_msgs::msg::JointState::SharedPtr msg) {
+        joint_state_=msg;
+        RCLCPP_INFO(this->get_logger(), "Received Joint State message");
+    });
+    while (rclcpp::ok() && !joint_state_) {
+        rclcpp::spin_some(this->get_node_base_interface());
+    }
+    if(joint_state_) {
+        RCLCPP_INFO(this->get_logger(), "Successfully Received Joint State");
+    }
+    publish_iter(Th);
+}
+
+sensor_msgs::msg::JointState::SharedPtr get_joint_state() const {
+    return joint_state_;
+}
+
 void send_trajectory(MatrixD6 th) {
     cout << "Sending trajectory..." << endl;
     rclcpp::spin(std::make_shared<TrajectoryActionClient>(th));
     rclcpp::shutdown();
     cout << "End Sending trajectory" << endl;
 }
+
 void setupCommunication(int argc, const char* argv[]) {
     cout << "Communications Setup Start" << endl;
     rclcpp::init(argc, argv);
     cout << "Communications Setup Complete" << endl;
+}
+Matrix16 receive_joint_state() {
+    cout << "Requesting Actual Joint States" << endl;
+    auto node= std::make_shared<JointReceiver>();
+    auto joint_result=node->get_joint_state();
+    Matrix16 ret;
+    if (joint_result) {
+        for (int i=0; i<NUM_JOINTS; i++) {
+            RCLCPP_INFO(rclcpp::get_logger("main"), "JointState received:Position[%d]: %f", i,
+                        joint_state->position.empty() ? 0.0 : joint_state->position[i]);
+        }
+    } else {
+        RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
+    }
+    rclcpp:shutdown();
+    ret << 0, -M_PI/2+0.01, 0, 0, 0, 0;
+    cout << "Successfully Received Joint State" << endl;
+    return ret;
 }
