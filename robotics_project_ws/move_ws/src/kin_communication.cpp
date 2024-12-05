@@ -148,7 +148,7 @@ Matrix16 receive_joint_state() {
     if (joint_result) {
         for (int i=0; i<NUM_JOINTS; i++) {
             RCLCPP_INFO(rclcpp::get_logger("main"), "JointState received:Position[%d]: %f", i,
-                        joint_state_->position.empty() ? 0.0 : joint_state_->position[i]);
+                        joint_result->position.empty() ? 0.0 : joint_result->position[i]);
         }
     } else {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
