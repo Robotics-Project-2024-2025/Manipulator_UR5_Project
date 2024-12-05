@@ -119,7 +119,7 @@ JointReceiver::JointReceiver() : Node("arm_receiver") {
         });
 }
 
-shared_ptr<sensor_msgs::msg::JointState> JointReceiver::get_joint_state() const {
+shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() const {
     return joint_state_;
 }
 
