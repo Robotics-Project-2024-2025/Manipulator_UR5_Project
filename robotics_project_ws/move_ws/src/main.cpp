@@ -25,6 +25,17 @@ int main(int argc, const char * argv[]) {
     Vector3d phiE1;
     phiE1 << 0, 0, 0;
     MatrixD6 th;
+    cout << endl << "Insert values for xE1:" << endl;
+    for(int i = 0; i<3; i++){
+        double tmp;
+        cin >> tmp;
+        if(tmp >= -3 && tmp <= 3){
+            xE1(i) = tmp;
+        }
+        else{
+            cout << endl << "Invalid value" << endl;
+        }
+    }
     if(checkPosition(xE1, qES)) {
         if(p2pMotionPlan(qES, xE1, phiE1, &th)) {
             cout << "Moving to HOME" << endl;
@@ -36,6 +47,11 @@ int main(int argc, const char * argv[]) {
     }
     else {
         cout << "Impossible to Reach the final Position " << xE1 << endl;
+    }
+
+    cout << "Control vector xE1 integrity:"
+    for(int i=0; i<3; i++){
+        cout << endl << xE1(i) << " ";
     }
     
     /*const rclcpp::InitOptions iO(rcl_get_default_allocator());
