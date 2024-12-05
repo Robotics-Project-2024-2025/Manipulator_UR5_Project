@@ -17,6 +17,7 @@ int main(int argc, const char * argv[]) {
     while(rclcpp::ok()) {
         cout << "Waiting for Joint States" << endl;
         Vector3d xE1;
+        xE1 << 0.0, 0.0, 0.0;
         Matrix16 qES;
         qES=receive_joint_state();
         cout << qES << endl;
@@ -27,7 +28,7 @@ int main(int argc, const char * argv[]) {
         MatrixD6 th;
         for(int i = 0; i<3; i++){
             double tmp;
-            cout << endl << "Insert value " << i+1 << "for xE1: ";
+            cout << "Insert value " << i+1 << "for xE1: ";
             cin >> tmp;
             if(tmp >= -1 && tmp <= 1){
                 xE1(i) = tmp;
