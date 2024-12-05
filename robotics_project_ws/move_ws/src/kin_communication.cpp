@@ -135,12 +135,13 @@ void setupCommunication(int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
     cout << "Communications Setup Complete" << endl;
 }
+
 Matrix16 receive_joint_state() {
     cout << "Requesting Actual Joint States" << endl;
     auto node= std::make_shared<JointReceiver>();
     auto joint_result=node->get_joint_state();
     Matrix16 ret;
-    if (joint_result) {
+    if (joint_result!=NULL) {
         for (int i=0; i<NUM_JOINTS; i++) {
             RCLCPP_INFO(rclcpp::get_logger("main"), "JointState received:Position[%d]: %f", i,
                         joint_result->position.empty() ? 0.0 : joint_result->position[i]);
