@@ -7,7 +7,7 @@
 
 #ifndef kin_communication_h
 #define kin_communication_h
-#include <rclcpp/rclcpp.hpp>
+#include "kinematics.h"
 #include <rclcpp/rclcpp.hpp>
 #include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
