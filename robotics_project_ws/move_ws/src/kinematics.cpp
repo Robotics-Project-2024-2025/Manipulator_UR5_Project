@@ -130,14 +130,17 @@ bool control_collision(Matrix16 th) {
         double pos_x = Id(0,3);
         double pos_y = Id(1,3);
         double pos_z = Id(2,3);
+        //Input doesn't change
         if(pos_x<XMIN || pos_x>XMAX) {
             cout << "COLLISION X: " << pos_x << " " << XMIN << " " << XMAX << " " << i+1 << endl;
             return false;
         }
+        //Input negates, so above -0.2
         if(pos_y<YMIN || pos_y>YMAX(i)) {
-            cout << "COLLISION Y: " << pos_y << " " << YMIN << " " << YMAX << " " << i+1 << endl;
+            cout << "COLLISION Y: " << pos_y << " " << YMIN << " " << YMAX(i) << " " << i+1 << endl;
             return false;
         }
+        //Input negates, so from -0.9 - 0
         if(pos_z < ZMIN || pos_z>ZMAX) {
             cout << "COLLISION Z: " << pos_z << " " << ZMIN << " " << ZMAX << " " << i+1 << endl;
             return false;
