@@ -16,7 +16,7 @@
 #include <cmath>
 #include <Eigen/Dense>
 
-bool path(Vector3d xE1, Vector3d phiE1);
+bool path(Vector3d xE1, Vector3d phiE1, int argc, const char* argv[]);
 
 #endif /* path_h */
 
