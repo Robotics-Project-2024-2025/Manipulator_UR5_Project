@@ -18,13 +18,15 @@ int main(int argc, const char * argv[]) {
     while(rclcpp::ok()) {
         cout << "Waiting for Joint States" << endl;
         Vector3d xE1;
+        //Block Recognition and classification call
         xE1 << 0.0, 0.0, 0.0;
-        /*Vector3d phiE0;
-         phiE0 << 0, 0, 0;*/
         Vector3d phiE1;
         phiE1 << 0, 0, 0;
-        if(!path(xE1, phiE1, argc, argv)){
+        if(!path(xE1, phiE1)){
             cout << "Errore!" << endl;
+        }
+        else {
+            cout << "Movement Handled Successfully" << endl;
         }
     }
     return 0;
