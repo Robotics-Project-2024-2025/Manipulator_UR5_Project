@@ -131,15 +131,15 @@ bool control_collision(Matrix16 th) {
         double pos_y = Id(1,3);
         double pos_z = Id(2,3);
         if(pos_x<XMIN || pos_x>XMAX) {
-            cout << "COLLISION " << pos_x << " " << i+1 << endl;
+            cout << "COLLISION X: " << pos_x << " " << XMIN << " " << XMAX << " " << i+1 << endl;
             return false;
         }
         if(pos_y<YMIN || pos_y>YMAX(i)) {
-            cout << "COLLISION " << pos_y << " " << i+1 << endl;
+            cout << "COLLISION Y: " << pos_y << " " << YMIN << " " << YMAX << " " << i+1 << endl;
             return false;
         }
         if(pos_z < ZMIN || pos_z>ZMAX) {
-            cout << "COLLISION " << pos_z << " " << i+1 << endl;
+            cout << "COLLISION Z: " << pos_z << " " << ZMIN << " " << ZMAX << " " << i+1 << endl;
             return false;
         }
     }
@@ -150,7 +150,7 @@ bool checkAngles(Matrix16 th) {
     bool ret=true;
     //Check Limits
     RowVector2d J1{-2*M_PI, 2*M_PI};
-    RowVector2d J2{-M_PI/2, 0};
+    RowVector2d J2{-M_PI, 0};
     RowVector2d J3{-M_PI, M_PI};
     RowVector2d J4{-2*M_PI, 2*M_PI};
     RowVector2d J5{-2*M_PI, 2*M_PI};
