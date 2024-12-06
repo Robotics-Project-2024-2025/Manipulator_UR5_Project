@@ -52,7 +52,8 @@ void ImageCamera::printOnFile(string filename) {
     cv::Mat img(image_content_->height, image_content_->width, CV_8UC3, const_cast<uint8_t*>(image_content_->data.data()));
     cv::imwrite(filename, img);
     /*FILE* file;
-    const char* cfilename=filename.c_str();
+    string resize_filename=filename.erase(filename.length()-4, 4) + ".txt";
+    const char* cfilename=resize_filename.c_str();
     file=fopen(cfilename, "a+");
     if(file==NULL) {
         cerr << "Couldn't open or create the file" << endl;
