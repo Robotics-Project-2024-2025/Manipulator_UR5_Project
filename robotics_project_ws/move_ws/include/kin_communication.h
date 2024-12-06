@@ -67,7 +67,6 @@ public:
 private:
     rclcpp::Subscription< sensor_msgs::msg::JointState>::SharedPtr joint_receiver_;
     shared_ptr<const sensor_msgs::msg::JointState> joint_state_;
-    void getArm();
 };
 Matrix16 receive_joint_state();
 void send_trajectory(MatrixD6 th);
