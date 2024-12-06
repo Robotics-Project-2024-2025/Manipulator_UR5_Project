@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
         xE1 << 0.0, 0.0, 0.0;
         Vector3d phiE1;
         phiE1 << 0, 0, 0;
-        if(!path(xE1, phiE1)){
+        if(!path(xE1, phiE1, argc, argv)){
             cout << "Errore!" << endl;
         }
         else {
