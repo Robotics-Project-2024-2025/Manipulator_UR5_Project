@@ -10,17 +10,21 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
-find_package(project_utils REQUIRED)
-find_package(cv_bridge REQUIRED)
-find_package(OpenCV REQUIRED
-
+find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
 # add_service_files (
 #	
 # )
 
-addexecutable(camera src/image.cpp)
+add_executable(camera src/image.cpp)
+
+# Include Folders
+
+target_include_directories(camera PRIVATE
+  include
+  ${OpenCV_INCLUDE_DIRS}
+)
 
 # Link dependencies
 
@@ -29,9 +33,7 @@ ament_target_dependencies (
  rclcpp
  sensor_msgs
  control_msgs 
- project_utils
- cv_bridge
- OpenCV	
+ OpenCV
 )
 
 # Install targets

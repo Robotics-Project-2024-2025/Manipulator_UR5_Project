@@ -6,26 +6,35 @@
 //
 
 #include "image.h"
+#include <filesystem>
+#include <opencv2/opencv.hpp>
 
-ImageCamera::ImageCamera() : Node ("image_acquiring") {
-    image_receiver_=this->create_subscription<senseimage>("/camera/image_raw", 1, [this](shared_ptr<senseimage> msg) {
-        image_content_=const_pointer_cast<const senseimage>(msg);
-        RCLCPP_INFO(this->get_logger(), "Received Image message");
-        cout << "Received Image message" << endl;
-    });
-    while(rclcpp::ok() && !image_content_) {
+ImageCamera::ImageCamera() : Node("image_acquiring") {
+    image_receiver_ = this->create_subscription<senseimage>(
+        "/camera/image_raw",
+        1,
+        [this](std::shared_ptr<senseimage> msg) {
+            image_content_ = msg;
+            RCLCPP_INFO(this->get_logger(), "Received Image message");
+            std::cout << "Received Image message" << std::endl;
+        });
+
+    // Wait until the image is received
+    while (rclcpp::ok() && !image_content_) {
         rclcpp::spin_some(this->get_node_base_interface());
     }
-    if(image_content_) {
+
+    if (image_content_) {
         RCLCPP_INFO(this->get_logger(), "Successfully Received image");
-        cout << "Successfully Received image" << endl;
+        std::cout << "Successfully Received image" << std::endl;
     }
 }
 void ImageCamera::generateOutput() {
-    string filename;
-    filename.append("/generated/");
-    filename.append(to_string(counter_id));
-    filename.append(".png");
+    string destPath="/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/camera_ws/generated/";
+    if (!filesystem::exists(destPath)) {
+        filesystem::create_directories(destPath);
+    }
+    string filename = destPath + "Image" + to_string(counter_id) + ".png";
     printOnFile(filename);
 }
 void ImageCamera::printOnFile(string filename) {
@@ -36,14 +45,21 @@ void ImageCamera::printOnFile(string filename) {
      uint8 is_bigendian
      uint32 step
      uint8[] data*/
-    FILE* file;
-    file=fopen(filename, a+);
+    if (!image_content_) {
+            cerr << "No image content available to write" << endl;
+            return;
+    }
+    cv::Mat img(image_content_->height, image_content_->width, CV_8UC3, const_cast<uint8_t*>(image_content_->data.data()));
+    cv::imwrite(filename, img);
+    /*FILE* file;
+    const char* cfilename=filename.c_str();
+    file=fopen(cfilename, "a+");
     if(file==NULL) {
         cerr << "Couldn't open or create the file" << endl;
-        exit(1);
+        return;
     }
     //HEADER
-    fprintf(file, "%d %d %d %s\n", image_content_->header.seq, image_content_->header.stamp.seconds, image_content_->header.stamp.nanoseconds, image_content_->header.frame_id);
+    fprintf(file, "%d %d %s\n", image_content_->header.stamp.sec, image_content_->header.stamp.nanosec, image_content_->header.frame_id);
     //HEIGHT
     fprintf(file, "%d\n", image_content_->height);
     //WIDTH
@@ -61,24 +77,25 @@ void ImageCamera::printOnFile(string filename) {
         }
         fprintf(file, "\n");
     }
-    fclose(file);
+    fclose(file);*/
+    cout << "Image saved" << endl;
 }
 shared_ptr<const senseimage> ImageCamera::get_image_content() const {
-    return image_content_
+    return image_content_;
 }
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
     cout << "Requesting Image" << endl;
     auto node=make_shared<ImageCamera>();
-    auto image_result_=node->get_image_content();
+    auto image_result=node->get_image_content();
     if(image_result!=NULL) {
         RCLCPP_INFO(rclcpp::get_logger("main"), "Image Received");
-        generateOutput();
+        node->generateOutput();
     }
     else {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No Image Received.");
     }
-    rclcpp:shutdown();
+    rclcpp::shutdown();
     cout << "End Image Receiving" << endl;
     return 0;
 }
