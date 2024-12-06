@@ -8,7 +8,6 @@
 #include "path.h"
 
 bool path(Vector3d xE1, Vector3d phiE1, int argc, const char* argv[]){
-    while(rclcpp::ok()) {
         Matrix16 qES;
         qES=receive_joint_state();
         cout << qES << endl;
@@ -46,6 +45,5 @@ bool path(Vector3d xE1, Vector3d phiE1, int argc, const char* argv[]){
             cout << endl << xE1(i) << " ";
         }
         setupCommunication(argc, argv);
-    }
     return true;
 }
