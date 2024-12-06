@@ -174,7 +174,7 @@ bool checkAngles(Matrix16 th) {
     return ret;
 }
 
-bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, MatrixD6* Th) {
+bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD6* Th) {
     MatrixXd xE;
     MatrixXd phiE;
      //Matrix86 qES = Ur5Inverse(xEs, eul2rotm(phiEs));
@@ -192,9 +192,9 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, MatrixD6* Th) {
             M << 1, MINT, pow(MINT, 2), pow(MINT, 3), pow(MINT, 4), pow(MINT, 5),
             0, 1, 2 * MINT, 3 * pow(MINT, 2), 4 * pow(MINT, 3), 5 * pow(MINT, 4),
             0, 0, 2, 6 * MINT, 12 * pow(MINT, 2), 20 * pow(MINT, 3),
-            1, MAXT, pow(MAXT, 2), pow(MAXT, 3), pow(MAXT, 4), pow(MAXT, 5),
-            0, 1, 2 * MAXT, 3 * pow(MAXT, 2), 4 * pow(MAXT, 3), 5 * pow(MAXT, 4),
-            0, 0, 2, 6 * MAXT, 12 * pow(MAXT, 2), 20 * pow(MAXT, 3);
+            1, time, pow(time, 2), pow(time, 3), pow(time, 4), pow(time, 5),
+            0, 1, 2 * time, 3 * pow(time, 2), 4 * pow(time, 3), 5 * pow(time, 4),
+            0, 0, 2, 6 * time, 12 * pow(time, 2), 20 * pow(time, 3);
             VectorXd b(6);
             b << qES(j), 0, 0, qEF(i, j), 0, 0;
             MatrixXd M_inv = M.inverse();
@@ -202,7 +202,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, MatrixD6* Th) {
             A.conservativeResize(A.rows()+1, Eigen::NoChange);
             A.row(A.rows()-1) = coeff.transpose();
         }
-        for (double t = MINT; t<MAXT+DELTAT; t+=DELTAT) {
+        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) {
             VectorXd th(NUM_JOINTS);
             for (int k = 0; k < qES.rows(); k++) {
                 th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
