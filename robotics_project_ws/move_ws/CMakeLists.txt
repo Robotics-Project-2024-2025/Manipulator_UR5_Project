@@ -16,7 +16,7 @@ find_package(rclcpp_action REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 
 # Build Executables
-add_executable(p2pmotion src/kinematics.cpp src/main.cpp src/kin_communication.cpp)
+add_executable(p2pmotion src/kinematics.cpp src/main.cpp src/kin_communication.cpp src/path.cpp)
 
 # Link dependencies
 ament_target_dependencies(
