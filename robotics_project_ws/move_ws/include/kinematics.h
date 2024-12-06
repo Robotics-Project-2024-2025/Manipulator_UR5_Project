@@ -19,6 +19,12 @@
 #define MINT 0
 #define MAXT 1
 #define NUM_JOINTS 6
+#define XMIN -1
+#define XMAX 1
+#define YMIN 0
+#define YMAX(i) ((i<NUM_JOINTS/2) ? 0.2 : 0.1)
+#define ZMIN 0
+#define ZMAX 0.9
 using namespace std;
 using namespace Eigen;
 using MatrixD6=Matrix<double, -1, NUM_JOINTS>;

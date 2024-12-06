@@ -120,22 +120,29 @@ bool control_collision(Matrix16 th) {
     for (int i=0; i<NUM_JOINTS; i++) {
         matrices[i]=HomogeneousTransformSpecific(i, th[i]);
     }
-    /*Matrix4d Id;
+    Matrix4d Id;
     Id << 1, 0, 0, 0,
           0, 1, 0, 0,
           0, 0, 1, 0,
           0, 0, 0, 1;
     for (int i=0; i<NUM_JOINTS; i++) {
         Id=Id*matrices[i];
-        double pos_z = Id(2,3);
+        double pos_x = Id(0,3);
         double pos_y = Id(1,3);
-
-        double max_y[2] = {0.22, 0.12};
-        if(pos_z < 0 or pos_z >0.835 or pos_y > max_y[int(i/3)]){
-            cout << "COLLISION " << pos_z << " " << pos_y << " " << i+1 << endl;
+        double pos_z = Id(2,3);
+        if(pos_x<XMIN || pos_x>XMAX) {
+            cout << "COLLISION " << pos_x << " " << i+1 << endl;
             return false;
         }
-    }*/
+        if(pos_y<YMIN || pos_y>YMAX(i)) {
+            cout << "COLLISION " << pos_y << " " << i+1 << endl;
+            return false;
+        }
+        if(pos_z < ZMIN || pos_z>ZMAX) {
+            cout << "COLLISION " << pos_z << " " << i+1 << endl;
+            return false;
+        }
+    }
     return true;
     
 }
