@@ -36,6 +36,7 @@ void ImageCamera::generateOutput() {
     }
     string filename = destPath + "Image" + to_string(counter_id) + ".png";
     printOnFile(filename);
+    counter_id++;
 }
 void ImageCamera::printOnFile(string filename) {
     /*std_msgs/Header header
@@ -84,17 +85,22 @@ void ImageCamera::printOnFile(string filename) {
 shared_ptr<const senseimage> ImageCamera::get_image_content() const {
     return image_content_;
 }
+atomic<int> ImageCamera::get_counter() const{
+    return counter_id.load();
+}
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
-    cout << "Requesting Image" << endl;
+    cout << "Requesting Images" << endl;
     auto node=make_shared<ImageCamera>();
-    auto image_result=node->get_image_content();
-    if(image_result!=NULL) {
-        RCLCPP_INFO(rclcpp::get_logger("main"), "Image Received");
-        node->generateOutput();
-    }
-    else {
-        RCLCPP_WARN(rclcpp::get_logger("main"), "No Image Received.");
+    while (node->get_counter()<=SAMPLES) {
+        auto image_result=node->get_image_content();
+        if(image_result!=NULL) {
+            RCLCPP_INFO(rclcpp::get_logger("main"), "Image Received");
+            node->generateOutput();
+        }
+        else {
+            RCLCPP_WARN(rclcpp::get_logger("main"), "No Image Received.");
+        }
     }
     rclcpp::shutdown();
     cout << "End Image Receiving" << endl;

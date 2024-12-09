@@ -13,6 +13,7 @@
 #include <string>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
+#define SAMPLES 50
 using namespace std;
 
 using senseimage=sensor_msgs::msg::Image;
@@ -22,6 +23,7 @@ public:
     shared_ptr<const senseimage> get_image_content() const;
     void generateOutput();
     void printOnFile(string filename);
+    atomic<int> get_counter() const;
 private:
     shared_ptr<rclcpp::Subscription<senseimage>> image_receiver_;
     shared_ptr<const senseimage> image_content_;
