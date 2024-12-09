@@ -2,9 +2,6 @@
 	path = robotics_project_ws/vision_ws/yolov5
 	url = https://github.com/ultralytics/yolov5
 
-# [submodule "robotics_project_ws/camera_ws/include/ros2_ur5_interface"]
-#	path = robotics_project_ws/camera_ws/include/ros2_ur5_interface
-#	url = https://github.com/pla10/ros2_ur5_interface.git
-# [submodule "ros2_ur5_interface"]
-#	path = ros2_ur5_interface
-#	url = https://github.com/pla10/ros2_ur5_interface.git
+[submodule "ros2_ur5_interface"]	
+	path = ros2_ur5_interface	
+	url = https://github.com/pla10/ros2_ur5_interface.git
