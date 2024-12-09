@@ -1,0 +1,11 @@
+screen -t script1 bash -c './setupVRiz.sh'
+
+split
+focus down
+
+screen -t script2 bash -c './setupGazebo.sh'
+
+split -v
+focus right
+
+screen -t script3 bash -c './testMove.sh'
