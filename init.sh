@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ~/ros2_ws/src/Project
 chmod +x *.sh
 
 if ! command -v screen &> /dev/null; then
