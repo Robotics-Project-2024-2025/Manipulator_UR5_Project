@@ -1,12 +1,34 @@
 #!/bin/bash
+
 cd ~/ros2_ws/src/Project
+
 chmod +x *.sh
 
-if ! command -v screen &> /dev/null; then
-    echo "screen not found. Installation of screen happening..."
-    sudo apt update
-    sudo apt install screen
+SCRIPT1="setupVRiz.sh"
+SCRIPT2="setupGazebo.sh"
+SCRIPT3="testCamera.sh"
+SCRIPT4="testMove.sh"
+
+if ! command -v terminator &> /dev/null; then
+    echo "Terminator not found. Please install it using: sudo apt install terminator"
+    exit 1
 fi
 
-screen -c screenrc
+run_in_terminator() {
+    local script="$1"
+    if [ "$script" == "$SCRIPT1" ]; then
+        terminator -T "$script" -x bash -c "./$script; exec bash" &
+    else
+         terminator --split-horizontal --command=bash -c "./$script; exec bash" &
+    fi
+    # Wait for the user to close the Terminator window before continuing
+    read -p "Press Enter when '$script' is done to continue..." </dev/tty
+}
 
+# Run each script sequentially
+run_in_terminator "$SCRIPT1"
+run_in_terminator "$SCRIPT2"
+run_in_terminator "$SCRIPT3"
+run_in_terminator "$SCRIPT4"
+
+echo "All scripts completed."
