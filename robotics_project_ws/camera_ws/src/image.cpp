@@ -11,7 +11,7 @@
 
 ImageCamera::ImageCamera() : Node("image_acquiring") {
     image_receiver_ = this->create_subscription<senseimage>(
-        "/camera/image_raw",
+        "/camera/image_raw/image",
         1,
         [this](std::shared_ptr<senseimage> msg) {
             image_content_ = msg;
