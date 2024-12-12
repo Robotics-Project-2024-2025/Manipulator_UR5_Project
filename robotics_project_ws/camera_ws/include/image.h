@@ -13,7 +13,7 @@
 #include <string>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
-#define SAMPLES 50
+#define SAMPLES 1
 using namespace std;
 
 using senseimage=sensor_msgs::msg::Image;
