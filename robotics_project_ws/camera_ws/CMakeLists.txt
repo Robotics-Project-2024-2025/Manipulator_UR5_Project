@@ -18,10 +18,6 @@ endif()
 #   image_processing_interfaces/msg/Point2D.msg
 # )
 
-add_service_files(FILES
-  image_processing_interfaces/srv/DepthGet.srv
-)
-
 generate_messages(
   DEPENDENCIES
   sensor_msgs
