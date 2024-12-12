@@ -8,8 +8,8 @@
 #include "calc_medium_value.h"
 #include <filesystem>
 #include <opencv2/opencv.hpp>
-#include "image_processing_interfaces/srv/DepthGet.srv"
-#include "image_processing_interfaces/msg/Point2D.msg"
+#include "srv/DepthGet.srv"
+#include "msg/Point2D.msg"
 
 ImageCamera::ImageCamera() : Node("image_acquiring") {
     image_receiver_ = this->create_subscription<senseimage>(
