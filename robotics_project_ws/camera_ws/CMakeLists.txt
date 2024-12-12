@@ -14,7 +14,6 @@ find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
 add_service_files(
-FILES
 DepthGet.srv
 )
 
