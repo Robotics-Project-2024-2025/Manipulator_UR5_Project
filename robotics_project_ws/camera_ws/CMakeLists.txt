@@ -12,7 +12,7 @@ endif()
  find_package(sensor_msgs REQUIRED)
  find_package(control_msgs REQUIRED)
  find_package(OpenCV REQUIRED)
- find_package(standard_srv REQUIRED)
+ find_package(std_srvs REQUIRED)
 
 # add_message_files (FILES
 #   image_processing_interfaces/msg/Point2D.msg
