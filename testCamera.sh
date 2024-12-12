@@ -8,3 +8,4 @@ colcon build --packages-select camera_ws_pkg
 source install/setup.bash
 
 ros2 run camera_ws_pkg camera
+ros2 run camera_ws_pkg points_camera
