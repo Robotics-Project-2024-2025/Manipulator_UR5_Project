@@ -13,13 +13,9 @@ find_package(control_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
-add_service_files(
-srv/DepthGet.srv
-)
-
-rosidl_generate_interfaces(
-DEPENDENCIES
-Point2D.msg
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/DepthGet.srv"
+  "msg/Point2D.msg"
 )
 
 add_executable(camera src/image.cpp)
