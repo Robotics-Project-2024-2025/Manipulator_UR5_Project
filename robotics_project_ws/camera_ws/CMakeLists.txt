@@ -13,6 +13,14 @@ endif()
  find_package(control_msgs REQUIRED)
  find_package(OpenCV REQUIRED)
  find_package(std_srvs REQUIRED)
+ find_package(geometry_msgs REQUIRED)
+ find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/Point2D.msg"
+  "srv/GetDepth.srv"
+  DEPENDENCIES geometry_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
+)
 
 # add_message_files (FILES
 #   image_processing_interfaces/msg/Point2D.msg
