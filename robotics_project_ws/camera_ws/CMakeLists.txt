@@ -11,7 +11,8 @@ endif()
  find_package(rclcpp REQUIRED)
  find_package(sensor_msgs REQUIRED)
  find_package(control_msgs REQUIRED)
-find_package(OpenCV REQUIRED)
+ find_package(OpenCV REQUIRED)
+ find_package(standard_srv REQUIRED)
 
 # add_message_files (FILES
 #   image_processing_interfaces/msg/Point2D.msg
