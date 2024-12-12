@@ -9,6 +9,7 @@
 #include <filesystem>
 #include <opencv2/opencv.hpp>
 #include "image_processing_interfaces/srv/depthGet.srv"
+#include "image_processing_interfaces/msg/Point2D.msg"
 
 ImageCamera::ImageCamera() : Node("image_acquiring") {
     image_receiver_ = this->create_subscription<senseimage>(
