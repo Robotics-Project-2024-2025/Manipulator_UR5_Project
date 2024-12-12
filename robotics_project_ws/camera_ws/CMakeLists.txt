@@ -18,10 +18,16 @@ find_package(OpenCV REQUIRED)
 # )
 
 add_executable(camera src/image.cpp)
+add_executable(points_camera src/points.cpp)
 
 # Include Folders
 
 target_include_directories(camera PRIVATE
+  include
+  ${OpenCV_INCLUDE_DIRS}
+)
+
+target_include_directories(points_camera PRIVATE
   include
   ${OpenCV_INCLUDE_DIRS}
 )
@@ -36,10 +42,20 @@ ament_target_dependencies (
  OpenCV
 )
 
+ament_target_dependencies (
+ points_camera
+ rclcpp
+ sensor_msgs
+ control_msgs 
+ OpenCV
+)
+
 # Install targets
 install(TARGETS camera
+	points_camera
   DESTINATION lib/${PROJECT_NAME}
 )
+
 
 # Install include files
 install(
