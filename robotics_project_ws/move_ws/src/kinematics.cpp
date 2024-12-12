@@ -10,12 +10,49 @@ vector<double> A={0, -0.425, -0.3922, 0, 0, 0};
 vector<double> D={0.1625, 0, 0, 0.1333, 0.0997, 0.0996};
 vector<double> alfa={M_PI/2, 0, 0, M_PI/2, -M_PI/2, 0};
 
+/***************************************
+*
+* adjust_value() - Adjusts a float value
+* to zero if it is close to zero.
+*
+* Input:
+* - x (float): The input value to be checked.
+*
+* Output:
+* - (float): Returns 0 if the input value
+*   is within the range (-1e-6, 1e-6).
+*   Otherwise, returns the original value.
+*
+* Helps avoid extremely small float 
+* values by treating them as zero.
+*
+***************************************/
 float adjust_value(float x) {
     if(x<1e-6 && x>-1e-6) {
         return 0;
     }
     return x;
 }
+
+/***************************************
+*
+* adjust_asin() - Adjusts the value to ensure
+* it's within the valid domain of the
+* asin() function.
+*
+* Input:
+* - x (float): The input value to be adjusted.
+*
+* Output:
+* - (float): Returns -π/2 if the input is less
+*   than -1, π/2 if the input is greater than 1,
+*   and asin(x) otherwise.
+*
+* Ensures that values outside the domain of the
+* arcsine function are restricted to the limits
+* of the valid range.
+*
+***************************************/
 float adjust_asin(float x) {
     if(x<-1) {
         return -M_PI/2;
