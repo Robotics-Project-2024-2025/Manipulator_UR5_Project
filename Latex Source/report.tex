@@ -1,0 +1,113 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Title and Author
+\title{Robotics Project}
+\author{Benassi Alessandro, Calvo Daniele, Cristoforetti Niccolò, Gottardelli Matteo}
+\date{\today}
+
+% Begin Document
+\begin{document}
+
+% Title Page
+\maketitle
+\tableofcontents
+\newpage
+
+% Vision Section
+\section{Vision}
+Vision plays a critical role in robotics by enabling the robot to perceive and interpret its environment. 
+We started by analyzing the folders with the images provided by the professor. This brought us to three main issues: spawn the blocks, recognize them, and calculate their position in the space. 
+
+\subsection{Objective}
+Describe the objectives of the vision system, such as object detection, localization, or environment mapping.
+
+\subsection{Block spawn}
+
+\begin{itemize}
+    \item General position: The first thing to do was to understand whether we have determined the position relatively to the table or to the camera. To understand this, we analyzed the camera settings which will be explained in the next point and we came up with the conclusion that the position was relative to the one of the camera.
+    Another important thing which will be very useful also in the following parts is creating a table with each block and it's relative dimension. This was done by analyzing the files with the block prototypes.
+    \item Random position algorithm
+    \item Random block algorithm
+\end{itemize}
+
+\subsection{Processing images}
+\begin{itemize}
+    \item Camera settings
+    \item Object detection and classes: For this part we used the tool Roboflow which allowed us to process the images and detect objects. The images used were the ones provided by the professor, without the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder telling the program which class it is, so we ended up having eleven classes, each with many images loaded. 
+    \item Machine learning model, YOLOv5: we used Yolov5 to train our model. This was done using a Python script. The major part of this file was taken from the Yolo tutorial website and arranged to our needs[...]. 
+\end{itemize}
+
+
+\subsection{Results NON USEFUL}
+Provide results, supported by images or diagrams. For instance:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{vision_results.png} % Replace with your image filename
+    \caption{Example output from the vision system.}
+    \label{fig:vision_results}
+\end{figure}
+
+% Manipulation Section
+\section{Manipulation}
+The manipulation system allows the robot to interact with its environment. 
+\subsection{Objective}
+Detail the objectives, such as object grasping, assembly, or precision tasks.
+
+\subsection{Design and Implementation}
+Discuss the manipulator's design, actuators, and control strategies. Include subsections as needed:
+\begin{itemize}
+    \item End-effector design
+    \item Kinematics and dynamics
+    \item Control algorithms (e.g., PID, MPC)
+\end{itemize}
+
+\subsection{Results}
+Summarize the performance, with data or graphs where applicable. Example:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{manipulation_results.png} % Replace with your image filename
+    \caption{Example output from the manipulation system.}
+    \label{fig:manipulation_results}
+\end{figure}
+
+% Workflow Section
+\section{Workflow}
+Describe the overall workflow of the project, integrating Vision and Manipulation.
+
+\subsection{System Architecture}
+Illustrate the system architecture with a diagram or flowchart. For example:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{workflow_diagram.png} % Replace with your image filename
+    \caption{System architecture diagram.}
+    \label{fig:workflow_diagram}
+\end{figure}
+
+\subsection{Integration}
+Discuss how different modules (e.g., Vision and Manipulation) are integrated. Highlight communication protocols, data flow, and synchronization.
+
+\subsection{Testing and Validation}
+Summarize the testing procedures and validation results. Include tables, graphs, or images as necessary.
+
+% Conclusion
+\section{Conclusion}
+Summarize the achievements of the project, key findings, and potential future work. 
+
+% References
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+    \bibitem{ref1} Author, Title, Journal/Conference, Year.
+    \bibitem{ref2} Author, Title, Journal/Conference, Year.
+\end{thebibliography}
+
+\end{document}
