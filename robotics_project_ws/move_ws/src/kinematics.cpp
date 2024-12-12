@@ -23,9 +23,6 @@ vector<double> alfa={M_PI/2, 0, 0, M_PI/2, -M_PI/2, 0};
 *   is within the range (-1e-6, 1e-6).
 *   Otherwise, returns the original value.
 *
-* Helps avoid extremely small float 
-* values by treating them as zero.
-*
 ***************************************/
 float adjust_value(float x) {
     if(x<1e-6 && x>-1e-6) {
@@ -47,10 +44,6 @@ float adjust_value(float x) {
 * - (float): Returns -π/2 if the input is less
 *   than -1, π/2 if the input is greater than 1,
 *   and asin(x) otherwise.
-*
-* Ensures that values outside the domain of the
-* arcsine function are restricted to the limits
-* of the valid range.
 *
 ***************************************/
 float adjust_asin(float x) {
@@ -77,10 +70,6 @@ float adjust_asin(float x) {
 *   than -1, 0 if the input is greater than 1,
 *   and acos(x) otherwise.
 *
-* Ensures that values outside the domain of the
-* arccosine function are restricted to the 
-* limits of the valid range.
-*
 ***************************************/
 float adjust_acos(float x) {
     if(x<-1) {
@@ -95,7 +84,9 @@ float adjust_acos(float x) {
 /***************************************
 *
 * eul2rotm() - Converts Euler angles to
-* a 3D rotation matrix.
+* a 3D rotation matrix, applying the 
+* rotations in the order:
+* z-axis, then y-axis, and x-axis.
 *
 * Input:
 * - phiEf (Vector3d): A vector containing the
@@ -106,10 +97,6 @@ float adjust_acos(float x) {
 * - (Matrix3d): A 3x3 rotation matrix
 *   representing the combined rotations
 *   around the z, y, and x axes.
-*
-* This function calculates the rotation matrix
-* by applying the rotations in the order:
-* z-axis, then y-axis, and x-axis.
 *
 ***************************************/
 Matrix3d eul2rotm(Vector3d phiEf) {
