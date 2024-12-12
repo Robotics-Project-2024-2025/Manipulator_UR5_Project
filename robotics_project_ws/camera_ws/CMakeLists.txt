@@ -13,11 +13,6 @@ endif()
  find_package(control_msgs REQUIRED)
  find_package(OpenCV REQUIRED)
  find_package(std_srvs REQUIRED)
- find_package(image_processing_interfaces REQUIRED)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/DepthGet.srv"
-)
 
 # add_message_files (FILES
 #   image_processing_interfaces/msg/Point2D.msg
