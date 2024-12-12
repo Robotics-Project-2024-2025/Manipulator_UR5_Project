@@ -8,6 +8,7 @@
 #include "calc_medium_value.h"
 #include <filesystem>
 #include <opencv2/opencv.hpp>
+#include "image_processing_interfaces/srv/depth_get.srv"
 
 ImageCamera::ImageCamera() : Node("image_acquiring") {
     image_receiver_ = this->create_subscription<senseimage>(
