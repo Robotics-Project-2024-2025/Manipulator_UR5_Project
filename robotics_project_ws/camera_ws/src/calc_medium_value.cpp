@@ -8,6 +8,7 @@
 #include "calc_medium_value.h"
 #include <filesystem>
 #include <opencv2/opencv.hpp>
+#include "image_processing_interfaces/srv/depth_get.srv"
 
 ImageCamera::ImageCamera() : Node("image_acquiring") {
     image_receiver_ = this->create_subscription<senseimage>(
@@ -84,11 +85,7 @@ void ImageCamera::printOnFile(string filename) {
 }
 
 void ImageCamera::startDepthService() {
-    auto service = this->create_service<image_processing_interfaces::srv::DepthGet>(
-        "get_depth",
-        [this](const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request,
-               shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response) {
-            this->calculateDepth(request, response);
+    auto service = this->create_service<image_processing_interfaces::srv::DepthGet>("get_depth", [this](const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request, shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response) {this->calculateDepth(request, response);
         });
     RCLCPP_INFO(this->get_logger(), "Service 'get_depth' started.");
 }
