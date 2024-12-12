@@ -18,11 +18,6 @@ endif()
 #   image_processing_interfaces/msg/Point2D.msg
 # )
 
-generate_messages(
-  DEPENDENCIES
-  sensor_msgs
-)
-
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
 add_executable(medium_val src/calc_medium_value.cpp)
