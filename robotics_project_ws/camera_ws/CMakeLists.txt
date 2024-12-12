@@ -14,10 +14,10 @@ endif()
 find_package(OpenCV REQUIRED)
 
 # add_message_files (FILES
-#   msg/Point2D.msg
+#   image_processing_interfaces/msg/Point2D.msg
 # )
 # add_service_files(FILES
-#   srv/DepthGet.srv
+#   image_processing_interfaces/srv/DepthGet.srv
 # )
 
 add_executable(camera src/image.cpp)
@@ -38,8 +38,8 @@ target_include_directories(points_camera PRIVATE
 
 target_include_directories(medium_val PRIVATE
   include
-  msg
-  srv 
+  image_processing_interfaces/msg
+  image_processing_interfaces/srv 
   ${OpenCV_INCLUDE_DIRS}
 )
 
