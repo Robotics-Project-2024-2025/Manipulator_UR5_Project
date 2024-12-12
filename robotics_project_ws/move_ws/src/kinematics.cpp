@@ -62,6 +62,26 @@ float adjust_asin(float x) {
     }
     return asin(x);
 }
+
+/***************************************
+*
+* adjust_acos() - Adjusts a value to ensure
+* it is within the valid domain of the
+* acos() function.
+*
+* Input:
+* - x (float): The input value to be adjusted.
+*
+* Output:
+* - (float): Returns π if the input is less
+*   than -1, 0 if the input is greater than 1,
+*   and acos(x) otherwise.
+*
+* Ensures that values outside the domain of the
+* arccosine function are restricted to the 
+* limits of the valid range.
+*
+***************************************/
 float adjust_acos(float x) {
     if(x<-1) {
         return M_PI;
@@ -71,6 +91,27 @@ float adjust_acos(float x) {
     }
     return acos(x);
 }
+
+/***************************************
+*
+* eul2rotm() - Converts Euler angles to
+* a 3D rotation matrix.
+*
+* Input:
+* - phiEf (Vector3d): A vector containing the
+*   Euler angles (in radians) in the order:
+*   [yaw (z-axis), pitch (y-axis), roll (x-axis)].
+*
+* Output:
+* - (Matrix3d): A 3x3 rotation matrix
+*   representing the combined rotations
+*   around the z, y, and x axes.
+*
+* This function calculates the rotation matrix
+* by applying the rotations in the order:
+* z-axis, then y-axis, and x-axis.
+*
+***************************************/
 Matrix3d eul2rotm(Vector3d phiEf) {
     return zRot(phiEf(0)) * yRot(phiEf(1)) * xRot(phiEf(2));
 }
