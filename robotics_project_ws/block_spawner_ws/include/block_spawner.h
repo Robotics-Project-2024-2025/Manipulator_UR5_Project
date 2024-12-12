@@ -32,6 +32,7 @@
 #define Y_MAX 0.4
 #define Z_MIN 0.87
 #define Z_MAX 0.87
+using spawning="gazebo_msgs::srv::SpawnModel"
 using namespace std;
 using namespace gazebo {
 struct BlockSize {
@@ -66,7 +67,7 @@ private:
     vector<string> validBlocks;
     map<string, gazebo::BlockSize> brickDefinition;
     physics::WorldPtr worldPtr;
-    shared_ptr<rclcpp::Subscription<msgs::Factory>> block_spawner_;
+    shared_ptr<rclcpp::Client<gazebo_msgs::SpawnModel>> block_spawner_;
     shared_ptr<const msgs::Factory> factory_;
     vector<gazebo::BlockPosition> addedBuffer;
     vector<Vector3d> populateVector() {

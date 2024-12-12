@@ -4,12 +4,11 @@ BlockSpawn::BlockSpawn(const string& path): Node("block_spawning") {
     gazebo_msgs::SpawnModel spawner;
     spawner.request.model_name=random_name();
     spawner.request.model_xml="/home/ubuntu/ros2_ws/src/ros2_ur5_interface/package.xml";
-    BlockSize block={random_position(X_MIN, X_MAX), random_position(Y_MIN, Y_MAX), random_value(Z_MIN, Z_MAX)};
+    spawner.request.initial_pose.position.x=random_position(X_MIN, X_MAX);
+    spawner.request.initial_pose.position.y=random_position(Y_MIN, Y_MAX);
+    spawner.request.initial_pose.position.z=random_position(Z_MIN, Z_MAX);
     
-    block_spawner_ = this->create_subscription<msgs::Factory>(
-    "/block_spawner_node/spawn", 100,
-        std::bind(&BlockSpawn::spawnCallback, this, std::placeholders::_1)
-    );
+    block_spawner_ = this->create_client<gazebo_msgs::SpawnModel>("/gazebo/spawn_sdf_model");
     rclcpp::spin_some(this->get_node_base_interface());
 }
 string random_name() {
