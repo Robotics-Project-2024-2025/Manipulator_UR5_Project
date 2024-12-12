@@ -13,12 +13,19 @@ find_package(control_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
-# add_service_files (
-#	
-# )
+add_service_files(
+FILES
+DepthGet.srv
+)
+
+generate_messages(
+DEPENDENCIES
+Point2D.msg
+)
 
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
+add_executable(points_camera src/calc_medium_val.cpp)
 
 # Include Folders
 
