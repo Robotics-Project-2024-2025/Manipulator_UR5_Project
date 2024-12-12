@@ -102,6 +102,22 @@ float adjust_acos(float x) {
 Matrix3d eul2rotm(Vector3d phiEf) {
     return zRot(phiEf(0)) * yRot(phiEf(1)) * xRot(phiEf(2));
 }
+
+/***************************************
+*
+* rotm2eul() - Converts a 3D rotation matrix
+* to Euler angles. Handles singularities.
+*
+* Input:
+* - m (Matrix3d): A 3x3 rotation matrix representing
+*   a 3D rotation.
+*
+* Output:
+* - (Vector3d): A vector containing the Euler angles
+*   (in radians) in the order:
+*   [yaw (z-axis), pitch (y-axis), roll (x-axis)].
+*
+***************************************/
 // Source of the pseudocode: https://www.geometrictools.com/Documentation/EulerAngles.pdf
 Vector3d rotm2eul(Matrix3d m) {
     double x, y, z;
@@ -126,6 +142,22 @@ Vector3d rotm2eul(Matrix3d m) {
     ret << z, y, x;
     return ret;
 }
+
+/***************************************
+*
+* removeRow() - Removes a specified row
+* from a dynamic matrix and shifts all rows 
+* below up by one position. Then resizes the matrix.
+*
+* Input:
+* - m (MatrixD6*): A pointer to the matrix
+*   from which a row will be removed.
+* - remove (unsigned int): The index of the
+*   row to be removed (0-based).
+*
+* No output
+*
+***************************************/
 void removeRow(MatrixD6* m, unsigned int remove) {
     unsigned long int numRows = m->rows()-1;
     unsigned long int numCols = m->cols();
@@ -134,6 +166,26 @@ void removeRow(MatrixD6* m, unsigned int remove) {
     }
     m->conservativeResize(numRows,numCols);
 }
+
+/***************************************
+*
+* bestInverse() - Filters and sorts inverse
+* kinematics solutions to select the best
+* configuration.
+*
+* Input:
+* - start (Matrix16): A matrix representing
+*   the starting configuration of the system.
+* - end (MatrixD6&): A reference to a matrix
+*   containing potential solutions (rows of
+*   joint angles).
+*
+* Output:
+* - (bool): Returns `true` if at least one valid
+*   solution remains after filtering; otherwise,
+*   returns `false`.
+*
+***************************************/
 //J(theta)=sum_0_7(theta_end-theta_start)^2
 bool bestInverse(Matrix16 start, MatrixD6& end) {
     //Too much rotation of the base
