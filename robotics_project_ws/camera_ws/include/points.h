@@ -13,7 +13,7 @@
 #include <string>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
-#define SAMPLES 50
+#define SAMPLES 1
 using namespace std;
 
 using sensepoints=sensor_msgs::msg::PointCloud2;
