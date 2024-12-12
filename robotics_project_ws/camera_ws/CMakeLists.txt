@@ -13,13 +13,21 @@ endif()
  find_package(control_msgs REQUIRED)
  find_package(OpenCV REQUIRED)
  find_package(std_srvs REQUIRED)
+ find_package(image_processing_interfaces REQUIRED)
+
 
 # add_message_files (FILES
 #   image_processing_interfaces/msg/Point2D.msg
 # )
-# add_service_files(FILES
-#   image_processing_interfaces/srv/DepthGet.srv
-# )
+
+add_service_files(FILES
+  image_processing_interfaces/srv/DepthGet.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  sensor_msgs
+)
 
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
