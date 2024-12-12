@@ -7,9 +7,13 @@ BlockSpawn::BlockSpawn(const string& path): Node("block_spawning") {
     spawner.request.initial_pose.position.x=random_position(X_MIN, X_MAX);
     spawner.request.initial_pose.position.y=random_position(Y_MIN, Y_MAX);
     spawner.request.initial_pose.position.z=random_position(Z_MIN, Z_MAX);
-    
-    block_spawner_ = this->create_client<gazebo_msgs::SpawnModel>("/gazebo/spawn_sdf_model");
-    rclcpp::spin_some(this->get_node_base_interface());
+    block_spawner_ = this->create_client<spawning>("/gazebo/spawn_sdf_model");
+    if(block_spawner_.call(spawner)) {
+        ROS_INFO("Model spawned successfully");
+    }
+    else {
+        ROS_ERROR("Failed to spawn model");
+    }
 }
 string random_name() {
     stringstream ss;
@@ -17,7 +21,7 @@ string random_name() {
     return ss.str();
 }
 float random_position(float min, float max) {
-    
+    return (rand()%(max*100-min*100+1)+min*100)/100.0;
 }
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
