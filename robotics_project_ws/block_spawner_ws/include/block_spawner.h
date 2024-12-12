@@ -26,6 +26,12 @@
 #define MINIMUM_DISTANCE_BLOCK 0.15
 #define BORDER_DISTANCE 0.05
 #define DISTANCE_BOTTOM 0.4
+#define X_MIN 0
+#define X_MAX 0.5
+#define Y_MIN 0
+#define Y_MAX 0.4
+#define Z_MIN 0.87
+#define Z_MAX 0.87
 using namespace std;
 using namespace gazebo {
 struct BlockSize {
@@ -86,5 +92,5 @@ private:
    }
 }
 string random_name();
-
+float random_position(float min, float max);
 #endif
