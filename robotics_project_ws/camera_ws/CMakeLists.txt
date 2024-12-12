@@ -36,8 +36,8 @@ target_include_directories(points_camera PRIVATE
 
 target_include_directories(medium_val PRIVATE
   include
-  image_processing_interfaces/msg
-  image_processing_interfaces/srv 
+  msg
+  srv 
   ${OpenCV_INCLUDE_DIRS}
 )
 
