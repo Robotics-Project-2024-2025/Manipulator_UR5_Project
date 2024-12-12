@@ -1,0 +1,5 @@
+msg/Point2d upperLeftPoint
+msg/Point2d lowerRightPoint
+
+---
+float32 depth
