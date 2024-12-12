@@ -14,13 +14,17 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <opencv2/opencv.hpp>
-#define SAMPLES 1
+#define SAMPLES 50
 using namespace std;
 
 using senseimage=sensor_msgs::msg::Image;
 class ImageCamera : public rclcpp::Node {
 public:
     ImageCamera();
+    startDepthService();
+    calculateDepth(
+        const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request,
+                   shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response);
     shared_ptr<const senseimage> get_image_content() const;
     void generateOutput();
     void printOnFile(string filename);
