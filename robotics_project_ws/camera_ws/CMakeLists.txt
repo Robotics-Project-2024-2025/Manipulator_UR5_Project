@@ -14,10 +14,10 @@ find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
 add_service_files(
-DepthGet.srv
+srv/DepthGet.srv
 )
 
-generate_messages(
+rosidl_generate_interfaces(
 DEPENDENCIES
 Point2D.msg
 )
