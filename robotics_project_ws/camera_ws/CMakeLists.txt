@@ -13,7 +13,7 @@ find_package(control_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
-rosidl_generate_interfaces(${PROJECT_NAME}
+rosidl_generate_interfaces(
   "srv/DepthGet.srv"
   "msg/Point2D.msg"
 )
