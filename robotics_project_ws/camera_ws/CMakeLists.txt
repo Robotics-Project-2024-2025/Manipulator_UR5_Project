@@ -14,8 +14,8 @@ find_package(OpenCV REQUIRED)
 
 # Add service files to transfer data
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/DepthGet.srv"
-  "msg/Point2D.msg"
+  srv/DepthGet.srv
+  msg/Point2D.msg
 )
 
 add_executable(camera src/image.cpp)
