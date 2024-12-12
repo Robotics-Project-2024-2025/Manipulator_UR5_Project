@@ -25,7 +25,7 @@ Point2D.msg
 
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
-add_executable(points_camera src/calc_medium_val.cpp)
+add_executable(medium_val src/calc_medium_val.cpp)
 
 # Include Folders
 
