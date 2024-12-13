@@ -1,0 +1,40 @@
+[0.009s] Invoking command in '/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/build/camera_ws_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/install/camera_ws_pkg
+[0.092s] -- The C compiler identification is GNU 13.2.0
+[0.155s] -- The CXX compiler identification is GNU 13.2.0
+[0.172s] -- Detecting C compiler ABI info
+[0.272s] -- Detecting C compiler ABI info - done
+[0.287s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.288s] -- Detecting C compile features
+[0.288s] -- Detecting C compile features - done
+[0.295s] -- Detecting CXX compiler ABI info
+[0.395s] -- Detecting CXX compiler ABI info - done
+[0.409s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.410s] -- Detecting CXX compile features
+[0.410s] -- Detecting CXX compile features - done
+[0.415s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.525s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.625s] -- Found rclcpp: 28.1.5 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.674s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.691s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.710s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.730s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.810s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.814s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.877s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.895s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.919s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.988s] -- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.041s] -- Found control_msgs: 5.3.0 (/opt/ros/jazzy/share/control_msgs/cmake)
+[1.125s] -- Found OpenCV: /usr (found version "4.6.0") 
+[1.129s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[1.149s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.151s] [31mCMake Error at /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:95 (message):
+[1.151s]   rosidl_generate_interfaces() the passed file 'srv/GetDepth.srv' doesn't
+[1.152s]   exist relative to the CMAKE_CURRENT_SOURCE_DIR
+[1.152s]   '/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws'
+[1.152s] Call Stack (most recent call first):
+[1.153s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[1.153s] 
+[1.154s] [0m
+[1.156s] -- Configuring incomplete, errors occurred!
+[1.159s] Invoked command in '/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/build/camera_ws_pkg' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/install/camera_ws_pkg
