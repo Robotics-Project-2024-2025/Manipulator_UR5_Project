@@ -1,44 +1,28 @@
-#include "block_spawner.h"
-BlockSpawn::BlockSpawn(const string& path): Node("block_spawning") {
-    RCLCPP_INFO(this->get_logger(), "BlockSpawner Node Initialized");
-    gazebo_msgs::SpawnModel spawner;
-    spawner.request.model_name=random_name();
-    spawner.request.model_xml="/home/ubuntu/ros2_ws/src/ros2_ur5_interface/package.xml";
-    spawner.request.initial_pose.position.x=random_position(X_MIN, X_MAX);
-    spawner.request.initial_pose.position.y=random_position(Y_MIN, Y_MAX);
-    spawner.request.initial_pose.position.z=random_position(Z_MIN, Z_MAX);
-    block_spawner_ = this->create_client<spawning>("/gazebo/spawn_sdf_model");
-    if(block_spawner_.call(spawner)) {
-        ROS_INFO("Model spawned successfully");
+#include "gz_ros2_control/gz_ros2_control.hpp"
+#include "rclcpp/rclcpp.hpp"
+#include "ros2_control/gazebo_system.hpp"
+
+class MyGazeboControlNode : public rclcpp::Node
+{
+public:
+    MyGazeboControlNode()
+    : Node("gazebo_control_node")
+    {
+        // Example of initializing Gazebo and ROS 2 control integration
+        gazebo_system_ = std::make_shared<ros2_control::GazeboSystem>(this);
+        
+        // Initialize your control system, load controllers, etc.
+        RCLCPP_INFO(this->get_logger(), "Gazebo and ROS 2 control system initialized.");
     }
-    else {
-        ROS_ERROR("Failed to spawn model");
-    }
-}
-string random_name() {
-    stringstream ss;
-    ss << hex << rand();
-    return ss.str();
-}
-float random_position(float min, float max) {
-    return (rand()%(max*100-min*100+1)+min*100)/100.0;
-}
-int main (int argc, const char* argv[]) {
+
+private:
+    std::shared_ptr<ros2_control::GazeboSystem> gazebo_system_;
+};
+
+int main(int argc, char **argv)
+{
     rclcpp::init(argc, argv);
-    cout << "Start Spawning Blocks" << endl;
-    srand(unsigned(time(NULL)));
-    RCLCPP_INFO(this->get_logger(), "Spawn Blocks");
-    auto node=make_shared<BlockSpawn>("/home/ubuntu/ros2_ws/src/ros2_ur5_interface/models/meshed");
-    try {
-        while(rclcpp::ok()) {
-            rclcpp::spinOnce();
-        }
-        cout << "End Spawning Blocks" << endl;
-    }
-    catch (const exception& e) {
-        RCLCPP_ERROR(this->get_logger(), "Error: %s", e.what());
-    }
+    rclcpp::spin(std::make_shared<MyGazeboControlNode>());
     rclcpp::shutdown();
     return 0;
 }
-
