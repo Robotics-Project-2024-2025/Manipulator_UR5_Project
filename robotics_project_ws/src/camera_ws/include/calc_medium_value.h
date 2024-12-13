@@ -13,7 +13,10 @@
 #include <string>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
+#include <filesystem>
 #include <opencv2/opencv.hpp>
+#include "camera_ws_pkg/srv/DepthGet.hpp"
+#include "camera_ws_pkg/msg/Point2D.hpp"
 #define SAMPLES 50
 using namespace std;
 
