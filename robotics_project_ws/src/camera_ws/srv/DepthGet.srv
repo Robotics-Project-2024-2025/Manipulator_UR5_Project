@@ -1,5 +1,4 @@
-msg/Point2d upperLeftPoint
-msg/Point2d lowerRightPoint
-
+camera_ws/Point2D upper_left_point
+camera_ws/Point2D lower_right_point
 ---
 float32 depth

@@ -82,13 +82,13 @@ void ImageCamera::printOnFile(string filename) {
 }
 
 void ImageCamera::startDepthService() {
-    auto service = this->create_service<image_processing_interfaces::srv::DepthGet>("get_depth", [this](const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request, shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response) {this->calculateDepth(request, response);
+    auto service = this->create_service<serviceDepth>("get_depth", [this](const shared_ptr<serviceDepth::Request> request, shared_ptr<serviceDepth::Response> response) {this->calculateDepth(request, response);
         });
     RCLCPP_INFO(this->get_logger(), "Service 'get_depth' started.");
 }
 void ImageCamera::calculateDepth(
-    const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request,
-    shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response) {
+    const shared_ptr<serviceDepth::Request> request,
+    shared_ptr<serviceDepth::Response> response) {
     if (depth_image.empty()) {
         RCLCPP_ERROR(this->get_logger(), "No depth image avaiabile");
         response->depth = -1.0;

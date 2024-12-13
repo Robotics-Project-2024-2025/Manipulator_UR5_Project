@@ -15,20 +15,21 @@
 #include <sensor_msgs/msg/image.hpp>
 #include <filesystem>
 #include <opencv2/opencv.hpp>
-#include "camera_ws_pkg/srv/DepthGet.hpp"
-#include "camera_ws_pkg/msg/Point2D.hpp"
+#include "camera_ws/msg/point2_d.hpp"
+#include "camera_ws/srv/depth_get.hpp"
 #define SAMPLES 50
 using namespace std;
 
 using senseimage=sensor_msgs::msg::Image;
+using serviceDepth=camera_ws::srv::DepthGet;
 class ImageCamera : public rclcpp::Node {
 public:
     ImageCamera();
     shared_ptr<const senseimage> get_image_content() const;
     void startDepthService();
     void calculateDepth(
-        const shared_ptr<image_processing_interfaces::srv::DepthGet::Request> request,
-                   shared_ptr<image_processing_interfaces::srv::DepthGet::Response> response);
+        const shared_ptr<serviceDepth::Request> request,
+                   shared_ptr<serviceDepth::Response> response);
     void generateOutput();
     void printOnFile(string filename);
     atomic<int> get_counter() const;
