@@ -7,32 +7,44 @@
 
 #include "calc_medium_value.h"
 
-ImageCamera::ImageCamera() : Node("image_acquiring") {
-    image_receiver_ = this->create_subscription<senseimage>(
-        "/camera/image_raw/depth_image",
-        1,
-        [this](std::shared_ptr<senseimage> msg) {
-            image_content_ = msg;
-            RCLCPP_INFO(this->get_logger(), "Received Image message");
-            std::cout << "Received Image message" << std::endl;
-        });
-
-    // Wait until the image is received
-    while (rclcpp::ok() && !image_content_) {
-        rclcpp::spin_some(this->get_node_base_interface());
+ImageCamera::ImageCamera(Mode mode) : Node("image_acquiring") {
+    if(mode==SUBSCRIBER) {
+        image_receiver_ = this->create_subscription<senseimage>(
+                                                                "/camera/image_raw/depth_image",
+                                                                1,
+                                                                [this](std::shared_ptr<senseimage> msg) {
+                                                                    image_content_ = msg;
+                                                                    RCLCPP_INFO(this->get_logger(), "Received Image message");
+                                                                    std::cout << "Received Image message" << std::endl;
+                                                                });
+        
+        // Wait until the image is received
+        while (rclcpp::ok() && !image_content_) {
+            rclcpp::spin_some(this->get_node_base_interface());
+        }
+        
+        if (image_content_) {
+            RCLCPP_INFO(this->get_logger(), "Successfully Received image");
+            std::cout << "Successfully Received image" << std::endl;
+        }
     }
-
-    if (image_content_) {
-        RCLCPP_INFO(this->get_logger(), "Successfully Received image");
-        std::cout << "Successfully Received image" << std::endl;
+    else {
+        if(mode==SERVICE) {
+            service_=this->create_service<serviceDepth>("service_depth", bind(&ImageCamera::calculateDepth, this, placeholders::_1, placeholders::_2));
+            auto shared_this=shared_ptr<ImageCamera>(this);
+            while(rclcpp::ok()) {
+                RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to take LeftPoint(x,y) RightPoint(x,y)");
+                rclcpp::spin(shared_this);
+            }
+        }
     }
 }
 void ImageCamera::generateOutput() {
-    string destPath="/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/camera_ws/generated/";
+    string destPath="/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/";
     if (!filesystem::exists(destPath)) {
         filesystem::create_directories(destPath);
     }
-    string filename = destPath + "Image" + to_string(counter_id) + ".png";
+    string filename = destPath + "Image_D" + to_string(counter_id) + ".png";
     printOnFile(filename);
     counter_id++;
 }
@@ -81,11 +93,6 @@ void ImageCamera::printOnFile(string filename) {
     cout << "Image saved" << endl;
 }
 
-void ImageCamera::startDepthService() {
-    auto service = this->create_service<serviceDepth>("get_depth", [this](const shared_ptr<serviceDepth::Request> request, shared_ptr<serviceDepth::Response> response) {this->calculateDepth(request, response);
-        });
-    RCLCPP_INFO(this->get_logger(), "Service 'get_depth' started.");
-}
 void ImageCamera::calculateDepth(
     const shared_ptr<serviceDepth::Request> request,
     shared_ptr<serviceDepth::Response> response) {
@@ -100,7 +107,7 @@ void ImageCamera::calculateDepth(
     int y2 = min(static_cast<uint32_t>(depth_image.rows - 1), request->lower_right_point.y);
 
     if (x1 >= x2 || y1 >= y2) {
-        RCLCPP_ERROR(this->get_logger(), "Invalid point: (%d, %d) e (%d, %d)", x1, y1, x2, y2);
+        RCLCPP_ERROR(this->get_logger(), "Invalid point: (%d, %d) and (%d, %d)", x1, y1, x2, y2);
         response->depth = -1.0;
         return;
     }
@@ -120,9 +127,9 @@ atomic<int> ImageCamera::get_counter() const{
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
     cout << "Requesting Images" << endl;
-    auto node=make_shared<ImageCamera>();
-    while (node->get_counter()<=SAMPLES) {
-        auto image_result=node->get_image_content();
+    auto node_p=make_shared<ImageCamera>(SUBSCRIBER);
+    while (node_p->get_counter()<=SAMPLES) {
+        auto image_result=node_p->get_image_content();
         if(image_result!=NULL) {
             RCLCPP_INFO(rclcpp::get_logger("main"), "Image Received");
             node->generateOutput();
@@ -131,7 +138,8 @@ int main (int argc, const char* argv[]) {
             RCLCPP_WARN(rclcpp::get_logger("main"), "No Image Received.");
         }
     }
-    rclcpp::shutdown();
     cout << "End Image Receiving" << endl;
+    auto node_s=make_shared<ImageCamera>(SERVICE);
+    rclcpp::shutdown();
     return 0;
 }

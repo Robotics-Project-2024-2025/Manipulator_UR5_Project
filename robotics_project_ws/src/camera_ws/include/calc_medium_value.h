@@ -17,16 +17,17 @@
 #include <opencv2/opencv.hpp>
 #include "camera_ws/msg/point2_d.hpp"
 #include "camera_ws/srv/depth_get.hpp"
-#define SAMPLES 50
+#define SAMPLES 1
 using namespace std;
+
+typedef enum Mode {SUBSCRIBER, SERVICE};
 
 using senseimage=sensor_msgs::msg::Image;
 using serviceDepth=camera_ws::srv::DepthGet;
 class ImageCamera : public rclcpp::Node {
 public:
-    ImageCamera();
+    ImageCamera(Mode mode);
     shared_ptr<const senseimage> get_image_content() const;
-    void startDepthService();
     void calculateDepth(
         const shared_ptr<serviceDepth::Request> request,
                    shared_ptr<serviceDepth::Response> response);
@@ -36,6 +37,7 @@ public:
 private:
     shared_ptr<rclcpp::Subscription<senseimage>> image_receiver_;
     shared_ptr<const senseimage> image_content_;
+    shared_ptr<rclcpp::Service<serviceDepth>> service_;
     atomic<int> counter_id{1};
     cv::Mat depth_image;
 };
