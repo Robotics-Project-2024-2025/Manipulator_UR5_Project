@@ -132,7 +132,7 @@ int main (int argc, const char* argv[]) {
         auto image_result=node_p->get_image_content();
         if(image_result!=NULL) {
             RCLCPP_INFO(rclcpp::get_logger("main"), "Image Received");
-            node->generateOutput();
+            node_p->generateOutput();
         }
         else {
             RCLCPP_WARN(rclcpp::get_logger("main"), "No Image Received.");

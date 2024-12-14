@@ -20,7 +20,7 @@
 #define SAMPLES 1
 using namespace std;
 
-typedef enum Mode {SUBSCRIBER, SERVICE};
+typedef enum Mode {SUBSCRIBER, SERVICE} Mode;
 
 using senseimage=sensor_msgs::msg::Image;
 using serviceDepth=camera_ws::srv::DepthGet;
