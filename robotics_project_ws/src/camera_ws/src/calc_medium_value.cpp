@@ -10,13 +10,13 @@
 ImageCamera::ImageCamera(Mode mode) : Node("image_acquiring") {
     if(mode==SUBSCRIBER) {
         image_receiver_ = this->create_subscription<senseimage>(
-                                                                "/camera/image_raw/depth_image",
-                                                                1,
-                                                                [this](std::shared_ptr<senseimage> msg) {
-                                                                    image_content_ = msg;
-                                                                    RCLCPP_INFO(this->get_logger(), "Received Image message");
-                                                                    std::cout << "Received Image message" << std::endl;
-                                                                });
+            "/camera/image_raw/depth_image",
+            1,
+            [this](std::shared_ptr<senseimage> msg) {
+                image_content_ = msg;
+                RCLCPP_INFO(this->get_logger(), "Received Image message");
+                std::cout << "Received Image message" << std::endl;
+        });
         
         // Wait until the image is received
         while (rclcpp::ok() && !image_content_) {
