@@ -27,6 +27,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
 add_executable(medium_val src/calc_medium_value.cpp)
+add_executable(transform_image src/transform_image.cpp)
+
 
 #rosidl_target_interfaces(medium_val
 #${PROJECT_NAME} "rosidl_typesupport_cpp")
