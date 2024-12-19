@@ -1,1 +1,4 @@
-
+move_ws/Vectro3d xE1
+move_ws/Vector3d phiE1
+---
+bool result
