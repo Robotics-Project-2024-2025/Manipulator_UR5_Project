@@ -77,7 +77,7 @@ int main() {
     cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_3D.png", output);
 
     // Save the rectified image
-    cv::imwrite("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_D.png", output);
+    cv::imwrite("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_3D.png", output);
 
     cv::waitKey(0);
     return 0;
