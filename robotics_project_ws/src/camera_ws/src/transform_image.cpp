@@ -74,10 +74,10 @@ int main() {
 
     // Display the original and rectified images
     cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_D.png", input);
-    cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_3D.png", output);
+    cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_2D.png", output);
 
     // Save the rectified image
-    cv::imwrite("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_3D.png", output);
+    cv::imwrite("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_2D.png", output);
 
     cv::waitKey(0);
     return 0;
