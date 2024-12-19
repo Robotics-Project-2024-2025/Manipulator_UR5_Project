@@ -1,4 +1,4 @@
-# Fundamentals of Robotics Project 2024-2025
+# Fundamentals of Robotics Project 2024-2025a
 
 ## Table of Contents
 - [Introduction](#introduction)
