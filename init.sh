@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/ros2_ws/src/Project
+cd ~/ros2_ws/src/Manipulator_UR5_Project
 
 chmod +x *.sh
 
