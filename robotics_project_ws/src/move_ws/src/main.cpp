@@ -11,9 +11,18 @@
 
 using namespace std;
 using namespace Eigen;
+
+int main (int argc, const char* argv[]) {
+    rclcpp::init(argc, argv);
+    auto node_s=make_shared<MyVector>();
+    rclcpp::shutdown();
+    return 0;
+}
+
+/*
 int main(int argc, const char * argv[]) {
-    /*Vector3d xE0;
-    xE0 << 0.1, 0.3, 0.1;*/
+    //Vector3d xE0;
+    //xE0 << 0.1, 0.3, 0.1;
     setupCommunication(argc, argv);
     while(rclcpp::ok()) {
         cout << "Waiting for Joint States" << endl;
@@ -31,3 +40,4 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }
+*/

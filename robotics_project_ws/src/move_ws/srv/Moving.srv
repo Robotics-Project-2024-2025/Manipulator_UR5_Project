@@ -1,4 +1,6 @@
-move_ws/Vectro3d xE1
-move_ws/Vector3d phiE1
+move_ws/Vector3d xe1
+move_ws/Vector3d phie1
+int32 argc
+string[] argv
 ---
 bool result
