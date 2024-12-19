@@ -54,9 +54,7 @@ bool path(Vector3d xe1, Vector3d phie1, int argc, const char* argv[]){
     return true;
 }
 
-//ImageCamera::ImageCamera(Mode mode) : Node("image_acquiring") {
 MyVector::MyVector() : Node("path_acquiring") {
-        //service_=this->create_service<serviceDepth>("service_depth", bind(&ImageCamera::calculateDepth, this, placeholders::_1, placeholders::_2));
         service_=this->create_service<MoveService>("service_path", bind(&MyVector::calculatePath, this, std::placeholders::_1, std::placeholders::_2));
         auto shared_this=shared_ptr<MyVector>(this);
         while(rclcpp::ok()) {
