@@ -61,10 +61,10 @@ target_include_directories(medium_val PRIVATE
 ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
 )
 
-target_include_directories(medium_val PRIVATE
+target_include_directories(transform_image_cpp PRIVATE
   include
   ${OpenCV_INCLUDE_DIRS}
-${CMAKE_CURRENT_BINARY_DIR}/transform_image_cpp
+${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
 )
 
 # Link Dependencies
