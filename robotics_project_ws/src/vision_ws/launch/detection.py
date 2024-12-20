@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from boundingbox.srv import Trigger
+from boundingbox.srv import vision_ws
 from ultralytics import YOLO  
 
 class YoloBoundingBoxService(Node):
