@@ -19,11 +19,25 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "msg/boundstruct.msg"
 )
 
+# Build Executables
+add_executable(service_vision src/main.cpp)
+
+
 # Include Directories
 include_directories(
   /home/ubuntu/ros2_ws/build/vision_ws/rosidl_generator_cpp
 )
 
+target_include_directories(service_vision PRIVATE
+  include
+${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
+)
+
+# Link dependencies
+ament_target_dependencies(
+  service_vision
+  rclcpp
+)
 
 # Install targets
 # install(TARGETS service_...
