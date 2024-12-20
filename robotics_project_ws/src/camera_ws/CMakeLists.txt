@@ -23,6 +23,11 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "msg/Point2D.msg"
 )
 
+# Generate Interfaces
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/DepthGet.srv"
+)
+
 # Add Executables
 add_executable(camera src/image.cpp)
 add_executable(points_camera src/points.cpp)
