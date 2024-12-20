@@ -1,0 +1,16 @@
+[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::shared_ptr<rclcpp::Node>[m[K’ has no member named ‘[01m[Kcreate_client[m[K’
+   42 |     auto open_path_client_ = node.[01;31m[Kcreate_client[m[K<MoveService>("path_acquiring");
+      |                                   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:60:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+   42 |     auto open_path_client_ = node.create_client<MoveService[01;31m[K>[m[K("path_acquiring");
+      |                                                            [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:47:9:[m[K [01;31m[Kerror: [m[Kreturn-statement with no value, in function returning ‘[01m[Kint[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+   47 |         [01;31m[Kreturn[m[K;
+      |         [01;31m[K^~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:60:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing std::__shared_ptr_access<move_ws::srv::Moving_Request_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type = struct move_ws::srv::Moving_Request_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct move_ws::srv::Moving_Request_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kresult[m[K’
+   60 |         if(request->[01;31m[Kresult[m[K) {
+      |                     [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/complete_job.dir/build.make:76: CMakeFiles/complete_job.dir/src/complete_job.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/complete_job.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,54 @@
+[0.363s] Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws': AMENT_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws -- -j8 -l8
+[1.952s] [ 50%] [32mBuilding CXX object CMakeFiles/complete_job.dir/src/complete_job.cpp.o[0m
+[16.668s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[16.671s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:39:30:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[16.674s]    39 |     auto open_path_client_ = [01;31m[Kthis[m[K->create_client<MoveService>("path_acquiring");
+[16.676s]       |                              [01;31m[K^~~~[m[K
+[16.696s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:39:50:[m[K [01;31m[Kerror: [m[K‘[01m[KMoveService[m[K’ was not declared in this scope
+[16.701s]    39 |     auto open_path_client_ = this->create_client<[01;31m[KMoveService[m[K>("path_acquiring");
+[16.703s]       |                                                  [01;31m[K^~~~~~~~~~~[m[K
+[16.705s] In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27[m[K,
+[16.715s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171[m[K,
+[16.723s]                  from [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:1[m[K:
+[16.723s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[16.724s]    42 |         RCLCPP_ERROR([01;31m[Kthis[m[K->get_logger(), "Path provider not available after waiting");
+[16.728s]       |                      [01;31m[K^~~~[m[K
+[16.732s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[16.742s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[16.750s]    42 |         [01;31m[KRCLCPP_ERROR[m[K(this->get_logger(), "Path provider not available after waiting");
+[16.768s]       |         [01;31m[K^~~~~~~~~~~~[m[K
+[16.778s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[16.789s]    42 |         [01;31m[KRCLCPP_ERROR[m[K(this->get_logger(), "Path provider not available after waiting");
+[16.805s]       |         [01;31m[K^~~~~~~~~~~~[m[K
+[16.823s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[16.823s]    42 |         [01;31m[KRCLCPP_ERROR[m[K(this->get_logger(), "Path provider not available after waiting");
+[16.824s]       |         [01;31m[K^~~~~~~~~~~~[m[K
+[16.825s] In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp:24[m[K:
+[16.827s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[16.829s]    42 |         RCLCPP_ERROR([01;31m[Kthis[m[K->get_logger(), "Path provider not available after waiting");
+[16.829s]       |                      [01;31m[K^~~~[m[K
+[16.831s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[16.832s]    42 |         RCLCPP_ERROR([01;31m[Kthis[m[K->get_logger(), "Path provider not available after waiting");
+[16.835s]       |                      [01;31m[K^~~~[m[K
+[16.845s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:44:9:[m[K [01;31m[Kerror: [m[Kreturn-statement with no value, in function returning ‘[01m[Kint[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[16.846s]    44 |         [01;31m[Kreturn[m[K;
+[16.846s]       |         [01;31m[K^~~~~~[m[K
+[16.847s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:46:49:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_shared<MoveService>()[m[K’
+[16.848s]    46 |     auto request = [01;31m[Kstd::make_shared<MoveService>()[m[K;
+[16.849s]       |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+[16.850s] In file included from [01m[K/usr/include/c++/13/memory:80[m[K,
+[16.850s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169[m[K:
+[16.851s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> std::shared_ptr<typename std::enable_if<(! std::is_array< <template-parameter-1-1> >::value), _Tp>::type> std::[01;32m[Kmake_shared[m[K(_Args&& ...)[m[K’
+[16.852s]  1005 |     [01;36m[Kmake_shared[m[K(_Args&&... __args)
+[16.853s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[16.854s] [01m[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[16.855s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:34:14:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[16.855s]    34 | int main([01;35m[Kint argc[m[K, char **argv)
+[16.856s]       |          [01;35m[K~~~~^~~~[m[K
+[16.856s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:34:27:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargv[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[16.857s]    34 | int main(int argc, [01;35m[Kchar **argv[m[K)
+[16.859s]       |                    [01;35m[K~~~~~~~^~~~[m[K
+[21.238s] gmake[2]: *** [CMakeFiles/complete_job.dir/build.make:76: CMakeFiles/complete_job.dir/src/complete_job.cpp.o] Error 1
+[21.245s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/complete_job.dir/all] Error 2
+[21.248s] gmake: *** [Makefile:146: all] Error 2
+[21.295s] Invoked command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws' returned '2': AMENT_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws -- -j8 -l8

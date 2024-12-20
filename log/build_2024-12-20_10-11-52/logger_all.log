@@ -1,0 +1,212 @@
+[0.376s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'complete_job_ws']
+[0.378s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['complete_job_ws'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffffaf746ff0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffb074e0f0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffb074e0f0>>)
+[0.700s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.706s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.706s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project'
+[0.712s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.712s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.713s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.713s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.714s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.714s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.714s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.714s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.714s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['ignore', 'ignore_ament_install']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'ignore'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'ignore_ament_install'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['colcon_pkg']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'colcon_pkg'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['colcon_meta']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'colcon_meta'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['ros']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'ros'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['cmake', 'python']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'cmake'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'python'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extensions ['python_setup_py']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(Latex Source) by extension 'python_setup_py'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['ignore', 'ignore_ament_install']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'ignore'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'ignore_ament_install'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['colcon_pkg']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'colcon_pkg'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['colcon_meta']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'colcon_meta'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['ros']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'ros'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['cmake', 'python']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'cmake'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'python'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extensions ['python_setup_py']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws) by extension 'python_setup_py'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['ignore', 'ignore_ament_install']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'ignore'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'ignore_ament_install'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['colcon_pkg']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'colcon_pkg'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['colcon_meta']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'colcon_meta'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['ros']
+[0.968s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'ros'
+[0.974s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['cmake', 'python']
+[0.974s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'cmake'
+[0.975s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'python'
+[0.975s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extensions ['python_setup_py']
+[0.976s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src) by extension 'python_setup_py'
+[0.977s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extensions ['ignore', 'ignore_ament_install']
+[0.979s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extension 'ignore'
+[0.993s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extension 'ignore_ament_install'
+[0.994s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extensions ['colcon_pkg']
+[0.994s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extension 'colcon_pkg'
+[0.997s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extensions ['colcon_meta']
+[0.997s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extension 'colcon_meta'
+[0.998s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extensions ['ros']
+[0.999s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/block_spawner_ws) by extension 'ros'
+[1.017s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/block_spawner_ws' with type 'ros.ament_cmake' and name 'block_spawner_ws_pkg'
+[1.037s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extensions ['ignore', 'ignore_ament_install']
+[1.037s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extension 'ignore'
+[1.037s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extension 'ignore_ament_install'
+[1.038s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extensions ['colcon_pkg']
+[1.038s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extension 'colcon_pkg'
+[1.044s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extensions ['colcon_meta']
+[1.045s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extension 'colcon_meta'
+[1.045s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extensions ['ros']
+[1.045s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/camera_ws) by extension 'ros'
+[1.051s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/camera_ws' with type 'ros.ament_cmake' and name 'camera_ws'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extensions ['ignore', 'ignore_ament_install']
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extension 'ignore'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extension 'ignore_ament_install'
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extensions ['colcon_pkg']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extension 'colcon_pkg'
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extensions ['colcon_meta']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extension 'colcon_meta'
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extensions ['ros']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/complete_job_ws) by extension 'ros'
+[1.060s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/complete_job_ws' with type 'ros.ament_cmake' and name 'complete_job_ws'
+[1.063s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extensions ['ignore', 'ignore_ament_install']
+[1.063s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extension 'ignore'
+[1.064s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extension 'ignore_ament_install'
+[1.065s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extensions ['colcon_pkg']
+[1.066s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extension 'colcon_pkg'
+[1.066s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extensions ['colcon_meta']
+[1.066s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extension 'colcon_meta'
+[1.067s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extensions ['ros']
+[1.067s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/gripper_ws) by extension 'ros'
+[1.072s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/gripper_ws' with type 'ros.ament_cmake' and name 'gripper_ws'
+[1.073s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extensions ['ignore', 'ignore_ament_install']
+[1.073s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extension 'ignore'
+[1.073s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extension 'ignore_ament_install'
+[1.074s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extensions ['colcon_pkg']
+[1.074s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extension 'colcon_pkg'
+[1.074s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extensions ['colcon_meta']
+[1.075s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extension 'colcon_meta'
+[1.075s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extensions ['ros']
+[1.077s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/move_ws) by extension 'ros'
+[1.091s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/move_ws' with type 'ros.ament_cmake' and name 'move_ws'
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extensions ['ignore', 'ignore_ament_install']
+[1.098s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'ignore'
+[1.098s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'ignore_ament_install'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extensions ['colcon_pkg']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'colcon_pkg'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extensions ['colcon_meta']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'colcon_meta'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extensions ['ros']
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'ros'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extensions ['cmake', 'python']
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'cmake'
+[1.128s] Level 1:colcon.colcon_core.package_identification:_identify(robotics_project_ws/src/vision_ws) by extension 'python'
+[1.128s] DEBUG:colcon.colcon_core.package_identification:Package 'robotics_project_ws/src/vision_ws' with type 'cmake' and name 'vision_ws'
+[1.133s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extensions ['ignore', 'ignore_ament_install']
+[1.134s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extension 'ignore'
+[1.134s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extension 'ignore_ament_install'
+[1.135s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extensions ['colcon_pkg']
+[1.135s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extension 'colcon_pkg'
+[1.136s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extensions ['colcon_meta']
+[1.136s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extension 'colcon_meta'
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extensions ['ros']
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_ur5_interface) by extension 'ros'
+[1.143s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_ur5_interface' with type 'ros.ament_cmake' and name 'ros2_ur5_interface'
+[1.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.197s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'block_spawner_ws_pkg' in 'robotics_project_ws/src/block_spawner_ws'
+[1.197s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'camera_ws' in 'robotics_project_ws/src/camera_ws'
+[1.197s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'gripper_ws' in 'robotics_project_ws/src/gripper_ws'
+[1.197s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'move_ws' in 'robotics_project_ws/src/move_ws'
+[1.198s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ros2_ur5_interface' in 'ros2_ur5_interface'
+[1.199s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'vision_ws' in 'robotics_project_ws/src/vision_ws'
+[1.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.214s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 364 installed packages in /opt/ros/jazzy
+[1.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_args' from command line to 'None'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_target' from command line to 'None'
+[1.356s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_clean_cache' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_clean_first' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'cmake_force_configure' from command line to 'False'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'ament_cmake_args' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'catkin_cmake_args' from command line to 'None'
+[1.357s] Level 5:colcon.colcon_core.verb:set package 'complete_job_ws' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.357s] DEBUG:colcon.colcon_core.verb:Building package 'complete_job_ws' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws', 'merge_install': False, 'path': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws', 'symlink_install': False, 'test_result_base': None}
+[1.358s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.360s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.361s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws' with build type 'ament_cmake'
+[1.362s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws'
+[1.367s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.368s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.368s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.492s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws': AMENT_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws -- -j8 -l8
+[25.912s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws' returned '2': AMENT_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws -- -j8 -l8
+[25.928s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(complete_job_ws)
+[25.946s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws' for CMake module files
+[25.958s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws' for CMake config files
+[26.003s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/bin'
+[26.013s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/lib/pkgconfig/complete_job_ws.pc'
+[26.017s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/lib/python3.12/site-packages'
+[26.019s] Level 1:colcon.colcon_core.environment:checking '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/bin'
+[26.024s] INFO:colcon.colcon_core.shell:Creating package script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/complete_job_ws/package.ps1'
+[26.030s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/complete_job_ws/package.dsv'
+[26.035s] INFO:colcon.colcon_core.shell:Creating package script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/complete_job_ws/package.sh'
+[26.039s] INFO:colcon.colcon_core.shell:Creating package script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/complete_job_ws/package.bash'
+[26.059s] INFO:colcon.colcon_core.shell:Creating package script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/complete_job_ws/package.zsh'
+[26.064s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/complete_job_ws/share/colcon-core/packages/complete_job_ws)
+[26.069s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[26.073s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[26.075s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[26.078s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[26.207s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[26.209s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[26.210s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[27.122s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[27.129s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/local_setup.ps1'
+[27.134s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/_local_setup_util_ps1.py'
+[27.140s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/setup.ps1'
+[27.144s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/local_setup.sh'
+[27.159s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/_local_setup_util_sh.py'
+[27.181s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/setup.sh'
+[27.213s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/local_setup.bash'
+[27.218s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/setup.bash'
+[27.237s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/local_setup.zsh'
+[27.242s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/setup.zsh'

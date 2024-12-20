@@ -1,0 +1,338 @@
+[0.000000] (-) TimerEvent: {}
+[0.001680] (-) JobUnselected: {'identifier': 'block_spawner_ws_pkg'}
+[0.002241] (-) JobUnselected: {'identifier': 'camera_ws'}
+[0.003374] (-) JobUnselected: {'identifier': 'gripper_ws'}
+[0.003571] (-) JobUnselected: {'identifier': 'move_ws'}
+[0.006143] (-) JobUnselected: {'identifier': 'ros2_ur5_interface'}
+[0.007048] (-) JobUnselected: {'identifier': 'vision_ws'}
+[0.007971] (complete_job_ws) JobQueued: {'identifier': 'complete_job_ws', 'dependencies': OrderedDict({'move_ws': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws'})}
+[0.009039] (complete_job_ws) JobStarted: {'identifier': 'complete_job_ws'}
+[0.096989] (-) TimerEvent: {}
+[0.201585] (-) TimerEvent: {}
+[0.279811] (complete_job_ws) JobProgress: {'identifier': 'complete_job_ws', 'progress': 'cmake'}
+[0.291533] (complete_job_ws) JobProgress: {'identifier': 'complete_job_ws', 'progress': 'build'}
+[0.297468] (complete_job_ws) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws', '--', '-j8', '-l8'], 'cwd': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws', 'env': OrderedDict({'VNCDESKTOP': 'b122a8054d68:1 (ubuntu)', 'XDG_ACTIVATION_TOKEN': 'caja-357-b122a8054d68-terminator-0_TIME135134', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'QT_SCALE_FACTOR': '1', 'USER': 'ubuntu', 'SUPERVISOR_GROUP_NAME': 'vnc', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'b122a8054d68', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/ubuntu', 'OLDPWD': '/', 'GIO_LAUNCHED_DESKTOP_FILE': '/home/ubuntu/Desktop/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'LC_CTYPE': 'C.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/tmp/dbus-R3MeDmGfS8,guid=7224983a421c7fe0f86c50e467653551', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '741', 'GNOME_KEYRING_CONTROL': '/home/ubuntu/.cache/keyring-0NU6Y2', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'GTK_OVERLAY_SCROLLING': '0', 'INSIDE_CAJA_PYTHON': '', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'SESSION_MANAGER': 'local/b122a8054d68:@/tmp/.ICE-unix/125,unix/b122a8054d68:/tmp/.ICE-unix/125', 'DISPLAY': ':1', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LD_PRELOAD': '/lib/aarch64-linux-gnu/libgcc_s.so.1', 'XDG_CURRENT_DESKTOP': 'MATE', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SUPERVISOR_ENABLED': '1', 'SSH_AUTH_SOCK': '/home/ubuntu/.cache/keyring-0NU6Y2/ssh', 'AMENT_PREFIX_PATH': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy', 'TERMINATOR_UUID': 'urn:uuid:87d5ba1a-f0ba-45f4-8a8b-10fad1895253', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PASSWD': 'ubuntu', 'SUPERVISOR_SERVER_URL': 'unix:///var/run/supervisor.sock', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'SUPERVISOR_PROCESS_NAME': 'vnc', 'PWD': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/complete_job_ws', 'PYTHONPATH': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'MATE_DESKTOP_SESSION_ID': 'this-is-deprecated', 'COLCON': '1', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'QT_FONT_DPI': '96'}), 'shell': False}
+[0.405390] (-) TimerEvent: {}
+[0.512425] (-) TimerEvent: {}
+[0.620632] (-) TimerEvent: {}
+[0.722026] (-) TimerEvent: {}
+[0.823484] (-) TimerEvent: {}
+[0.929667] (-) TimerEvent: {}
+[1.034638] (-) TimerEvent: {}
+[1.138764] (-) TimerEvent: {}
+[1.239272] (complete_job_ws) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/complete_job.dir/src/complete_job.cpp.o\x1b[0m\n'}
+[1.244132] (-) TimerEvent: {}
+[1.351126] (-) TimerEvent: {}
+[1.459035] (-) TimerEvent: {}
+[1.568417] (-) TimerEvent: {}
+[1.673185] (-) TimerEvent: {}
+[1.777083] (-) TimerEvent: {}
+[1.941708] (-) TimerEvent: {}
+[2.049216] (-) TimerEvent: {}
+[2.150102] (-) TimerEvent: {}
+[2.261169] (-) TimerEvent: {}
+[2.365817] (-) TimerEvent: {}
+[2.473088] (-) TimerEvent: {}
+[2.582092] (-) TimerEvent: {}
+[2.688043] (-) TimerEvent: {}
+[2.794869] (-) TimerEvent: {}
+[2.900330] (-) TimerEvent: {}
+[3.011738] (-) TimerEvent: {}
+[3.123802] (-) TimerEvent: {}
+[3.231280] (-) TimerEvent: {}
+[3.345988] (-) TimerEvent: {}
+[3.462303] (-) TimerEvent: {}
+[3.567055] (-) TimerEvent: {}
+[3.670224] (-) TimerEvent: {}
+[3.788029] (-) TimerEvent: {}
+[3.892827] (-) TimerEvent: {}
+[4.002215] (-) TimerEvent: {}
+[4.113577] (-) TimerEvent: {}
+[4.215142] (-) TimerEvent: {}
+[4.316040] (-) TimerEvent: {}
+[4.400974] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:60:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing terminating " character\n'}
+[4.407420] (complete_job_ws) StderrLine: {'line': b'   60 |             cout << \x1b[01;35m\x1b[K"\x1b[m\x1b[KError in completing the task, redo it\n'}
+[4.411741] (complete_job_ws) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.412343] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:60:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kmissing terminating " character\n'}
+[4.412924] (complete_job_ws) StderrLine: {'line': b'   60 |             cout << \x1b[01;31m\x1b[K"Error in completing the task, redo it\x1b[m\x1b[K\n'}
+[4.413301] (complete_job_ws) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.417003] (-) TimerEvent: {}
+[4.518025] (-) TimerEvent: {}
+[4.619079] (-) TimerEvent: {}
+[4.733503] (-) TimerEvent: {}
+[4.840159] (-) TimerEvent: {}
+[4.943050] (-) TimerEvent: {}
+[5.056371] (-) TimerEvent: {}
+[5.158280] (-) TimerEvent: {}
+[5.261027] (-) TimerEvent: {}
+[5.363253] (-) TimerEvent: {}
+[5.470076] (-) TimerEvent: {}
+[5.575176] (-) TimerEvent: {}
+[5.683397] (-) TimerEvent: {}
+[5.793016] (-) TimerEvent: {}
+[5.894420] (-) TimerEvent: {}
+[6.007505] (-) TimerEvent: {}
+[6.173969] (-) TimerEvent: {}
+[6.402082] (-) TimerEvent: {}
+[6.504223] (-) TimerEvent: {}
+[6.621065] (-) TimerEvent: {}
+[6.722048] (-) TimerEvent: {}
+[6.824133] (-) TimerEvent: {}
+[6.929039] (-) TimerEvent: {}
+[7.033095] (-) TimerEvent: {}
+[7.144076] (-) TimerEvent: {}
+[7.249044] (-) TimerEvent: {}
+[7.357024] (-) TimerEvent: {}
+[7.460315] (-) TimerEvent: {}
+[7.563202] (-) TimerEvent: {}
+[7.680066] (-) TimerEvent: {}
+[7.782167] (-) TimerEvent: {}
+[7.883054] (-) TimerEvent: {}
+[8.014507] (-) TimerEvent: {}
+[8.116713] (-) TimerEvent: {}
+[8.221994] (-) TimerEvent: {}
+[8.326046] (-) TimerEvent: {}
+[8.429438] (-) TimerEvent: {}
+[8.538275] (-) TimerEvent: {}
+[8.643832] (-) TimerEvent: {}
+[8.757874] (-) TimerEvent: {}
+[8.867059] (-) TimerEvent: {}
+[8.968057] (-) TimerEvent: {}
+[9.070140] (-) TimerEvent: {}
+[9.189011] (-) TimerEvent: {}
+[9.302547] (-) TimerEvent: {}
+[9.438453] (-) TimerEvent: {}
+[9.540964] (-) TimerEvent: {}
+[9.651506] (-) TimerEvent: {}
+[9.755494] (-) TimerEvent: {}
+[9.862212] (-) TimerEvent: {}
+[9.969010] (-) TimerEvent: {}
+[10.070309] (-) TimerEvent: {}
+[10.172226] (-) TimerEvent: {}
+[10.273244] (-) TimerEvent: {}
+[10.374099] (-) TimerEvent: {}
+[10.476226] (-) TimerEvent: {}
+[10.581002] (-) TimerEvent: {}
+[10.689276] (-) TimerEvent: {}
+[10.795474] (-) TimerEvent: {}
+[10.918354] (-) TimerEvent: {}
+[11.024491] (-) TimerEvent: {}
+[11.127121] (-) TimerEvent: {}
+[11.233134] (-) TimerEvent: {}
+[11.342040] (-) TimerEvent: {}
+[11.448218] (-) TimerEvent: {}
+[11.555012] (-) TimerEvent: {}
+[11.663259] (-) TimerEvent: {}
+[11.764596] (-) TimerEvent: {}
+[11.868958] (-) TimerEvent: {}
+[11.974280] (-) TimerEvent: {}
+[12.075378] (-) TimerEvent: {}
+[12.182165] (-) TimerEvent: {}
+[12.293025] (-) TimerEvent: {}
+[12.397434] (-) TimerEvent: {}
+[12.499055] (-) TimerEvent: {}
+[12.601645] (-) TimerEvent: {}
+[12.715272] (-) TimerEvent: {}
+[12.821990] (-) TimerEvent: {}
+[12.930095] (-) TimerEvent: {}
+[13.031074] (-) TimerEvent: {}
+[13.135037] (-) TimerEvent: {}
+[13.239035] (-) TimerEvent: {}
+[13.348996] (-) TimerEvent: {}
+[13.450289] (-) TimerEvent: {}
+[13.552124] (-) TimerEvent: {}
+[13.654009] (-) TimerEvent: {}
+[13.762263] (-) TimerEvent: {}
+[13.868199] (-) TimerEvent: {}
+[13.973092] (-) TimerEvent: {}
+[14.081213] (-) TimerEvent: {}
+[14.182009] (-) TimerEvent: {}
+[14.285838] (-) TimerEvent: {}
+[14.395821] (-) TimerEvent: {}
+[14.505204] (-) TimerEvent: {}
+[14.609057] (-) TimerEvent: {}
+[14.713481] (-) TimerEvent: {}
+[14.818615] (-) TimerEvent: {}
+[14.931573] (-) TimerEvent: {}
+[15.039661] (-) TimerEvent: {}
+[15.148284] (-) TimerEvent: {}
+[15.254120] (-) TimerEvent: {}
+[15.355175] (-) TimerEvent: {}
+[15.469870] (-) TimerEvent: {}
+[15.571772] (-) TimerEvent: {}
+[15.673751] (-) TimerEvent: {}
+[15.788111] (-) TimerEvent: {}
+[15.895279] (-) TimerEvent: {}
+[15.997325] (-) TimerEvent: {}
+[16.104819] (-) TimerEvent: {}
+[16.210074] (-) TimerEvent: {}
+[16.326149] (-) TimerEvent: {}
+[16.427371] (-) TimerEvent: {}
+[16.532519] (-) TimerEvent: {}
+[16.640830] (-) TimerEvent: {}
+[16.748122] (-) TimerEvent: {}
+[16.851118] (-) TimerEvent: {}
+[16.955095] (-) TimerEvent: {}
+[17.059041] (-) TimerEvent: {}
+[17.163123] (-) TimerEvent: {}
+[17.277066] (-) TimerEvent: {}
+[17.387348] (-) TimerEvent: {}
+[17.515082] (-) TimerEvent: {}
+[17.616381] (-) TimerEvent: {}
+[17.722030] (-) TimerEvent: {}
+[17.831234] (-) TimerEvent: {}
+[17.936079] (-) TimerEvent: {}
+[18.037015] (-) TimerEvent: {}
+[18.139207] (-) TimerEvent: {}
+[18.247556] (-) TimerEvent: {}
+[18.352233] (-) TimerEvent: {}
+[18.458872] (-) TimerEvent: {}
+[18.574407] (-) TimerEvent: {}
+[18.676094] (-) TimerEvent: {}
+[18.777001] (-) TimerEvent: {}
+[18.879262] (-) TimerEvent: {}
+[18.982432] (-) TimerEvent: {}
+[19.084081] (-) TimerEvent: {}
+[19.193324] (-) TimerEvent: {}
+[19.305115] (-) TimerEvent: {}
+[19.411794] (-) TimerEvent: {}
+[19.516406] (-) TimerEvent: {}
+[19.624253] (-) TimerEvent: {}
+[19.727348] (-) TimerEvent: {}
+[19.830616] (-) TimerEvent: {}
+[19.935415] (-) TimerEvent: {}
+[20.039194] (-) TimerEvent: {}
+[20.132017] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[01;32m\x1b[K main\x1b[m\x1b[K(int, char**)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[20.135541] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:39:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_path_client\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[20.138168] (complete_job_ws) StderrLine: {'line': b'   39 |     \x1b[01;31m\x1b[Kopen_path_client\x1b[m\x1b[K = this->create_client<MoveService>("path_acquiring");\n'}
+[20.138853] (complete_job_ws) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.139294] (-) TimerEvent: {}
+[20.139543] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:39:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[20.140061] (complete_job_ws) StderrLine: {'line': b'   39 |     open_path_client = \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->create_client<MoveService>("path_acquiring");\n'}
+[20.141500] (complete_job_ws) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[20.146745] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:39:44:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KMoveService\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[20.148410] (complete_job_ws) StderrLine: {'line': b'   39 |     open_path_client = this->create_client<\x1b[01;31m\x1b[KMoveService\x1b[m\x1b[K>("path_acquiring");\n'}
+[20.148854] (complete_job_ws) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.195517] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:41:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_path_client_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[20.197233] (complete_job_ws) StderrLine: {'line': b'   41 |     if (!\x1b[01;31m\x1b[Kopen_path_client_\x1b[m\x1b[K->wait_for_service(10s)){\n'}
+[20.198815] (complete_job_ws) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.199530] (complete_job_ws) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27\x1b[m\x1b[K,\n'}
+[20.204370] (complete_job_ws) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171\x1b[m\x1b[K,\n'}
+[20.205362] (complete_job_ws) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:1\x1b[m\x1b[K:\n'}
+[20.206103] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[20.207528] (complete_job_ws) StderrLine: {'line': b'   42 |         RCLCPP_ERROR(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "Path provider not available after waiting");\n'}
+[20.208268] (complete_job_ws) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[20.209513] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[20.213699] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[20.217467] (complete_job_ws) StderrLine: {'line': b'   42 |         \x1b[01;31m\x1b[KRCLCPP_ERROR\x1b[m\x1b[K(this->get_logger(), "Path provider not available after waiting");\n'}
+[20.218981] (complete_job_ws) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.223977] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[20.224363] (complete_job_ws) StderrLine: {'line': b'   42 |         \x1b[01;31m\x1b[KRCLCPP_ERROR\x1b[m\x1b[K(this->get_logger(), "Path provider not available after waiting");\n'}
+[20.224756] (complete_job_ws) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.226301] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[20.229556] (complete_job_ws) StderrLine: {'line': b'   42 |         \x1b[01;31m\x1b[KRCLCPP_ERROR\x1b[m\x1b[K(this->get_logger(), "Path provider not available after waiting");\n'}
+[20.230008] (complete_job_ws) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.230370] (complete_job_ws) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K:\n'}
+[20.230706] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[20.233625] (complete_job_ws) StderrLine: {'line': b'   42 |         RCLCPP_ERROR(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "Path provider not available after waiting");\n'}
+[20.236257] (complete_job_ws) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[20.236729] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:42:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[20.237183] (complete_job_ws) StderrLine: {'line': b'   42 |         RCLCPP_ERROR(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "Path provider not available after waiting");\n'}
+[20.239510] (-) TimerEvent: {}
+[20.239733] (complete_job_ws) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[20.243329] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:44:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kreturn-statement with no value, in function returning \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;31m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive\x07-fpermissive\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[20.245947] (complete_job_ws) StderrLine: {'line': b'   44 |         \x1b[01;31m\x1b[Kreturn\x1b[m\x1b[K;\n'}
+[20.246445] (complete_job_ws) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[20.247229] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:46:49:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Kmake_shared<MoveService>()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[20.252005] (complete_job_ws) StderrLine: {'line': b'   46 |     auto request = \x1b[01;31m\x1b[Kstd::make_shared<MoveService>()\x1b[m\x1b[K;\n'}
+[20.252436] (complete_job_ws) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~\x1b[m\x1b[K\n'}
+[20.253057] (complete_job_ws) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/memory:80\x1b[m\x1b[K,\n'}
+[20.259382] (complete_job_ws) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K:\n'}
+[20.261103] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, class ... _Args> std::shared_ptr<typename std::enable_if<(! std::is_array< <template-parameter-1-1> >::value), _Tp>::type> std::\x1b[01;32m\x1b[Kmake_shared\x1b[m\x1b[K(_Args&& ...)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[20.261750] (complete_job_ws) StderrLine: {'line': b' 1005 |     \x1b[01;36m\x1b[Kmake_shared\x1b[m\x1b[K(_Args&&... __args)\n'}
+[20.262234] (complete_job_ws) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.263218] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[20.263574] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:53:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_path_client_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[20.264115] (complete_job_ws) StderrLine: {'line': b'   53 |     \x1b[01;31m\x1b[Kopen_path_client_\x1b[m\x1b[K->async_send_request(request);\n'}
+[20.265124] (complete_job_ws) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[20.265804] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:56:40:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Kbreak\x1b[m\x1b[K\xe2\x80\x99\n'}
+[20.268991] (complete_job_ws) StderrLine: {'line': b'   56 |             cout << "Request completed"\n'}
+[20.269469] (complete_job_ws) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[20.270959] (complete_job_ws) StderrLine: {'line': b'      |                                        \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[20.271446] (complete_job_ws) StderrLine: {'line': b'   57 |             \x1b[32m\x1b[Kbreak\x1b[m\x1b[K;\n'}
+[20.272418] (complete_job_ws) StderrLine: {'line': b'      |             \x1b[32m\x1b[K~~~~~\x1b[m\x1b[K                       \n'}
+[20.272788] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:61:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[20.273954] (complete_job_ws) StderrLine: {'line': b'   61 |         \x1b[01;31m\x1b[K}\x1b[m\x1b[K\n'}
+[20.274659] (complete_job_ws) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[20.284093] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:34:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kargc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[20.288371] (complete_job_ws) StderrLine: {'line': b'   34 | int main(\x1b[01;35m\x1b[Kint argc\x1b[m\x1b[K, char **argv)\n'}
+[20.288994] (complete_job_ws) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K~~~~^~~~\x1b[m\x1b[K\n'}
+[20.289515] (complete_job_ws) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/complete_job_ws/src/complete_job.cpp:34:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kargv\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[20.293169] (complete_job_ws) StderrLine: {'line': b'   34 | int main(int argc, \x1b[01;35m\x1b[Kchar **argv\x1b[m\x1b[K)\n'}
+[20.294136] (complete_job_ws) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[20.349149] (-) TimerEvent: {}
+[20.452039] (-) TimerEvent: {}
+[20.552990] (-) TimerEvent: {}
+[20.655250] (-) TimerEvent: {}
+[20.757270] (-) TimerEvent: {}
+[20.863038] (-) TimerEvent: {}
+[20.965073] (-) TimerEvent: {}
+[21.068240] (-) TimerEvent: {}
+[21.175154] (-) TimerEvent: {}
+[21.284268] (-) TimerEvent: {}
+[21.398076] (-) TimerEvent: {}
+[21.502019] (-) TimerEvent: {}
+[21.607068] (-) TimerEvent: {}
+[21.717281] (-) TimerEvent: {}
+[21.829214] (-) TimerEvent: {}
+[21.938069] (-) TimerEvent: {}
+[22.039424] (-) TimerEvent: {}
+[22.151380] (-) TimerEvent: {}
+[22.252999] (-) TimerEvent: {}
+[22.355132] (-) TimerEvent: {}
+[22.457654] (-) TimerEvent: {}
+[22.560368] (-) TimerEvent: {}
+[22.668053] (-) TimerEvent: {}
+[22.777085] (-) TimerEvent: {}
+[22.881020] (-) TimerEvent: {}
+[22.985568] (-) TimerEvent: {}
+[23.090376] (-) TimerEvent: {}
+[23.198217] (-) TimerEvent: {}
+[23.301491] (-) TimerEvent: {}
+[23.405092] (-) TimerEvent: {}
+[23.519049] (-) TimerEvent: {}
+[23.623168] (-) TimerEvent: {}
+[23.727781] (-) TimerEvent: {}
+[23.829219] (-) TimerEvent: {}
+[23.936139] (-) TimerEvent: {}
+[24.053727] (-) TimerEvent: {}
+[24.155022] (-) TimerEvent: {}
+[24.257122] (-) TimerEvent: {}
+[24.363012] (-) TimerEvent: {}
+[24.467071] (-) TimerEvent: {}
+[24.570043] (-) TimerEvent: {}
+[24.675432] (-) TimerEvent: {}
+[24.781048] (-) TimerEvent: {}
+[24.884162] (-) TimerEvent: {}
+[24.992835] (-) TimerEvent: {}
+[25.102359] (-) TimerEvent: {}
+[25.210032] (-) TimerEvent: {}
+[25.314073] (-) TimerEvent: {}
+[25.415323] (-) TimerEvent: {}
+[25.517033] (-) TimerEvent: {}
+[25.633462] (-) TimerEvent: {}
+[25.738416] (-) TimerEvent: {}
+[25.841287] (-) TimerEvent: {}
+[25.949476] (-) TimerEvent: {}
+[26.054259] (-) TimerEvent: {}
+[26.158416] (-) TimerEvent: {}
+[26.261198] (-) TimerEvent: {}
+[26.353078] (complete_job_ws) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/complete_job.dir/build.make:76: CMakeFiles/complete_job.dir/src/complete_job.cpp.o] Error 1\n'}
+[26.376232] (-) TimerEvent: {}
+[26.377392] (complete_job_ws) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/complete_job.dir/all] Error 2\n'}
+[26.382571] (complete_job_ws) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[26.417683] (complete_job_ws) CommandEnded: {'returncode': 2}
+[26.477036] (-) TimerEvent: {}
+[26.557925] (complete_job_ws) JobEnded: {'identifier': 'complete_job_ws', 'rc': 2}
+[26.597549] (-) TimerEvent: {}
+[26.598286] (-) EventReactorShutdown: {}

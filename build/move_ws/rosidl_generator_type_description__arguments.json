@@ -1,0 +1,12 @@
+{
+  "package_name": "move_ws",
+  "output_dir": "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws/rosidl_generator_type_description/move_ws",
+  "idl_tuples": [
+    "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws/rosidl_adapter/move_ws:srv/Moving.idl",
+    "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws/rosidl_adapter/move_ws:msg/Vector3d.idl"
+  ],
+  "include_paths": [
+    "service_msgs:/opt/ros/jazzy/share/service_msgs",
+    "builtin_interfaces:/opt/ros/jazzy/share/builtin_interfaces"
+  ]
+}

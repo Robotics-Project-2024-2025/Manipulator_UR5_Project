@@ -1,0 +1,304 @@
+[0.180s] Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws
+[1.103s] -- The C compiler identification is GNU 13.2.0
+[2.265s] -- The CXX compiler identification is GNU 13.2.0
+[2.381s] -- Detecting C compiler ABI info
+[3.449s] -- Detecting C compiler ABI info - done
+[3.506s] -- Check for working C compiler: /usr/bin/cc - skipped
+[3.512s] -- Detecting C compile features
+[3.515s] -- Detecting C compile features - done
+[3.553s] -- Detecting CXX compiler ABI info
+[4.500s] -- Detecting CXX compiler ABI info - done
+[4.595s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[4.596s] -- Detecting CXX compile features
+[4.597s] -- Detecting CXX compile features - done
+[4.675s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[5.626s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[6.528s] -- Found rclcpp: 28.1.5 (/opt/ros/jazzy/share/rclcpp/cmake)
+[6.804s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[6.986s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[7.179s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.439s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[8.190s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[8.208s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[9.173s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[9.316s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[9.568s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[10.223s] -- Found trajectory_msgs: 5.3.5 (/opt/ros/jazzy/share/trajectory_msgs/cmake)
+[10.987s] -- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[11.231s] -- Found control_msgs: 5.3.0 (/opt/ros/jazzy/share/control_msgs/cmake)
+[12.072s] -- Found rclcpp_action: 28.1.5 (/opt/ros/jazzy/share/rclcpp_action/cmake)
+[12.348s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[12.700s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[16.183s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[19.964s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[21.107s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[21.166s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[21.777s] -- Found PythonExtra: /usr/bin/python3  
+[23.914s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[24.735s] -- Configuring done (24.4s)
+[27.192s] -- Generating done (2.3s)
+[27.590s] -- Build files have been written to: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws
+[27.793s] Invoked command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws
+[27.829s] Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws -- -j8 -l8
+[28.747s] [  2%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[29.728s] [  2%] Built target move_ws__rosidl_generator_type_description
+[29.958s] [  2%] Built target ament_cmake_python_copy_move_ws
+[30.027s] [  4%] [34m[1mGenerating C code for ROS interfaces[0m
+[33.181s] [  6%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/srv/detail/moving__description.c.o[0m
+[34.261s] [  8%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/msg/detail/vector3d__type_support.c.o[0m
+[34.881s] [ 10%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/msg/detail/vector3d__functions.c.o[0m
+[35.784s] [ 12%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/msg/detail/vector3d__description.c.o[0m
+[36.196s] [ 14%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/srv/detail/moving__type_support.c.o[0m
+[36.599s] [ 16%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_c.dir/rosidl_generator_c/move_ws/srv/detail/moving__functions.c.o[0m
+[37.700s] [ 18%] [32m[1mLinking C shared library libmove_ws__rosidl_generator_c.so[0m
+[38.360s] [ 18%] Built target move_ws__rosidl_generator_c
+[39.704s] running egg_info
+[39.725s] creating move_ws.egg-info
+[39.915s] writing move_ws.egg-info/PKG-INFO
+[39.917s] writing dependency_links to move_ws.egg-info/dependency_links.txt
+[39.944s] writing top-level names to move_ws.egg-info/top_level.txt
+[39.945s] writing manifest file 'move_ws.egg-info/SOURCES.txt'
+[40.327s] reading manifest file 'move_ws.egg-info/SOURCES.txt'
+[40.359s] writing manifest file 'move_ws.egg-info/SOURCES.txt'
+[40.754s] [ 18%] Built target ament_cmake_python_build_move_ws_egg
+[41.064s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[42.920s] [ 22%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_c.dir/rosidl_typesupport_c/move_ws/srv/moving__type_support.cpp.o[0m
+[43.410s] [ 25%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_c.dir/rosidl_typesupport_c/move_ws/msg/vector3d__type_support.cpp.o[0m
+[44.015s] [ 27%] [32m[1mLinking CXX shared library libmove_ws__rosidl_typesupport_c.so[0m
+[44.248s] [ 27%] Built target move_ws__rosidl_typesupport_c
+[44.372s] [ 29%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[46.706s] [ 31%] [32mBuilding C object CMakeFiles/move_ws__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/move_ws/srv/detail/moving__type_support.c.o[0m
+[47.427s] [ 33%] [32mBuilding C object CMakeFiles/move_ws__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/move_ws/msg/detail/vector3d__type_support.c.o[0m
+[47.872s] [ 35%] [32m[1mLinking C shared library libmove_ws__rosidl_typesupport_introspection_c.so[0m
+[48.091s] [ 35%] Built target move_ws__rosidl_typesupport_introspection_c
+[48.270s] [ 37%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[50.364s] [ 39%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/move_ws/srv/detail/moving__type_support_c.cpp.o[0m
+[54.980s] [ 41%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/move_ws/msg/detail/vector3d__type_support_c.cpp.o[0m
+[58.756s] [ 43%] [32m[1mLinking CXX shared library libmove_ws__rosidl_typesupport_fastrtps_c.so[0m
+[59.495s] [ 43%] Built target move_ws__rosidl_typesupport_fastrtps_c
+[59.593s] [ 45%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[61.412s] [ 45%] Built target move_ws__cpp
+[61.467s] [ 47%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[62.708s] [ 50%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/move_ws/srv/moving__type_support.cpp.o[0m
+[65.536s] [ 52%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/move_ws/msg/vector3d__type_support.cpp.o[0m
+[67.168s] [ 54%] [32m[1mLinking CXX shared library libmove_ws__rosidl_typesupport_cpp.so[0m
+[67.459s] [ 54%] Built target move_ws__rosidl_typesupport_cpp
+[67.553s] [ 56%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[68.773s] [ 58%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/move_ws/srv/detail/moving__type_support.cpp.o[0m
+[71.419s] [ 60%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/move_ws/msg/detail/vector3d__type_support.cpp.o[0m
+[73.635s] [ 62%] [32m[1mLinking CXX shared library libmove_ws__rosidl_typesupport_introspection_cpp.so[0m
+[74.207s] [ 62%] Built target move_ws__rosidl_typesupport_introspection_cpp
+[74.326s] [ 64%] [32mBuilding CXX object CMakeFiles/service_moving.dir/src/path.cpp.o[0m
+[116.819s] [ 66%] [32mBuilding CXX object CMakeFiles/service_moving.dir/src/kin_communication.cpp.o[0m
+[195.448s] [ 68%] [32mBuilding CXX object CMakeFiles/service_moving.dir/src/kinematics.cpp.o[0m
+[205.533s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:[m[K In function ‘[01m[Kbool[01;32m[K bestInverse[m[K(Matrix16, MatrixD6&)[m[K’:
+[205.536s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:212:12:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kconfigs[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
+[205.541s]   212 |     double [01;35m[Kconfigs[m[K[end.rows()];
+[205.543s]       |            [01;35m[K^~~~~~~[m[K
+[207.071s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:[m[K In function ‘[01m[KMatrix44[01;32m[K HomogeneousTransformGen[m[K(int, double, double, double, double)[m[K’:
+[207.142s] [01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:371:38:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[207.146s]   371 | Matrix44 HomogeneousTransformGen([01;35m[Kint i[m[K, double theta, double alpha, double d, double a){
+[207.152s]       |                                  [01;35m[K~~~~^[m[K
+[232.834s] [ 70%] [32m[1mLinking CXX executable service_moving[0m
+[237.539s] [ 70%] Built target service_moving
+[237.601s] [ 72%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[239.700s] [ 75%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/move_ws/srv/detail/dds_fastrtps/moving__type_support.cpp.o[0m
+[243.347s] [ 77%] [32mBuilding CXX object CMakeFiles/move_ws__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/move_ws/msg/detail/dds_fastrtps/vector3d__type_support.cpp.o[0m
+[245.676s] [ 79%] [32m[1mLinking CXX shared library libmove_ws__rosidl_typesupport_fastrtps_cpp.so[0m
+[246.056s] [ 79%] Built target move_ws__rosidl_typesupport_fastrtps_cpp
+[246.115s] [ 79%] Built target move_ws
+[246.181s] [ 81%] [34m[1mGenerating Python code for ROS interfaces[0m
+[249.315s] [ 81%] Built target move_ws__py
+[249.423s] [ 83%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_py.dir/rosidl_generator_py/move_ws/srv/_moving_s.c.o[0m
+[250.602s] [ 85%] [32mBuilding C object CMakeFiles/move_ws__rosidl_generator_py.dir/rosidl_generator_py/move_ws/msg/_vector3d_s.c.o[0m
+[251.658s] [ 87%] [32m[1mLinking C shared library libmove_ws__rosidl_generator_py.so[0m
+[252.588s] [ 87%] Built target move_ws__rosidl_generator_py
+[252.811s] [ 89%] [32mBuilding C object CMakeFiles/move_ws_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/move_ws/_move_ws_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[253.784s] [ 91%] [32m[1mLinking C shared module rosidl_generator_py/move_ws/move_ws_s__rosidl_typesupport_fastrtps_c.so[0m
+[254.044s] [ 91%] Built target move_ws_s__rosidl_typesupport_fastrtps_c
+[254.212s] [ 93%] [32mBuilding C object CMakeFiles/move_ws_s__rosidl_typesupport_c.dir/rosidl_generator_py/move_ws/_move_ws_s.ep.rosidl_typesupport_c.c.o[0m
+[255.177s] [ 95%] [32m[1mLinking C shared module rosidl_generator_py/move_ws/move_ws_s__rosidl_typesupport_c.so[0m
+[255.434s] [ 95%] Built target move_ws_s__rosidl_typesupport_c
+[255.775s] [ 97%] [32mBuilding C object CMakeFiles/move_ws_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/move_ws/_move_ws_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[256.541s] [100%] [32m[1mLinking C shared module rosidl_generator_py/move_ws/move_ws_s__rosidl_typesupport_introspection_c.so[0m
+[256.662s] [100%] Built target move_ws_s__rosidl_typesupport_introspection_c
+[256.816s] Invoked command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws -- -j8 -l8
+[256.947s] Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws
+[256.990s] -- Install configuration: ""
+[256.993s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/ament_index/resource_index/rosidl_interfaces/move_ws
+[257.001s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/srv/Moving.json
+[257.016s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/msg/Vector3d.json
+[257.025s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.029s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[257.033s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/rosidl_generator_c__visibility_control.h
+[257.041s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[257.045s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__type_support.h
+[257.054s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__functions.h
+[257.059s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__struct.h
+[257.066s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__type_support.c
+[257.070s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__description.c
+[257.075s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__functions.c
+[257.083s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/vector3d.h
+[257.088s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[257.090s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/moving.h
+[257.100s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[257.101s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__functions.c
+[257.111s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__type_support.h
+[257.117s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__functions.h
+[257.131s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__description.c
+[257.148s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__struct.h
+[257.158s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__type_support.c
+[257.179s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/library_path.sh
+[257.191s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/library_path.dsv
+[257.208s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_generator_c.so
+[257.232s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_generator_c.so" to ""
+[257.236s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.239s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[257.246s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[257.247s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__rosidl_typesupport_fastrtps_c.h
+[257.267s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[257.278s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[257.280s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[257.281s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__rosidl_typesupport_fastrtps_c.h
+[257.290s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_fastrtps_c.so
+[257.303s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_fastrtps_c.so" to ""
+[257.306s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.309s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[257.311s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/vector3d.hpp
+[257.317s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[257.319s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__traits.hpp
+[257.340s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__builder.hpp
+[257.349s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__struct.hpp
+[257.360s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__type_support.hpp
+[257.374s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/rosidl_generator_cpp__visibility_control.hpp
+[257.385s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[257.396s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/moving.hpp
+[257.428s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[257.433s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__traits.hpp
+[257.452s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__builder.hpp
+[257.488s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__type_support.hpp
+[257.562s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__struct.hpp
+[257.579s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.585s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[257.604s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[257.612s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[257.615s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__rosidl_typesupport_fastrtps_cpp.hpp
+[257.623s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/dds_fastrtps
+[257.627s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[257.629s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[257.631s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__rosidl_typesupport_fastrtps_cpp.hpp
+[257.728s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/dds_fastrtps
+[257.732s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_fastrtps_cpp.so
+[257.772s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_fastrtps_cpp.so" to ""
+[257.777s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.784s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[257.789s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[257.792s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__rosidl_typesupport_introspection_c.h
+[257.808s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__type_support.c
+[257.828s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[257.846s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[257.849s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[257.860s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__rosidl_typesupport_introspection_c.h
+[257.871s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__type_support.c
+[257.913s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_introspection_c.so
+[257.970s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_introspection_c.so" to ""
+[257.975s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_c.so
+[257.995s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_c.so" to ""
+[257.997s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws
+[257.999s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg
+[258.000s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail
+[258.001s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__rosidl_typesupport_introspection_cpp.hpp
+[258.015s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/msg/detail/vector3d__type_support.cpp
+[258.050s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv
+[258.066s] -- Up-to-date: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail
+[258.070s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__rosidl_typesupport_introspection_cpp.hpp
+[258.109s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/include/move_ws/move_ws/srv/detail/moving__type_support.cpp
+[258.143s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_introspection_cpp.so
+[258.367s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_introspection_cpp.so" to ""
+[258.370s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_cpp.so
+[258.515s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_typesupport_cpp.so" to ""
+[258.524s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/pythonpath.sh
+[258.527s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/pythonpath.dsv
+[258.540s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws-1.0.0-py3.12.egg-info
+[258.547s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws-1.0.0-py3.12.egg-info/PKG-INFO
+[258.558s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws-1.0.0-py3.12.egg-info/SOURCES.txt
+[258.563s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws-1.0.0-py3.12.egg-info/top_level.txt
+[258.568s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws-1.0.0-py3.12.egg-info/dependency_links.txt
+[258.580s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws
+[258.584s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/_move_ws_s.ep.rosidl_typesupport_fastrtps_c.c
+[258.590s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/_move_ws_s.ep.rosidl_typesupport_c.c
+[258.598s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg
+[258.601s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg/_vector3d_s.c
+[258.613s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg/__init__.py
+[258.623s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg/_vector3d.py
+[258.662s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/__init__.py
+[258.697s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_fastrtps_c.so
+[258.721s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/_move_ws_s.ep.rosidl_typesupport_introspection_c.c
+[258.766s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_c.so
+[258.781s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_introspection_c.so
+[258.799s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv
+[258.807s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv/_moving_s.c
+[258.820s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv/__init__.py
+[258.829s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv/_moving.py
+[259.190s] Listing '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws'...
+[259.194s] Compiling '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/__init__.py'...
+[259.195s] Listing '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg'...
+[259.202s] Compiling '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg/__init__.py'...
+[259.204s] Compiling '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/msg/_vector3d.py'...
+[259.205s] Listing '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv'...
+[259.206s] Compiling '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv/__init__.py'...
+[259.207s] Compiling '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/srv/_moving.py'...
+[259.233s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_fastrtps_c.so
+[259.252s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_fastrtps_c.so" to ""
+[259.258s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_introspection_c.so
+[259.292s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_introspection_c.so" to ""
+[259.299s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_c.so
+[259.306s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/python3.12/site-packages/move_ws/move_ws_s__rosidl_typesupport_c.so" to ""
+[259.311s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_generator_py.so
+[259.318s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/libmove_ws__rosidl_generator_py.so" to ""
+[259.326s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/srv/Moving.idl
+[259.331s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/msg/Vector3d.idl
+[259.338s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/srv/Moving.srv
+[259.346s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/msg/Vector3d.msg
+[259.362s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/move_ws/service_moving
+[260.013s] -- Set non-toolchain portion of runtime path of "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/lib/move_ws/service_moving" to ""
+[260.071s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/ament_index/resource_index/package_run_dependencies/move_ws
+[260.218s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/ament_index/resource_index/parent_prefix_path/move_ws
+[260.228s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/ament_prefix_path.sh
+[260.289s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/ament_prefix_path.dsv
+[260.299s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/path.sh
+[260.310s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/environment/path.dsv
+[260.332s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/local_setup.bash
+[260.338s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/local_setup.sh
+[260.361s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/local_setup.zsh
+[260.373s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/local_setup.dsv
+[260.381s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/package.dsv
+[260.394s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/ament_index/resource_index/packages/move_ws
+[260.436s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_generator_cExport.cmake
+[260.483s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_generator_cExport-noconfig.cmake
+[260.518s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_typesupport_fastrtps_cExport.cmake
+[260.539s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[260.547s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_generator_cppExport.cmake
+[260.627s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_typesupport_fastrtps_cppExport.cmake
+[260.643s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[260.765s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_introspection_cExport.cmake
+[260.771s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[260.780s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_cExport.cmake
+[260.785s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_cExport-noconfig.cmake
+[260.796s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_introspection_cppExport.cmake
+[260.811s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[260.817s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_cppExport.cmake
+[260.824s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_ws__rosidl_typesupport_cppExport-noconfig.cmake
+[260.830s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_generator_pyExport.cmake
+[260.838s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/export_move_ws__rosidl_generator_pyExport-noconfig.cmake
+[260.844s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/rosidl_cmake-extras.cmake
+[260.854s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/ament_cmake_export_dependencies-extras.cmake
+[260.863s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/ament_cmake_export_include_directories-extras.cmake
+[260.878s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/ament_cmake_export_libraries-extras.cmake
+[260.884s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/ament_cmake_export_targets-extras.cmake
+[260.910s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[260.961s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[260.994s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_wsConfig.cmake
+[261.063s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/cmake/move_wsConfig-version.cmake
+[261.075s] -- Installing: /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws/share/move_ws/package.xml
+[261.146s] Invoked command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws
