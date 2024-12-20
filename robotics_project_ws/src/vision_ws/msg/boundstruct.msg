@@ -1,6 +1,6 @@
-int32[] class_ids
-float32[] confidences
-float32[] xmins   
-float32[] ymins     
-float32[] xmaxs   
-float32[] ymaxs    
+int32 class_id
+float32 confidence
+float32 xmin   
+float32 ymin     
+float32 xmax  
+float32 ymax   
