@@ -19,9 +19,9 @@ find_package(geometry_msgs REQUIRED)
 
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
-    "srv/DepthGet.srv"
+  "srv/DepthGet.srv"
   "msg/Point2D.msg"
-"srv/Conversion.srv"
+  "srv/Conversion.srv"
 )
 
 # Add Executables
