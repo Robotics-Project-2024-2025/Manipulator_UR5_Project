@@ -26,13 +26,13 @@ TableTransformService::TableTransformService() : Node("table_transform_service")
         perspectiveMatrix_ = cv::getPerspectiveTransform(sourcePoints_, destinationPoints_);
 
     // Initialize the ROS service
-            service_ = this->create_service<table_transform::srv::Conversion>("Conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
+            service_ = this->create_service<camera_ws::srv::Conversion>("Conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
 
             RCLCPP_INFO(this->get_logger(), "Service 'Conversion' initialized.");
     }
 
 bool TableTransformService::projectCallback(
-    const std::shared_ptr<table_transform::srv::ProjectToTable::Request> req, std::shared_ptr<table_transform::srv::ProjectToTable::Response> res)
+    const std::shared_ptr<camera_ws::srv::Conversion::Request> req, std::shared_ptr<camera_ws::srv::Conversion::Response> res)
 {
     // Input point in 3D space (considering only x and y)
     cv::Point2f inputPoint(req->x, req->y);
