@@ -26,9 +26,9 @@ TableTransformService::TableTransformService() : Node("table_transform_service")
         perspectiveMatrix_ = cv::getPerspectiveTransform(sourcePoints_, destinationPoints_);
 
     // Initialize the ROS service
-            service_ = this->create_service<table_transform::srv::conversion>("conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
+            service_ = this->create_service<table_transform::srv::Conversion>("Conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
 
-            RCLCPP_INFO(this->get_logger(), "Service 'conversion' initialized.");
+            RCLCPP_INFO(this->get_logger(), "Service 'Conversion' initialized.");
     }
 
 bool TableTransformService::projectCallback(
