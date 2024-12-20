@@ -17,7 +17,16 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/boundstruct.msg"
 )
 
+# Include Directories
+include_directories(
+  /home/ubuntu/ros2_ws/build/vision_ws/rosidl_generator_cpp
+)
 
+
+# Install targets
+# install(TARGETS service_...
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 
 # Install the launch directory
