@@ -161,7 +161,7 @@ Matrix16 receive_joint_state() {
                 ret(0)=joint_result->position[i];
             }
         }
-    } else {
+    }else {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
     }
     rclcpp::shutdown();

@@ -1,0 +1,31 @@
+[0.071s] Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws
+[1.066s] -- The C compiler identification is GNU 13.2.0
+[1.488s] -- The CXX compiler identification is GNU 13.2.0
+[1.599s] -- Detecting C compiler ABI info
+[2.630s] -- Detecting C compiler ABI info - done
+[2.717s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.720s] -- Detecting C compile features
+[2.722s] -- Detecting C compile features - done
+[2.847s] -- Detecting CXX compiler ABI info
+[3.641s] -- Detecting CXX compiler ABI info - done
+[3.746s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.754s] -- Detecting CXX compile features
+[3.776s] -- Detecting CXX compile features - done
+[3.947s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[4.345s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[5.387s] -- Found rclcpp: 28.1.5 (/opt/ros/jazzy/share/rclcpp/cmake)
+[5.817s] -- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[6.013s] -- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[6.177s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[6.369s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.016s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[7.038s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[7.774s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[7.885s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[8.113s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[8.708s] -- Found trajectory_msgs: 5.3.5 (/opt/ros/jazzy/share/trajectory_msgs/cmake)
+[9.048s] -- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[9.141s] -- Found control_msgs: 5.3.0 (/opt/ros/jazzy/share/control_msgs/cmake)
+[9.618s] -- Found rclcpp_action: 28.1.5 (/opt/ros/jazzy/share/rclcpp_action/cmake)
+[9.800s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[9.915s] -- Found rosidl_adapter: 4.6.4 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
