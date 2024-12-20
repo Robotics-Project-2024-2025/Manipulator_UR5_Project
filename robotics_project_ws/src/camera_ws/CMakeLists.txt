@@ -38,6 +38,8 @@ target_link_libraries(medium_val
   ${cpp_typesupport_target}  # Link to the generated type support
 )
 
+rosidl_target_interfaces(medium_val ${PROJECT_NAME} "rosidl_typesupport_cpp")
+
 # Include Directories
 include_directories(
   # ${CMAKE_CURRENT_SOURCE_DIR}/install/rosidl_generator_cpp
