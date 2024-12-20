@@ -11,7 +11,6 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <opencv2/opencv.hpp>
-#include "camera_ws/srv/conversion.hpp"
 
 class TableTransformService : public rclcpp::Node {
 
