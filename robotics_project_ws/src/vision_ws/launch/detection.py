@@ -14,7 +14,7 @@ class YoloBoundingBoxService(Node):
 
     def handle_bounding_boxes_request(self, request, response):
         # Run YOLO inference (replace 'image.jpg' with your image source)
-        results = self.model('image.jpg')  # Replace with a video stream or image path
+        results = self.model('/exp/Image1.png')  
 
         bounding_boxes = []
         for result in results[0].boxes:
