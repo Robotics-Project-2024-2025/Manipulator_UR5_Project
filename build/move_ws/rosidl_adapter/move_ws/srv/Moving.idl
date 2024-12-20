@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from move_ws/srv/Moving.srv
+// generated code does not contain a copyright notice
+
+#include "move_ws/msg/Vector3d.idl"
+
+module move_ws {
+  module srv {
+    struct Moving_Request {
+      move_ws::msg::Vector3d xe1;
+
+      move_ws::msg::Vector3d phie1;
+
+      int32 argc;
+
+      sequence<string> argv;
+    };
+    struct Moving_Response {
+      boolean result;
+    };
+  };
+};

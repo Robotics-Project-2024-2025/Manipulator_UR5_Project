@@ -9,6 +9,7 @@ endif()
 # Find All Packages and Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(move_ws REQUIRED)
 
 if(BUILD_TESTING)
@@ -23,6 +24,7 @@ add_executable(complete_job src/complete_job.cpp)
 ament_target_dependencies(
   complete_job
   rclcpp
+  rclcpp_action
   move_ws
 )
 

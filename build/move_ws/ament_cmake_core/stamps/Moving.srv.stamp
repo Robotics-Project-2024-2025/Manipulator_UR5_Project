@@ -1,0 +1,6 @@
+move_ws/Vector3d xe1
+move_ws/Vector3d phie1
+int32 argc
+string[] argv
+---
+bool result

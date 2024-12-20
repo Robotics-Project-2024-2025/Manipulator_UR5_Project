@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "move_ws__py",
+		"source" : "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws/move_ws__py"
+	}
+}

@@ -61,7 +61,7 @@ target_include_directories(medium_val PRIVATE
 ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
 )
 
-target_include_directories(transform_image_cpp PRIVATE
+target_include_directories(transform_image PRIVATE
   include
   ${OpenCV_INCLUDE_DIRS}
 ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp

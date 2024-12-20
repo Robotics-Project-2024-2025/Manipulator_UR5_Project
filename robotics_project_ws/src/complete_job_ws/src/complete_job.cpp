@@ -1,5 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <vector>
+#include <rclcpp_action/rclcpp_action.hpp>
 #include <move_ws/srv/moving.hpp>
 using namespace std;
 
@@ -37,53 +38,53 @@ int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     auto node = std::make_shared<rclcpp::Node>("complete_job");
-    //rclcpp::spin(std::make_shared<TrajectoryActionClient>());
-    
-    auto open_path_client_ = node.create_client<MoveService>("path_acquiring");
 
-    if (!open_path_client_->wait_for_service(10s)){
-        RCLCPP_ERROR(node->get_logger(), "Path provider not available after waiting");
-        rclcpp::shutdown();
-        return 0;
-    }
-    auto request = make_shared<MoveService::Request>();
-    request->xe1.x=0.4;
-    request->xe1.y=0.3;
-    request->xe1.z=-0.7;
-    request->phie1.x=0.0;
-    request->phie1.y=0.0;
-    request->phie1.z=0.0;
-    auto response = make_shared<bool>(false);
-    auto future=open_path_client_->async_send_request(
-    request, [response](rclcpp::Client<MoveService>::SharedFuture future_response) {
-        auto response_service=future_response.get();
-        if(response_service->result) {
-            *response=true;
-            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Request completed successfully.");
+    // Create a service client
+    auto open_path_client_ = node->create_client<MoveService>("/path_acquiring");
+
+    // Wait for the service to become available
+    while(1) {
+        if(!open_path_client_->wait_for_service(std::chrono::seconds(10))) {
+            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Path provider not available after waiting");
         }
         else {
-            *response = false;
-            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error in completing the task, redo it.");
+            break;
         }
-    });
+    }
+
+    // Create a request and populate it
+    auto request = std::make_shared<MoveService::Request>();
+    request->xe1.x = 0.4;
+    request->xe1.y = 0.3;
+    request->xe1.z = -0.7;
+    request->phie1.x = 0.0;
+    request->phie1.y = 0.0;
+    request->phie1.z = 0.0;
+
+    // Send the request asynchronously
+    auto response = std::make_shared<bool>(false);
+    auto future = open_path_client_->async_send_request(
+        request,
+        [response](rclcpp::Client<MoveService>::SharedFuture future_response) {
+            auto response_service = future_response.get();
+            if (response_service->result) {
+                *response = true;
+                RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Request completed successfully.");
+            } else {
+                *response = false;
+                RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error in completing the task, redo it.");
+            }
+        });
+
+    // Wait until the request completes
+    rclcpp::spin_until_future_complete(node, future);
+
     if (*response) {
         RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Request completed successfully.");
     } else {
         RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error in completing the task, redo it.");
     }
-/*rclcpp::spin_until_future_complete(node, future);
-    try{
-        auto result=future.get();
-        if(request->result) {
-            RCLCPP_INFO(node->get_logger(), "Request completed successfully.");
-        }
-        else {
-            RCLCPP_ERROR(node->get_logger(), "Error in completing the task, redo it.");
-        }
-    }
-    catch (const exception &e) {
-        RCLCPP_ERROR(node->get_logger(), "Service call failed: %s", e.what());
-    }*/
+
     rclcpp::shutdown();
     return 0;
 }
