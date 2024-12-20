@@ -40,7 +40,8 @@ target_link_libraries(medium_val
 
 # Include Directories
 include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/install/rosidl_generator_cpp
+  # ${CMAKE_CURRENT_SOURCE_DIR}/install/rosidl_generator_cpp
+  /home/ubuntu/ros2_ws/build/camera_ws/rosidl_generator_cpp
   ${OpenCV_INCLUDE_DIRS}
 )
 
