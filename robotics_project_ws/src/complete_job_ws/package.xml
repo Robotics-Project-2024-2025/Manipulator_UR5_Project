@@ -7,6 +7,7 @@
   <maintainer email="matteogottardelli@gmail.com">matteogottardelligmail.com</maintainer>
   <license>TODO: License declaration</license>
   <depend>rclcpp</depend>
+  <depend>move_ws</depend>
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <test_depend>ament_lint_auto</test_depend>
