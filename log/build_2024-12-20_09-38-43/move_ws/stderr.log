@@ -1,8 +1,0 @@
-[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:[m[K In function ‘[01m[Kbool[01;32m[K bestInverse[m[K(Matrix16, MatrixD6&)[m[K’:
-[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:212:12:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kconfigs[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
-  212 |     double [01;35m[Kconfigs[m[K[end.rows()];
-      |            [01;35m[K^~~~~~~[m[K
-[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:[m[K In function ‘[01m[KMatrix44[01;32m[K HomogeneousTransformGen[m[K(int, double, double, double, double)[m[K’:
-[01m[K/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/src/kinematics.cpp:371:38:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
-  371 | Matrix44 HomogeneousTransformGen([01;35m[Kint i[m[K, double theta, double alpha, double d, double a){
-      |                                  [01;35m[K~~~~^[m[K

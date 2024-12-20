@@ -1,5 +1,0 @@
-source;share/complete_job_ws/local_setup.bash
-source;share/complete_job_ws/local_setup.dsv
-source;share/complete_job_ws/local_setup.ps1
-source;share/complete_job_ws/local_setup.sh
-source;share/complete_job_ws/local_setup.zsh
