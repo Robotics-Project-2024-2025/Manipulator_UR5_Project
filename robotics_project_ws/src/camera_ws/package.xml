@@ -3,7 +3,7 @@
   <name>camera_ws</name>
   <version>1.0.0</version>
   <description>Camera Image Acquisition</description>
-  <maintainer email="umatteogottardelli@gmail.com">Matteo Gottardelli</maintainer>
+  <maintainer email="matteogottardelli@gmail.com">Matteo Gottardelli</maintainer>
   <license>TODO: License declaration</license>
 
   <depend>rclcpp</depend>
