@@ -25,7 +25,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/DepthGet.srv"
+  "srv/3Dto2D.srv"
 )
 
 # Add Executables
