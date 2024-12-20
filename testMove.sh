@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -r ~/ros2_ws/src/ros2_ur5_interface
 cd /home/ubuntu/ros2_ws/
 
 rosdep install -i --from-path src --rosdistro rolling -y
