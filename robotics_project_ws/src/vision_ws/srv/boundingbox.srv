@@ -1,7 +1,2 @@
 ---
-int32[] class_ids        # List of class IDs
-float32[] confidences    # List of confidence scores
-float32[] xmins          # List of xmin coordinates
-float32[] ymins          # List of ymin coordinates
-float32[] xmaxs          # List of xmax coordinates
-float32[] ymaxs          # List of ymax coordinates
+vision_ws/boundingbox[] box
