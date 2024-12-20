@@ -21,7 +21,7 @@ private:
     cv::Mat perspectiveMatrix_;   // Transformation matrix
     std::vector<cv::Point2f> sourcePoints_; // Source points (3D image table corners)
     std::vector<cv::Point2f> destinationPoints_; // Destination points (2D table plane)
-    rclcpp::Service<table_transform::srv::ProjectToTable>::SharedPtr service_;
+    rclcpp::Service<camera_ws::srv::Conversion>::SharedPtr service_;
 
     // Callback function for the service
     bool projectCallback(const std::shared_ptr<camera_ws::srv::Conversion::Request> req, std::shared_ptr<camera_ws::srv::Conversion::Response> res);
