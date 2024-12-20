@@ -1,6 +1,6 @@
-float32 x   # Input: X coordinate in 3D
-float32 y   # Input: Y coordinate in 3D
+float32 x
+float32 y
 ---
-float32 x_2d  # Output: X coordinate in 2D
-float32 y_2d  # Output: Y coordinate in 2D
-bool success  # Output: Conversion success indicator
+float32 x_2d
+float32 y_2d
+bool success
