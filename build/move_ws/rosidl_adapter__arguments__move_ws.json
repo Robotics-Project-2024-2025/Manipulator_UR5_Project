@@ -1,7 +1,0 @@
-{
-  "package_name": "move_ws",
-  "non_idl_tuples": [
-    "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws:srv/Moving.srv",
-    "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws:msg/Vector3d.msg"
-  ]
-}
