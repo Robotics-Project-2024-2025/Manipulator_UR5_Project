@@ -11,7 +11,7 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <opencv2/opencv.hpp>
-#include "camera_ws/srv/3_dto2_d.hpp"
+#include "camera_ws/srv/three_dto2_d.hpp"
 
 class TableTransformService : public rclcpp::Node {
 
