@@ -92,6 +92,15 @@ ament_target_dependencies(medium_val
 rosidl_typesupport_cpp
 )
 
+ament_target_dependencies(transform_image
+  rclcpp
+  sensor_msgs
+  control_msgs
+  OpenCV
+  rosidl_default_generators
+rosidl_typesupport_cpp
+)
+
 target_link_libraries(medium_val
   ${rclcpp_LIBRARIES}
   ${camera_ws_LIBRARIES}  # Make sure this is pointing to the generated service type support libraries
