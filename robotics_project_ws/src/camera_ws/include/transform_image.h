@@ -25,13 +25,6 @@ private:
 
     // Callback function for the service
     bool projectCallback(const std::shared_ptr<table_transform::srv::ProjectToTable::Request> req, std::shared_ptr<table_transform::srv::ProjectToTable::Response> res);
-
-        // Assign the transformed coordinates to the response
-        res.x_2d = outputPoints[0].x;
-        res.y_2d = outputPoints[0].y;
-        res.success = true;
-        return true;
-    }
 };
 
 
