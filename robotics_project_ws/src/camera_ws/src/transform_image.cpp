@@ -1,84 +1,68 @@
-
 #include <iostream>
 #include "transform_image.h"
 
-// Function to calculate table dimensions based on the camera and image points
-cv::Size2d calculateTableDimensions(const std::vector<cv::Point2f>& imagePoints, const Camera& cam, int imageWidth, int imageHeight) {
-    // Extract table corners
-    double bottom_left_y = imagePoints[0].y;
 
-    double top_left_x = imagePoints[1].x;
-    double top_left_y = imagePoints[1].y;
+TableTransformService::TableTransformService() : Node("table_transform_service"){
+        // Define the source and destination points
+        sourcePoints_.push_back(cv::Point2f(19, 313));  // First table vertex
+        sourcePoints_.push_back(cv::Point2f(175, 88));  // Second table vertex
+        sourcePoints_.push_back(cv::Point2f(423, 81));  // Third table vertex
+        sourcePoints_.push_back(cv::Point2f(635, 288)); // Fourth table vertex
 
-    double top_right_x = imagePoints[2].x;
+        destinationPoints_.push_back(cv::Point2f(0, 360));  // First vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(0, 0));    // Second vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(640, 0));  // Third vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(640, 360)); // Fourth vertex in 2D plane
 
-    // Calculate horizontal and vertical FOV in radians
-    double fov_horizontal = 2.0 * atan(tan(cam.fov / 2.0) * (static_cast<double>(imageWidth) / imageHeight));
+        // Compute the perspective transformation matrix
+        perspectiveMatrix_ = cv::getPerspectiveTransform(sourcePoints_, destinationPoints_);
 
-    // Distance from the camera to the table plane
-    double distance_to_plane = cam.z / cos(cam.pitch);
+    // Initialize the ROS service
+            service_ = this->create_service<table_transform::srv::3Dto2D>("3Dto2D", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
 
-    // Table width (physical size)
-    double table_width = 2.0 * distance_to_plane * tan(fov_horizontal / 2.0) *
-                         (top_right_x - top_left_x) / imageWidth;
-
-    // Table depth (physical size)
-    double table_depth = 2.0 * distance_to_plane * tan(cam.fov / 2.0) *
-                         (bottom_left_y - top_left_y) / imageHeight;
-
-    return cv::Size2d(table_width, table_depth);
-}
-
-int main() {
-    // Load the original image
-    cv::Mat input = cv::imread("Image1.png");
-    if (input.empty()) {
-        std::cerr << "Error: Unable to load the image." << std::endl;
-        return -1;
+            RCLCPP_INFO(this->get_logger(), "Service '3Dto2D' initialized.");
     }
 
-    // Define the camera parameters
-    Camera cam;
+bool TableTransformService::projectCallback(
+    const std::shared_ptr<table_transform::srv::ProjectToTable::Request> req, std::shared_ptr<table_transform::srv::ProjectToTable::Response> res)
+{
+    // Input point in 3D space (considering only x and y)
+    cv::Point2f inputPoint(req->x, req->y);
 
-    // Coordinates of the table corners in the image (in pixels)
-    std::vector<cv::Point2f> imagePoints = {
-        cv::Point2f(19, 313),   // Bottom-left corner
-        cv::Point2f(175, 88),   // Top-left corner
-        cv::Point2f(423, 81),   // Top-right corner
-        cv::Point2f(635, 288)   // Bottom-right corner
-    };
+    // Transform the point to the 2D table plane
+    std::vector<cv::Point2f> inputPoints = {inputPoint};
+    std::vector<cv::Point2f> outputPoints;
 
-    // Calculate the table's physical dimensions
-    cv::Size2d tableSize = calculateTableDimensions(imagePoints, cam, input.cols, input.rows);
-    std::cout << "Table dimensions (width x depth): "
-              << tableSize.width << "m x " << tableSize.height << "m" << std::endl;
+    try
+    {
+        cv::perspectiveTransform(inputPoints, outputPoints, perspectiveMatrix_);
+    }
+    catch (const std::exception &e)
+    {
+        RCLCPP_ERROR(this->get_logger(), "Perspective transformation error: %s", e.what());
+        res->success = false;
+        return false;
+    }
 
-    // Coordinates of the table in the rectified space (in meters)
-    std::vector<cv::Point2f> tablePoints = {
-        cv::Point2f(0.0, tableSize.height),      // Bottom-left corner
-        cv::Point2f(0.0, 0.0),                   // Top-left corner
-        cv::Point2f(tableSize.width, 0.0),       // Top-right corner
-        cv::Point2f(tableSize.width, tableSize.height) // Bottom-right corner
-    };
+    if (outputPoints.empty())
+    {
+        res->success = false;
+        return false;
+    }
+    
+    // Assign the transformed coordinates to the response
+    res->x_2d = outputPoints[0].x;
+    res->y_2d = outputPoints[0].y;
+    res->success = true;
+    return true;
+}
 
-    // Compute the perspective transformation matrix
-    cv::Mat homography = cv::getPerspectiveTransform(imagePoints, tablePoints);
-
-    // Rectified image dimensions (e.g., 800x600 pixels)
-    int output_width = 800;
-    int output_height = 600;
-
-    // Apply the perspective transformation
-    cv::Mat output;
-    cv::warpPerspective(input, output, homography, cv::Size(output_width, output_height));
-
-    // Display the original and rectified images
-    cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_D.png", input);
-    cv::imshow("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_2D.png", output);
-
-    // Save the rectified image
-    cv::imwrite("/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/Image_2D.png", output);
-
-    cv::waitKey(0);
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<TableTransformService>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
     return 0;
 }
+
