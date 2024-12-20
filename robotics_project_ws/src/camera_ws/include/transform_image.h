@@ -24,7 +24,7 @@ private:
     rclcpp::Service<table_transform::srv::ProjectToTable>::SharedPtr service_;
 
     // Callback function for the service
-    bool projectCallback(const std::shared_ptr<table_transform::srv::ProjectToTable::Request> req, std::shared_ptr<table_transform::srv::ProjectToTable::Response> res);
+    bool projectCallback(const std::shared_ptr<camera_ws::srv::Conversion::Request> req, std::shared_ptr<camera_ws::srv::Conversion::Response> res);
 };
 
 
