@@ -1,5 +1,5 @@
 #!/bin/bash
-
+rm -r ~/ros2_ws/src/ros2_ur5_interface
 cd ~/ros2_ws/src/Manipulator_UR5_Project
 
 chmod +x *.sh
