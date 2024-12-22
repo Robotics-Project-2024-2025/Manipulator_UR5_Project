@@ -1,1 +1,0 @@
-Invoking command in '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/build/move_ws': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/move_ws -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/install/move_ws

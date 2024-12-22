@@ -2,6 +2,7 @@
 #include <vector>
 #include <rclcpp_action/rclcpp_action.hpp>
 #include <move_ws/srv/moving.hpp>
+#include "kin_communication.h"
 using namespace std;
 
 /*class TrajectoryActionClient : public rclcpp::Node
@@ -33,14 +34,17 @@ private:
 }*/
 
 using MoveService=move_ws::srv::Moving;
+shared_ptr<const sensor_msgs::msg::JointState> joint_state_;
 
-int main(int argc, char **argv)
+int main(int argc, const char* argv[])
 {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<rclcpp::Node>("complete_job");
-
+    Matrix16 qEs;
+    qEs=receive_joint_state();
+    rclcpp::init(argc, argv);
+    qEs=receive_joint_state();
     // Create a service client
-    auto open_path_client_ = node->create_client<MoveService>("/path_acquiring");
+    auto open_path_client_ = node->create_client<MoveService>("service_path");
 
     // Wait for the service to become available
     while(1) {
@@ -60,8 +64,11 @@ int main(int argc, char **argv)
     request->phie1.x = 0.0;
     request->phie1.y = 0.0;
     request->phie1.z = 0.0;
-
+    for (int i=0; i<NUM_JOINTS; i++) {
+        request->joints[i]=qEs(i);
+    }
     // Send the request asynchronously
+    rclcpp::init(argc, argv);
     auto response = std::make_shared<bool>(false);
     auto future = open_path_client_->async_send_request(
         request,

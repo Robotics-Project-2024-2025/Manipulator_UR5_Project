@@ -59,7 +59,8 @@ MyVector::MyVector() : Node("path_acquiring") {
         auto shared_this=shared_ptr<MyVector>(this);
         while(rclcpp::ok()) {
             RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to take path vectors xe1(x,y,z) phie1(x,y,z)");
-            rclcpp::spin(shared_this);
+            rclcpp::spin_some(shared_this);
+            this_thread::sleep_for(std::chrono::seconds(5));
         }
 }
 
@@ -67,19 +68,20 @@ MyVector::MyVector() : Node("path_acquiring") {
 void MyVector::calculatePath(
     const shared_ptr<MoveService::Request> request,
     shared_ptr<MoveService::Response> response){
-    Matrix16 qES;
-    qES=receive_joint_state();
     //cout << qES << endl;
     MatrixD6 th;
     double time = 4.0;
     Vector3d v, p;
     v << request->xe1.x, request->xe1.y, request->xe1.z;
     p << request->phie1.x, request->phie1.y, request->phie1.z;
+    Matrix16 qES;
+    for (int i=0; i<NUM_JOINTS; i++) {
+        qES(i)=request->joints[i];
+    }
     //cout << "Checking Position" << endl;
     if(checkPosition(v, qES)) {
         if(p2pMotionPlan(qES, v, p, time, &th)) {
             //cout << "Moving to HOME" << endl;
-            //setupCommunication(request->argc, request->argv);
             send_trajectory(th);
         }
         else {
@@ -100,7 +102,6 @@ void MyVector::calculatePath(
     */
     //setupCommunication(request->argc, request->argv);
     //return true;
-    response->result = true;
 }
 
 int main (int argc, const char* argv[]) {
