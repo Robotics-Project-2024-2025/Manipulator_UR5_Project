@@ -16,10 +16,9 @@ TrajectoryActionClient::TrajectoryActionClient(MatrixD6 Th) : Node("trajectory_p
     action_client_ = rclcpp_action::create_client<FollowJointTrajectory>(
         this, "/scaled_joint_trajectory_controller/follow_joint_trajectory");
     // Wait for the action server to be available
-    if (!action_client_->wait_for_action_server(10s))
+    while(!action_client_->wait_for_action_server(10s))
     {
         RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
-        rclcpp::shutdown();
     }
     publish_iter(Th);
 }
@@ -161,10 +160,9 @@ Matrix16 receive_joint_state() {
                 ret(0)=joint_result->position[i];
             }
         }
-    } else {
+    }else {
         RCLCPP_WARN(rclcpp::get_logger("main"), "No JointState received.");
     }
-    rclcpp::shutdown();
     cout << "End Joint State Receiving" << endl;
     return ret;
 }
