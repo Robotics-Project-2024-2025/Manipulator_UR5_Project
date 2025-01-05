@@ -22,9 +22,10 @@ if(BUILD_TESTING)
 endif()
 
 # Build Executable
-add_executable(complete_job src/complete_job.cpp ../move_ws/src/kin_communication.cpp)
+add_executable(complete_job src/complete_job.cpp ../move_ws/src/kin_communication.cpp ../move_ws/src/kinematics.cpp)
 
 target_include_directories( complete_job PRIVATE
+    Include
     ${CMAKE_CURRENT_SOURCE_DIR}/../move_ws/include
     ${EIGEN3_INCLUDE_DIR}
 )
@@ -40,7 +41,7 @@ ament_target_dependencies(
   move_ws
 )
 
-# Install the Executable
+# Install targets
 install(TARGETS complete_job
   DESTINATION lib/${PROJECT_NAME}
 )

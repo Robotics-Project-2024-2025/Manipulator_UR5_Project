@@ -22,7 +22,7 @@
 
 using namespace std;
 
-bool path(Vector3d xE1, Vector3d phiE1, int argc, const char* argv[]);  
+bool path(Vector3d xE1, Vector3d phiE1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node);
 
 using MoveService=move_ws::srv::Moving;
 

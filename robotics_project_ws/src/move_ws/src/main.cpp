@@ -14,7 +14,9 @@ using namespace Eigen;
 
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
-    auto node_s=make_shared<MyVector>();
+    while(1) {
+        auto node_s=make_shared<MyVector>();
+    }
     rclcpp::shutdown();
     return 0;
 }

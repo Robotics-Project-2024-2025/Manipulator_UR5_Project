@@ -8,6 +8,7 @@ SCRIPT1="setupVRiz.sh"
 SCRIPT2="setupGazebo.sh"
 SCRIPT3="testCamera.sh"
 SCRIPT4="testMove.sh"
+SCRIPT5="start.sh"
 
 if ! command -v terminator &> /dev/null; then
     echo "Terminator not found. Please install it using: sudo apt install terminator"
@@ -30,5 +31,6 @@ run_in_terminator "$SCRIPT1"
 run_in_terminator "$SCRIPT2"
 run_in_terminator "$SCRIPT3"
 run_in_terminator "$SCRIPT4"
+run_in_terminator "$SCRIPT5"
 
 echo "All scripts completed."

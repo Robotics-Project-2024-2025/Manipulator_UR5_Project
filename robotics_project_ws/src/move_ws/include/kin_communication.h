@@ -42,33 +42,37 @@ using namespace Eigen;
 using MatrixD6=Matrix<double, -1, 6>;
 
 using namespace std::chrono_literals;
-
+using FollowJointTrajectory = control_msgs::action::FollowJointTrajectory;
+using GoalHandleFollowJointTrajectory = rclcpp_action::ClientGoalHandle<FollowJointTrajectory>;
 class TrajectoryActionClient : public rclcpp::Node
 {
 public:
-    using FollowJointTrajectory = control_msgs::action::FollowJointTrajectory;
-    using GoalHandleFollowJointTrajectory = rclcpp_action::ClientGoalHandle<FollowJointTrajectory>;
-    TrajectoryActionClient(MatrixD6 Th);
+    TrajectoryActionClient(MatrixD6 Th, std::shared_ptr<rclcpp::Node> node);
 private:
     rclcpp_action::Client<FollowJointTrajectory>::SharedPtr action_client_;
     rclcpp::TimerBase::SharedPtr timer_;
+    std::shared_ptr<rclcpp::Node> origin_node;
     void publish_iter(MatrixD6 Th);
     void init_Trajectory(trajectory_msgs::msg::JointTrajectory* traj_msg);
     string chooseName(int index);
     void naming_Points(trajectory_msgs::msg::JointTrajectory* traj_msg);
     void add_point(trajectory_msgs::msg::JointTrajectory* traj_msg, trajectory_msgs::msg::JointTrajectoryPoint p);
     void publish_trajectory(trajectory_msgs::msg::JointTrajectory traj_msg);
+    void handle_trajectory_success();
+    trajectory_msgs::msg::JointTrajectory traj_msg;
 };
+
 class JointReceiver : public rclcpp::Node
 {
 public:
     JointReceiver();
-    shared_ptr<const sensor_msgs::msg::JointState> get_joint_state() const;
+    shared_ptr<const
+    sensor_msgs::msg::JointState>get_joint_state() const;
 private:
     rclcpp::Subscription< sensor_msgs::msg::JointState>::SharedPtr joint_receiver_;
     shared_ptr<const sensor_msgs::msg::JointState> joint_state_;
 };
 Matrix16 receive_joint_state();
-void send_trajectory(MatrixD6 th);
+void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node);
 void setupCommunication(int argc, const char* argv[]);
 #endif /* kin_communication_h */
