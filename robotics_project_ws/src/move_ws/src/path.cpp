@@ -8,62 +8,17 @@
 #include "path.h"
 using namespace std;
 
-bool path(Vector3d xe1, Vector3d phie1, int argc, const char* argv[]){
-    Matrix16 qES;
-    qES=receive_joint_state();
-    cout << qES << endl;
-    MatrixD6 th;
-    int j=0;
-    do {
-        double tmp;
-        cout << "Insert value " << j+1 << "for xe1: ";
-        cin >> tmp;
-        if(tmp >= -1 && tmp <= 1){
-            xe1(j) = tmp;
-            j++;
-        }
-        else{
-            cout << endl << "Invalid value" << endl;
-            return false;
-        }
-    } while(j<3);
-    double time;
-    cout << "Insert Time: ";
-    cin >> time;
-    cout << "Checking Position" << endl;
-    if(checkPosition(xe1, qES)) {
-        if(p2pMotionPlan(qES, xe1, phie1, time, &th)) {
-            cout << "Moving to HOME" << endl;
-            setupCommunication(argc, argv);
-            send_trajectory(th);
-        }
-        else {
-            cout << "Error in computation of trajectory to point " << xe1 << endl;
-            return false;
-        }
-    }
-    else {
-        cout << "Impossible to Reach the final Position " << xe1 << endl;
-        return false;
-    }
-    cout << "Control vector xe1 integrity:";
-    for(int i=0; i<3; i++){
-        cout << endl << xe1(i) << " ";
-    }
-    setupCommunication(argc, argv);
-    return true;
-}
 
 MyVector::MyVector() : Node("path_acquiring") {
-        service_=this->create_service<MoveService>("service_path", bind(&MyVector::calculatePath, this, std::placeholders::_1, std::placeholders::_2));
-        auto shared_this=shared_ptr<MyVector>(this);
-        while(rclcpp::ok()) {
-            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to take path vectors xe1(x,y,z) phie1(x,y,z)");
-            rclcpp::spin_some(shared_this);
-            this_thread::sleep_for(std::chrono::seconds(5));
-        }
+    service_=this->create_service<MoveService>("service_path", bind(&MyVector::calculatePath, this, std::placeholders::_1, std::placeholders::_2));
+    auto shared_this=shared_ptr<MyVector>(this);
+    while(1) {
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to take path vectors xe1(x,y,z) phie1(x,y,z)");
+        //rclcpp::spin_some(shared_this);
+        rclcpp::spin(shared_this);
+        this_thread::sleep_for(std::chrono::seconds(5));
+    }
 }
-
 
 void MyVector::calculatePath(
     const shared_ptr<MoveService::Request> request,
@@ -78,35 +33,130 @@ void MyVector::calculatePath(
     for (int i=0; i<NUM_JOINTS; i++) {
         qES(i)=request->joints[i];
     }
-    //cout << "Checking Position" << endl;
-    if(checkPosition(v, qES)) {
-        if(p2pMotionPlan(qES, v, p, time, &th)) {
-            //cout << "Moving to HOME" << endl;
+    RCLCPP_INFO(this->get_logger(), "Checking Position");
+    if (!checkPosition(v, qES)) {
+        RCLCPP_ERROR(this->get_logger(), "Target position is unreachable");
+        response->result = false;
+        return;
+    }
+
+    if (!p2pMotionPlan(qES, v, p, time, &th)) {
+        RCLCPP_ERROR(this->get_logger(), "Error in trajectory computation");
+        response->result = false;
+        return;
+    }
+    RCLCPP_INFO(this->get_logger(), "Trajectory planning successful, sending trajectory");
+    std::mutex mtx;
+    std::condition_variable cv;
+    bool action_completed = false;
+    bool action_result = false;
+    int retries=0;
+    int max_retries=0;
+    auto traj_node=std::make_shared<TrajectoryActionClient>(th);
+    // Prepare goal
+    auto goal_msg = FollowJointTrajectory::Goal();
+    //goal_msg.trajectory = traj_node->get_trajectory(); // Convert your trajectory to ROS msg
+
+    // Prepare action client options
+    auto send_goal_options = rclcpp_action::Client<FollowJointTrajectory>::SendGoalOptions();
+    //auto action_client_=traj_node->get_action_client();
+    send_goal_options.goal_response_callback =
+    [this, &retries, max_retries, &action_result, &goal_msg, &action_completed, &send_goal_options, &cv, &mtx](const GoalHandleFollowJointTrajectory::SharedPtr& goal_handle) {
+    if (!goal_handle) {
+    RCLCPP_ERROR(this->get_logger(), "Goal was rejected by the server");
+
+    // Retry logic
+        if (retries < max_retries) {
+           retries++;
+           RCLCPP_INFO(this->get_logger(), "Retrying goal submission... Attempt %d of %d", retries, max_retries);
+           // Retry sending the goal after a delay
+           std::this_thread::sleep_for(std::chrono::seconds(1)); // Delay before retry
+           //action_client_->async_send_goal(goal_msg, send_goal_options); // Resend goal
+        } else {
+           RCLCPP_ERROR(this->get_logger(), "Max retries reached. Not retrying further.");
+           action_completed = true; // End the action after max retries
+           action_result = false;
+           cv.notify_one(); // Notify to exit waiting
+        }
+    } else {
+        RCLCPP_INFO(this->get_logger(), "Goal accepted by the server");
+    }
+    };
+
+    send_goal_options.result_callback =
+        [&action_completed, &action_result, &cv, &mtx, this](const GoalHandleFollowJointTrajectory::WrappedResult& result) {
+            {
+                std::lock_guard<std::mutex> lock(mtx);
+                action_completed = true;
+
+                if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+                    RCLCPP_INFO(this->get_logger(), "Goal succeeded");
+                    action_result = true;
+                } else {
+                    //RCLCPP_ERROR(this->get_logger(), "Goal failed with code: %d", result.code);
+                    action_result = false;
+                }
+            }
+            cv.notify_one();
+        };
+
+    // Send the goal asynchronously
+    /*if (!action_client_->wait_for_action_server()) {
+        RCLCPP_ERROR(this->get_logger(), "Action server not available!");
+        response->result = false;
+        return;
+    }*/
+    //action_client_->async_send_goal(goal_msg, send_goal_options);
+    RCLCPP_INFO(this->get_logger(), "Trajectory Sent");
+    std::thread spin_thread([traj_node]() {
+            rclcpp::executors::SingleThreadedExecutor executor;
+            executor.add_node(traj_node);
+            executor.spin();
+            executor.remove_node(traj_node);
+        });
+    // Wait for the action to complete
+    {
+        std::unique_lock<std::mutex> lock(mtx);
+        RCLCPP_INFO(this->get_logger(), "In Mutex");
+        cv.wait(lock, [&action_completed] { return action_completed; });
+    }
+    spin_thread.detach();
+    RCLCPP_INFO(this->get_logger(), "Out Mutex");
+    if (action_result) {
+        RCLCPP_INFO(this->get_logger(), "Trajectory execution successful");
+        response->result =true;
+    } else {
+        RCLCPP_ERROR(this->get_logger(), "Trajectory execution failed");
+        response->result =false;
+    }
+}
+bool path(Vector3d xe1, Vector3d phie1, Matrix61 joint_states, std::shared_ptr<rclcpp::Node> node){
+    MatrixD6 th;
+    double time = 4.0;
+    RCLCPP_INFO(node->get_logger(), "Checking Position");
+    if(checkPosition(xe1, joint_states)) {
+        if(p2pMotionPlan(joint_states, xe1, phie1, time, &th)) {
+            RCLCPP_INFO(node->get_logger(), "Moving to HOME");
             send_trajectory(th);
         }
         else {
-            //cout << "Error in computation of trajectory to point " << request->xe1 << endl;
-            //return false;
-            response->result = false;
+            RCLCPP_INFO(node->get_logger(), "Error in computation of trajectory to point ");
+            return false;
         }
     }
     else {
-        //cout << "Impossible to Reach the final Position " << request->xe1 << endl;
-        //return false;
-        response->result = false;
+        RCLCPP_INFO(node->get_logger(), "Impossible to Reach the final Position ");
+        return false;
     }
-    //cout << "Control vector xe1 integrity:";
-   /*for(int i=0; i<3; i++){
-        cout << endl << request->xe1(i) << " ";
-    }
-    */
-    //setupCommunication(request->argc, request->argv);
-    //return true;
+    return true;
 }
 
 int main (int argc, const char* argv[]) {
     rclcpp::init(argc, argv);
-    auto node_s=make_shared<MyVector>();
+    while (1) {
+        auto node=make_shared<MyVector>();
+    }
     rclcpp::shutdown();
     return 0;
 }
+

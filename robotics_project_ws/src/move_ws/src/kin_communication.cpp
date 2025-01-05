@@ -6,13 +6,15 @@
 //
 
 #include "kin_communication.h"
+#include "complete_job.h"
 using FollowJointTrajectory = control_msgs::action::FollowJointTrajectory;
 using GoalHandleFollowJointTrajectory = rclcpp_action::ClientGoalHandle<FollowJointTrajectory>;
 
-TrajectoryActionClient::TrajectoryActionClient(MatrixD6 Th) : Node("trajectory_publisher")
+TrajectoryActionClient::TrajectoryActionClient(MatrixD6 Th, std::shared_ptr<rclcpp::Node> node) : Node("trajectory_publisher")
 {
     // Create a publisher for the scaled joint trajectory controller
     //action_client_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>("/scaled_joint_trajectory_controller/joint_trajectory", 10);
+    origin_node=node;
     action_client_ = rclcpp_action::create_client<FollowJointTrajectory>(
         this, "/scaled_joint_trajectory_controller/follow_joint_trajectory");
     // Wait for the action server to be available
@@ -76,20 +78,22 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
 
     // Send the goal to the action server
     auto send_goal_options = rclcpp_action::Client<FollowJointTrajectory>::SendGoalOptions();
+    
+    // Variable to store goal handle
+    GoalHandleFollowJointTrajectory::SharedPtr goal_handle = nullptr;
+
     send_goal_options.goal_response_callback =
-        [this](const GoalHandleFollowJointTrajectory::SharedPtr& goal_handle) {
-            if (!goal_handle)
-            {
+        [this, &goal_handle](const GoalHandleFollowJointTrajectory::SharedPtr& goal_handle_response) {
+            goal_handle = goal_handle_response;  // Store the goal handle
+            if (!goal_handle) {
                 RCLCPP_ERROR(this->get_logger(), "Goal was rejected by the server");
-            }
-            else
-            {
+            } else {
                 RCLCPP_INFO(this->get_logger(), "Goal accepted by the server, waiting for result");
             }
         };
 
     send_goal_options.result_callback =
-        [this](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
+        [this, &goal_handle](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
             switch (result.code)
             {
             case rclcpp_action::ResultCode::SUCCEEDED:
@@ -105,10 +109,32 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
                 RCLCPP_ERROR(this->get_logger(), "Unknown result code");
                 break;
             }
+            // Cancel the goal if it wasn't successful
+            /*if (goal_handle && result.code != rclcpp_action::ResultCode::SUCCEEDED) {
+                           RCLCPP_INFO(this->get_logger(), "Canceling the goal...");
+                           // Avoid calling cancel on invalid goal handle
+               if (goal_handle) {
+                   action_client_->async_cancel_goal(goal_handle);  // Cancel the goal if it's valid
+               }
+               rclcpp::shutdown();
+           }
+            else {*/
+                oneIteration(this->origin_node);
+            //}
+            return;
         };
-        action_client_->async_send_goal(goal_msg, send_goal_options);
 
+    // Send the goal to the action server
+    auto goal_handle_future = action_client_->async_send_goal(goal_msg, send_goal_options);
+    RCLCPP_INFO(this->get_logger(), "Waiting");
+
+    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), goal_handle_future, std::chrono::seconds(30)) != rclcpp::FutureReturnCode::SUCCESS) {
+        RCLCPP_ERROR(this->get_logger(), "Goal failed to complete in time.");
+    }
+
+    RCLCPP_INFO(this->get_logger(), "Ended");
 }
+
 
 JointReceiver::JointReceiver() : Node("arm_receiver") {
         joint_receiver_ = this->create_subscription<sensor_msgs::msg::JointState>(
@@ -130,10 +156,10 @@ shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() 
     return joint_state_;
 }
 
-void send_trajectory(MatrixD6 th) {
+void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node) {
     cout << "Sending trajectory..." << endl;
-    rclcpp::spin(std::make_shared<TrajectoryActionClient>(th));
-    rclcpp::shutdown();
+    rclcpp::spin(std::make_shared<TrajectoryActionClient>(th, node));
+    //rclcpp::shutdown();
     cout << "End Sending trajectory" << endl;
 }
 

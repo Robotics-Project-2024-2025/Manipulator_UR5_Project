@@ -4,8 +4,8 @@ cd /home/ubuntu/ros2_ws/
 
 rosdep install -i --from-path src --rosdistro rolling -y
 
-colcon build --symlink-install --packages-select block_spawner_ws_pkg
+colcon build --symlink-install --packages-select complete_job_ws
 
 source install/setup.bash
 
-ros2 run block_spawner_ws_pkg block_spawner
+ros2 run complete_job_ws complete_job
