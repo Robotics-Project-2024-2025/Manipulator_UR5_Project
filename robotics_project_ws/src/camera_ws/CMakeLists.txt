@@ -20,7 +20,8 @@ find_package(geometry_msgs REQUIRED)
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/DepthGet.srv"
-"msg/Point2D.msg"
+  "msg/Point2D.msg"
+  "srv/Conversion.srv"
 )
 
 # Add Executables
@@ -37,9 +38,12 @@ target_link_libraries(medium_val
   ${cpp_typesupport_target}  # Link to the generated type support
 )
 
+rosidl_target_interfaces(medium_val ${PROJECT_NAME} "rosidl_typesupport_cpp")
+
 # Include Directories
 include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/install/rosidl_generator_cpp
+  # ${CMAKE_CURRENT_SOURCE_DIR}/install/rosidl_generator_cpp
+  /home/ubuntu/ros2_ws/build/camera_ws/rosidl_generator_cpp
   ${OpenCV_INCLUDE_DIRS}
 )
 
@@ -83,6 +87,15 @@ ament_target_dependencies(points_camera
 )
 
 ament_target_dependencies(medium_val
+  rclcpp
+  sensor_msgs
+  control_msgs
+  OpenCV
+  rosidl_default_generators
+rosidl_typesupport_cpp
+)
+
+ament_target_dependencies(transform_image
   rclcpp
   sensor_msgs
   control_msgs

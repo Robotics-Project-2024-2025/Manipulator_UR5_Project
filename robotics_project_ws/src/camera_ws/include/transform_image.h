@@ -9,19 +9,25 @@
 #define __TRANSFORM_IMAGE__
 
 
+#include <rclcpp/rclcpp.hpp>
 #include <opencv2/opencv.hpp>
-#include <iostream>
-#include <cmath>
+#include "camera_ws/srv/conversion.hpp"
 
-struct Camera {
-    double x = -0.5;      // Camera position along the X-axis
-    double y = 0.5;       // Camera position along the Y-axis
-    double z = 1.2;       // Camera height along the Z-axis
-    double pitch = 0.4;   // Camera pitch (in radians)
-    double yaw = -0.06;   // Camera yaw (in radians)
-    double fov = 1.047;   // Vertical field of view (in radians, ~60 degrees)
+
+class TableTransformService : public rclcpp::Node {
+
+public:
+    TableTransformService() : Node("table_transform_service");
+
+private:
+    cv::Mat perspectiveMatrix_;   // Transformation matrix
+    std::vector<cv::Point2f> sourcePoints_; // Source points (3D image table corners)
+    std::vector<cv::Point2f> destinationPoints_; // Destination points (2D table plane)
+    rclcpp::Service<camera_ws::srv::Conversion>::SharedPtr service_;
+
+    // Callback function for the service
+    bool projectCallback(const std::shared_ptr<camera_ws::srv::Conversion::Request> req, std::shared_ptr<camera_ws::srv::Conversion::Response> res);
 };
 
-cv::Size2d calculateTableDimensions(const std::vector<cv::Point2f>& imagePoints, const Camera& cam, int imageWidth, int imageHeight);
 
 #endif /*trasform_image.h*/
