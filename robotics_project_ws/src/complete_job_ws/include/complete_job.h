@@ -10,7 +10,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <vector>
 #include <rclcpp_action/rclcpp_action.hpp>
-#include <move_ws/srv/moving.hpp>
+#include "std_srvs/srv/trigger.hpp"
 #include <Eigen/Dense>
 #include "kin_communication.h"
 #include "kinematics.h"
