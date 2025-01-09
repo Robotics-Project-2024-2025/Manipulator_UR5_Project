@@ -5,4 +5,3 @@
 [submodule "ros2_ur5_interface"]
 	path = ros2_ur5_interface
 	url = https://github.com/Gotta003/ros2_ur5_interface.git
-	branch = main
