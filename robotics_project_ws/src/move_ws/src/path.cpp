@@ -137,7 +137,7 @@ bool path(Vector3d xe1, Vector3d phie1, Matrix61 joint_states, std::shared_ptr<r
     if(checkPosition(xe1, joint_states)) {
         if(p2pMotionPlan(joint_states, xe1, phie1, time, &th)) {
             RCLCPP_INFO(node->get_logger(), "Moving to HOME");
-            send_trajectory(th);
+            send_trajectory(th, node);
         }
         else {
             RCLCPP_INFO(node->get_logger(), "Error in computation of trajectory to point ");

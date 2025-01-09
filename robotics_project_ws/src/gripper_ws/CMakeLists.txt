@@ -16,9 +16,9 @@ find_package(control_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(std_srvs REQUIRED)
 
-add_executable(gripper src/gripper.cpp)
+add_executable(gripper_service src/gripper_service.cpp)
 
-ament_target_dependencies(gripper
+ament_target_dependencies(gripper_service
   rclcpp
   ament_index_cpp
   trajectory_msgs
@@ -29,21 +29,8 @@ ament_target_dependencies(gripper
 )
 
 install(TARGETS
-  gripper
+  gripper_service
   DESTINATION lib/${PROJECT_NAME}
-)
-
-# Install the launch directory
-install(
-  DIRECTORY 
-  launch
-  config
-  params
-  gripper
-  worlds
-  models
-  rviz
-  DESTINATION share/${PROJECT_NAME}
 )
 
 ament_package()

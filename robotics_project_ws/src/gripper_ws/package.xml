@@ -2,9 +2,9 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>gripper_ws</name>
-  <version>2.4.1</version>
-  <description>Gripper Services</description>
-  <maintainer email="daniele.calvo@unitn.it">robotics</maintainer>
+  <version>0.0.0</version>
+  <description>TODO: Gripper Service</description>
+  <maintainer email="matteogottardelli@gmail.com">matteogottardelli@gmail.com</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

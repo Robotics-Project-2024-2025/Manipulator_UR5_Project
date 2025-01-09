@@ -61,7 +61,7 @@ ament_target_dependencies(
   sensor_msgs
   control_msgs
   rclcpp_action
-)
+)/Users/matteogottardelligmail.com/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/CMakeLists.txt
 
 # Include directories for the target
 # target_include_directories(p2pmotion PRIVATE
