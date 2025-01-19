@@ -1,2 +1,3 @@
+string image_path
 ---
 vision_ws/Boundstruct[] box
