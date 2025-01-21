@@ -23,6 +23,7 @@ endif()
 
 # Build Executable
 add_executable(complete_job
+  src/main.cpp
   src/complete_job.cpp
   ../move_ws/src/kin_communication.cpp
   ../move_ws/src/kinematics.cpp
@@ -42,7 +43,12 @@ ament_target_dependencies(
   trajectory_msgs
   sensor_msgs
   control_msgs
-  std_srvs  # Added for std_srvs::Trigger service
+  std_srvs
+)
+
+install(
+  DIRECTORY include/
+  DESTINATION include
 )
 
 # Install targets

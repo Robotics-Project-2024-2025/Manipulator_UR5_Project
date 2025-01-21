@@ -12,34 +12,35 @@
 
 TableTransformService::TableTransformService() : Node("table_transform_service"){
         // Define the source and destination points
-        sourcePoints_.push_back(cv::Point2f(19, 313));  // First table vertex
-        sourcePoints_.push_back(cv::Point2f(175, 88));  // Second table vertex
-        sourcePoints_.push_back(cv::Point2f(423, 81));  // Third table vertex
-        sourcePoints_.push_back(cv::Point2f(635, 288)); // Fourth table vertex
+        sourcePoints_.push_back(cv::Point2f(0, 0));  // First table vertex
+        sourcePoints_.push_back(cv::Point2f(640, 0));  // Second table vertex
+        sourcePoints_.push_back(cv::Point2f(0, 640));  // Third table vertex
+        sourcePoints_.push_back(cv::Point2f(640, 640)); // Fourth table vertex
 
-        destinationPoints_.push_back(cv::Point2f(0, 360));  // First vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(0, 0));    // Second vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(640, 0));  // Third vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(640, 360)); // Fourth vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(152, 63));  // First vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(488, 64));    // Second vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(26, 345));  // Third vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(613, 345)); // Fourth vertex in 2D plane
 
         // Compute the perspective transformation matrix
-        perspectiveMatrix_ = cv::getPerspectiveTransform(sourcePoints_, destinationPoints_);
+        perspectiveMatrix_ = cv::getPerspectiveTransform(destinationPoints_, sourcePoints_);
 
     // Initialize the ROS service
             service_ = this->create_service<camera_ws::srv::Conversion>("Conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
 
-            RCLCPP_INFO(this->get_logger(), "Service 'Conversion' initialized.");
+            RCLCPP_INFO(this->get_logger(), "Service 'Conversion' ended");
     }
 
 bool TableTransformService::projectCallback(
     const std::shared_ptr<camera_ws::srv::Conversion::Request> req, std::shared_ptr<camera_ws::srv::Conversion::Response> res)
 {
     // Input point in 3D space (considering only x and y)
-    cv::Point2f inputPoint(req->x, req->y);
+    cv::Point2f inputPoint(cv::Point(req->x, req->y));
 
     // Transform the point to the 2D table plane
-    std::vector<cv::Point2f> inputPoints = {inputPoint};
+    std::vector<cv::Point2f> inputPoints;
     std::vector<cv::Point2f> outputPoints;
+    inputPoints.push_back(inputPoint);
 
     try
     {
@@ -57,11 +58,17 @@ bool TableTransformService::projectCallback(
         res->success = false;
         return false;
     }
-    
+    float minX, minY, maxX, maxY;
+    minX=std::min(TABLE_BOTTOM_RIGHT_X, TABLE_TOP_LEFT_X);
+    minY=std::min(TABLE_BOTTOM_RIGHT_Y, TABLE_TOP_LEFT_Y);
+    maxX=std::max(TABLE_BOTTOM_RIGHT_X, TABLE_TOP_LEFT_X);
+    maxY=std::max(TABLE_BOTTOM_RIGHT_Y, TABLE_TOP_LEFT_Y);
     // Assign the transformed coordinates to the response
     res->x_2d = outputPoints[0].x;
     res->y_2d = outputPoints[0].y;
     res->success = true;
+    res->x_2d = maxX-(float)((float)outputPoints[0].y/640)*(maxX-minX);
+    res->y_2d = maxY-(float)((float)outputPoints[0].x/640)*(maxY-minY);
     return true;
 }
 

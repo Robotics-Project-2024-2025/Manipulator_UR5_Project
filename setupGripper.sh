@@ -4,8 +4,8 @@ cd /home/ubuntu/ros2_ws/
 
 rosdep install -i --from-path src --rosdistro rolling -y
 
-colcon build --packages-select gripper_ws
+colcon build --packages-select ros2_ur5_interface
 
 source install/setup.bash
 
-ros2 run gripper_ws gripper_service 192.168.1.2
+ros2 run ros2_ur5_interface gripper_service 192.168.1.2
