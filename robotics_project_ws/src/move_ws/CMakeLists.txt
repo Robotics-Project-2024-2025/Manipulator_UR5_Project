@@ -15,7 +15,7 @@ find_package(control_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-
+find_package(std_srvs REQUIRED)
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Moving.srv"
@@ -24,7 +24,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 # Build Executables
 # add_executable(p2pmotion src/kinematics.cpp src/main.cpp src/kin_communication.cpp src/path.cpp)
-add_executable(service_moving src/path.cpp src/kinematics.cpp src/kin_communication.cpp)
+add_executable(service_moving src/path.cpp src/kinematics.cpp src/kin_communication.cpp ../complete_job_ws/src/complete_job.cpp)
 
 # Add Executables
 rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
@@ -39,8 +39,9 @@ include_directories(
 
 target_include_directories(service_moving PRIVATE
   include
-    ${EIGEN3_INCLUDE_DIR}
-${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
+  ${EIGEN3_INCLUDE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/../complete_job_ws/include
 )
 
 # Link dependencies
@@ -57,11 +58,12 @@ ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
 ament_target_dependencies(
   service_moving
   rclcpp
+  std_srvs
   trajectory_msgs
   sensor_msgs
   control_msgs
   rclcpp_action
-)/Users/matteogottardelligmail.com/Manipulator_UR5_Project/robotics_project_ws/src/move_ws/CMakeLists.txt
+)
 
 # Include directories for the target
 # target_include_directories(p2pmotion PRIVATE

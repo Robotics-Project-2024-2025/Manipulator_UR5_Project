@@ -25,6 +25,7 @@ void MyVector::calculatePath(
     shared_ptr<MoveService::Response> response){
     //cout << qES << endl;
     MatrixD6 th;
+    std::shared_ptr<rclcpp::Node> node;
     double time = 4.0;
     Vector3d v, p;
     v << request->xe1.x, request->xe1.y, request->xe1.z;
@@ -52,7 +53,7 @@ void MyVector::calculatePath(
     bool action_result = false;
     int retries=0;
     int max_retries=0;
-    auto traj_node=std::make_shared<TrajectoryActionClient>(th);
+    auto traj_node=std::make_shared<TrajectoryActionClient>(th, node);
     // Prepare goal
     auto goal_msg = FollowJointTrajectory::Goal();
     //goal_msg.trajectory = traj_node->get_trajectory(); // Convert your trajectory to ROS msg

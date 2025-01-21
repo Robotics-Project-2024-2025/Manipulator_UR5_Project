@@ -1,0 +1,3 @@
+string image_path
+---
+vision_ws_msgs/Boundstruct[] boxes

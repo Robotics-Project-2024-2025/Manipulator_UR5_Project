@@ -30,7 +30,7 @@ ImageCamera::ImageCamera() : Node("image_acquiring") {
     }
 }
 void ImageCamera::generateOutput() {
-    string destPath="/home/ubuntu/ros2_ws/src/Project/robotics_project_ws/src/camera_ws/generated/";
+    string destPath="/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated/";
     if (!filesystem::exists(destPath)) {
         filesystem::create_directories(destPath);
     }

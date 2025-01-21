@@ -12,12 +12,15 @@
 #include <rclcpp/rclcpp.hpp>
 #include <opencv2/opencv.hpp>
 #include "camera_ws/srv/conversion.hpp"
-
+#define TABLE_TOP_LEFT_X -0.25
+#define TABLE_TOP_LEFT_Y 0.45
+#define TABLE_BOTTOM_RIGHT_X -1.15
+#define TABLE_BOTTOM_RIGHT_Y -0.45
 
 class TableTransformService : public rclcpp::Node {
 
 public:
-    TableTransformService() : Node("table_transform_service");
+    TableTransformService();
 
 private:
     cv::Mat perspectiveMatrix_;   // Transformation matrix

@@ -38,7 +38,12 @@ target_link_libraries(medium_val
   ${cpp_typesupport_target}  # Link to the generated type support
 )
 
+target_link_libraries(transform_image
+  ${cpp_typesupport_target}  # Link to the generated type support
+)
+
 rosidl_target_interfaces(medium_val ${PROJECT_NAME} "rosidl_typesupport_cpp")
+rosidl_target_interfaces(transform_image ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 # Include Directories
 include_directories(
@@ -109,8 +114,13 @@ target_link_libraries(medium_val
   ${camera_ws_LIBRARIES}  # Make sure this is pointing to the generated service type support libraries
 )
 
+target_link_libraries(transform_image
+  ${rclcpp_LIBRARIES}
+  ${camera_ws_LIBRARIES}  # Make sure this is pointing to the generated service type support libraries
+)
+
 # Install Targets
-install(TARGETS camera points_camera medium_val
+install(TARGETS camera points_camera medium_val transform_image
   DESTINATION lib/${PROJECT_NAME}
 )
 

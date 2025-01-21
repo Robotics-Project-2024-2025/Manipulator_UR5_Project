@@ -1,50 +1,8 @@
 #include "complete_job.h"
 
-class GripperCommunicator : public rclcpp::Node {
-public:
-    GripperCommunicator() : Node("gripper_communicator") {
-        open_gripper_client_ = this->create_client<std_srvs::srv::Trigger>("open_gripper");
-        close_gripper_client_ = this->create_client<std_srvs::srv::Trigger>("close_gripper");
-        if (!open_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
-            RCLCPP_ERROR(this->get_logger(), "Service open_gripper not available.");
-        }
-        if (!close_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
-                    RCLCPP_ERROR(this->get_logger(), "Service close_gripper not available.");
-                }
-
-    }
-    void open() {
-          callService(open_gripper_client_, "Opening the gripper");
-      }
-
-      void close() {
-          callService(close_gripper_client_, "Closing the gripper");
-      }
-private:
-    rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr open_gripper_client_;
-    rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr close_gripper_client_;
-    template<typename ServiceClient>
-        void callService(ServiceClient client, const std::string &action) {
-            RCLCPP_INFO(this->get_logger(), "%s", action.c_str());
-            auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
-            auto future = client->async_send_request(request);
-            if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), future) ==
-                rclcpp::FutureReturnCode::SUCCESS) {
-                auto response = future.get();
-                if (response->success) {
-                    RCLCPP_INFO(this->get_logger(), "%s succeeded: %s", action.c_str(), response->message.c_str());
-                } else {
-                    RCLCPP_WARN(this->get_logger(), "%s failed: %s", action.c_str(), response->message.c_str());
-                }
-            } else {
-                RCLCPP_ERROR(this->get_logger(), "%s service call timed out.", action.c_str());
-            }
-        }
-};
-
 bool control;
 int position_c=-1;
-bool path(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node){
+bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node){
     MatrixD6 th;
     double time = 4.0;
     Matrix61 qEs;
@@ -72,7 +30,7 @@ bool path(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<r
 void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri) {
     control=false;
     Matrix16 qEs=receive_joint_state();
-    control=path(destinationPos, destinationOri, qEs, node);
+    control=path_search(destinationPos, destinationOri, qEs, node);
 }
 void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     Vector3d posHome{{-0.2, 0.2, -0.3}};
@@ -101,47 +59,3 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
             break;
     }
 }
-
-int main(int argc, const char* argv[])
-{
-    setupCommunication(argc, argv);
-    // Create a service client
-    auto node=std::make_shared<rclcpp::Node>("complete_job");
-    oneIteration(node);
-    rclcpp::shutdown();
-    return 0;
-}
-    /*auto open_path_client_ = node->create_client<MoveService>("service_path");
-    cout << "Service Starting Transition" << endl;
-    // Wait for the service to become available
-    while(!open_path_client_->wait_for_service(std::chrono::seconds(10))) {
-            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Path provider not available after waiting");
-    }
-    // Create a request and populate it
-    auto request = std::make_shared<MoveService::Request>();
-    request->xe1.x = destinationPos(0);
-    request->xe1.y = destinationPos(1);
-    request->xe1.z = destinationPos(2);
-    request->phie1.x = destinationOri(0);
-    request->phie1.y = destinationOri(1);
-    request->phie1.z = destinationOri(2);
-    request->joints.resize(NUM_JOINTS);
-    for (int i=0; i<NUM_JOINTS; i++) {
-        float val=qEs(i);
-        request->joints[i]=val;
-    }
-    auto future=open_path_client_->async_send_request(request);
-    RCLCPP_INFO(node->get_logger(), "Sending request and waiting for response...");
-    if (rclcpp::spin_until_future_complete(node, future) ==
-        rclcpp::FutureReturnCode::SUCCESS) {
-        auto response = future.get();
-        if (response->result) {
-            RCLCPP_INFO(node->get_logger(), "Request completed successfully.");
-            control=true;
-        } else {
-            RCLCPP_ERROR(node->get_logger(), "Error in completing the task, redo it.");
-        }
-    } else {
-        RCLCPP_ERROR(node->get_logger(), "Failed to receive a response from the service.");
-    }
-    cout << "End Service" << endl;*/
