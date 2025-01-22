@@ -1,7 +1,7 @@
 import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess, TimerAction
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess, TimerAction, SetEnvironmentVariable
 from launch.substitutions import LaunchConfiguration, Command, PathJoinSubstitution, FindExecutable
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
@@ -79,14 +79,15 @@ def generate_launch_description():
     
     camera_transform = Node (
         package='camera_ws',
-        executable='image_transform',
+        executable='transform_image',
         output='screen'
     )
     
     detection_service = Node (
         package='vision_ws',
         executable='detection_service',
-        output='screen'
+        output='screen',
+        env={'PYTHON_EXEC': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/.venv/bin/python'}
     )
     
     # Return the LaunchDescription
