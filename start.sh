@@ -3,10 +3,10 @@ python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r yolov5/requirements.txt
 pip install yolov5
-#pip uninstall -y empy
-#pip install empy==3.3.4
-#pip install catkin_pkg
-#pip install lark
+pip uninstall -y empy
+pip install empy==3.3.4
+pip install catkin_pkg
+pip install lark
 #pip uninstall -y ultralytics
 #pip install ultralytics==7.0
 pip show yolov5
