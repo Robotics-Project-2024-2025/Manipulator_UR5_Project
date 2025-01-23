@@ -9,7 +9,7 @@ int main(int argc, const char* argv[])
     } else {
         std::cerr << "Correct directory failed with return code: " << ret_code << '\n';
     }
-    ret_code = system("colcon build");
+    /*ret_code = system("colcon build");
     if (ret_code == 0) {
         std::cout << "Colcon build executed successfully.\n";
     } else {
@@ -20,9 +20,26 @@ int main(int argc, const char* argv[])
         std::cout << "Source executed successfully.\n";
     } else {
         std::cerr << "Source failed with return code: " << ret_code << '\n';
+    }*/
+    //ret_code=system("source /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/.venv/bin/activate");
+    ret_code=system("source ../vision_ws/.venv/bin/activate");
+    if (ret_code == 0) {
+        std::cout << "Virtual Environment Activated\n";
+    } else {
+        std::cerr << "Virtual Environment Activation Failure with return code: " << ret_code << '\n';
     }
     // Create a service client
     auto node=std::make_shared<rclcpp::Node>("complete_job");
+    //Capture Image
+    ret_code=system("ros2 run camera_ws camera");
+    if (ret_code == 0) {
+        std::cout << "Capturing Image Complete\n";
+    } else {
+        std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
+    }
+    //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
+    //TEST TRANSFORM IMAGE
+    //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
     oneIteration(node);
     rclcpp::shutdown();
     return 0;

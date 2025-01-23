@@ -5,8 +5,8 @@ import time
 import subprocess
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.event_handlers import OnProcessExit
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
+from launch.event_handlers import OnProcessExit, OnShutdown
+from launch.actions import LogInfo, DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command, FindExecutable
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
@@ -24,7 +24,7 @@ Y_MAX=0.58
 Z_TABLE=0.88
 PRECISION=3
 
-random.seed(a=None, version=2)
+random.seed()
 
 spawned_positions = []
 
@@ -57,9 +57,9 @@ def random_angle(precision: int = 3) -> float:
 def spawn_block_with_params(context, block_type, color_value, position, orientation, count):
     instances_cmds=[]
     # Paths
-    xacro_file = os.path.join(get_package_share_directory(package_name), 'models', 'block.urdf.xacro')
-    urdf_file = os.path.join(get_package_share_directory(package_name), 'models', 'block.urdf')
-    sdf_file = os.path.join(get_package_share_directory(package_name), 'models', 'block.sdf')
+    xacro_file = os.path.join(get_package_share_directory(package_name), 'models', f'block_{count}.urdf.xacro')
+    urdf_file = os.path.join(get_package_share_directory(package_name), 'models', f'block_{count}.urdf')
+    sdf_file = os.path.join(get_package_share_directory(package_name), 'models', f'block_{count}.sdf')
         # Generate URDF from Xacro
     try:
         xacro_command = [
@@ -101,6 +101,7 @@ def spawn_block_with_params(context, block_type, color_value, position, orientat
             <publish_nested_model_pose>true</publish_nested_model_pose>
             <use_pose_vector_msg>true</use_pose_vector_msg>
             <update_frequency>100.0</update_frequency>
+            <namespace>/block_{count}</namespace>
         </plugin>
         """
         # Append the sensor to the appropriate location
@@ -118,6 +119,16 @@ def spawn_block_with_params(context, block_type, color_value, position, orientat
     print(f"Successfully generated URDF at {urdf_file}")
     print(f"Successfully generated SDF at {sdf_file}")
 
+    
+    joint_state_publisher_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen',
+        namespace=f'block_{count}',
+        name=f'joint_state_publisher_{count}'
+    )
+    instances_cmds.append(joint_state_publisher_node)
+    
     # Block robot state publisher node
     block_robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -132,6 +143,7 @@ def spawn_block_with_params(context, block_type, color_value, position, orientat
     spawn_block =  Node(
         package='ros_gz_sim',
         executable='create',
+        namespace=f'block_{count}',
         arguments=[
             '-name', "block"+str(count),
             '-file', urdf_file,
@@ -146,6 +158,25 @@ def spawn_block_with_params(context, block_type, color_value, position, orientat
     )
     instances_cmds.append(spawn_block)
     return instances_cmds
+
+def cleanup_spawned_blocks():
+    # Cleanup function to delete all spawned models
+    for model_name in spawned_models:
+        try:
+            subprocess.run(
+                [
+                    "ros2",
+                    "service",
+                    "call",
+                    "/gazebo/delete_entity",
+                    "gazebo_msgs/srv/DeleteEntity",
+                    f'{{"name": "{model_name}"}}',
+                ],
+                check=True,
+            )
+            print(f"Successfully deleted model: {model_name}")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to delete model: {model_name}, error: {e}")
 
 def generate_spawn_block_nodes(context, *args, **kwargs):
     instances_cmds=[]
@@ -197,10 +228,10 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
     
     for count, (block_type, color_name, color_value, position, orientation) in enumerate(blocks_params, start=1):
         print(f"Creating node for block {count}:")
-        print(f"  Type: {block_type}")
-        print(f"  Color: {color_value}")
-        print(f"  Position: {position}")
-        print(f"  Orientation: {orientation}")
+        print(f"Type: {block_type}")
+        print(f"Color: {color_value}")
+        print(f"Position: {position}")
+        print(f"Orientation: {orientation}")
         def create_spawn_block_closure(bt, cv, pos, ori, c):
             return OpaqueFunction(
                 function=lambda ctx, bt=bt, cv=cv, pos=pos, ori=ori, c=c: spawn_block_with_params(ctx, bt, cv, pos, ori, c)
@@ -402,7 +433,25 @@ def generate_launch_description():
             ],
         ),
     )
+    cleanup_command = (
+        "import subprocess; "
+        "for model in ['block', 'block_1', 'block_2', 'block_3', 'block_4', 'block_5', 'block_6', 'block_7', 'block_8', 'block_9']: "
+        "subprocess.run(['ros2', 'service', 'call', '/gazebo/delete_entity', "
+        "'gazebo_msgs/srv/DeleteEntity', f'{{\"name\": \"{model}\"}}'], check=True)"
+    )
 
+    cleanup_action=RegisterEventHandler(
+        OnShutdown(
+            on_shutdown=[
+                LogInfo(msg="Cleaning up spawned blocks..."),
+                ExecuteProcess(
+                    cmd=["python3", "-c", cleanup_command],
+                    shell=True,
+                ),
+            ]
+        )
+    )
+    
     # Return the LaunchDescription
     return LaunchDescription([
         *declared_arguments,
@@ -425,4 +474,5 @@ def generate_launch_description():
         gazebo_ros_bridge,
         gazebo_ros_image_bridge,
         rviz2,
+        cleanup_action,
     ])
