@@ -83,12 +83,12 @@ def generate_launch_description():
         output='screen'
     )
     
-    detection_service = Node (
-        package='vision_ws',
-        executable='detection_service',
-        output='screen',
-        env={'PYTHON_EXEC': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/.venv/bin/python'}
-    )
+    #detection_service = Node (
+    #    package='vision_ws',
+    #    executable='detection_service',
+    #    output='screen',
+    #    env={'PYTHON_EXEC': '/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/.venv/bin/python'}
+    #)
     
     # Return the LaunchDescription
     return LaunchDescription([
@@ -99,5 +99,5 @@ def generate_launch_description():
         activate_gripper,
         pendant_play_rviz2,
         camera_transform,
-        detection_service
+        #detection_service
     ])
