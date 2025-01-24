@@ -39,6 +39,20 @@ int main(int argc, const char* argv[])
     }
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
     //TEST TRANSFORM IMAGE
+    auto node = std::make_shared<ConversionClient>();
+    auto future_response = node->sendRequest(100.0, 200.0);
+    if (node->spinUntilFutureComplete(future_response))
+    {
+        auto response = future_response.get();
+        if (response->success)
+        {
+            RCLCPP_INFO(node->get_logger(), "Transformed coordinates: x_2d=%.2f, y_2d=%.2f", response->x_2d, response->y_2d);
+        }
+        else
+        {
+            RCLCPP_WARN(node->get_logger(), "Service call succeeded but returned failure status.");
+        }
+    }
     //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
     oneIteration(node);
     rclcpp::shutdown();
