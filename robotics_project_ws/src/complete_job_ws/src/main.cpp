@@ -38,7 +38,7 @@ int main(int argc, const char* argv[])
         std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
     }
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
-    auto nodeDetect = std::make_shared<Yololient>();
+    auto nodeDetect = std::make_shared<YoloClient>();
     auto future_response = nodeDetect->sendRequest("home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
     if (nodeDetect->spinUntilFutureComplete(future_response))
     {
@@ -47,7 +47,7 @@ int main(int argc, const char* argv[])
         {    
             int counter=0;
             while(response->boxes[counter]==NULL){
-                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response->class_id, response->confidence, response->xmin, response->ymin, response->xmax, response->ymax);
+                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response->boxes[counter].class_id, response->boxes[counter].confidence, response->boxes[counter].xmin, response->boxes[counter].ymin, response->boxes[counter].xmax, response->boxes[counter].ymax);
                 counter++;
             }
         }
