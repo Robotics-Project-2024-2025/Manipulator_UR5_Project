@@ -40,7 +40,7 @@ int main(int argc, const char* argv[])
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
     //TEST TRANSFORM IMAGE
     auto nodeConv = std::make_shared<ConversionClient>();
-    auto future_response = nodeConv->sendRequest(100.0, 200.0);
+    auto future_response = nodeConv->sendRequest(100, 200);
     if (nodeConv->spinUntilFutureComplete(future_response))
     {
         auto response = future_response.get();
