@@ -40,7 +40,7 @@ int main(int argc, const char* argv[])
     
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
     auto nodeDetect = std::make_shared<YoloClient>();
-    auto future_response_yolo = nodeDetect->sendRequest("home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
+    auto future_response_yolo = nodeDetect->sendRequest("/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
     if (nodeDetect->spinUntilFutureComplete(future_response_yolo))
     {
         auto response_yolo = future_response_yolo.get();
