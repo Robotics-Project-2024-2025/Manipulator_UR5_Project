@@ -16,7 +16,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_srvs REQUIRED)  
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(camera_ws REQUIRED)
-
+find_package(vision_ws_msgs REQUIRED)
+#find_package(vision_ws REQUIRED)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
@@ -46,6 +47,7 @@ ament_target_dependencies(
   control_msgs
   std_srvs
   camera_ws
+  vision_ws_msgs
 )
 
 install(
