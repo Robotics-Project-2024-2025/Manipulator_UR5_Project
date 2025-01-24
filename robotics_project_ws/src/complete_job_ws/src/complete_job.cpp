@@ -33,9 +33,9 @@ void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinatio
     control=path_search(destinationPos, destinationOri, qEs, node);
 }
 void oneIteration(std::shared_ptr<rclcpp::Node> node) {
-    Vector3d posHome{{-0.2, 0.2, -0.3}};
+    Vector3d posDest{{-0.2, 0.2, -0.3}};
     Vector3d posBlock{{-0.3, 0.4, -0.8}};
-    Vector3d posDest{{0.4, 0.2, -0.7}};
+    Vector3d posHome{{0.4, 0.2, -0.7}};
     Vector3d phiStart{{0.0, 0.0, 0.0}};
     Vector3d phiEf{{0.0, 0.0, 0.0}};
     auto gripper=std::make_shared<GripperCommunicator>();

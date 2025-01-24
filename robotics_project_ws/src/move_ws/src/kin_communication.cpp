@@ -96,18 +96,18 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
         [this, &goal_handle](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
             switch (result.code)
             {
-            case rclcpp_action::ResultCode::SUCCEEDED:
-                RCLCPP_INFO(this->get_logger(), "Goal succeeded");
-                break;
-            case rclcpp_action::ResultCode::ABORTED:
-                RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
-                break;
-            case rclcpp_action::ResultCode::CANCELED:
-                RCLCPP_WARN(this->get_logger(), "Goal was canceled");
-                break;
-            default:
-                RCLCPP_ERROR(this->get_logger(), "Unknown result code");
-                break;
+                case rclcpp_action::ResultCode::SUCCEEDED:
+                    RCLCPP_INFO(this->get_logger(), "Goal succeeded");
+                    break;
+                case rclcpp_action::ResultCode::ABORTED:
+                    RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
+                    break;
+                case rclcpp_action::ResultCode::CANCELED:
+                    RCLCPP_WARN(this->get_logger(), "Goal was canceled");
+                    break;
+                default:
+                    RCLCPP_ERROR(this->get_logger(), "Unknown result code");
+                    break;
             }
             // Cancel the goal if it wasn't successful
             /*if (goal_handle && result.code != rclcpp_action::ResultCode::SUCCEEDED) {
@@ -119,7 +119,7 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
                rclcpp::shutdown();
            }
             else {*/
-                oneIteration(this->origin_node);
+            oneIteration(this->origin_node);
             //}
             return;
         };
