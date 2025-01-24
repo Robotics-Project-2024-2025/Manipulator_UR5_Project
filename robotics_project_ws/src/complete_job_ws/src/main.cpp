@@ -38,23 +38,41 @@ int main(int argc, const char* argv[])
         std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
     }
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
+    auto nodeDetect = std::make_shared<Yololient>();
+    auto future_response = nodeDetect->sendRequest("home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
+    if (nodeDetect->spinUntilFutureComplete(future_response))
+    {
+        auto response = future_response.get();
+        if (response->success)
+        {    
+            int counter=0;
+            while(response->boxes[counter]==NULL){
+                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response->class_id, response->confidence, response->xmin, response->ymin, response->xmax, response->ymax);
+                counter++;
+            }
+        }
+        else
+        {
+            RCLCPP_WARN(nodeDetect->get_logger(), "Service call succeeded but returned failure status.");
+        }
+    }
     //TEST TRANSFORM IMAGE
-    auto node_conv = std::make_shared<ConversionClient>();
-    auto future_response = node_conv->sendRequest(100.0, 200.0);
-    if (node_conv->spinUntilFutureComplete(future_response))
+    auto nodeConv = std::make_shared<ConversionClient>();
+    auto future_response = nodeConv->sendRequest(100, 200);
+    if (nodeConv->spinUntilFutureComplete(future_response))
     {
         auto response = future_response.get();
         if (response->success)
         {
-            RCLCPP_INFO(node_conv->get_logger(), "Transformed coordinates: x_2d=%.2f, y_2d=%.2f", response->x_2d, response->y_2d);
+            RCLCPP_INFO(nodeConv->get_logger(), "Transformed coordinates: x_2d=%.2f, y_2d=%.2f", response->x_2d, response->y_2d);
         }
         else
         {
-            RCLCPP_WARN(node_conv->get_logger(), "Service call succeeded but returned failure status.");
+            RCLCPP_WARN(nodeConv->get_logger(), "Service call succeeded but returned failure status.");
         }
     }
     //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
-    oneIteration(node);
+    oneIteration(nodeConv);
     rclcpp::shutdown();
     return 0;
 }
