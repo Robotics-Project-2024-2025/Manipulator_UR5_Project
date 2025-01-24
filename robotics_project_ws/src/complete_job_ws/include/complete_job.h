@@ -10,6 +10,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <vector>
 #include <rclcpp_action/rclcpp_action.hpp>
+#include "camera_ws/srv/conversion.hpp"
 #include "std_srvs/srv/trigger.hpp"
 #include <Eigen/Dense>
 #include "kin_communication.h"
