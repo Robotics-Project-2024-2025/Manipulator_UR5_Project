@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{geometry}
 \geometry{margin=1in}
 
@@ -35,7 +35,9 @@ Describe the objectives of the vision system, such as object detection, localiza
 \begin{itemize}
     \item General position: The first thing to do was to understand whether we have to determine the position relatively to the table or to the camera. To understand this, we analyzed the camera settings which will be explained in the next point and we came up with the conclusion that the position was relative to the one of the camera.
     Another important thing which will be very useful also in the following parts is creating a table with each block and it's relative dimension. This was done by analyzing the files with the block prototypes.
-    \item Random block algorithm: the blocks are generated in a random way between an array... Non so come siano generati e descrizione parametri...
+    \item When launching the python the nodes are created when launching and so the camera, the table and the arm are created.\\
+    To generate the blocks the .xacro file are generated and so there is the need to bring them to .sdf files, so gazebo can handle them.\\
+    Random block algorithm: the blocks are generated in a random way between an array... Non so come siano generati e descrizione parametri...
     The number of generated blocks can be choose by the user by inserting the number in the command line when asked. The minumum number is 1 and we can generate up to 10 blocks. Blocks parameters like type and color are chosen randomly between an array and then the block is generated with its parameters plus the position and the orientation.
     The objects in the complete scenes are spawned in the following order [...]? camera, table, arm with gripper and blocks.
     \item Random position algorithm: the items are positioned in a random way on the table, this is done using a function to generate the positions between the limits and one to check for collisions. The blocks also have a rotation determined by another function.
@@ -44,10 +46,11 @@ Describe the objectives of the vision system, such as object detection, localiza
 \subsection{Processing images}\label{subsec:imageproc}
 \begin{itemize}
     \item \textbf{Camera settings:} ... descrivere la posizione?\\
-    The camera is setted in the position x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06.
+    The camera is setted in the position x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06. The last three parameters are the rotation values.
     \item \textbf{Object detection and classes:} For this part we used the tool Roboflow which allowed us to process the images and detect objects. The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having eleven classes, each with a large number of images loaded. Then a percentage of imeges was destined to training, a smaller and a smaller one to testing, this was done automatically by the program. At the end of the processes the program output was our blocktrain.pt, which is the file containing the weights to be used to perform the recognition with Yolov5.
     \item \textbf{Machine learning model, YOLOv5:} we used Yolov5 to train our model. This was done using a Python script. The major part of this file was taken from the Yolo tutorial website and arranged to our needs[...]. 
-    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we had to develop a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplify the call of the script, since we needed it every time we got an image, we decided to develop a service. To do that we had to integrate the code with some more instuctions to communicate with ros2 nodes...? and to receive and return the correct information.
+    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we had to develop a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplify the call of the script, since we needed it every time we got an image, we decided to develop a service. To do that we had to integrate the code with some more instuctions to communicate with ros2 nodes...? and to receive and return the correct information.\\
+    The file \textbf{yolo.sh} file is the only one that implements the node a in python and this creates some problems...
 \end{itemize}
 
 
@@ -65,7 +68,7 @@ The objective of this part is to develop an algorithm that, given a position, ca
 Discuss the manipulator's design, actuators, and control strategies. Include subsections as needed:
 \begin{itemize}
     \item \textbf{End-effector design:} the end effector is a gripper as said in \ref{sec:manipulation}. In particular we have a two finger gripper, which is able to open and close, so it enables robots to perform specific tasks such as picking up, holding, moving, or placing objects. 
-    \item \textbf{Kinematics and dynamics:}
+    \item \textbf{Kinematics and dynamics:} we decided to use the joint space because differential kinematics is really difficult to manage with this system in our opinion and so we avoided it to reduce the issues.
     \item \textbf{Control algorithms (e.g., PID, MPC):}
 \end{itemize}
 
@@ -95,12 +98,5 @@ Summarize the testing procedures and validation results. Include tables, graphs,
 \section{Conclusion}\label{sec:conclusion}
 Summarize the achievements of the project, key findings, and potential future work. 
 
-% References
-\section*{References}
-\addcontentsline{toc}{section}{References}
-\begin{thebibliography}{99}
-    \bibitem{ref1} Author, Title, Journal/Conference, Year.
-    \bibitem{ref2} Author, Title, Journal/Conference, Year.
-\end{thebibliography}
 
 \end{document}
