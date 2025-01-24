@@ -37,7 +37,8 @@ int main(int argc, const char* argv[])
     } else {
         std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
     }
-    
+    //CENTRAL POINT ARRAY
+    Point2D center[10];
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
     auto nodeDetect = std::make_shared<YoloClient>();
     auto future_response_yolo = nodeDetect->sendRequest("/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
@@ -49,6 +50,9 @@ int main(int argc, const char* argv[])
             int counter=0;
             while(response_yolo->boxes[counter]!=NULL){
                 RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response_yolo->boxes[counter].class_id, response_yolo->boxes[counter].confidence, response_yolo->boxes[counter].xmin, response_yolo->boxes[counter].ymin, response_yolo->boxes[counter].xmax, response_yolo->boxes[counter].ymax);
+                Point2D pmin={response_yolo->boxes[counter].xmin, response_yolo->boxes[counter].ymin};
+                Point2D pmax={response_yolo->boxes[counter].xmax, response_yolo->boxes[counter].ymax};
+                center[counter]=findCenter(pmin, pmax);
                 counter++;
             }
         }
