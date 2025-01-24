@@ -37,7 +37,7 @@ class YoloBoundingBoxService(Node):
             bounding_boxes.append(bounding_box_data)
 
         # Log and return the bounding boxes
-        response.bounding_boxes=bounding_boxes
+        response.boxes=bounding_boxes
         self.get_logger().info(f"Processed image {request.image_path} with {len(bounding_boxes)} bounding boxes.")
         
         return response

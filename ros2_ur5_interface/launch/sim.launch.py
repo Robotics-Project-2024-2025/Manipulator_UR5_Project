@@ -159,24 +159,20 @@ def spawn_block_with_params(context, block_type, color_value, position, orientat
     instances_cmds.append(spawn_block)
     return instances_cmds
 
-def cleanup_spawned_blocks():
+#def cleanup_spawned_blocks():
     # Cleanup function to delete all spawned models
-    for model_name in spawned_models:
-        try:
-            subprocess.run(
-                [
-                    "ros2",
-                    "service",
-                    "call",
-                    "/gazebo/delete_entity",
-                    "gazebo_msgs/srv/DeleteEntity",
-                    f'{{"name": "{model_name}"}}',
-                ],
-                check=True,
-            )
-            print(f"Successfully deleted model: {model_name}")
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to delete model: {model_name}, error: {e}")
+#    model_names = [f"block_{i}" for i in range(1, 10)]
+#    deletion[]
+#    for model_name in model_names:
+#        try:
+#            spawn_block =  Node(
+#                package='ros_gz_sim',
+#                executable='delete',
+#                namespace=f'block_{count}',
+#                output='screen',
+#            )
+#        except subprocess.CalledProcessError as e:
+#            print(f"Failed to delete model: {model_name}, error: {e}")
 
 def generate_spawn_block_nodes(context, *args, **kwargs):
     instances_cmds=[]
@@ -352,6 +348,12 @@ def generate_launch_description():
         #                              -r -s -v4
     )
     
+    camera_transform = Node (
+        package='camera_ws',
+        executable='transform_image',
+        output='screen'
+    )
+    
     spawn_camera = Node(
         package='ros_gz_sim',
         executable='create',
@@ -367,7 +369,7 @@ def generate_launch_description():
         ],
         output='screen',
     )
-
+    
     spawn_ur5 = Node(
         package='ros_gz_sim',
         executable='create',
@@ -475,4 +477,5 @@ def generate_launch_description():
         gazebo_ros_image_bridge,
         rviz2,
         cleanup_action,
+        camera_transform,
     ])

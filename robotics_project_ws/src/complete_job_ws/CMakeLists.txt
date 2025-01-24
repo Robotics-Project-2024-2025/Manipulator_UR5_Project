@@ -15,6 +15,7 @@ find_package(control_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_srvs REQUIRED)  
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(camera_ws REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -44,10 +45,13 @@ ament_target_dependencies(
   sensor_msgs
   control_msgs
   std_srvs
+  camera_ws
 )
 
 install(
-  DIRECTORY include/
+  DIRECTORY
+  include/
+  ../camera_ws/include
   DESTINATION include
 )
 

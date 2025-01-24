@@ -77,11 +77,11 @@ def generate_launch_description():
         )
     ])
     
-    camera_transform = Node (
-        package='camera_ws',
-        executable='transform_image',
-        output='screen'
-    )
+    #camera_transform = Node (
+    #    package='camera_ws',
+    #    executable='transform_image',
+    #    output='screen'
+    #)
     
     #detection_service = Node (
     #    package='vision_ws',
