@@ -59,3 +59,44 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
             break;
     }
 }
+
+ConversionClient::ConversionClient() : Node("conversion_client"){
+    // Initialization of the client service
+    client_ = this->create_client<camera_ws::srv::Conversion>("Conversion");
+
+    // Log message to report client startup
+    RCLCPP_INFO(this->get_logger(), "Conversion client ready to send requests.");
+}
+
+std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> ConversionClient::sendRequest(int x, int y){
+    // Creating a Service Request
+    auto request = std::make_shared<camera_ws::srv::Conversion::Request>();
+    request->x = x;
+    request->y = y;
+
+    // Verify that the service is available
+    while (!client_->wait_for_service(std::chrono::seconds(1)))
+    {
+        RCLCPP_WARN(this->get_logger(), "Waiting for the 'Conversion' service to be available...");
+    }
+
+    // Sending the asynchronous request and returning the future
+    return client_->async_send_request(request);
+}
+
+bool ConversionClient::spinUntilFutureComplete(std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> future){
+    // Wait until the result is available
+    auto spin_result = rclcpp::spin_until_future_complete(this->get_node_base_interface(), future);
+
+    // Checks the status of the future and returns true if completed successfully
+    if (spin_result == rclcpp::FutureReturnCode::SUCCESS)
+    {
+        RCLCPP_INFO(this->get_logger(), "Service call completed successfully.");
+        return true;
+    }
+    else
+    {
+        RCLCPP_ERROR(this->get_logger(), "Service call failed.");
+        return false;
+    }
+}
