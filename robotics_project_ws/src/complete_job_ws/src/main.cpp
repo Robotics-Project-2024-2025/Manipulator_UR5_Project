@@ -73,7 +73,7 @@ int main(int argc, const char* argv[])
         }
     }
     //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
-    oneIteration(nodeConv);
+    oneIteration(node);
     rclcpp::shutdown();
     return 0;
 }
