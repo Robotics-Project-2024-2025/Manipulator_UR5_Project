@@ -75,6 +75,19 @@ private:
     rclcpp::Client<camera_ws::srv::Conversion>::SharedPtr client_; // Service client
 };
 
+class YoloClient : public rclcpp::Node{
+public:
+    YoloClient();
+
+    // Function for sending an async request to the service
+    std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Boundingbox::Response>> sendRequest(string image_path);
+
+    // Function that wait for the request to be completed
+    bool spinUntilFutureComplete(std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Boundingbox::Response>> future);
+
+private:
+    rclcpp::Client<vision_ws_msgs::srv::Boundingbox>::SharedPtr client_; // Service client
+};
 extern int position_c;
 bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node);
 void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri);
