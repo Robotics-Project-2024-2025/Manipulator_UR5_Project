@@ -4,7 +4,7 @@ cd ~/ros2_ws/src/Manipulator_UR5_Project
 
 chmod +x *.sh
 
-SCRIPT1="setupVRiz.sh"
+#SCRIPT1="setupVRiz.sh"
 SCRIPT2="setupGazebo.sh"
 #SCRIPT3="testCamera.sh"
 #SCRIPT4="testMove.sh"
@@ -27,7 +27,7 @@ run_in_terminator() {
 }
 
 # Run each script sequentially
-run_in_terminator "$SCRIPT1"
+#run_in_terminator "$SCRIPT1"
 run_in_terminator "$SCRIPT2"
 #run_in_terminator "$SCRIPT3"
 #run_in_terminator "$SCRIPT4"
