@@ -60,6 +60,13 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     }
 }
 
+Point2D findCenter(Point2D pmin, Point2D pmax){
+    Point2D tmp;
+    tmp.x = (pmax.x-pmin.x)/2 + pmin.x;
+    tmp.y = (pmax.y-pmin.y)/2 + pmin.y;
+    return tmp;
+}
+
 ConversionClient::ConversionClient() : Node("conversion_client"){
     // Initialization of the client service
     client_ = this->create_client<camera_ws::srv::Conversion>("Conversion");
