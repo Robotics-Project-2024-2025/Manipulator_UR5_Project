@@ -19,6 +19,11 @@
 #include "kinematics.h"
 using namespace std;
 
+struct {
+  float32 x;    
+  float32 y;
+} Point2D;
+
 class GripperCommunicator : public rclcpp::Node {
 public:
     GripperCommunicator() : Node("gripper_communicator") {
