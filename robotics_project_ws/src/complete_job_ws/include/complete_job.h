@@ -12,6 +12,7 @@
 #include <rclcpp_action/rclcpp_action.hpp>
 #include "camera_ws/srv/conversion.hpp"
 #include "vision_ws_msgs/srv/boundingbox.hpp"
+#include "vision_ws_msgs/msg/boundstruct.hpp"
 #include "std_srvs/srv/trigger.hpp"
 #include <Eigen/Dense>
 #include "kin_communication.h"
