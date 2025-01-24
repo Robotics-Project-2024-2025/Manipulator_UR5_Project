@@ -60,6 +60,13 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     }
 }
 
+Point2D findCenter(Point2D pmin, Point2D pmax){
+    Point2D tmp;
+    tmp.x = (pmax.x-pmin.x)/2 + pmin.x;
+    tmp.y = (pmax.y-pmin.y)/2 + pmin.y;
+    return tmp;
+}
+
 ConversionClient::ConversionClient() : Node("conversion_client"){
     // Initialization of the client service
     client_ = this->create_client<camera_ws::srv::Conversion>("Conversion");
@@ -103,7 +110,7 @@ bool ConversionClient::spinUntilFutureComplete(std::shared_future<std::shared_pt
 
 YoloClient::YoloClient() : Node("yolo_client"){
     // Initialization of the client service
-    client_ = this->create_client<vision_ws_msgs::srv::Boundignbox>("Boundingbox");
+    client_ = this->create_client<vision_ws_msgs::srv::Boundingbox>("yolo_bounding_box_service");
     // Log message to report client startup
     RCLCPP_INFO(this->get_logger(), "Boundingbox client ready to send requests.");
 }
