@@ -103,7 +103,7 @@ bool ConversionClient::spinUntilFutureComplete(std::shared_future<std::shared_pt
 
 YoloClient::YoloClient() : Node("yolo_client"){
     // Initialization of the client service
-    client_ = this->create_client<vision_ws_msgs::srv::Boundignbox>("Boundingbox");
+    client_ = this->create_client<vision_ws_msgs::srv::Boundingbox>("Boundingbox");
     // Log message to report client startup
     RCLCPP_INFO(this->get_logger(), "Boundingbox client ready to send requests.");
 }
