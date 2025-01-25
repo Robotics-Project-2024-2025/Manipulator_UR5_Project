@@ -22,13 +22,16 @@
 \tableofcontents
 \newpage
 
+%Introduction
+\section{Introduction}\label{sec:intro}
+This paper descibes the methodology and the results achieved by building an implementaiton on ros2 that controls a robotic arm in order to grab and move some randomly spawned blocks. The tools used are DockerDesktop, ros2, gazebo, yolov5 and roboflow. The algorithm developed is divided into two main parts: vision and manipulaition. The first is responsible of scanning the camera to grab an image, process it to localize all the blocks using yolov5 and returning the coordinates of the bounding boxes to calculate the relative positions. The second controls the movement of the arm, so moves to the given position, grabs the object and puts it in a designed position.
+The aim of this project is to provide a functional and correct implementation to be able to perform the operation without errors or singularities.
+
 % Vision Section
 \section{Vision}\label{sec:vision}
 Vision plays a critical role in robotics by enabling the robot to perceive and interpret its environment. 
-We started by analyzing the folders with the images provided by the professor. This brought us to three main issues: spawn the blocks, recognize them, and calculate their position in the space. 
-
-\subsection{Objective}\label{subsec:vobj}
-Describe the objectives of the vision system, such as object detection, localization, or environment mapping.
+We started by analyzing the folders with the images provided by the professor. This brought us to three main challenges: spawn the blocks, recognize them, and calculate their position in the space. 
+The objective of this section is to describe the objectives of the vision system, such as object detection, localization, or environment mapping.
 
 \subsection{Block spawn}\label{subsec:blockspawn}
 
@@ -49,19 +52,14 @@ Describe the objectives of the vision system, such as object detection, localiza
     The camera is setted in the position x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06. The last three parameters are the rotation values.
     \item \textbf{Object detection and classes:} For this part we used the tool Roboflow which allowed us to process the images and detect objects. The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having eleven classes, each with a large number of images loaded. Then a percentage of imeges was destined to training, a smaller and a smaller one to testing, this was done automatically by the program. At the end of the processes the program output was our blocktrain.pt, which is the file containing the weights to be used to perform the recognition with Yolov5.
     \item \textbf{Machine learning model, YOLOv5:} we used Yolov5 to train our model. This was done using a Python script. The major part of this file was taken from the Yolo tutorial website and arranged to our needs[...]. 
-    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we had to develop a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplify the call of the script, since we needed it every time we got an image, we decided to develop a service. To do that we had to integrate the code with some more instuctions to communicate with ros2 nodes...? and to receive and return the correct information.\\
+    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we had to develop a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplifies the call of the script, since we needed it every time we got an image, we decided to develop a service, so if a block is behind another, after removing the closer one we can see the one behind. To do that we had to integrate the code with some more instuctions to create a ros2 node and instantiate a service that receives and returns the correct information....\\
+    The distance of the blocks is determined through a function that takes in input the coordinates of the bounding box as a 2D point and returns the centre. All the centres of the boxes are stored in an array and the first one, which will be the one processed, is passed to the Conversion service, which given the coordinates of the centre, determines the distance of the object with respect to the camera.
     The file \textbf{yolo.sh} file is the only one that implements the node a in python and this creates some problems...
 \end{itemize}
-
-
-
 
 % Manipulation Section
 \section{Manipulation}\label{sec:manipulation}
 The manipulation system allows the robot to interact with the sorrounding environment and interact with objects through its end effector, which is a gripper in this case.
-
-\subsection{Objective}\label{subsec:mobj}
-Detail the objectives, such as object grasping, assembly, or precision tasks.
 The objective of this part is to develop an algorithm that, given a position, can reach the object, grab it and take it to its assigned storage location.
 
 \subsection{Design and Implementation}\label{susec:design}
@@ -69,7 +67,7 @@ Discuss the manipulator's design, actuators, and control strategies. Include sub
 \begin{itemize}
     \item \textbf{End-effector design:} the end effector is a gripper as said in \ref{sec:manipulation}. In particular we have a two finger gripper, which is able to open and close, so it enables robots to perform specific tasks such as picking up, holding, moving, or placing objects. 
     \item \textbf{Kinematics and dynamics:} we decided to use the joint space because differential kinematics is really difficult to manage with this system in our opinion and so we avoided it to reduce the issues.
-    \item \textbf{Control algorithms (e.g., PID, MPC):}
+    \item \textbf{Control algorithms (e.g., PID, MPC):} ...
 \end{itemize}
 
 

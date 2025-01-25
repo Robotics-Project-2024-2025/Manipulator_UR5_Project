@@ -19,6 +19,11 @@
 #include "kinematics.h"
 using namespace std;
 
+struct {
+  float32 x;    
+  float32 y;
+} Point2D;
+
 class GripperCommunicator : public rclcpp::Node {
 public:
     GripperCommunicator() : Node("gripper_communicator") {
@@ -92,6 +97,7 @@ extern int position_c;
 bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node);
 void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri);
 void oneIteration(std::shared_ptr<rclcpp::Node> node);
+Point2D findCenter(Point2D pmin, Point2D pmax);
 
 #endif /* path_h */
 

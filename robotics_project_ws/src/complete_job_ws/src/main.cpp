@@ -37,6 +37,8 @@ int main(int argc, const char* argv[])
     } else {
         std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
     }
+    //CENTRAL POINT ARRAY
+    Point2D center[10];
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
     auto nodeDetect = std::make_shared<YoloClient>();
     auto future_response_yolo = nodeDetect->sendRequest("/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated/Image1.png");
