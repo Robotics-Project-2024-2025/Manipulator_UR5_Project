@@ -11,7 +11,7 @@ pip install lark
 #pip install ultralytics==7.0
 pip show yolov5
 
-export PYTHONPATH=$PYTHONPATH:/path/to/your/.venv/lib/python3.x/site-packages
+#export PYTHONPATH=$PYTHONPATH:/path/to/your/.venv/lib/python3.x/site-packages
 #sudo apt install python3-sdformat13
 
 

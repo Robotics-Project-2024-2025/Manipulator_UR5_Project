@@ -14,7 +14,7 @@
 #include <utility>
 #include <cmath>
 #include <Eigen/Dense>
-#define DELTAT 0.0025
+#define DELTAT 0.01
 #define ERROR 0.0025
 #define MINT 0
 #define MAXT 6
@@ -23,7 +23,7 @@
 #define XMAX 1
 #define YMIN -1
 #define YMAX(i) ((i<NUM_JOINTS/2) ? 0.3 : 0.2)
-#define ZMIN 0
+#define ZMIN 0.1
 #define ZMAX 0.9
 using namespace std;
 using namespace Eigen;

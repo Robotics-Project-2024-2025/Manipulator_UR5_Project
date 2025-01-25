@@ -33,9 +33,9 @@ void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinatio
     control=path_search(destinationPos, destinationOri, qEs, node);
 }
 void oneIteration(std::shared_ptr<rclcpp::Node> node) {
-    Vector3d posDest{{-0.2, 0.2, -0.3}};
+    Vector3d posHome{{-0.2, 0.2, -0.3}};
     Vector3d posBlock{{-0.3, 0.4, -0.8}};
-    Vector3d posHome{{0.4, 0.2, -0.7}};
+    Vector3d posDest{{0.4, 0.2, -0.7}};
     Vector3d phiStart{{0.0, 0.0, 0.0}};
     Vector3d phiEf{{0.0, 0.0, 0.0}};
     auto gripper=std::make_shared<GripperCommunicator>();
@@ -43,15 +43,15 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     position_c=position_c%3;
     switch (position_c) {
         case 0:
-            gripper->open();
-            generalizeMovement(node, posHome, phiEf);
+            //gripper->open();
+            generalizeMovement(node, posBlock, phiEf);
             break;
         case 1:
-            gripper->close();
+            //gripper->close();
             generalizeMovement(node, posBlock, phiEf);
             break;
         case 2:
-            gripper->open();
+            //gripper->open();
             generalizeMovement(node, posDest, phiEf);
             break;
         default:
@@ -69,7 +69,7 @@ Point2D findCenter(Point2D pmin, Point2D pmax){
 
 ConversionClient::ConversionClient() : Node("conversion_client"){
     // Initialization of the client service
-    client_ = this->create_client<camera_ws::srv::Conversion>("Conversion");
+    client_ = this->create_client<camera_ws::srv::Conversion>("/table_transform_service");
 
     // Log message to report client startup
     RCLCPP_INFO(this->get_logger(), "Conversion client ready to send requests.");
@@ -82,7 +82,7 @@ std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> Conver
     request->y = y;
 
     // Verify that the service is available
-    while (!client_->wait_for_service(std::chrono::seconds(1)))
+    while (!client_->wait_for_service(std::chrono::seconds(10)))
     {
         RCLCPP_WARN(this->get_logger(), "Waiting for the 'Conversion' service to be available...");
     }
@@ -119,7 +119,7 @@ std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Boundingbox::Response>> 
     auto request = std::make_shared<vision_ws_msgs::srv::Boundingbox::Request>();
     request->image_path=image_path;
     // Verify that the service is available
-    while (!client_->wait_for_service(std::chrono::seconds(1)))
+    while (!client_->wait_for_service(std::chrono::seconds(10)))
     {
         RCLCPP_WARN(this->get_logger(), "Waiting for the 'Boundingbox' service to be available...");
     }

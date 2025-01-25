@@ -98,6 +98,4 @@ def generate_launch_description():
         base_launch,
         activate_gripper,
         pendant_play_rviz2,
-        camera_transform,
-        #detection_service
     ])
