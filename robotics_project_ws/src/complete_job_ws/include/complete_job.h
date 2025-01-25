@@ -19,9 +19,9 @@
 #include "kinematics.h"
 using namespace std;
 
-struct {
-  float32 x;    
-  float32 y;
+typedef struct Point2D {
+  float x;
+  float y;
 } Point2D;
 
 class GripperCommunicator : public rclcpp::Node {

@@ -55,6 +55,7 @@ public:
 private:
     double time_between_points_;
     rclcpp_action::Client<FollowJointTrajectory>::SharedPtr action_client_;
+    rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::shared_ptr<rclcpp::Node> origin_node;
     void publish_iter(MatrixD6 Th);

@@ -9,7 +9,7 @@ int main(int argc, const char* argv[])
     } else {
         std::cerr << "Correct directory failed with return code: " << ret_code << '\n';
     }
-    /*ret_code = system("colcon build");
+    ret_code = system("colcon build");
     if (ret_code == 0) {
         std::cout << "Colcon build executed successfully.\n";
     } else {
@@ -20,13 +20,6 @@ int main(int argc, const char* argv[])
         std::cout << "Source executed successfully.\n";
     } else {
         std::cerr << "Source failed with return code: " << ret_code << '\n';
-    }*/
-    //ret_code=system("source /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/.venv/bin/activate");
-    ret_code=system("source ../vision_ws/.venv/bin/activate");
-    if (ret_code == 0) {
-        std::cout << "Virtual Environment Activated\n";
-    } else {
-        std::cerr << "Virtual Environment Activation Failure with return code: " << ret_code << '\n';
     }
     // Create a service client
     auto node=std::make_shared<rclcpp::Node>("complete_job");
@@ -45,19 +38,16 @@ int main(int argc, const char* argv[])
     if (nodeDetect->spinUntilFutureComplete(future_response_yolo))
     {
         auto response_yolo = future_response_yolo.get();
-        //if (response_yolo->success)
-        //{
-            /*int counter=0;
-            while(response_yolo->boxes[counter]!=NULL){
-                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response_yolo->boxes[counter].class_id, response_yolo->boxes[counter].confidence, response_yolo->boxes[counter].xmin, response_yolo->boxes[counter].ymin, response_yolo->boxes[counter].xmax, response_yolo->boxes[counter].ymax);
-                counter++;
-            }
-            */
-            for (const auto& box : response_yolo->boxes)
-              {
-                  RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ",
-                              box.class_id, box.confidence, box.xmin, box.ymin, box.xmax, box.ymax);
-              }
+        int counter=0;
+        for (const auto& box : response_yolo->boxes)
+          {
+              RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ",
+                          box.class_id, box.confidence, box.xmin, box.ymin, box.xmax, box.ymax);
+              Point2D pmin={response_yolo->boxes[counter].xmin, response_yolo->boxes[counter].ymin};
+              Point2D pmax={response_yolo->boxes[counter].xmax, response_yolo->boxes[counter].ymax};
+              center[counter]=findCenter(pmin, pmax);
+              counter++;
+          }
         /*}
         else
         {
@@ -72,7 +62,7 @@ int main(int argc, const char* argv[])
     }
     //TEST TRANSFORM IMAGE
     auto nodeConv = std::make_shared<ConversionClient>();
-    auto future_response = nodeConv->sendRequest(100, 200);
+    auto future_response = nodeConv->sendRequest(center[0].x, center[0].y);
     if (nodeConv->spinUntilFutureComplete(future_response))
     {
         auto response = future_response.get();

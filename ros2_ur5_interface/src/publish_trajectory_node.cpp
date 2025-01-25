@@ -192,7 +192,20 @@ private:
                     RCLCPP_INFO(this->get_logger(), "Goal accepted by the server, waiting for result");
                 }
             };
-
+        
+        send_goal_options.feedback_callback =
+            [this](const GoalHandleFollowJointTrajectory::SharedPtr goal_handle,
+                   const std::shared_ptr<const FollowJointTrajectory::Feedback> feedback) {
+                RCLCPP_INFO(this->get_logger(), "Received feedback: %f %f %f %f %f %f",
+                    feedback->desired.positions[0],
+                    feedback->desired.positions[1],
+                    feedback->desired.positions[2],
+                    feedback->desired.positions[3],
+                    feedback->desired.positions[4],
+                    feedback->desired.positions[5]);
+                // Add more feedback handling logic if necessary
+            };
+        
         send_goal_options.result_callback =
             [this](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
                 switch (result.code)
