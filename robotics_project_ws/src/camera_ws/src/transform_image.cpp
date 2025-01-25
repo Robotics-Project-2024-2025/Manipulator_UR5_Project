@@ -14,13 +14,13 @@ TableTransformService::TableTransformService() : Node("table_transform_service")
         // Define the source and destination points
         sourcePoints_.push_back(cv::Point2f(0, 0));  // First table vertex
         sourcePoints_.push_back(cv::Point2f(640, 0));  // Second table vertex
-        sourcePoints_.push_back(cv::Point2f(0, 640));  // Third table vertex
-        sourcePoints_.push_back(cv::Point2f(640, 640)); // Fourth table vertex
+        sourcePoints_.push_back(cv::Point2f(0, 360));  // Third table vertex
+        sourcePoints_.push_back(cv::Point2f(640, 360)); // Fourth table vertex
 
-        destinationPoints_.push_back(cv::Point2f(152, 63));  // First vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(488, 64));    // Second vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(26, 345));  // Third vertex in 2D plane
-        destinationPoints_.push_back(cv::Point2f(613, 345)); // Fourth vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(175, 88));  // First vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(423, 81));    // Second vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(19, 313));  // Third vertex in 2D plane
+        destinationPoints_.push_back(cv::Point2f(635, 288)); // Fourth vertex in 2D plane
 
         // Compute the perspective transformation matrix
         perspectiveMatrix_ = cv::getPerspectiveTransform(destinationPoints_, sourcePoints_);
@@ -67,7 +67,7 @@ bool TableTransformService::projectCallback(
     res->x_2d = outputPoints[0].x;
     res->y_2d = outputPoints[0].y;
     res->success = true;
-    res->x_2d = maxX-(float)((float)outputPoints[0].y/640)*(maxX-minX);
+    res->x_2d = maxX-(float)((float)outputPoints[0].y/360)*(maxX-minX);
     res->y_2d = maxY-(float)((float)outputPoints[0].x/640)*(maxY-minY);
     return true;
 }

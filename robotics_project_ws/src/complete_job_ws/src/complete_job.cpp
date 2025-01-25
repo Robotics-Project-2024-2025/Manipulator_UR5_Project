@@ -43,15 +43,15 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     position_c=position_c%3;
     switch (position_c) {
         case 0:
-            //gripper->open();
-            generalizeMovement(node, posBlock, phiEf);
+            gripper->open();
+            generalizeMovement(node, posHome, phiEf);
             break;
         case 1:
-            //gripper->close();
+            gripper->close();
             generalizeMovement(node, posBlock, phiEf);
             break;
         case 2:
-            //gripper->open();
+            gripper->open();
             generalizeMovement(node, posDest, phiEf);
             break;
         default:
