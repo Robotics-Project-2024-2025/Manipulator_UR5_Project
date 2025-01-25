@@ -26,7 +26,7 @@ TableTransformService::TableTransformService() : Node("table_transform_service")
         perspectiveMatrix_ = cv::getPerspectiveTransform(destinationPoints_, sourcePoints_);
 
     // Initialize the ROS service
-            service_ = this->create_service<camera_ws::srv::Conversion>("Conversion", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
+            service_ = this->create_service<camera_ws::srv::Conversion>("table_transform_service", std::bind(&TableTransformService::projectCallback, this, std::placeholders::_1, std::placeholders::_2));
 
             RCLCPP_INFO(this->get_logger(), "Service 'Conversion' ended");
     }

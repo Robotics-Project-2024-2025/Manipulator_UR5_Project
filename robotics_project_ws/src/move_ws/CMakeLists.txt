@@ -17,6 +17,7 @@ find_package(Eigen3 3.3 REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(camera_ws REQUIRED)
+find_package(vision_ws_msgs REQUIRED)
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Moving.srv"
@@ -65,6 +66,7 @@ ament_target_dependencies(
   control_msgs
   rclcpp_action
   camera_ws
+  vision_ws_msgs
 )
 
 # Include directories for the target

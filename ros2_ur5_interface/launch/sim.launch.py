@@ -18,6 +18,7 @@ package_name = 'ros2_ur5_interface'
 MIN_BLOCK = 1
 MAX_BLOCK = 10
 X_MIN=0.05
+#X_MIN=-0.2
 X_MAX=0.405
 Y_MIN=0.2
 Y_MAX=0.58
@@ -193,30 +194,30 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
             "red": "1 0 0 1",
             "green": "0 1 0 1",
             "blue": "0 0 1 1",
-            "yellow": "1 1 0 1",
-            "cyan": "0 1 1 1",
+            #"yellow": "1 1 0 1",
+            #"cyan": "0 1 1 1",
             "magenta": "1 0 1 1",
             "black": "0 0 0 1",
-            "white": "1 1 1 1",
-            "gray": "0.5 0.5 0.5 1",
+            #"white": "1 1 1 1",
+            #"gray": "0.5 0.5 0.5 1",
             "orange": "1 0.65 0 1",
             "purple": "0.5 0 0.5 1",
-            "pink": "1 0.75 0.8 1",
+            #"pink": "1 0.75 0.8 1",
             "brown": "0.6 0.3 0.1 1",
-            "beige": "0.96 0.96 0.86 1",
-            "light_green": "0.6 1 0.6 1",
-            "light_blue": "0.6 0.8 1 1",
-            "light_gray": "0.8 0.8 0.8 1",
-            "light_yellow": "1 1 0.6 1",
-            "light_purple": "0.75 0.5 1 1",
-            "dark_red": "0.5 0 0 1",
-            "dark_blue": "0 0 0.5 1",
-            "dark_green": "0 0.5 0 1",
-            "dark_cyan": "0 0.5 0.5 1",
-            "dark_magenta": "0.5 0 0.5 1",
-            "dark_yellow": "0.5 0.5 0 1",
-            "dark_orange": "0.5 0.25 0 1",
-            "light_pink": "1 0.85 0.9 1",
+            #"beige": "0.96 0.96 0.86 1",
+            #"light_green": "0.6 1 0.6 1",
+            #"light_blue": "0.6 0.8 1 1",
+            #"light_gray": "0.8 0.8 0.8 1",
+            #"light_yellow": "1 1 0.6 1",
+            #"light_purple": "0.75 0.5 1 1",
+            #"dark_red": "0.5 0 0 1",
+            #"dark_blue": "0 0 0.5 1",
+            #"dark_green": "0 0.5 0 1",
+            #"dark_cyan": "0 0.5 0.5 1",
+            #"dark_magenta": "0.5 0 0.5 1",
+            #"dark_yellow": "0.5 0.5 0 1",
+            #"dark_orange": "0.5 0.25 0 1",
+            #"light_pink": "1 0.85 0.9 1",
         }.items()))
         position=random_pos()
         orientation=[0.0, 0.0, random_angle()]
@@ -239,9 +240,6 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
     return instances_cmds
 
 def generate_launch_description():
-        
-    #spawn_blocks_nodes = OpaqueFunction(function=generate_spawn_block_nodes)
-    
     declared_arguments = []
 
     declared_arguments.append(
@@ -258,7 +256,6 @@ def generate_launch_description():
     rviz_config_file = os.path.join(get_package_share_directory(package_name), 'rviz', 'ur5.rviz')
     desk_urdf = Command([PathJoinSubstitution([FindExecutable(name='xacro')])," ",PathJoinSubstitution([FindPackageShare(package_name), "models", "desk.urdf.xacro"])])
     camera_sdf = os.path.join(get_package_share_directory(package_name), 'models', 'camera.sdf')
-
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -305,7 +302,7 @@ def generate_launch_description():
         arguments=['-0.5', '0.5', '1.2', '-0.06', '0.4', '0.0', 'desk', 'camera_rgb_frame']
     )
 
-    # UR robot state publisher node
+     # UR robot state publisher node
     ur_robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -335,7 +332,7 @@ def generate_launch_description():
         executable="spawner",
         arguments=["scaled_joint_trajectory_controller", "-c", "/controller_manager"],
     )
-
+    
     gripper_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -395,7 +392,7 @@ def generate_launch_description():
         executable='gripper_service',
         output='screen',
     )
-
+    
     bridge_params = os.path.join(
         get_package_share_directory(package_name),
         'params',
@@ -419,7 +416,7 @@ def generate_launch_description():
         arguments=['/camera/image_raw/image'],
         output='screen',
     )
-
+    
     # RViz2 node
     rviz2 = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -435,6 +432,7 @@ def generate_launch_description():
             ],
         ),
     )
+
     cleanup_command = (
         "import subprocess; "
         "for model in ['block', 'block_1', 'block_2', 'block_3', 'block_4', 'block_5', 'block_6', 'block_7', 'block_8', 'block_9']: "
@@ -453,7 +451,7 @@ def generate_launch_description():
             ]
         )
     )
-    
+
     # Return the LaunchDescription
     return LaunchDescription([
         *declared_arguments,

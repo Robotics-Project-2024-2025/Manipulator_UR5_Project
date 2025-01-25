@@ -38,23 +38,35 @@ int main(int argc, const char* argv[])
         std::cerr << "Capturing Image Failure with return code: " << ret_code << '\n';
     }
     //DETECTION FUNCTION TO IMPLEMENT IN COMPLETE_JOB USING A CLASS DETECTION
-    auto nodeDetect = std::make_shared<Yololient>();
-    auto future_response = nodeDetect->sendRequest("home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated");
-    if (nodeDetect->spinUntilFutureComplete(future_response))
+    auto nodeDetect = std::make_shared<YoloClient>();
+    auto future_response_yolo = nodeDetect->sendRequest("/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated/Image1.png");
+    if (nodeDetect->spinUntilFutureComplete(future_response_yolo))
     {
-        auto response = future_response.get();
-        if (response->success)
-        {    
-            int counter=0;
-            while(response->boxes[counter]==NULL){
-                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response->class_id, response->confidence, response->xmin, response->ymin, response->xmax, response->ymax);
+        auto response_yolo = future_response_yolo.get();
+        //if (response_yolo->success)
+        //{
+            /*int counter=0;
+            while(response_yolo->boxes[counter]!=NULL){
+                RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ", response_yolo->boxes[counter].class_id, response_yolo->boxes[counter].confidence, response_yolo->boxes[counter].xmin, response_yolo->boxes[counter].ymin, response_yolo->boxes[counter].xmax, response_yolo->boxes[counter].ymax);
                 counter++;
             }
-        }
+            */
+            for (const auto& box : response_yolo->boxes)
+              {
+                  RCLCPP_INFO(nodeDetect->get_logger(), "%d, %.2f, %.2f, %.2f, %.2f, %.2f ; ",
+                              box.class_id, box.confidence, box.xmin, box.ymin, box.xmax, box.ymax);
+              }
+        /*}
         else
         {
             RCLCPP_WARN(nodeDetect->get_logger(), "Service call succeeded but returned failure status.");
-        }
+        }*/
+    }
+    ret_code = system("python /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/yolov5/detect.py --source /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated/ --weights /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/blockTrain.pt --conf 0.7");
+    if (ret_code == 0) {
+        std::cout << "Bounding boxes displaying executed successfully.\n";
+    } else {
+        std::cerr << "Bounding boxes displaying failed with return code: " << ret_code << '\n';
     }
     //TEST TRANSFORM IMAGE
     auto nodeConv = std::make_shared<ConversionClient>();
@@ -72,7 +84,7 @@ int main(int argc, const char* argv[])
         }
     }
     //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
-    oneIteration(nodeConv);
+    oneIteration(node);
     rclcpp::shutdown();
     return 0;
 }

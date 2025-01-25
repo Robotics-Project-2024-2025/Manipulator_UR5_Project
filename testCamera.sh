@@ -17,10 +17,10 @@ ros2 run camera_ws camera
 #pip install -r requirements.txt
 #sudo apt update
 #sudo apt install python3-xyz
-#python detect.py \
+#python /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/yolov5/detect.py \
   --source /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/camera_ws/generated/ \
   --weights /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/blockTrain.pt \
-  --conf 0.5
+  --conf 0.7
 #mv /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/yolov5/runs/detect/exp/ /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/
 #cd /home/ubuntu/ros2_ws/
 ros2 run camera_ws points_camera

@@ -16,6 +16,10 @@
 #include <chrono>
 #include <iostream>
 #include <Eigen/Dense>
+#include <sstream>
+#include <iomanip>
+#include <string>
+#include <array>
 
 /*
  # The header is used to specify the coordinate frame and the reference time for
@@ -49,6 +53,7 @@ class TrajectoryActionClient : public rclcpp::Node
 public:
     TrajectoryActionClient(MatrixD6 Th, std::shared_ptr<rclcpp::Node> node);
 private:
+    double time_between_points_;
     rclcpp_action::Client<FollowJointTrajectory>::SharedPtr action_client_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::shared_ptr<rclcpp::Node> origin_node;
@@ -75,4 +80,5 @@ private:
 Matrix16 receive_joint_state();
 void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node);
 void setupCommunication(int argc, const char* argv[]);
+std::string uuid_to_string(const std::array<uint8_t, 16>& uuid);
 #endif /* kin_communication_h */
