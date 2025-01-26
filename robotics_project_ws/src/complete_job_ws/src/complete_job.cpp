@@ -1,7 +1,10 @@
 #include "complete_job.h"
 
 bool control;
-int position_c=-1;
+Status position_c=UNKNOWN;
+Point2D blockPos;
+Point2D finalPos;
+
 bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node){
     MatrixD6 th;
     double time = 4.0;
@@ -32,27 +35,99 @@ void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinatio
     Matrix16 qEs=receive_joint_state();
     control=path_search(destinationPos, destinationOri, qEs, node);
 }
+
+void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y) {
+    blockPos={block_x, block_y};
+    finalPos={dest_x, dest_y};
+}
+
+void determineStatus() {
+    switch(position_c) {
+        case UNKNOWN:
+            position_c=HOME;
+            break;
+        case HOME:
+            position_c=ABOVE_BLOCK;
+            break;
+        case ABOVE_BLOCK:
+            position_c=BLOCK;
+            break;
+        case BLOCK:
+            position_c=ABOVE_BLOCK_2;
+            break;
+        case ABOVE_BLOCK_2:
+            position_c=ABOVE_DEST;
+            break;
+        case ABOVE_DEST:
+            position_c=DEST;
+            break;
+        case DEST:
+            position_c=ABOVE_DEST_2;
+            break;
+        case ABOVE_DEST_2:
+            position_c=HOME;
+            break;
+        default:
+            rclcpp::shutdown();
+            exit(1);
+    }
+}
+
 void oneIteration(std::shared_ptr<rclcpp::Node> node) {
-    Vector3d posHome{{-0.2, 0.2, -0.3}};
-    Vector3d posBlock{{-0.3, 0.4, -0.8}};
-    Vector3d posDest{{0.4, 0.2, -0.7}};
+    //double blockHeight = 0.5;
+    double gripHeight = 0.25-0.9;
+    double travelHeight = 0.5-0.9;
+    double shift_x = 0.01;
+    double shift_y = -0.005;
+    Vector3d home{{-0.2, 0.2, -0.3}};
+    Vector3d aboveBlock{{blockPos.x, blockPos.y, travelHeight}};
+    Vector3d block{{blockPos.x, blockPos.y, gripHeight}};
+    Vector3d aboveDest{{finalPos.x, finalPos.y, travelHeight}};
+    Vector3d posDest{{finalPos.x, finalPos.y, gripHeight}};
     Vector3d phiStart{{0.0, 0.0, 0.0}};
-    Vector3d phiEf{{0.0, 0.0, 0.0}};
+    Vector3d phiEf{{M_PI/2, M_PI, 0}};
+    determineStatus();
     auto gripper=std::make_shared<GripperCommunicator>();
-    position_c++;
-    position_c=position_c%3;
     switch (position_c) {
-        case 0:
-            gripper->open();
-            generalizeMovement(node, posHome, phiEf);
-            break;
-        case 1:
+        case HOME:
             gripper->close();
-            generalizeMovement(node, posBlock, phiEf);
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, home, phiEf);
             break;
-        case 2:
+        case ABOVE_BLOCK:
             gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveBlock, phiEf);
+            break;
+        case BLOCK:
+            gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, block, phiEf);
+            break;
+        case ABOVE_BLOCK_2:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveBlock, phiEf);
+            break;
+        case ABOVE_DEST:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveDest, phiEf);
+            break;
+        case DEST:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
             generalizeMovement(node, posDest, phiEf);
+            break;
+        case ABOVE_DEST_2:
+            gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveDest, phiEf);
+            break;
+        case UNKNOWN:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, home, phiEf);
             break;
         default:
             rclcpp::shutdown();
