@@ -301,10 +301,19 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
     }
     cout << qEF << endl;
      //VectorXd qEf = qEF.row(index);
-    for (int i = 0; i < qEF.rows(); ++i) {
-        MatrixD6 A;
+    for (int i = 0; i < qEF.rows(); ++i) { 
+        //MatrixD6 A;
+        MatrixD4 A;
         bool error=false;
         for (int j=0; j<qES.rows(); j++) {
+            MatrixXd M(4, 4); //3rd grade polynomial implementation
+            M << 1, MINT,  pow(MINT, 2), pow(MINT, 3),
+                 0, 1, 2 * MINT, 3 * pow(MINT, 2),
+                 1, MAXT, pow(MAXT, 2), pow(MAXT, 2),
+                 0, 1, 2*MAXT, 3*pow(MAXT, 2);
+            VectorXd b(4);
+            b << qEs(j), 0, qEf(i,j), 0;
+            /* 5th grade polinomial implementation
             MatrixXd M(6, 6);
             M << 1, MINT, pow(MINT, 2), pow(MINT, 3), pow(MINT, 4), pow(MINT, 5),
             0, 1, 2 * MINT, 3 * pow(MINT, 2), 4 * pow(MINT, 3), 5 * pow(MINT, 4),
@@ -314,15 +323,16 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
             0, 0, 2, 6 * time, 12 * pow(time, 2), 20 * pow(time, 3);
             VectorXd b(6);
             b << qES(j), 0, 0, qEF(i, j), 0, 0;
+            */
             MatrixXd M_inv = M.inverse();
             VectorXd coeff = M_inv*b;
             A.conservativeResize(A.rows()+1, Eigen::NoChange);
             A.row(A.rows()-1) = coeff.transpose();
         }
-        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) {
+        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) { 
             VectorXd th(NUM_JOINTS);
             for (int k = 0; k < qES.rows(); k++) {
-                th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
+                th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3); //+ A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
             }
             //CHECK ANGLES
             if (!checkAngles(th)) {
@@ -331,6 +341,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
             }
             Th->conservativeResize(Th->rows() + 1, NUM_JOINTS);
             Th->row(Th->rows()-1)=th;
+            
             //Matrix61 m61 = Th.row(Th.rows()-1);
             /*pair<Vector3d, Matrix3d> pa = Ur5Direct(m61);
             xE.conservativeResize(xE.rows() + 1, 3);

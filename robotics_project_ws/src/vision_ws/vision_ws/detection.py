@@ -1,82 +1,94 @@
 import rclpy
-import sys
-import torch
 from rclpy.node import Node
 from vision_ws_msgs.srv import Boundingbox
 from vision_ws_msgs.msg import Boundstruct
-#from vision_ws_msgs.msg import Boundstruct
-#from ultralytics import YOLO
-import yolov5
+import torch
+from yolov5.models.common import DetectMultiBackend
+from yolov5.utils.general import non_max_suppression, scale_boxes, check_img_size, LOGGER
+from yolov5.utils.torch_utils import select_device
+from yolov5.utils.dataloaders import LoadImages
+#non so se caricano le librerie
 
 class YoloBoundingBoxService(Node):
     def __init__(self):
         super().__init__('yolo_bounding_box_service')
-        # Load YOLO model
-        self.model = yolov5.load('/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/blockTrain.pt')
-        self.model.conf = 0.7
-        self.model.iou = 0.45
-        self.model.agnostic = False
-        self.model.multi_label = False
-        
+
+        # YOLOv5 configuration
+        weights = "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/blockTrain.pt" 
+        data = "/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/yolov5/data/coco128.yaml"
+        imgsz = (640, 360)  # da cambiare
+        conf_thres = 0.25  # Confidence threshold
+        iou_thres = 0.45  # IoU threshold
+        max_det = 1000  # non so quante volgiamo metterne
+        device = select_device("")  # Auto-select device (GPU if available)
+
+        # Load YOLOv5 model with DetectMultiBackend
+        self.model = DetectMultiBackend(weights, device=device, data=data, fp16=False)
+        self.model.stride, self.model.names = self.model.stride, self.model.names
+        self.imgsz = check_img_size(imgsz, s=self.model.stride)
+        self.conf_thres = conf_thres
+        self.iou_thres = iou_thres
+        self.max_det = max_det
+
+        self.get_logger().info("YOLOv5 model loaded successfully.")
+
+        # Create the ROS 2 service
         self.service = self.create_service(Boundingbox, 'yolo_bounding_box_service', self.handle_bounding_boxes_request)
         self.get_logger().info('YOLO Bounding Box Service is ready!')
 
     def handle_bounding_boxes_request(self, request, response):
-        # Run YOLO inference (replace 'image.jpg' with your image source)
-        results = self.model(request.image_path)
+        image_path = request.image_path
+        try:
+            # Load and preprocess the image
+            dataset = LoadImages(image_path, img_size=self.imgsz, stride=self.model.stride, auto=self.model.pt)
+            for path, im, im0s, vid_cap, s in dataset:
+                im = torch.from_numpy(im).to(self.model.device)
+                im = im.half() if self.model.fp16 else im.float()  # Convert to FP16/FP32
+                im /= 255.0  # Normalize to [0, 1]
+                if len(im.shape) == 3:
+                    im = im[None]  # Add batch dimension
 
-        #bounding_boxes = []
-        #for result in results[0]:
-        #    box = result.xyxy[0].cpu().numpy()  # [xmin, ymin, xmax, ymax]
-        #    confidence = result.conf.cpu().item()
-        #    class_id = int(result.cls.cpu().item())
+                # Perform inference
+                pred = self.model(im)
 
-        #    bounding_box_data = {
-        #        'class_id': class_id,
-        #        'confidence': confidence,
-        #        'xmin': box[0],
-        #        'ymin': box[1],
-        #        'xmax': box[2],
-        #        'ymax': box[3],
-        #    }
-        #    bounding_boxes.append(bounding_box_data)
+                # Apply Non-Max Suppression (NMS)
+                pred = non_max_suppression(pred, self.conf_thres, self.iou_thres, max_det=self.max_det)
 
-        # Log and return the bounding boxes
-        #response.boxes=bounding_boxes
-        #self.get_logger().info(f"Processed image {request.image_path} with {len(bounding_boxes)} bounding boxes.")
-        predictions = results.pred[0]
-        x_mins = predictions[:, 0] # x1, y1, x2, y2
-        y_mins = predictions[:, 1]
-        x_maxs = predictions[:, 2]
-        y_maxs = predictions[:, 3]
-        scores = predictions[:, 4]
-        categories = predictions[:, 5]
-        #response.boxes = []  # Initialize the response list
-        for i in range(len(categories)):
-                bbox = Boundstruct()  # Create a Boundstruct object
-                bbox.class_id = int(categories[i].item())
-                bbox.confidence = float(scores[i].item())
-                bbox.xmin = float(x_mins[i].item())
-                bbox.ymin = float(y_mins[i].item())
-                bbox.xmax = float(x_maxs[i].item())
-                bbox.ymax = float(y_maxs[i].item())
-                response.boxes.append(bbox)
+                # Extract bounding box data
+                for det in pred:  # Process each detection
+                    if det is not None and len(det):
+                        det[:, :4] = scale_boxes(im.shape[2:], det[:, :4], im0s.shape).round()
+
+                        # Extract prediction fields as per your structure
+                        predictions = det
+                        x_mins = predictions[:, 0]
+                        y_mins = predictions[:, 1]
+                        x_maxs = predictions[:, 2]
+                        y_maxs = predictions[:, 3]
+                        scores = predictions[:, 4]
+                        categories = predictions[:, 5]
+
+                        for i in range(len(categories)):
+                            bbox = Boundstruct()
+                            bbox.class_id = int(categories[i].item())
+                            bbox.confidence = float(scores[i].item())
+                            bbox.xmin = float(x_mins[i].item())
+                            bbox.ymin = float(y_mins[i].item())
+                            bbox.xmax = float(x_maxs[i].item())
+                            bbox.ymax = float(y_maxs[i].item())
+                            response.boxes.append(bbox)
+
+                self.get_logger().info(f"Processed image {image_path} with {len(response.boxes)} bounding boxes.")
+        except Exception as e:
+            self.get_logger().error(f"Error processing image {image_path}: {e}")
+        
         return response
 
 def main(args=None):
     rclpy.init(args=args)
     try:
         node = YoloBoundingBoxService()
-
-        try:
-            from vision_ws_msgs.srv import Boundingbox
-            from vision_ws_msgs.msg import Boundstruct
-            node.get_logger().info("ROS 2 message imports successful.")
-        except ImportError as e:
-            node.get_logger().error(f"Failed to import ROS 2 messages: {e}")
-
         rclpy.spin(node)
-        node.destroy_node()
     except Exception as e:
         print(f"Error during node initialization: {e}")
     finally:
