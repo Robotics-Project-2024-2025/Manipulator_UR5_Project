@@ -19,6 +19,8 @@
 #include "kinematics.h"
 using namespace std;
 
+typedef enum Status {HOME, ABOVE_BLOCK, BLOCK, ABOVE_BLOCK_2, ABOVE_DEST, DEST, ABOVE_DEST_2, UNKNOWN} Status;
+
 typedef struct Point2D {
   float x;
   float y;
@@ -93,12 +95,15 @@ public:
 private:
     rclcpp::Client<vision_ws_msgs::srv::Boundingbox>::SharedPtr client_; // Service client
 };
-extern int position_c;
+extern Status position_c;
+extern Point2D blockPos;
+extern Point2D finalPos;
 bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node);
 void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri);
 void oneIteration(std::shared_ptr<rclcpp::Node> node);
 Point2D findCenter(Point2D pmin, Point2D pmax);
-
+void determineStatus();
+void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y);
 #endif /* path_h */
 
 

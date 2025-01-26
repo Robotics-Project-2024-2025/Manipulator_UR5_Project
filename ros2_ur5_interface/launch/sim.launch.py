@@ -197,13 +197,13 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
             #"yellow": "1 1 0 1",
             #"cyan": "0 1 1 1",
             "magenta": "1 0 1 1",
-            "black": "0 0 0 1",
+            #"black": "0 0 0 1",
             #"white": "1 1 1 1",
             #"gray": "0.5 0.5 0.5 1",
             "orange": "1 0.65 0 1",
             "purple": "0.5 0 0.5 1",
             #"pink": "1 0.75 0.8 1",
-            "brown": "0.6 0.3 0.1 1",
+            #"brown": "0.6 0.3 0.1 1",
             #"beige": "0.96 0.96 0.86 1",
             #"light_green": "0.6 1 0.6 1",
             #"light_blue": "0.6 0.8 1 1",
@@ -329,7 +329,7 @@ def generate_launch_description():
 
     joint_controller_spawner = Node(
         package="controller_manager",
-        executable="spawner",
+         executable="spawner",
         arguments=["scaled_joint_trajectory_controller", "-c", "/controller_manager"],
     )
     
