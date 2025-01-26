@@ -26,39 +26,39 @@
 ```
 Project
  ┣ robotics_project_ws            # Main package containing all other
- ┃ ┣ src                          # Folder with all our code
- ┃ ┃ ┣ camera_ws                  # Package for analyzing the images taken and extrapolate what we need for the arm
- ┃ ┃ ┃ ┣ generated                # Analyzed images
- ┃ ┃ ┃ ┣ include                  # Headers for package camera_ws
- ┃ ┃ ┃ ┣ msg                      # Messages for communication between packages
- ┃ ┃ ┃ ┣ src                      # Source code of the package
- ┃ ┃ ┃ ┃ ┣ calc_medium_value.cpp  # 
- ┃ ┃ ┃ ┃ ┣ image.cpp              # 
- ┃ ┃ ┃ ┃ ┣ points.cpp             # 
- ┃ ┃ ┃ ┃ ┗ transform_image.cpp    # 
- ┃ ┃ ┃ ┣ srv                      # Srv files for services functions
- ┃ ┃ ┃ ┣ CMakeLists.txt           # Cmake to build the executable for analyzing the images
- ┃ ┃ ┃ ┣ package.xml              # Package Identificator
- ┃ ┃ ┃ ┗ visual.py                # View from above the table
- ┃ ┃ ┣ complete_job_ws            # Package that performs all the actions of the single packages
- ┃ ┃ ┃ ┣ include                  # Headers for 
- ┃ ┃ ┃ ┣ src                      # Source code
- ┃ ┃ ┃ ┃ ┣ complete_job.cpp       # 
- ┃ ┃ ┃ ┃ ┣ main.cpp               # 
- ┃ ┃ ┃ ┣ CMakeLists.txt           # Cmake to build the executable for ...
- ┃ ┃ ┃ ┣ package.xml              # Package Identificator
- ┃ ┃ ┣ move_ws                    # Package for moving the manipulator
- ┃ ┃ ┃ ┣ include                  # Headers of package move_ws
- ┃ ┃ ┃ ┃ ┣ kin_communication.h    # Header for communication client-server of moving
- ┃ ┃ ┃ ┃ ┗ kinematics.h           # Header for movement functions
- ┃ ┃ ┃ ┣ src                      # Defintions of functions in header
- ┃ ┃ ┃ ┃ ┣ kin_communication.cpp    # Definitions for communication client-server of moving
- ┃ ┃ ┃ ┃ ┣ kinematics.cpp           # Definitions for movement functions
- ┃ ┃ ┃ ┃ ┗ main.cpp                 # Test of movement functionality
- ┃ ┃ ┃ ┣ CMakeLists.txt           # Cmake to build the executable for moving
- ┃ ┃ ┃ ┗ package.xml              # Package Identificator  
- ┃ ┃ ┣ vision_ws                  # Package for vision (IN DEVELOPMENT)
- ┃ ┃ ┗ vision_ws_msgs 
+ ┃ ┗ src                          # Folder with all our code
+ ┃   ┣ camera_ws                  # Package for analyzing the images taken and extrapolate what we need for the arm
+ ┃   ┃ ┣ generated                # Analyzed images
+ ┃   ┃ ┣ include                  # Headers for package camera_ws
+ ┃   ┃ ┣ msg                      # Messages for communication between packages
+ ┃   ┃ ┣ src                      # Source code of the package
+ ┃   ┃ ┃ ┣ calc_medium_value.cpp  # 
+ ┃   ┃ ┃ ┣ image.cpp              # 
+ ┃   ┃ ┃ ┣ points.cpp             # 
+ ┃   ┃ ┃ ┗ transform_image.cpp    # 
+ ┃   ┃ ┣ srv                      # Srv files for services functions
+ ┃   ┃ ┣ CMakeLists.txt           # Cmake to build the executable for analyzing the images
+ ┃   ┃ ┣ package.xml              # Package Identificator
+ ┃   ┃ ┗ visual.py                # View from above the table
+ ┃   ┣ complete_job_ws            # Package that performs all the actions of the single packages
+ ┃   ┃ ┣ include                  # Headers for 
+ ┃   ┃ ┣ src                      # Source code
+ ┃   ┃ ┃ ┣ complete_job.cpp       # 
+ ┃   ┃ ┃ ┗ main.cpp               # 
+ ┃   ┃ ┣ CMakeLists.txt           # Cmake to build the executable for ...
+ ┃   ┃ ┗ package.xml              # Package Identificator
+ ┃   ┣ move_ws                    # Package for moving the manipulator
+ ┃   ┃ ┣ include                  # Headers of package move_ws
+ ┃   ┃ ┃ ┣ kin_communication.h    # Header for communication client-server of moving
+ ┃   ┃ ┃ ┗ kinematics.h           # Header for movement functions
+ ┃   ┃ ┣ src                      # Defintions of functions in header
+ ┃   ┃ ┃ ┣ kin_communication.cpp    # Definitions for communication client-server of moving
+ ┃   ┃ ┃ ┣ kinematics.cpp           # Definitions for movement functions
+ ┃   ┃ ┃ ┗ main.cpp                 # Test of movement functionality
+ ┃   ┃ ┣ CMakeLists.txt           # Cmake to build the executable for moving
+ ┃   ┃ ┗ package.xml              # Package Identificator  
+ ┃   ┣ vision_ws                  # Package for vision (IN DEVELOPMENT)
+ ┃   ┗ vision_ws_msgs 
  ┣ $FILES$.sh                     # Bash scripts for saving time
  ┣ ...
  ┣ Report.pdf                     # Report 
