@@ -306,7 +306,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
         MatrixD4 A;
         bool error=false;
         for (int j=0; j<qES.rows(); j++) {
-            MatrixXd M(4, 4);
+            MatrixXd M(4, 4); //3rd grade polynomial implementation
             M << 1, MINT,  pow(MINT, 2), pow(MINT, 3),
                  0, 1, 2 * MINT, 3 * pow(MINT, 2),
                  1, MAXT, pow(MAXT, 2), pow(MAXT, 2),
@@ -329,7 +329,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
             A.conservativeResize(A.rows()+1, Eigen::NoChange);
             A.row(A.rows()-1) = coeff.transpose();
         }
-        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) { //va cambiato qES in input?
+        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) { 
             VectorXd th(NUM_JOINTS);
             for (int k = 0; k < qES.rows(); k++) {
                 th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3); //+ A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
@@ -342,7 +342,6 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
             Th->conservativeResize(Th->rows() + 1, NUM_JOINTS);
             Th->row(Th->rows()-1)=th;
             
-            //Quest'ultima parte non penso serva scommentarla perche era per ritornare la matrice
             //Matrix61 m61 = Th.row(Th.rows()-1);
             /*pair<Vector3d, Matrix3d> pa = Ur5Direct(m61);
             xE.conservativeResize(xE.rows() + 1, 3);
