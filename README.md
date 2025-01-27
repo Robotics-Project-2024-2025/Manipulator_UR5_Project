@@ -77,6 +77,10 @@ Project
 
 # Installation and Configuration
 
+For windows it's needed to install a wsl, so that it is possible to use a linux console on a windows system.
+The wsl can be found on microsoft store, from all the versions we chose `Ubuntu 22.04.5 TLS`, downloadable from [here](https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=IT&ocid=pdpshare).
+After opening it for the first time, it will asks you to create a new profile, with nickname and password.
+
 [Back to top](#table-of-contents)
 
 ---
