@@ -36,6 +36,17 @@ void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinatio
     control=path_search(destinationPos, destinationOri, qEs, node);
 }
 
+Point2D getDestination(int class_id) {
+    Eigen::Vector3f x_coords(0.3f, 0.37f, 0.45f);
+    Eigen::Vector3f y_coords(0.25f, 0.15f, 0.05f);
+    int row = class_id / 3;
+    int col = class_id % 3;
+    Point2D point;
+    point.x = x_coords(col);
+    point.y = y_coords(row);
+    return point;
+}
+
 void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y) {
     blockPos={block_x, block_y};
     finalPos={dest_x, dest_y};
