@@ -145,10 +145,14 @@ Then, click on `Download Docker Desktop` and choose the software you're using
 
 If you're using windows:
 After downloading it, on top  right, you'll find the settings. 
-Going on 
-`Settings -> Resources -> WSL integration`
+Going on
+```bash
+Settings -> Resources -> WSL integration
+```
 Click on
-`Enable integration with my default WSL distro`
+```bash
+Enable integration with my default WSL distro
+```
 and then enable it for your WSL version. It will automatically link DockerDesktop to your wsl
 
 [Back to top](#table-of-contents)
