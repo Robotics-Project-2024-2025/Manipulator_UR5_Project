@@ -134,6 +134,11 @@ Now, you have all the material you need on your native machine.<br><br>
 
 ## Docker
 
+Click the link below:
+[https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+Then, click on `Download Docker Desktop` and choose the software you're using
+
 [Back to top](#table-of-contents)
 
 ---
