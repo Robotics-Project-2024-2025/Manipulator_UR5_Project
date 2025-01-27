@@ -103,6 +103,7 @@ void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinatio
 void oneIteration(std::shared_ptr<rclcpp::Node> node);
 Point2D findCenter(Point2D pmin, Point2D pmax);
 void determineStatus();
+Point2D getDestination(int class_id);
 void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y);
 #endif /* path_h */
 
