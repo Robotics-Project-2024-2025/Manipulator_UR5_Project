@@ -71,8 +71,11 @@ Project
 
 # Software Requiremets
 
-Last version of the Operating system and of the DockerDesktop (otherwise, it's not guaranteed the right functioning of this code).
-Minimum 20gb to download what is needed to run all.
+- Last version of the Operating system
+- Last version of the DockerDesktop
+- Minimum 20gb to download what is needed to run all.
+If this prerequisites are not satisfied, it's not guaranteed the right functioning of this code.
+
 
 [Back to top](#table-of-contents)
 
