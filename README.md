@@ -74,7 +74,7 @@ Project
 - Last version of the Operating system
 - Last version of the DockerDesktop
 - Minimum 20gb to download what is needed to run all.
-* Item Alt
+
 If this prerequisites are not satisfied, it's not guaranteed the right functioning of this code.
 
 
