@@ -59,11 +59,27 @@ Project
  ┃   ┃ ┗ package.xml               # Package Identificator  
  ┃   ┣ vision_ws                   # Package for vision (IN DEVELOPMENT)
  ┃   ┗ vision_ws_msgs              #
+ ┣ robotics_project_ws             # modified version of Placido's work
+ ┃ ┣ config                        #
+ ┃ ┣ docker                        #
+ ┃ ┣ gripper                       #
+ ┃ ┣ images                        #
+ ┃ ┣ launch                        #
+ ┃ ┃ ┣ interface.launch.py         #
+ ┃ ┃ ┗ sim.launch.py               #
+ ┃ ┣ models                        #
+ ┃ ┣ params                        #
+ ┃ ┣ rviz                          #
+ ┃ ┣ scripts                       #
+ ┃ ┣ src                           #
+ ┃ ┣ worlds                        #
  ┣ $FILES$.sh                      # Bash scripts for saving time
  ┣ ...
  ┣ Report.pdf                      # Report 
  ┗ Latex source                    # Folder with Original files from which the pdf was generated
 ```
+
+ros2_ur5_interface is a modified version of the git kindly offered from Placido ([link here](https://github.com/pla10/ros2_ur5_interface.git)), so that it will work better with our part.
 
 [Back to top](#table-of-contents)
 
@@ -123,11 +139,11 @@ WINDOWS //// TO FILL ////<br><br>
 4. Insert your passkey and after that you will see on your terminal as last line "Logged in as<br>
 5. Now run this command to clone the above repository:<br>
 ```bash
-gh repo clone Robotics-Project-2024-2025/Project
+gh repo clone Robotics-Project-2024-2025/Manipulator_UR5_Project
 ```
 To see, if you have successfully cloned the repository, try to access to it running:
 ```bash
-cd Project
+cd Manipulator_UR5_Project
 ```
 Now, your are in the folder.<br>
 7. Init and update the submodule of yolo doing:
@@ -176,7 +192,7 @@ There are two bashes needed to run the project. They are both from placido: `ros
 Before running them, modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
 
 ```bash
-docker run --rm -d -v /home/kagenshi/Manipulator_UR5_Project:/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project -p 6081:80 -p 50000-50020:50000-50020 --security-opt seccomp=unconfined --shm-size=512m --net ursim_net --ip 192.168.56.200 --name ros2 pla10/ros2_ur5_interface
+docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project -p 6081:80 -p 50000-50020:50000-50020 --security-opt seccomp=unconfined --shm-size=512m --net ursim_net --ip 192.168.56.200 --name ros2 pla10/ros2_ur5_interface
 ```
 
 
@@ -194,7 +210,7 @@ docker run --rm -d -v /home/kagenshi/Manipulator_UR5_Project:/home/ubuntu/ros2_w
 
 ## Run Project
 
-the command: 
+run on the terminal the command: 
 ```bash
 bash src/Manipulator_UR5_Project/start.sh 
 ```
