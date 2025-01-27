@@ -59,20 +59,20 @@ Project
  ┃   ┃ ┗ package.xml               # Package Identificator  
  ┃   ┣ vision_ws                   # Package for vision (IN DEVELOPMENT)
  ┃   ┗ vision_ws_msgs              #
- ┣ robotics_project_ws             # modified version of Placido's work
- ┃ ┣ config                        #
- ┃ ┣ docker                        #
- ┃ ┣ gripper                       #
- ┃ ┣ images                        #
- ┃ ┣ launch                        #
- ┃ ┃ ┣ interface.launch.py         #
- ┃ ┃ ┗ sim.launch.py               #
- ┃ ┣ models                        #
- ┃ ┣ params                        #
- ┃ ┣ rviz                          #
- ┃ ┣ scripts                       #
- ┃ ┣ src                           #
- ┃ ┣ worlds                        #
+ ┣ robotics_project_ws             # Modified version of Placido's work
+ ┃ ┣ config                        # configuration for the UR5 arm
+ ┃ ┣ docker                        # 
+ ┃ ┣ gripper                       # Scripts for changing of gripper state
+ ┃ ┣ images                        # 
+ ┃ ┣ launch                        # 
+ ┃ ┃ ┣ interface.launch.py         # Launch file to simulate the UR5 robot in gazebo
+ ┃ ┃ ┗ sim.launch.py               # Launch file to interact with simulated and real UR5 robot
+ ┃ ┣ models                        # URDF files and more to prepare the configuration
+ ┃ ┣ params                        # Parameters file for the Gazebo bridge 
+ ┃ ┣ rviz                          # 
+ ┃ ┣ scripts                       # Folder containing two scripts mentioned in the `Setup Containers section`
+ ┃ ┣ src                           # 
+ ┃ ┣ worlds                        # 
  ┣ $FILES$.sh                      # Bash scripts for saving time
  ┣ ...
  ┣ Report.pdf                      # Report 
