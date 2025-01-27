@@ -177,6 +177,7 @@ Now, you have all the material you need on your native machine.<br><br>
   Email: [n.cristoforetti@studenti.unitn.it](mailto:name.surname@email.com)
 - **Matteo Gottardelli**  
   Email: [matteo.gottardelli@studenti.unitn.it](mailto:name.surname@email.com)
+  
 [Back to top](#table-of-contents)
 
 ---
