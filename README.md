@@ -163,17 +163,24 @@ Enable integration with my default WSL distro
 ```
 and then enable it for your WSL version. It will automatically link DockerDesktop to your WSL.
 
+Remember, `the DockerDesktop should be opened to make the project work`
+
 [Back to top](#table-of-contents)
 
 ---
 
 ### Setup Containers
 
-[Back to top](#table-of-contents)
+There are two bashes needed to run the project. They are both from placido: `ros2.sh` and `ur5.sh`
 
----
+Before running them, modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
 
-### Setup localhost:6080
+```bash
+docker run --rm -d -v /home/kagenshi/Manipulator_UR5_Project:/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project -p 6081:80 -p 50000-50020:50000-50020 --security-opt seccomp=unconfined --shm-size=512m --net ursim_net --ip 192.168.56.200 --name ros2 pla10/ros2_ur5_interface
+```
+
+
+
 
 [Back to top](#table-of-contents)
 
@@ -186,6 +193,17 @@ and then enable it for your WSL version. It will automatically link DockerDeskto
 ---
 
 ## Run Project
+
+the command: 
+```bash
+bash src/Manipulator_UR5_Project/start.sh 
+```
+
+First, The bash will ask to delete a folder, accept the request and press Y for 4 times when he asks you to.
+
+This bash will also call 4 other bashes, opening other 4 different terminal windows.
+Just avoid this windows, `without closing them`, always click again on the starting window, giving him what he asks.
+With time, Gazebo will open with a perfect-functioning simulated UR5 arm.
 
 [Back to top](#table-of-contents)
 
