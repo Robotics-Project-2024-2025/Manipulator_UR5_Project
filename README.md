@@ -73,15 +73,15 @@ Project
  ┃ ┣ docker                        # 
  ┃ ┣ gripper                       # Scripts for changing of gripper state
  ┃ ┣ images                        # 
- ┃ ┣ launch                        # 
+ ┃ ┣ launch                        # Package for UR5 simulation and interaction in the gazebo 
  ┃ ┃ ┣ interface.launch.py         # Launch file to simulate the UR5 robot in gazebo
  ┃ ┃ ┗ sim.launch.py               # Launch file to interact with simulated and real UR5 robot
  ┃ ┣ models                        # URDF files and more to prepare the configuration
  ┃ ┣ params                        # Parameters file for the Gazebo bridge 
- ┃ ┣ rviz                          # 
- ┃ ┣ scripts                       # Folder containing two scripts mentioned in the `Setup Containers section`
- ┃ ┣ src                           # 
- ┃ ┣ worlds                        # 
+ ┃ ┣ rviz                          # RViz configuration file
+ ┃ ┣ scripts                       # The two scripts mentioned in the "Setup Containers" section
+ ┃ ┣ src                           # service for changing the gripper state + node for trajectory publication
+ ┃ ┣ worlds                        # Gazebo world file with plugins for the UR5 simulation
  ┣ $FILES$.sh                      # Bash scripts for saving time
  ┣ ...
  ┣ Report.pdf                      # Report 
