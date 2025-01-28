@@ -18,14 +18,14 @@
 
 # Introduction
 
-#Correggere grammatica
-#Finire layout
-#Togliere punto 7.
-#Citare il nome utente di Placido come se fosse un utente esterno
-#Rifinire la parte di Setup Container (ur5.sh no)
-#Spiegare come lanciare il bash in localhost:6081 specificando i tempi medi e cosa deve fare
-#Spiegare meglio Run project (prova a runnare una simulazione in modo che un utente qualunque riesca ad utilizzarlo)
-#Fare la tabella in Work Contribution
+#Correggere grammatica<br>
+#Finire layout<br>
+#Togliere punto 7.<br>
+#Citare il nome utente di Placido come se fosse un utente esterno<br>
+#Rifinire la parte di Setup Container (ur5.sh no)<br>
+#Spiegare come lanciare il bash in localhost:6081 specificando i tempi medi e cosa deve fare<br>
+#Spiegare meglio Run project (prova a runnare una simulazione in modo che un utente qualunque riesca ad utilizzarlo)<br>
+#Fare la tabella in Work Contribution<br>
 
 [Back to top](#table-of-contents)
 
