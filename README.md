@@ -96,11 +96,11 @@ ros2_ur5_interface is a modified version of the git kindly offered from Placido 
 
 # Software Requiremets
 
-- Last version of the Operating system
-- Last version of the DockerDesktop
-- Minimum 20gb to download what is needed to run all.
+- The latest version of the operating system
+- The latest version of Docker Desktop
+- A minimum of 20GB of free space to download everything needed to run
 
-If this prerequisites are not satisfied, it's not guaranteed the right functioning of this code.
+If these prerequisites are not met, the proper functioning of this code cannot be guaranteed.
 
 
 [Back to top](#table-of-contents)
@@ -109,9 +109,11 @@ If this prerequisites are not satisfied, it's not guaranteed the right functioni
 
 # Installation and Configuration
 
-For windows it's needed to install a wsl, so that it is possible to use a linux console on a windows system.
-The wsl can be found on microsoft store, from all the versions we chose `Ubuntu 22.04.5 TLS`, downloadable from [here](https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=IT&ocid=pdpshare).
-After opening it for the first time, it will asks you to create a new profile, with nickname and password.
+For Windows, it is necessary to install WSL (Windows Subsystem for Linux) to use a Linux console on a Windows system.
+
+WSL can be found on the Microsoft Store. From all the available versions, we chose Ubuntu 22.04.5 LTS, which can be downloaded from [here](https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=IT&ocid=pdpshare).
+
+When you open it for the first time, it will ask you to create a new profile by setting a nickname and password.
 
 [Back to top](#table-of-contents)
 
@@ -165,7 +167,7 @@ Now, your are in the folder.<br>
 Click the link below:
 [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
-Then, click on `Download Docker Desktop` and choose the software you're using
+Then, click on `Download Docker Desktop` and choose the software for your operating system.
 
 If you're using windows:
 
@@ -178,9 +180,9 @@ Click on
 ```bash
 Enable integration with my default WSL distro
 ```
-and then enable it for your WSL version. It will automatically link DockerDesktop to your WSL.
+and then enable it for your WSL version. This will automatically link Docker Desktop to your WSL.
 
-Remember, `the DockerDesktop should be opened to make the project work`
+Remember, `Docker Desktop must be open for the project to work`.
 
 [Back to top](#table-of-contents)
 
