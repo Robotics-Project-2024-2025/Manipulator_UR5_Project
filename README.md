@@ -94,7 +94,7 @@ ros2_ur5_interface is a modified version of the git kindly offered from Placido 
 
 ---
 
-# Software Requiremets
+# Software Requirements
 
 - The latest version of the operating system
 - The latest version of Docker Desktop
