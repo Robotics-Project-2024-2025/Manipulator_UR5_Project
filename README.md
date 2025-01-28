@@ -188,9 +188,9 @@ Remember, `the DockerDesktop should be opened to make the project work`
 
 ### Setup Containers
 
-There are two bashes needed to run the project. They are both from placido: `ros2.sh` and `ur5.sh`.
+There are two bashes needed to run the project. They are both from placido: `ros2.sh`.
 
-They can be found in the folder `ros2_ur5_interface`.
+It can be found in the folder `ros2_ur5_interface/scripts`.
 
 Modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
 
@@ -207,11 +207,26 @@ docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manip
 
 ### Setup localhost:6081
 
-with ros2.sh changed, run launchDocker.sh in the `robotics_project_ws` folder.
-After the bash, run this link to open localhost:6081 :
+With ros2.sh changed, run launchDocker.sh in the `robotics_project_ws` folder.
+
+After the bash script runs, open this link in your browser to access localhost:6081:
+
 ```bash
 http://localhost:6081/vnc.html
 ```
+
+For windows, it may not work on WSL. 
+
+In that case, open launchDocker.sh and change the tilde in the last line with the complete path.
+Before:
+```bash
+bash ~/Manipulator_UR5_Project/ros2_ur5_interface/scripts/ros2.sh
+```
+After:
+```bash
+bash Linux/Ubuntu/home/"nickname"/Manipulator_UR5_Project/ros2_ur5_interface/scripts/ros2.sh
+```
+
 
 [Back to top](#table-of-contents)
 
