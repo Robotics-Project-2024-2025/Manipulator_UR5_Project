@@ -240,6 +240,12 @@ At the same time, conversion.sh, which opens alongside yolo.sh, will ask the sam
 
 # Work Contribution
 
+| Right-Aligned | Left-Aligned | Center-Aligned | Right-Aligned |
+|:-------------|:-------------|:--------------:|--------------:|
+| Benassi Alessandro    | a      | a      | a      |
+| Calvo Daniele         | a      | a      | a      |
+| Cristoforetti Niccolò | a      | a      | a      |
+| Gottardelli Matteo    | a      | a      | a      |
 [Back to top](#table-of-contents)
 
 ---
