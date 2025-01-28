@@ -70,7 +70,7 @@ Project
  ┃   ┗ vision_ws_msgs              #
  ┣ robotics_project_ws             # Modified version of Placido's work
  ┃ ┣ config                        # configuration for the UR5 arm
- ┃ ┣ docker                        # 
+ ┃ ┣ docker                        # Contains Docker setup and entrypoint for the ROS 2 UR5 interface
  ┃ ┣ gripper                       # Scripts for changing of gripper state
  ┃ ┣ images                        # 
  ┃ ┣ launch                        # Package for UR5 simulation and interaction in the gazebo 
