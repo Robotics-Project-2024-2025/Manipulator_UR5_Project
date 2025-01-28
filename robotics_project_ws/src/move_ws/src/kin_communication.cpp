@@ -52,7 +52,8 @@ void TrajectoryActionClient::publish_iter(MatrixD6 Th)
         double t=i*DELTAT+2;
         point.time_from_start=rclcpp::Duration::from_seconds(t);
         int sec=t;
-        int nano=(i%100)*10000000;
+        int val=1/DELTAT;
+        int nano=(i%val)*1e9/val;
         command << "], time_from_start: {sec: " << sec << ", nanosec: " << nano << "}}";
         if(i!=rows-1) {
             command << ", ";
@@ -77,7 +78,6 @@ void TrajectoryActionClient::publish_iter(MatrixD6 Th)
     } else {
         std::cerr << "Goal Ended Wrongly with return code: " << ret_code << '\n';
     }*/
-    oneIteration(this->origin_node);
 }
 void TrajectoryActionClient::init_Trajectory(trajectory_msgs::msg::JointTrajectory* traj_msg) {
     traj_msg->header.stamp=this->now();
@@ -200,7 +200,8 @@ shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() 
 
 void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node) {
     cout << "Sending trajectory..." << endl;
-    rclcpp::spin(std::make_shared<TrajectoryActionClient>(th, node));
+    rclcpp::spin_some(std::make_shared<TrajectoryActionClient>(th, node));
+    oneIteration(node);
     cout << "End Sending trajectory" << endl;
 }
 

@@ -2,11 +2,12 @@
 <robot name="desk" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <link name="desk">
+    <static>true</static>
     <!-- Inertial -->
     <inertial>
       <origin xyz="0.5 0.4 0.435" rpy="0 0 0" />
-      <mass value="10000" />
-      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      <mass value="100000" />
+      <inertia ixx="1000000" ixy="0" ixz="0" iyy="1000000" iyz="0" izz="1000000" />
     </inertial>
 
     <!-- Base collision -->

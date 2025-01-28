@@ -17,6 +17,7 @@ setup(
     entry_points={
         'console_scripts': [
             'detection_service = vision_ws.detection:main',  # The main function in detection.py
+            'processing_service = vision_ws.process:main',
         ],
     },
 )

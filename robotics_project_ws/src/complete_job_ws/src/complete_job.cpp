@@ -79,13 +79,13 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     double travelHeight = 0.5-0.9;
     double shift_x = 0.01;
     double shift_y = -0.005;
-    Vector3d home{{-0.2, 0.2, -0.3}};
+    Vector3d home{{0.4, 0.2, -0.5}};
     Vector3d aboveBlock{{blockPos.x, blockPos.y, travelHeight}};
     Vector3d block{{blockPos.x, blockPos.y, gripHeight}};
     Vector3d aboveDest{{finalPos.x, finalPos.y, travelHeight}};
     Vector3d posDest{{finalPos.x, finalPos.y, gripHeight}};
     Vector3d phiStart{{0.0, 0.0, 0.0}};
-    Vector3d phiEf{{M_PI/2, M_PI, 0}};
+    Vector3d phiEf{{0.0, 0.0, 0.0}};
     determineStatus();
     auto gripper=std::make_shared<GripperCommunicator>();
     switch (position_c) {
@@ -144,29 +144,31 @@ Point2D findCenter(Point2D pmin, Point2D pmax){
 
 ConversionClient::ConversionClient() : Node("conversion_client"){
     // Initialization of the client service
-    client_ = this->create_client<camera_ws::srv::Conversion>("/table_transform_service");
+    client_ = this->create_client<vision_ws_msgs::srv::Convert2din3d>("/convert_coordinates");
 
     // Log message to report client startup
     RCLCPP_INFO(this->get_logger(), "Conversion client ready to send requests.");
 }
 
-std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> ConversionClient::sendRequest(int x, int y){
+std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Convert2din3d::Response>> ConversionClient::sendRequest(Point2D pmin, Point2D pmax, string image_path){
     // Creating a Service Request
-    auto request = std::make_shared<camera_ws::srv::Conversion::Request>();
-    request->x = x;
-    request->y = y;
-
+    auto request = std::make_shared<vision_ws_msgs::srv::Convert2din3d::Request>();
+    request->upperleft.x=pmin.x;
+    request->upperleft.y=pmin.y;
+    request->bottomright.x=pmax.x;
+    request->bottomright.y=pmax.y;
+    request->image_path=image_path;
     // Verify that the service is available
     while (!client_->wait_for_service(std::chrono::seconds(10)))
     {
-        RCLCPP_WARN(this->get_logger(), "Waiting for the 'Conversion' service to be available...");
+        RCLCPP_WARN(this->get_logger(), "Waiting for the 'Conversion from 2d to 3d' service to be available...");
     }
 
     // Sending the asynchronous request and returning the future
     return client_->async_send_request(request);
 }
 
-bool ConversionClient::spinUntilFutureComplete(std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> future){
+bool ConversionClient::spinUntilFutureComplete(std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Convert2din3d::Response>> future){
     // Wait until the result is available
     auto spin_result = rclcpp::spin_until_future_complete(this->get_node_base_interface(), future);
 
