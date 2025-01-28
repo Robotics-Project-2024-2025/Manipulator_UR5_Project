@@ -155,14 +155,6 @@ To see, if you have successfully cloned the repository, try to access to it runn
 cd Manipulator_UR5_Project
 ```
 Now, your are in the folder.<br>
-7. Init and update the submodule of yolo doing:
-```bash
-git submodule init
-git submodule update
-```
-//SAY TO MODIFY THE PATH IN SH ros2.sh FILE
-
-Now, you have all the material you need on your native machine.<br><br>
 
 [Back to top](#table-of-contents)
 
@@ -196,9 +188,11 @@ Remember, `the DockerDesktop should be opened to make the project work`
 
 ### Setup Containers
 
-There are two bashes needed to run the project. They are both from placido: `ros2.sh` and `ur5.sh`
+There are two bashes needed to run the project. They are both from placido: `ros2.sh` and `ur5.sh`.
 
-Before running them, modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
+They can be found in the folder `ros2_ur5_interface`.
+
+Modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
 
 ```bash
 docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project -p 6081:80 -p 50000-50020:50000-50020 --security-opt seccomp=unconfined --shm-size=512m --net ursim_net --ip 192.168.56.200 --name ros2 pla10/ros2_ur5_interface
@@ -212,6 +206,12 @@ docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manip
 ---
 
 ### Setup localhost:6081
+
+with ros2.sh changed, run launchDocker.sh in the `robotics_project_ws` folder.
+After the bash, run this link to open localhost:6081 :
+```bash
+http://localhost:6081/vnc.html
+```
 
 [Back to top](#table-of-contents)
 
