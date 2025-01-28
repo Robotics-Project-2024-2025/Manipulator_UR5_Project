@@ -223,12 +223,16 @@ run on the terminal the command:
 ```bash
 bash src/Manipulator_UR5_Project/start.sh 
 ```
+The first time, it will install packages for around 5 minutes.
 
-First, The bash will ask to delete a folder, accept the request and press Y for 4 times when he asks you to.
+Then, the bash will prompt you to delete 4 files. Press "enter" 4 times to accept the requests.
 
-This bash will also call 4 other bashes, opening other 4 different terminal windows.
-Just avoid this windows, `without closing them`, always click again on the starting window, giving him what he asks.
-With time, Gazebo will open with a perfect-functioning simulated UR5 arm.
+setupGazebo will automatically open from start.sh. Press "enter" 2 more times. It will then open two additional bash terminals. Before interacting with them, set the number of blocks in the terminal of setupGazebo.sh.
+
+Next, yolo.sh, which is opened by setupGazebo.sh, will prompt you to delete two more files. Press "enter" 2 more times to confirm.
+At the same time, conversion.sh, which opens alongside yolo.sh, will ask the same thing. Press "enter" 2 more times here as well.
+
+`Do not close any of the windows created by these bashes`, otherwise the project will not work.
 
 [Back to top](#table-of-contents)
 
