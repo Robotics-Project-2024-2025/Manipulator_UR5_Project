@@ -13,6 +13,8 @@
 #include "camera_ws/srv/conversion.hpp"
 #include "vision_ws_msgs/srv/boundingbox.hpp"
 #include "vision_ws_msgs/msg/boundstruct.hpp"
+#include "vision_ws_msgs/srv/convert2din3d.hpp"
+#include "vision_ws_msgs/msg/point2d.hpp"
 #include "std_srvs/srv/trigger.hpp"
 #include <Eigen/Dense>
 #include "kin_communication.h"
@@ -73,13 +75,13 @@ public:
     ConversionClient();
 
     // Function for sending an async request to the service
-    std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> sendRequest(int x, int y);
+    std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Convert2din3d::Response>> sendRequest(Point2D pmin, Point2D pmax, string image_path);
 
     // Function that wait for the request to be completed
-    bool spinUntilFutureComplete(std::shared_future<std::shared_ptr<camera_ws::srv::Conversion::Response>> future);
+    bool spinUntilFutureComplete(std::shared_future<std::shared_ptr<vision_ws_msgs::srv::Convert2din3d::Response>> future);
 
 private:
-    rclcpp::Client<camera_ws::srv::Conversion>::SharedPtr client_; // Service client
+    rclcpp::Client<vision_ws_msgs::srv::Convert2din3d>::SharedPtr client_; // Service client
 };
 
 class YoloClient : public rclcpp::Node{

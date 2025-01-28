@@ -1,0 +1,9 @@
+Point2d upperleft
+Point2d bottomright
+string image_path
+---
+float32 x
+float32 y 
+float32 z
+float32 rotation
+bool success

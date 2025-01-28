@@ -2,7 +2,7 @@
 cd ~
 IMAGE_NAME="pla10/ros2_ur5_interface"
 if [[ "$(docker images -q $IMAGE_NAME 2> /dev/null)" == "" ]]; then
-  echo "Immagine non trovata, eseguo docker pull di %IMAGE_NAME"
+  echo "Immagine non trovata, eseguo docker pull di $IMAGE_NAME"
   docker pull $IMAGE_NAME
 fi
 docker network create --subnet=192.168.56.0/24 ursim_net

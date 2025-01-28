@@ -15,7 +15,9 @@ find_package(rclcpp REQUIRED)
 # Generate interfaces (messages, services)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Boundstruct.msg"
+  "msg/Point2d.msg"
   "srv/Boundingbox.srv"
+  "srv/Convert2din3d.srv"
 )
 
 ament_package()

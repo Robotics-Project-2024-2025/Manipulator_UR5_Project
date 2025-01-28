@@ -16,13 +16,13 @@ from launch.actions import AppendEnvironmentVariable, ExecuteProcess, TimerActio
 package_name = 'ros2_ur5_interface'
 
 MIN_BLOCK = 1
-MAX_BLOCK = 10
-X_MIN=0.05
+MAX_BLOCK = 9
+X_MIN=0.1
 #X_MIN=-0.2
-X_MAX=0.405
-Y_MIN=0.2
-Y_MAX=0.58
-Z_TABLE=0.88
+X_MAX=0.4
+Y_MIN=0.25
+Y_MAX=0.675
+Z_TABLE=0.9
 PRECISION=3
 
 random.seed()
@@ -33,7 +33,7 @@ spawned_positions = []
 def is_collision(position, threshold=0.15):
     for pos in spawned_positions:
         distance = math.sqrt((pos[0] - position[0]) ** 2 + (pos[1] - position[1]) ** 2 + (pos[2] - position[2]) ** 2)
-        if distance < threshold:  # La soglia è la distanza minima per evitare la collisione
+        if distance < threshold:
             return True
     return False
 
@@ -183,44 +183,38 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
             break
         print("Invalid input. Please try again.")
     block_number = int(u_input)
+    block_types = [
+        "X1-Y1-Z2",
+        "X1-Y2-Z2",
+        "X1-Y4-Z2",
+        "X1-Y2-Z1",
+        "X1-Y3-Z2-FILLET",
+        "X1-Y2-Z2-CHAMFER",
+        "X1-Y3-Z2",
+        "X1-Y2-Z2-TWINFILLET",
+        "X1-Y4-Z1"
+    ]
+
+    colors = {
+        "red": "1 0 0 1",
+        "green": "0 1 0 1",
+        "blue": "0 0 1 1",
+        "yellow": "1 1 0 1",
+        #"magenta": "1 0 1 1",
+        "orange": "1 0.65 0 1",
+        "cyan": "0 1 1 1",
+        "brown": "0.6 0.3 0.1 1",
+        #"light_green": "0.6 1 0.6 1"
+    }
+    random.shuffle(block_types)
+    shuffled_colors = list(colors.items())
+    random.shuffle(shuffled_colors)
     blocks_params=[]
-    for count in range(1, block_number+1):
-        block_type = random.choice([
-            "X1-Y1-Z2", "X1-Y2-Z2", "X1-Y4-Z2", "X1-Y2-Z1", "X1-Y3-Z2-FILLET",
-            "X2-Y2-Z2-FILLET", "X1-Y2-Z2-CHAMFER", "X1-Y3-Z2", "X2-Y2-Z2",
-            "X1-Y2-Z2-TWINFILLET", "X1-Y4-Z1"
-        ])
-        color_name, color_value = random.choice(list({
-            "red": "1 0 0 1",
-            "green": "0 1 0 1",
-            "blue": "0 0 1 1",
-            #"yellow": "1 1 0 1",
-            #"cyan": "0 1 1 1",
-            "magenta": "1 0 1 1",
-            #"black": "0 0 0 1",
-            #"white": "1 1 1 1",
-            #"gray": "0.5 0.5 0.5 1",
-            "orange": "1 0.65 0 1",
-            "purple": "0.5 0 0.5 1",
-            #"pink": "1 0.75 0.8 1",
-            #"brown": "0.6 0.3 0.1 1",
-            #"beige": "0.96 0.96 0.86 1",
-            #"light_green": "0.6 1 0.6 1",
-            #"light_blue": "0.6 0.8 1 1",
-            #"light_gray": "0.8 0.8 0.8 1",
-            #"light_yellow": "1 1 0.6 1",
-            #"light_purple": "0.75 0.5 1 1",
-            #"dark_red": "0.5 0 0 1",
-            #"dark_blue": "0 0 0.5 1",
-            #"dark_green": "0 0.5 0 1",
-            #"dark_cyan": "0 0.5 0.5 1",
-            #"dark_magenta": "0.5 0 0.5 1",
-            #"dark_yellow": "0.5 0.5 0 1",
-            #"dark_orange": "0.5 0.25 0 1",
-            #"light_pink": "1 0.85 0.9 1",
-        }.items()))
-        position=random_pos()
-        orientation=[0.0, 0.0, random_angle()]
+    for count in range(block_number):
+        block_type = block_types.pop()  # Remove and use one block type
+        color_name, color_value = shuffled_colors.pop()  # Remove and use one color
+        position = random_pos()
+        orientation = [0.0, 0.0, random_angle()]
         blocks_params.append((block_type, color_name, color_value, position, orientation))
     
     for count, (block_type, color_name, color_value, position, orientation) in enumerate(blocks_params, start=1):

@@ -15,5 +15,8 @@ source install/setup.bash
 yolo="yolo.sh"
 terminator -T "$yolo" -x bash -c "~/ros2_ws/src/Manipulator_UR5_Project/$yolo; exec bash" &
 
+conversion="conversion.sh"
+terminator -T "$conversion" -x bash -c "~/ros2_ws/src/Manipulator_UR5_Project/$conversion; exec bash" &
+
 ros2 launch ros2_ur5_interface sim.launch.py #robot_ip:=192.168.1.2
 
