@@ -88,7 +88,8 @@ int main(int argc, const char* argv[])
         //blockPos={response->x_2d, response->y_2d};
         //finalPos={0.3, 0.35};
         //BOXES ARE GLOBALLY ACCESSIBLE BECAUSE OF oneIteration
-        initializeBlocks(response->x, response->y, 0.3, 0.35);
+        Point2D destination = getDestination(box.class_id);
+        initializeBlocks(response->x_2d, response->y_2d, destination.x, destination.y);
         oneIteration(node);
     }
     else {

@@ -10,6 +10,7 @@ from yolov5.utils.dataloaders import LoadImages
 import cv2
 import numpy as np
 
+
 class YoloBoundingBoxService(Node):
     def __init__(self):
         super().__init__('yolo_bounding_box_service')
@@ -29,8 +30,7 @@ class YoloBoundingBoxService(Node):
         self.conf_thres = conf_thres
         self.iou_thres = iou_thres
         self.max_det = max_det
-
-        print(f"Loaded YOLOv5 model with classes: {self.model.names}")
+        self.get_logger().info("YOLOv5 model loaded successfully.")
 
         # Create the ROS 2 service
         self.service = self.create_service(Boundingbox, 'yolo_bounding_box_service', self.handle_bounding_boxes_request)
@@ -47,7 +47,6 @@ class YoloBoundingBoxService(Node):
                 im /= 255.0  # Normalize to [0, 1]
                 if len(im.shape) == 3:
                     im = im[None]  # Add batch dimension
-
                 # Perform inference
                 pred = self.model(im)
 
@@ -58,26 +57,16 @@ class YoloBoundingBoxService(Node):
                 for det in pred:  # Process each detection
                     if det is not None and len(det):
                         det[:, :4] = scale_boxes(im.shape[2:], det[:, :4], im0s.shape).round()
-
-                        # Extract prediction fields as per your structure
-                        #predictions = det
-                        #x_mins = predictions[:, 0]
-                        #y_mins = predictions[:, 1]
-                        #x_maxs = predictions[:, 2]
-                        #y_maxs = predictions[:, 3]
-                        #scores = predictions[:, 4]
-                        #categories = predictions[:, 5]
-
                         for *box, conf, cls in det:
-                             #if conf > 0.5:
-                                bbox = Boundstruct()
-                                bbox.class_id =int(cls)
-                                bbox.confidence = float(conf.item())
-                                bbox.xmin = float(box[0].item())
-                                bbox.ymin = float(box[1].item())
-                                bbox.xmax = float(box[2].item())
-                                bbox.ymax = float(box[3].item())
-                                response.boxes.append(bbox)
+                  
+                            bbox = Boundstruct()
+                            bbox.class_id =int(cls)
+                            bbox.confidence = float(conf.item())
+                            bbox.xmin = float(box[0].item())
+                            bbox.ymin = float(box[1].item())
+                            bbox.xmax = float(box[2].item())
+                            bbox.ymax = float(box[3].item())
+                            response.boxes.append(bbox)
 
                 self.get_logger().info(f"Processed image {image_path} with {len(response.boxes)} bounding boxes.")
         except Exception as e:

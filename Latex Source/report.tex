@@ -24,19 +24,23 @@
 
 %Introduction
 \section{Introduction}\label{sec:intro}
-This paper descibes the methodology and the results achieved by building an implementaiton on ros2 that controls a robotic arm in order to grab and move some randomly spawned blocks. The tools used are DockerDesktop, ros2, gazebo, yolov5 and roboflow. The algorithm developed is divided into two main parts: vision and manipulaition. The first is responsible of scanning the camera to grab an image, process it to localize all the blocks using yolov5 and returning the coordinates of the bounding boxes to calculate the relative positions. The second controls the movement of the arm, so moves to the given position, grabs the object and puts it in a designed position.
-The aim of this project is to provide a functional and correct implementation to be able to perform the operation without errors or singularities.
+\textit{La divisione con i titoli in grassetto è solo per rendere chiare le parti}\\
+\textbf{Aim:} This paper describes the methodology and the results achieved by a ros2 based program that moves an UR5 robotic arm with a gripper, in order to grab and move some different randomly spawned blocks from a random start position to a desired position. The aim of this project is to provide a functional and correct implementation to be able to perform the operation without encountering singularities or errors.\\
+\textbf{Strumentation:} There is a set of simulated strumentation provided by the professor to give us a base for the project. The first thing is the camera and its settings, which are the position values(and the services to get the image??) that we used as the absolute position(?). The second one is the Gazebo environment with the UR5 robotic arm, a lightweight arm designed for tasks that require flexibility, it has 6 degrees of freedom: a base, a shoulder, and elbow and then a spherical wrist. A docker image with GUI capabilities was given to us, to handle the part of the setting of the arm and of the communication. The last one is the gripper and its script to open and close it to be able to grab the objects.\\
+...The tools used are DockerDesktop, ros2, gazebo, yolov5 and Roboflow...\\
+\textbf{Development environment:} The algorithm developed is divided into two main parts: vision and manipulaition. The first is responsible of scanning the camera to extract an image, process it to localize all the blocks using Yolov5 and returning the coordinates of the bounding boxes to calculate the relative positions. The second controls the movement of the arm to reach the given position, grab the object, and put it in the designed position.
+
 
 % Vision Section
 \section{Vision}\label{sec:vision}
 Vision plays a critical role in robotics by enabling the robot to perceive and interpret its environment. 
-We started by analyzing the folders with the images provided by the professor. This brought us to three main challenges: spawn the blocks, recognize them, and calculate their position in the space. 
-The objective of this section is to describe the objectives of the vision system, such as object detection, localization, or environment mapping.
+The three main challenges are: spawning the blocks, recognize them, and calculate the position in the space. 
+[The objective of this section is to describe the objectives of the vision system, such as object detection, localization, or environment mapping.]
 
 \subsection{Block spawn}\label{subsec:blockspawn}
-
+As said in \ref{sec:intro} the absolute position is the one of the camera, given by the following parameters: x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06, the first three are the coordinates, the others are the rotation values. At this point we had the table with the arm attached and we wanted to spawn the blocks in the right part, which is closer to the camera. The blocks are spawned in directly in the sim.launch.py so they are spawned right after the creation of the environment with the table and the arm(non del tutto vero guardando LaunchDescription). The minimum number of block is 1 and it goes up to 10 and this parameter is inserted by the user in the command line. The spawn area of the blocks has a fixed height, which is the same of the table(z=0.88) and its width in the x and y axis is respectively (0.05, 0.405) and (0.2, 0.58). The type of the blocks is decided randomly between the ones given in the folder published on moodle[...], the color is also choosen in a random way between a selected set. Reguarding the position and the orientation they are both generated randomly, but the first has to stay between the limits of the defined spawn area and has to be collision free, so there is a minimum distance between them otherwise we regenarate the overlapping one(...). The objects are generated using a .xacro file, which is then passed to .urdf format and at the end in .sdf to be displayable on Gazebo. 
 \begin{itemize}
-    \item General position: The first thing to do was to understand whether we have to determine the position relatively to the table or to the camera. To understand this, we analyzed the camera settings which will be explained in the next point and we came up with the conclusion that the position was relative to the one of the camera.
+    \item [APPUNTI] General position: The first thing to do was to understand whether we have to determine the position relatively to the table or to the camera. To understand this, we analyzed the camera settings which will be explained in the next point and we came up with the conclusion that the position was relative to the one of the camera.
     Another important thing which will be very useful also in the following parts is creating a table with each block and it's relative dimension. This was done by analyzing the files with the block prototypes.
     \item When launching the python the nodes are created when launching and so the camera, the table and the arm are created.\\
     To generate the blocks the .xacro file are generated and so there is the need to bring them to .sdf files, so gazebo can handle them.\\
@@ -47,26 +51,69 @@ The objective of this section is to describe the objectives of the vision system
 \end{itemize}
 
 \subsection{Processing images}\label{subsec:imageproc}
+To perform object recognition the first thing to do is to scan an image from the camera. This is done by the node PointsCamera, which subscribes to the topic that publishes \textit{sensor\_msgs::PointCloud2} data and then processes it with OpenCV(?) to produce an .png image file and save it in a precise path that will be used later in the program(se usiamo image.h invece devo cambiare).\\Since the recognition is performed at every movement of the arm, the table is divided in half to remove the blocks that have already been move. Furthermore, the background is colored black, to allow the object recognition algorithm to perform at its best...
 \begin{itemize}
-    \item \textbf{Camera settings:} ... descrivere la posizione?\\
-    The camera is setted in the position x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06. The last three parameters are the rotation values.
-    \item \textbf{Object detection and classes:} For this part we used the tool Roboflow which allowed us to process the images and detect objects. The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having eleven classes, each with a large number of images loaded. Then a percentage of imeges was destined to training, a smaller and a smaller one to testing, this was done automatically by the program. At the end of the processes the program output was our blocktrain.pt, which is the file containing the weights to be used to perform the recognition with Yolov5.
+    \item \textbf{Camera settings:} [APPUNTI]... descrivere la posizione?\\
+    The camera is setted in the position x=-0.5 , y=0.5, z=1.2, R=0.0, P=0.4, Y=0.06. The last three parameters are the rotation values.\\
+    The image is captured from the camera and is saved in a predefined path so we can reach it. The image is also converted to 2D before being saved, so we can perform object recognition on it.
+    \item \textbf{Object detection and classes:} For this part we used the tool Roboflow which allowed us to process the images and detect objects. The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having eleven classes, each with a large number of images loaded. Then a percentage of images was destined to training, and a smaller one to testing, this was done automatically by the program which performs also the training part. At the end of the processes the program output was our blocktrain.pt, which is the file containing the pre-trained weights to be used to perform the recognition with Yolov5.
     \item \textbf{Machine learning model, YOLOv5:} we used Yolov5 to train our model. This was done using a Python script. The major part of this file was taken from the Yolo tutorial website and arranged to our needs[...]. 
-    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we had to develop a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplifies the call of the script, since we needed it every time we got an image, we decided to develop a service, so if a block is behind another, after removing the closer one we can see the one behind. To do that we had to integrate the code with some more instuctions to create a ros2 node and instantiate a service that receives and returns the correct information....\\
+    \item \textbf{TITLE:} When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we developed a Python script that performs the detection on a given image and returns back an array with the previously mentioned elements. To simplifies the call of the script, since we needed it every time we got an image, we decided to develop a service, so if a block is behind another, after removing the closer one we can see the one behind. To do that we had to integrate the code with some more instuctions to create a ros2 node and instantiate a service that receives and returns the correct information....\\
     The distance of the blocks is determined through a function that takes in input the coordinates of the bounding box as a 2D point and returns the centre. All the centres of the boxes are stored in an array and the first one, which will be the one processed, is passed to the Conversion service, which given the coordinates of the centre, determines the distance of the object with respect to the camera.
     The file \textbf{yolo.sh} file is the only one that implements the node a in python and this creates some problems...
 \end{itemize}
 
+\subsection{Detection}\label{subsec:detect}
+For this part we used the tool Roboflow which allowed us to process the images and detect objects in order to produce a weight file for Yolov5. The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch. To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having eleven classes, each with a large number of images loaded. Then a percentage of images was destined to training, and a smaller one to testing, this was done automatically by the program which performs also the training part. At the end of the processes the program output was our blocktrain.pt, which is the file containing the pre-trained weights to be used to perform the recognition with Yolov5.\\
+When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we developed a Python script detection.py that creates a service: yolo\_bounding\_box\_service, which takes in input the path of the image from the camera and returns an array of custom msg type called Boundstruct, that contains the class identifier, the confidence and the four values of the coordinates of the top left and bottom right points of the bounding box.
+\begin{itemize}
+    \item[APPUNTI] When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table, with the second one we can understand wheter it is an erroneous identification and with the last one we can calculate how much we need to open the gripper, since some block are bigger than others. To obtain this information, we developed a Python script that creates a service: yolo\_bounding\_box\_service, which takes in input the path of the image from the camera and returns an array of custom msg type called Boundstruct, that contains the class identifier, the confidence and the four values of the coordinates of the top left and bottom right points of the bounding box.
+\end{itemize}
+
+\subsection{Object elaboration}\label{subsec:objel}
+\begin{itemize}
+    \item The values returned in \ref{subsec:detect}, in particular the related to the bounding box, are essential to derive the center of the object and compute the distance from the camera. This is done using a function that determines the center by subtracting the further point coordinate with the lower ones, divide the difference by two and add it to the lower one values. Then the coordinates of this point are passed to the Conversion service which returns the depth. Add orientation...  
+\end{itemize}
+
+\subsection{Orientation}\label{subsec:orientation}
+Reserved to Matteo...
+
 % Manipulation Section
 \section{Manipulation}\label{sec:manipulation}
-The manipulation system allows the robot to interact with the sorrounding environment and interact with objects through its end effector, which is a gripper in this case.
+The manipulation system allows the robot to interact with the surrounding environment and interact with objects through its end effector, which is a gripper in this case.
 The objective of this part is to develop an algorithm that, given a position, can reach the object, grab it and take it to its assigned storage location.
+\subsection{Direct and Inverse kinematics}\label{subsec:kinematics}
+Two fundamental instruments to perform the task of moving the arm, are the direct and inverse kinematics. The first one allows us to compute the position and the orientation of the end effector given a set of Denavit-Hartenberg(DH) parameters, which are: theta, alpha, d and a. For each joint of the arm the matrix with the position and the rotation is computed with the homogeneous transform and then it is multiplied following the direct kinematics theory to obtain the T06 matrix. The function returns the position values as a vector and the rotation matrix.\\
+On the other hand, inverse kinematics is the opposite process, by starting from a desired position and orientation of the end effector the aim is to compute the values of the DH parameters to reach it.
 
-\subsection{Design and Implementation}\label{susec:design}
-Discuss the manipulator's design, actuators, and control strategies. Include subsections as needed:
+\subsection{Trajectory}\label{subsec:trajectory}
+To compute the trajectory the first thing to do is to check wheter the destination is reachable. After that there are 3 different ways to proceed:
+\begin{itemize}
+    \item Operation space with the interpolating points: the trajectory is calculated specifying a series of waypoints, which are then lined up with an algorithm to obtain a linear path.
+    \item differential kinematics: it is based on the relation between the joints velocity and the velocity of the end effector. The Jacobian matrix is used to map from the joint space to the operational space and then the pseudoinverse is used to compute the joint configurations over time. This is conputationally expensive an can lead to problems when singularities are encountered, moreover we wanted to decide the velocity of the movement arbitrarily so this method doesn't fit with our needs.(problem of velocity that becomes uncontrollable)
+    \item Operation space with positions: it is similar to the first one, but instead of interpolating the points, the desired positions are directly specified in the operational space to allow and it is verified that the end effector reaches them. The direct and inverse kinematics are used to compute the point to reach and the configurations to adopt in order to do it. We choose this last implementation and to guarantee a smoother trajectory a cubic spline is added.(aggiungere motivazioni)
+
+\end{itemize}
+[APPUNTI]...Then the function p2pMotionPlan takes the initial configuration of the robot, the position to reach with its orientation, the time of the movement and a matrix where to store the values. This computation is done by using the inverse kinematics explained in \ref{subsec:kinematics}, if no configuration is found, it means that there are no valid solutions for the requested configuration.
+
+\subsection{Operational space using polynomials}\label{subsec:opspace}
+The function p2pMotionPlan() computes the path and to do that it takes: the initial configuration of the robot, the position to reach with its orientation, the time of the movement and a matrix where to store the values. This computation is done by using the inverse kinematics explained in \ref{subsec:kinematics}; if no configuration is found, it means that there are no valid solutions for the requested configuration. Third grade polynomials are used to obtain a smooth trajectory and avoid sudden accelerations or oscillations. The matrix containing the move parameters(destination and rotation) is directly modified by reference and the function return a bool to tell if the operation is succesful or not.
+
+\subsection{Constraints(reachable position, angles and space limits)}\label{subsec:constraints}
+Values that are close to 0 are adjusted to 0 with adjust\_value().\\
+for the asin function values are adjuste so that if $<-1, -\pi/2$ is returned, while if $>1, \pi/2$ is returned, otherwise the values remain unchanged.\\
+for the acos function if $<-1, \pi$ is returned, if $>1, 0$ is returned.\\
+Space limits: XMIN=-1 , XMAX=1; YMIN=-1 , YMAX(i)=i$<$NUM\_JOINTS/2 ? 0.3 : 0.2 ; ZMIN=0.1 , ZMAX=0.9\\
+Bisongna dire che le posizioni che vogliamo raggiungere sono quelle sul tavolo o abbiamo limitazioni?
+
+\subsection{Logic motion}\subsection{subsec:logic}
+The process of the single block motion is the following: the arm starts in the home position, it opens the gripper and goes down to the block position, it closes the fingers to grb the block tand then moves to the designed position, it releases the block and returns to the home ocnfiguration before resarting with the visualization part and iterating until all the objects are moved.
+
+\subsection{Design and Implementation}\label{subsec:design}
+[APPUNTI]Discuss the manipulator's design, actuators, and control strategies. Include subsections as needed:
 \begin{itemize}
     \item \textbf{End-effector design:} the end effector is a gripper as said in \ref{sec:manipulation}. In particular we have a two finger gripper, which is able to open and close, so it enables robots to perform specific tasks such as picking up, holding, moving, or placing objects. 
-    \item \textbf{Kinematics and dynamics:} we decided to use the joint space because differential kinematics is really difficult to manage with this system in our opinion and so we avoided it to reduce the issues.
+    \item \textbf{Kinematics and dynamics:} The first thing we have done was to analyze all the Matlab file to choose the implementation to use for the project. The options were two: the differential kinematics and the joint space. We decided to use the second one, because differential kinematics is really difficult to manage within this system in our opinion and so we avoided it to reduce the issues. To perform all the operations the Eigen library is used, it allows to convert the code from Matlab implementation to C++ in an easier and clearer way. We also added some checks to avoid singularities. 
     \item \textbf{Control algorithms (e.g., PID, MPC):} ...
 \end{itemize}
 
@@ -74,20 +121,14 @@ Discuss the manipulator's design, actuators, and control strategies. Include sub
 
 % Workflow Section
 \section{Workflow}\label{sec:workflow}
+[DA TOGLIERE]
 Describe the overall workflow of the project, integrating Vision and Manipulation. Most of the previously described functions are implemented as a service, so they are called whenever needed. Generally speaking the algorithm works by scanning with the camera and passing the image to the boundinboxservice, which returns a list with the content and the coordinate of the detected boxes. After that the localization service is called, to determiine the position that the arm has to reach. [...] Then the closest object is selected and the arm reaches it and opens the gripper and then closes it to grab it and bring it to the desired position where it is then released.
 
 
 \subsection{System Architecture}\label{subsec:systemarchitecture}
 Illustrate the system architecture with a diagram or flowchart. For example:
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{workflow_diagram.png} % Replace with your image filename
-    \caption{System architecture diagram.}
-    \label{fig:workflow_diagram}
-\end{figure}
 
-\subsection{Integration}\label{subsec:integration}
-Discuss how different modules (e.g., Vision and Manipulation) are integrated. Highlight communication protocols, data flow, and synchronization.
+
 
 \subsection{Testing and Validation}\label{subsec:testing}
 Summarize the testing procedures and validation results. Include tables, graphs, or images as necessary.
