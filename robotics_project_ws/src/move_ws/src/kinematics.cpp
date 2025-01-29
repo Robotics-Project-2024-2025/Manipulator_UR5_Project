@@ -209,7 +209,7 @@ bool bestInverse(Matrix16 start, MatrixD6& end) {
             i++;
         }
     }
-    double configs[end.rows()];
+    std::vector<double> configs(end.rows());
     for (int i=0; i<end.rows(); i++) {
         configs[i]=0.0;
         for (int j=0; j<NUM_JOINTS; j++) {
@@ -291,7 +291,7 @@ bool checkAngles(Matrix16 th) {
     return ret;
 }
 
-bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD6* Th) {
+bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int maxT, MatrixD6* Th, bool velocity) {
     MatrixXd xE;
     MatrixXd phiE;
      //Matrix86 qES = Ur5Inverse(xEs, eul2rotm(phiEs));
@@ -301,16 +301,20 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
     }
     cout << qEF << endl;
      //VectorXd qEf = qEF.row(index);
-    for (int i = 0; i < qEF.rows(); ++i) { 
+    double dt=DELTAT;
+    if(!velocity) {
+        dt=dt/2;
+    }
+    for (int i = 0; i < qEF.rows(); ++i) {
         //MatrixD6 A;
         MatrixD4 A;
         bool error=false;
         for (int j=0; j<qES.rows(); j++) {
             MatrixXd M(4, 4); //3rd grade polynomial implementation
-            M << 1, MINT,  pow(MINT, 2), pow(MINT, 3),
-                 0, 1, 2 * MINT, 3 * pow(MINT, 2),
-                 1, MAXT, pow(MAXT, 2), pow(MAXT, 2),
-                 0, 1, 2*MAXT, 3*pow(MAXT, 2);
+            M << 1, minT,  pow(minT, 2), pow(minT, 3),
+                 0, 1, 2 * minT, 3 * pow(minT, 2),
+                 1, maxT, pow(maxT, 2), pow(maxT, 2),
+                 0, 1, 2*maxT, 3*pow(maxT, 2);
             //MatrixXd M(6, 6);
             /*M << 1, MINT, pow(MINT, 2), pow(MINT, 3), pow(MINT, 4), pow(MINT, 5),
             0, 1, 2 * MINT, 3 * pow(MINT, 2), 4 * pow(MINT, 3), 5 * pow(MINT, 4),
@@ -328,7 +332,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD
             A.conservativeResize(A.rows()+1, Eigen::NoChange);
             A.row(A.rows()-1) = coeff.transpose();
         }
-        for (double t = MINT; t<time+DELTAT && !error; t+=DELTAT) { 
+        for (double t = minT; t<maxT+dt && !error; t+=dt) {
             VectorXd th(NUM_JOINTS);
             for (int k = 0; k < qES.rows(); k++) {
                 //th(k)=A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
@@ -443,7 +447,7 @@ pair<Vector3d, Matrix3d> Ur5Direct(Matrix61 Th) {
            0, 0, 0, 1;
     Matrix44 T;
     for (int i=0; i<NUM_JOINTS; i++) {
-        T=HomogeneousTransformGen(i, Th[i], alfa[i], D[i], A[i]);
+        T=HomogeneousTransformSpecific(i, Th[i]);
         T60*=T;
     }
     Vector3d v;

@@ -241,15 +241,20 @@ class ConvertRealCoordinates(Node):
         center_2D, center_3D = center
         
         tolerance = 1e-5
-        scale=1900.0/640.0
-        bottom_row_points = [point for point in points if abs(point[0][1] - max_y) < tolerance]
-        most_right_pixel = max(bottom_row_points, key=lambda point: point[0][0])[0]
-        basePixel=most_right_pixel
+        scale=3
         
-        left_column_points=[point for point in points if abs(point[0][0]-(min_x+5*int(scale)))<tolerance]
+        bottom_row_points = [point for point in points if abs(point[0][1] - (max_y-scale+1)) < tolerance]
+        #most_right_pixel = max(bottom_row_points, key=lambda point: point[0][0])[0]
+        #basePixel=most_right_pixel
+        sorted_points = sorted(bottom_row_points, key=lambda point: point[0][0])
+        middle_index = len(sorted_points) // 2
+        middle_pixel = sorted_points[middle_index][0]
+        basePixel=middle_pixel
+        
+        left_column_points=[point for point in points if abs(point[0][0]-(min_x+3*scale))<tolerance]
         most_bottom_left_pixel=max(left_column_points, key=lambda point: point[0][1])[0]
        
-        right_column_points=[point for point in points if abs(point[0][0]-(max_x-5*int(scale)))<tolerance]
+        right_column_points=[point for point in points if abs(point[0][0]-(max_x-2*scale))<tolerance]
         most_bottom_right_pixel=max(right_column_points, key=lambda point: point[0][1])[0]
         
         column_base=[point for point in points if abs(point[0][0]-basePixel[0])<tolerance]
@@ -260,7 +265,7 @@ class ConvertRealCoordinates(Node):
         angle_rad = math.atan2(x_side, y_side)
         angle_deg=math.degrees(angle_rad)
         #? COLORS
-        thickness = 1
+        thickness = 2
 
         green = (0,255,0)
         blue = (255, 0, 0)

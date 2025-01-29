@@ -1,9 +1,49 @@
 #include "complete_job.h"
 
 bool control;
+Status position_c=UNKNOWN;
 Point3D blockPos;
 Point3D finalPos;
 Vector3d phiEf;
+
+bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node){
+    MatrixD6 th;
+    double time = 4.0;
+    Matrix61 qEs;
+    for (int i=0; i<NUM_JOINTS; i++) {
+        qEs(i)=joint_states(i);
+    }
+    RCLCPP_INFO(node->get_logger(), "Checking Position");
+    if(checkPosition(xe1, joint_states)) {
+        if(p2pMotionPlan(qEs, xe1, phie1, time, &th)) {
+            RCLCPP_INFO(node->get_logger(), "Moving to HOME");
+            send_trajectory(th, node);
+        }
+        else {
+            RCLCPP_INFO(node->get_logger(), "Error in computation of trajectory to point ");
+            return false;
+        }
+    }
+    else {
+        RCLCPP_INFO(node->get_logger(), "Impossible to Reach the final Position ");
+        return false;
+    }
+    return true;
+}
+
+void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri) {
+    control=false;
+    Matrix16 qEs=receive_joint_state();
+    if(position_c==HOME){
+        MatrixD6 qEf;
+        qEf.resize(1, 6);
+        qEf << -1.6, -1.72, -2.2, -0.81, -1.57, -0.3;
+        send_trajectory(qEf, node);
+    }
+    else {
+        control=path_search(destinationPos, destinationOri, qEs, node);
+    }
+}
 
 bool areEqual(double n1, double n2, double precision) {
     double diff = std::abs(n1 - n2);
@@ -22,106 +62,100 @@ Point2D getDestination(int class_id) {
 }
 
 void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y, double startFrameZ) {
-    float x=block_x-0.5;
-    float y=block_y-0.35;
-    //blockPos={x, y, -0.72};
-    blockPos={0.32, 0.0, -0.72};
+    blockPos={block_x-0.5, block_y-0.35, -0.72};
     finalPos={dest_x, dest_y, -0.72};
     phiEf << startFrameZ, 0.0, 0.0;
 }
 
-bool motion (Matrix16 qEs, Vector3d xEf, Vector3d phiEf, double minT, double maxT, MatrixD6* Th, std::shared_ptr<rclcpp::Node> node) {
-    RCLCPP_INFO(node->get_logger(), "Computation moving from START");
-    //3 operations per motion for generalizing
-    int interval=(int)((maxT-minT)/3); //2 secs
-    Vector3d tStart, tEnd;
-    tStart << minT, minT+interval, minT+interval*2;
-    tEnd << maxT-2*interval, maxT-interval, maxT;
-    //First Motion
-    pair<Vector3d, Matrix3d> start1=Ur5Direct(qEs);
-    start1.first(1)=-xEf(1);
-    start1.first(2)=-0.5;
-    Vector3d phi1;
-    phi1 << 0.0, 0.0, 0.0;
-    if(!p2pMotionPlan(qEs.transpose(), start1.first, phi1, tStart(0), tEnd(0), Th, true)) {
-        return false;
+void determineStatus() {
+    switch(position_c) {
+        case UNKNOWN:
+            position_c=HOME;
+            break;
+        case HOME:
+            position_c=ABOVE_BLOCK;
+            break;
+        case ABOVE_BLOCK:
+            position_c=BLOCK;
+            break;
+        case BLOCK:
+            position_c=ABOVE_BLOCK_2;
+            break;
+        case ABOVE_BLOCK_2:
+            phiEf << 0.0, 0.0, 0.0;
+            position_c=ABOVE_DEST;
+            break;
+        case ABOVE_DEST:
+            position_c=DEST;
+            break;
+        case DEST:
+            position_c=ABOVE_DEST_2;
+            break;
+        case ABOVE_DEST_2:
+            position_c=HOME;
+            break;
+        default:
+            rclcpp::shutdown();
+            exit(1);
     }
-    send_trajectory(*Th, node);
-    RCLCPP_INFO(node->get_logger(), "Computation arrived to journey level");
-    //Second Motion
-    qEs=(Th->row(Th->rows() - 1)).transpose();
-    Vector3d start2=xEf;
-    start2(2)=-0.5;
-    double limit=0.3;
-    bool velocity=true;
-    if (abs(start1.first(0)-start2(0))>limit) {
-        velocity=false;
-    }
-    if(!p2pMotionPlan(qEs.transpose(), start1.first, phi1, tStart(1), tEnd(1), Th, velocity)) {
-        return false;
-    }
-    RCLCPP_INFO(node->get_logger(), "Computation arrived to destination level");
-    //Third Motion
-    qEs=(Th->row(Th->rows() - 1)).transpose();
-    if(!p2pMotionPlan(qEs.transpose(), xEf, phiEf, tStart(2), tEnd(2), Th, true)) {
-        return false;
-    }
-    RCLCPP_INFO(node->get_logger(), "Computation arrived to destination");
-    
-    return true;
 }
 
 void oneIteration(std::shared_ptr<rclcpp::Node> node) {
+    double travelHeight = -0.4;
+    Vector3d home{{0.4, 0.2, -0.5}};
+    Vector3d aboveBlock{{blockPos.x, blockPos.y, travelHeight}};
     Vector3d block{{blockPos.x, blockPos.y, blockPos.z}};
+    Vector3d aboveDest{{finalPos.x, finalPos.y, travelHeight}};
     Vector3d posDest{{finalPos.x, finalPos.y, finalPos.z}};
-    Vector3d phiDefault{{0.0, 0.0, 0.0}};
-    MatrixD6 th;
-    Matrix16 configurationHome;
-    //Spawning position
-    configurationHome << -1.6, -1.72, -2.2, -0.81, -1.57, -0.3;
-    //std::cout << "configurationHome size: " << configurationHome.rows() << "x" << configurationHome.cols() << std::endl;
-    Matrix16 qEs=receive_joint_state();
-    //std::cout << "qEs size: " << qEs.rows() << "x" << qEs.cols() << std::endl;
-    if (!configurationHome.isApprox(qEs, 1e-2)) {
-        send_trajectory(configurationHome.transpose(), node);
-    }
-    pair<Vector3d, Matrix3d> home=Ur5Direct(configurationHome);
-    auto gripper=std::make_shared<GripperCommunicator>();
-    RCLCPP_INFO(node->get_logger(), "Checking Position");
- 
-    bool cond[3]={true, true, true};
-    if(checkPosition(block, qEs)) {
-        RCLCPP_INFO(node->get_logger(), "Reachable Position");
-        gripper->open();
-        //To Block
-        cond[0]=motion(qEs, block, phiEf, MINT, MAXT, &th, node);
-        if(cond[0]){
-            gripper->close();
-            qEs=(th.row(th.rows() - 1)).transpose();
-            //To Dest
-            cond[1]=motion(qEs, posDest, phiDefault, MINT, MAXT, &th, node);
-        }
-        if(cond[0] && cond[1]) {
-            gripper->open();
-            //To Home
-            qEs=(th.row(th.rows() - 1)).transpose();
-            cond[2]=motion(qEs, home.first, phiDefault, MINT, MAXT, &th, node);
-        }
-        if(cond[0] && cond[1] && cond[2]) {
-            send_trajectory(th, node);
-        }
-        else {
-            RCLCPP_INFO(node->get_logger(), "ERROR in Trajectory Computation");
-            rclcpp::shutdown();
-            exit(1);
-        }
-    }
-    else {
-        RCLCPP_INFO(node->get_logger(), "Unreachable Point, ERROR Occuring");
-        rclcpp::shutdown();
-        exit(1);
-    }
+    //Vector3d phiStart{{0.0, 0.0, 0.0}};
     
+    determineStatus();
+    auto gripper=std::make_shared<GripperCommunicator>();
+    switch (position_c) {
+        case HOME:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, home, phiEf);
+            break;
+        case ABOVE_BLOCK:
+            gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveBlock, phiEf);
+            break;
+        case BLOCK:
+            gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, block, phiEf);
+            break;
+        case ABOVE_BLOCK_2:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveBlock, phiEf);
+            break;
+        case ABOVE_DEST:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveDest, phiEf);
+            break;
+        case DEST:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, posDest, phiEf);
+            break;
+        case ABOVE_DEST_2:
+            gripper->open();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, aboveDest, phiEf);
+            break;
+        case UNKNOWN:
+            gripper->close();
+            std::this_thread::sleep_for(2s);
+            generalizeMovement(node, home, phiEf);
+            break;
+        default:
+            rclcpp::shutdown();
+            break;
+    }
 }
 
 Point2D findCenter(Point2D pmin, Point2D pmax){

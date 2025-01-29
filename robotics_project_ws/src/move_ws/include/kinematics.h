@@ -22,7 +22,7 @@
 #define XMIN -1
 #define XMAX 1
 #define YMIN -1
-#define YMAX(i) ((i<NUM_JOINTS/2) ? 0.22 : 0.12)
+#define YMAX(i) ((i<NUM_JOINTS/2) ? 1.22 : 1.12)
 #define ZMIN 0
 #define ZMAX 0.835
 using namespace std;
@@ -35,7 +35,7 @@ using Matrix44=Matrix<double, 4, 4>;
 using Matrix41=Matrix<double, 4, 1>;
 using Matrix14=Matrix<double, 1, 4>;
 using MatrixD4=Matrix<double, -1, 4>;
-bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int time, MatrixD6* T);
+bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int maxT, MatrixD6* T, bool velocity);
 bool control_collision(Matrix16 th);
 bool checkAngles(Matrix16 th);
 Matrix3d xRot(double theta);

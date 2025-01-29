@@ -26,7 +26,6 @@ void MyVector::calculatePath(
     //cout << qES << endl;
     MatrixD6 th;
     std::shared_ptr<rclcpp::Node> node;
-    double time = 4.0;
     Vector3d v, p;
     v << request->xe1.x, request->xe1.y, request->xe1.z;
     p << request->phie1.x, request->phie1.y, request->phie1.z;
@@ -41,7 +40,7 @@ void MyVector::calculatePath(
         return;
     }
 
-    if (!p2pMotionPlan(qES, v, p, time, &th)) {
+    if (!p2pMotionPlan(qES, v, p, MINT, MAXT, &th, true)) {
         RCLCPP_ERROR(this->get_logger(), "Error in trajectory computation");
         response->result = false;
         return;
@@ -133,10 +132,9 @@ void MyVector::calculatePath(
 }
 bool path(Vector3d xe1, Vector3d phie1, Matrix61 joint_states, std::shared_ptr<rclcpp::Node> node){
     MatrixD6 th;
-    double time = 4.0;
     RCLCPP_INFO(node->get_logger(), "Checking Position");
     if(checkPosition(xe1, joint_states)) {
-        if(p2pMotionPlan(joint_states, xe1, phie1, time, &th)) {
+        if(p2pMotionPlan(joint_states, xe1, phie1, MINT, MAXT, &th, true)) {
             RCLCPP_INFO(node->get_logger(), "Moving to HOME");
             send_trajectory(th, node);
         }
