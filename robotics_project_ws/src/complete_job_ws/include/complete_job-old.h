@@ -21,6 +21,8 @@
 #include "kinematics.h"
 using namespace std;
 
+typedef enum Status {HOME, ABOVE_BLOCK, BLOCK, ABOVE_BLOCK_2, ABOVE_DEST, DEST, ABOVE_DEST_2, UNKNOWN} Status;
+
 typedef struct Point2D {
   float x;
   float y;
@@ -101,15 +103,18 @@ public:
 private:
     rclcpp::Client<vision_ws_msgs::srv::Boundingbox>::SharedPtr client_; // Service client
 };
+extern Status position_c;
 extern Point3D blockPos;
 extern Point3D finalPos;
 extern Vector3d phiEf;
+bool path_search(Vector3d xe1, Vector3d phie1, Matrix16 joint_states, std::shared_ptr<rclcpp::Node> node);
+void generalizeMovement (std::shared_ptr<rclcpp::Node> node, Vector3d destinationPos, Vector3d destinationOri);
 void oneIteration(std::shared_ptr<rclcpp::Node> node);
 Point2D findCenter(Point2D pmin, Point2D pmax);
+void determineStatus();
 Point2D getDestination(int class_id);
 void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y, double startFrameZ);
 bool areEqual(double n1, double n2, double precision);
-bool motion (Matrix16 qEs, Vector3d xEf, Vector3d phiEf, double minT, double maxT, MatrixD6* Th, std::shared_ptr<rclcpp::Node> node);
 #endif /* path_h */
 
 

@@ -25,8 +25,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 # Build Executables
-# add_executable(p2pmotion src/kinematics.cpp src/main.cpp src/kin_communication.cpp src/path.cpp)
-add_executable(service_moving src/path.cpp src/kinematics.cpp src/kin_communication.cpp ../complete_job_ws/src/complete_job.cpp)
+# add_executable(p2pmotion src/kinematics.cpp src/path.cpp src/main.cpp src/kin_communication.cpp)
+add_executable(service_moving src/kinematics.cpp src/path.cpp src/kin_communication.cpp ../complete_job_ws/src/complete_job.cpp)
 
 # Add Executables
 rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")

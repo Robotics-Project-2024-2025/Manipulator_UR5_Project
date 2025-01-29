@@ -143,7 +143,6 @@ private:
         return traj_msg;
     }
 
-
     void prepare_trajectories()
     {
         // Define the trajectories

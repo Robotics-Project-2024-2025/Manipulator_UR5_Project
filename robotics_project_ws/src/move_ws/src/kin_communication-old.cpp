@@ -11,19 +11,14 @@
 TrajectoryActionClient::TrajectoryActionClient(MatrixD6 th, std::shared_ptr<rclcpp::Node> node) : Node("trajectory_publisher")
 {
     // Create a publisher for the scaled joint trajectory controller
-    //action_client_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>("/scaled_joint_trajectory_controller/joint_trajectory", 10);
     origin_node=node;
     action_client_ = rclcpp_action::create_client<FollowJointTrajectory>(
         this, "/scaled_joint_trajectory_controller/follow_joint_trajectory");
-    /*subscription_ = this->create_subscription<sensor_msgs::msg::JointState>(
-        "joint_states", 10, std::bind(&TrajectoryActionClient::joint_state_callback, this, std::placeholders::_1));*/
     // Wait for the action server to be available
     while(!action_client_->wait_for_action_server(10s))
     {
         RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
     }
-    time_between_points_ = DELTAT;
-    //node_executed_=false;
     publish_iter(th);
 }
 
@@ -32,52 +27,19 @@ void TrajectoryActionClient::publish_iter(MatrixD6 Th)
     trajectory_msgs::msg::JointTrajectory traj_msg;
     init_Trajectory(&traj_msg);
     naming_Points(&traj_msg);
-    std::ostringstream command;
-    command << "ros2 action send_goal /scaled_joint_trajectory_controller/follow_joint_trajectory control_msgs/action/FollowJointTrajectory \"{trajectory: {joint_names: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint'], points: [";
     int rows=Th.rows();
     for (int i=0; i<rows; i++) {
-        command << "{positions: [";
         trajectory_msgs::msg::JointTrajectoryPoint point;
-        //point.time_from_start=rclcpp::Duration(2.0s);
         for (int j=0; j<NUM_JOINTS; j++) {
             point.positions.push_back(Th(i, j));
-            point.velocities.push_back(0.0);
-            point.accelerations.push_back(0.0);
-            command << std::fixed << std::setprecision(4) << Th(i, j);
-            if(j!=NUM_JOINTS-1) {
-                command << ", ";
-            }
-            //point.effort.push_back(0.0);
         }
-        double t=i*DELTAT+2;
+        double t=i*DELTAT;
         point.time_from_start=rclcpp::Duration::from_seconds(t);
-        int sec=t;
-        int val=1/DELTAT;
-        int nano=(i%val)*1e9/val;
-        command << "], time_from_start: {sec: " << sec << ", nanosec: " << nano << "}}";
-        if(i!=rows-1) {
-            command << ", ";
-        }
         add_point(&traj_msg, point);
     }
-    command << "]}}\"";
-    //publish_trajectory(traj_msg);
-    string str=command.str();
-    //cout << str << endl;
-    const char* cstr = str.c_str();
-    int ret_code=system(cstr);
-    if (ret_code == 0) {
-        std::cout << "Successful Send Goal\n";
-    } else {
-        std::cerr << "Send Goal Failure with return code: " << ret_code << '\n';
-    }
-    /*ret_code=system("ros2 action result /scaled_joint_trajectory_controller/follow_joint_trajectory");
-    if (ret_code == 0) {
-        std::cout << "Goal Succedded procede with the next position\n";
-        
-    } else {
-        std::cerr << "Goal Ended Wrongly with return code: " << ret_code << '\n';
-    }*/
+    trajectory_msgs::msg::JointTrajectoryPoint point;
+    point.time_from_start=rclcpp::Duration::from_seconds(4.0);
+    publish_trajectory(traj_msg);
 }
 void TrajectoryActionClient::init_Trajectory(trajectory_msgs::msg::JointTrajectory* traj_msg) {
     traj_msg->header.stamp=this->now();
@@ -123,19 +85,26 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
     goal_msg.trajectory = traj_msg;
     goal_msg.goal_time_tolerance.nanosec = 500000000;
     
+    RCLCPP_INFO(this->get_logger(), "Sending trajectory with %zu points", goal_msg.trajectory.points.size());
+    for (const auto &point : goal_msg.trajectory.points) {
+        RCLCPP_INFO(this->get_logger(), "Point at time %d %d: %f %f %f %f %f %f",
+                    point.time_from_start.sec, point.time_from_start.nanosec,
+                    point.positions[0], point.positions[1],
+                    point.positions[2], point.positions[3],
+                    point.positions[4], point.positions[5]);
+    }
+    
     RCLCPP_INFO(this->get_logger(), "Sending trajectory goal");
-    
-    GoalHandleFollowJointTrajectory::SharedPtr goal_handle = nullptr;
-    
-    // Send the goal to the action server
-    auto send_goal_options = rclcpp_action::Client<FollowJointTrajectory>::SendGoalOptions();
     
     // Variable to store goal handle
     //GoalHandleFollowJointTrajectory::SharedPtr goal_handle = nullptr;
     
+    // Send the goal to the action server
+    auto send_goal_options = rclcpp_action::Client<FollowJointTrajectory>::SendGoalOptions();
+    
     send_goal_options.goal_response_callback =
-    [this, &goal_handle](const GoalHandleFollowJointTrajectory::SharedPtr& goal_handle_response) {
-        goal_handle=goal_handle_response;
+    [this](const GoalHandleFollowJointTrajectory::SharedPtr& goal_handle_response) {
+        auto goal_handle=goal_handle_response;
         if (!goal_handle_response) {
             RCLCPP_ERROR(this->get_logger(), "Goal was rejected by the server");
         } else {
@@ -153,7 +122,7 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
     };
     
     send_goal_options.result_callback =
-    [this, &goal_handle](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
+    [this](const GoalHandleFollowJointTrajectory::WrappedResult &result) {
         switch (result.code)
         {
             case rclcpp_action::ResultCode::SUCCEEDED:
@@ -172,9 +141,8 @@ void TrajectoryActionClient::publish_trajectory(trajectory_msgs::msg::JointTraje
         }
         cout << "End Sending trajectory" << endl;
     };
-    action_client_->async_send_goal(goal_msg, send_goal_options);
+    action_client_->async_send_goal(goal_msg);//, send_goal_options);
     RCLCPP_INFO(this->get_logger(), "Waiting");
-    std::this_thread::sleep_for(2s);
 }
 
 
@@ -200,7 +168,7 @@ shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() 
 
 void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node) {
     cout << "Sending trajectory..." << endl;
-    rclcpp::spin_some(std::make_shared<TrajectoryActionClient>(th, node));
+    rclcpp::spin(std::make_shared<TrajectoryActionClient>(th, node));
     cout << "End Sending trajectory" << endl;
 }
 
