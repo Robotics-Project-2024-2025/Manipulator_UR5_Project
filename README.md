@@ -88,7 +88,8 @@ Project
  ┗ Latex source                    # Folder with Original files from which the pdf was generated
 ```
 
-ros2_ur5_interface is a modified version of the git kindly offered from Placido ([link here](https://github.com/pla10/ros2_ur5_interface.git)), so that it will work better with our part.
+The `ros2_ur5_interface is from Falqueto Placido`, also known as pla10 on GitHub ([link of the project here](https://github.com/pla10/ros2_ur5_interface.git)).
+We modified some of his files to make them work better with our part.
 
 [Back to top](#table-of-contents)
 
@@ -217,6 +218,11 @@ After the bash script runs, open this link in your browser to access localhost:6
 http://localhost:6081/vnc.html
 ```
 
+when the page opens, click on connect.
+
+Now you are inside localhost:6081.
+
+
 For windows, it may not work on WSL. 
 
 In that case, open launchDocker.sh and change the tilde in the last line with the complete path.
@@ -242,12 +248,9 @@ bash src/Manipulator_UR5_Project/start.sh
 ```
 The first time, it will install packages for around 5 minutes.
 
-Then, the bash will prompt you to delete 4 files. Press "enter" 4 times to accept the requests.
+Then, the bash will prompt you to delete 3 files. Enter "Y" 3 times to accept the requests.
 
-setupGazebo will automatically open from start.sh. Press "enter" 2 more times. It will then open two additional bash terminals. Before interacting with them, set the number of blocks in the terminal of setupGazebo.sh.
-
-Next, yolo.sh, which is opened by setupGazebo.sh, will prompt you to delete two more files. Press "enter" 2 more times to confirm.
-At the same time, conversion.sh, which opens alongside yolo.sh, will ask the same thing. Press "enter" 2 more times here as well.
+setupGazebo will automatically open from start.sh. It will then open two additional bash terminals, conversion.sh and yolo.sh. Return to setupGazebo, and set the number of blocks in the terminal of setupGazebo.sh.
 
 `Do not close any of the windows created by these bashes`, otherwise the project will not work.
 
