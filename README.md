@@ -220,8 +220,7 @@ http://localhost:6081/vnc.html
 
 when the page opens, click on connect.
 
-Now you are inside localhost:6081.
-
+Now you are inside `localhost:6081`.
 
 For windows, it may not work on WSL. 
 
