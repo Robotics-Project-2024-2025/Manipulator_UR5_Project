@@ -32,7 +32,7 @@ add_executable(complete_job
 )
 
 target_include_directories(complete_job PRIVATE
-    Include
+    include
     ${CMAKE_CURRENT_SOURCE_DIR}/../move_ws/include
     ${EIGEN3_INCLUDE_DIR}
 )
