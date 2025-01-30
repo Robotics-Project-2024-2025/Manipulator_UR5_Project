@@ -145,6 +145,10 @@ brew install <missing command>
 brew will be updated and that command will be integrated in your terminal. So, install with this method gh.<br><br>
 
 WINDOWS //// TO FILL ////<br><br>
+To install gh on Windows WSL, open it and run the following command:
+```bash
+sudo apt update && sudo apt install -y curl && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install -y gh && gh --version
+```
 
 2. After the command run successfully, you will have to do some choices. Select Github.com then HTTPS, type Y and press Login with a web browser and then press enter. You can use any other type of method, but I'm going to explain it how I have done it<br>
 3. In the new open panel, insert the credentials and the one-time code generated on terminal and authorize the connection<br>
