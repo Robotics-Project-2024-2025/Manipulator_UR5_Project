@@ -17,7 +17,29 @@
 ---
 
 # Introduction
-
+This paper describes the methodology and the results achieved by a ros2 based program
+that moves an UR5 robotic arm with a gripper, in order to grab and move some different
+randomly spawned blocks from a random start position to a desired position. The aim of
+this project is to provide a functional and correct implementation to be able to perform
+the operation without encountering singularities or errors.
+Different instrumentation was used to develop the project, starting from the blocks, that
+have to be moved and the camera, which allows us to scan an image on which we can
+perform detection and determine the position and the orientation of the objects. The
+last fundamental component is the UR5 robotic arm, a lightweight arm designed for tasks
+that require flexibility; it has 6 degrees of freedom and is composed by revolute joints: a
+base, a shoulder, an elbow and then a spherical wrist.
+Regarding the development environment, different tools were used. The first is Dock-
+erDesktop which allows us to run the image provided by the professor. It is an Ubuntu
+virtual machine with ros2 on it. This allows us to use node and services for communica-
+tion between the different parts. The Eignen and the yolov5-pip libraries are used and
+the necessary python modules are downloaded when starting the program. There is also
+the Roboflow application which is used to generate pre-trained weights for the recognition
+part.
+The algorithm developed is divided into two main parts: vision and manipulation. The
+first is responsible of scanning the camera to extract an image, process it to localize all
+the blocks using Yolov5 and returning the coordinates of the bounding boxes to calculate
+the relative positions. The second controls the movement of the arm to reach the given
+position, grab the object, and put it in the designed position.
 #Correggere grammatica<br>
 #Finire layout<br>
 #Togliere punto 7.<br>
