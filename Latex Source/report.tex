@@ -43,17 +43,32 @@ The objects are generated using a .urdf.xacro file, which is then passed to .urd
 
 \subsection{Processing images}\label{subsec:imageproc}
 To perform object recognition, the first thing to do is to scan an image from the camera. This is done by the node image\_acquiring, which subscribes to the topic that publishes \textit{sensor\_msgs::msg::Image} data and, after gathering the content, it is processed with opencv2 library functions to print it on a generated image file in .png format. It is saved in a precise path, that will be used later in the program.\\Since recognition is performed at every complete movement of the arm, the part of the table with the blocks that have already been moved is darkened to avoid the recognition and movement of these. Furthermore, the background is colored black to allow the object recognition algorithm to perform at its best.
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1.0\columnwidth]{images/Yolo1.png}
+        \caption{Blocks detection with bounding-boxes}
+        \label{fig:yolo1}
+    \end{figure}
+\end{center}
 
 \subsection{Detection}\label{subsec:detect}
 For this part we used the Roboflow tool which allowed us to process the images and detect objects in order to produce a pre-trained weight file \uline{for Yolov5}. \uline{The images used were the ones provided by the professor, excluding the .json files that were unuseful since we decided to create our own dataset from scratch.} To do that, we uploaded the files on the tool and analyzed them folder by folder, telling the program which class it is. We ended up having nine classes(see \ref{subsec:blockspawn}), each with a \uline{large} number of images loaded. Then a percentage of images was destined to training, and a smaller one to testing, this was done automatically by the program, which performed also the training part. At the end of the processes the program output was \uline{blocktrain.pt}, which is the file containing the pre-trained weights to be used to perform the recognition with Yolov5. For the recognition the yolov5-pip repository is downloaded from github (link: \url{https://github.com/fcakyon/yolov5-pip.git}).\\
 When passing an image we were interested in knowing the coordinates of the bounding box, the confidence, and the class. With the first one we are able to calculate the position of the block on the table and with the second one we can understand whether it is an erroneous identification. To obtain this information, we developed a Python script detection.py that creates the service: yolo\_bounding\_box\_service, which takes in input the path of the image from the camera, taken as explained in \ref{subsec:imageproc}, and returns an array of custom msg type called Boundstruct, that contains the class identifier, the confidence and the four values of the coordinates of the top left and bottom right points of the bounding box.
-
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1.0\columnwidth]{images/Obj1.png}
+        \caption{Axis for the block to determine the orientation}
+        \label{fig:obj1}
+    \end{figure}
+\end{center}
 % Object elaboration Section
 \subsection{Object elaboration}\label{subsec:objel}
 \uline{da sistemare, credo che il Converison non serva più}
 The values returned in \ref{subsec:detect}, in particular the coordinates of the bounding box, are essential to derive the center of the object and compute its distance from the camera. This is done using a function that determines the center by subtracting the further point coordinate with the lower ones, divide the difference by two and add it to the lower one values. Then the coordinates of this point are passed to the Conversion service which returns the depth. With this process we obtain the coordinates of the block with respect to the camera ,then we have to transform it to the real world frame and this is done by the convert\_coordinates service initialized. It takes the coordinates and returns the depth and the orientation of the selected block. With this data we are able to pass to the Manipulation part to move the arm.
 
-\textbf{Versione 2:} The values returned in \ref{subsec:detect} and \ref{subsec:imageproc}, in particular the coordinates of the bounding box and the image path are essential to determine the position of the object to the Gazebo world frame. The file process.py initializes the service convert\_coordinates that takes in input the previously listed parameters. It finds the center of the bounding box and determines the position in the 3D Gazebo world frame, and it also computes the rotation... At the end the returned values are: the x,y and z coordinates of the center, the rotation and a boolena to indicate the success of the operation.
+\textbf{Versione 2:} The values returned in \ref{subsec:detect} and \ref{subsec:imageproc}, in particular the coordinates of the bounding box and the image path are essential to determine the position of the object to the Gazebo world frame. The file process.py initializes the service convert\_coordinates that takes in input the previously listed parameters. It finds the center of the bounding box and determines the position in the 3D Gazebo world frame, and it also computes the rotation... At the end the returned values are: the x,y and z coordinates of the center, the rotation and a boolean to indicate the success of the operation.
 
 
 % Manipulation Section
