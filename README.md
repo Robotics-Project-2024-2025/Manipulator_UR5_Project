@@ -277,7 +277,7 @@ setupGazebo will automatically open from start.sh. It will then open two additio
 # Work Contribution
 
 | Contributors | Detection Part | Object Manipulation | Image Manipulation | Movement | Block Spawning | Job Manager
-|:-------------|:-------------|:--------------:|:--------------:|--------------:|--------------:|
+|:-------------|:-------------|:--------------:|-------------:|-------------:|-------------:|
 | Benassi Alessandro    | Responsible      |                  |                  | Helper           |                  |                  |
 | Calvo Daniele         |                  | Responsible      |                  | Responsible      |                  |                  |
 | Cristoforetti Niccolò |                  |                  | Responsible      | Responsible      |                  |                  |
