@@ -39,14 +39,6 @@ first is responsible of scanning the camera to extract an image, process it to l
 the blocks using Yolov5 and returning the coordinates of the bounding boxes to calculate
 the relative positions. The second controls the movement of the arm to reach the given
 position, grab the object, and put it in the designed position.
-#Correggere grammatica<br>
-#Finire layout<br>
-#Togliere punto 7.<br>
-#Citare il nome utente di Placido come se fosse un utente esterno<br>
-#Rifinire la parte di Setup Container (ur5.sh no)<br>
-#Spiegare come lanciare il bash in localhost:6081 specificando i tempi medi e cosa deve fare<br>
-#Spiegare meglio Run project (prova a runnare una simulazione in modo che un utente qualunque riesca ad utilizzarlo)<br>
-#Fare la tabella in Work Contribution<br>
 
 [Back to top](#table-of-contents)
 
@@ -165,7 +157,7 @@ brew install <missing command>
 ```
 brew will be updated and that command will be integrated in your terminal. So, install with this method gh.<br><br>
 
-WINDOWS //// TO FILL ////<br><br>
+
 To install gh on Windows WSL, open it and run the following command:
 ```bash
 sudo apt update && sudo apt install -y curl && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install -y gh && gh --version
