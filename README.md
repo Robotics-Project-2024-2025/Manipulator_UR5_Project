@@ -18,6 +18,8 @@
 
 # Introduction
 
+[![Guarda il video](https://img.youtube.com/vi/9zNNU6IMwzo/0.jpg)](https://www.youtube.com/watch?v=9zNNU6IMwzo)
+
 <video width="600" controls>
   <source src="https://youtu.be/9zNNU6IMwzo" type="video/mp4">
   Il tuo browser non supporta il tag video.
