@@ -18,6 +18,11 @@
 
 # Introduction
 
+<video width="600" controls>
+  <source src="https://youtu.be/9zNNU6IMwzo" type="video/mp4">
+  Il tuo browser non supporta il tag video.
+</video>
+
 This paper describes the methodology and the results achieved by a ros2 based program
 that moves an UR5 robotic arm with a gripper, in order to grab and move some different
 randomly spawned blocks from a random start position to a desired position. The aim of
