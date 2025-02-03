@@ -18,6 +18,30 @@
 
 # Introduction
 
+This paper describes the methodology and the results achieved by a ros2 based program
+that moves an UR5 robotic arm with a gripper, in order to grab and move some different
+randomly spawned blocks from a random start position to a desired position. The aim of
+this project is to provide a functional and correct implementation to be able to perform
+the operation without encountering singularities or errors.<br><br>
+Different instrumentation was used to develop the project, starting from the blocks, that
+have to be moved and the camera, which allows us to scan an image on which we can
+perform detection and determine the position and the orientation of the objects. The
+last fundamental component is the UR5 robotic arm, a lightweight arm designed for tasks
+that require flexibility; it has 6 degrees of freedom and is composed by revolute joints: a
+base, a shoulder, an elbow and then a spherical wrist. <br><br>
+Regarding the development environment, different tools were used. The first is DockerDesktop which allows us to run the image provided by the professor. It is an Ubuntu
+virtual machine with ros2 on it. This allows us to use node and services for communica-
+tion between the different parts. The Eignen and the yolov5-pip libraries are used and
+the necessary python modules are downloaded when starting the program. There is also
+the Roboflow application which is used to generate pre-trained weights for the recognition
+part.<br><br>
+The algorithm developed is divided into two main parts: vision and manipulation. The
+first is responsible of scanning the camera to extract an image, process it to localize all
+the blocks using Yolov5 and returning the coordinates of the bounding boxes to calculate
+the relative positions. The second controls the movement of the arm to reach the given
+position, grab the object, and put it in the designed position.
+
+
 [Back to top](#table-of-contents)
 
 ---
@@ -59,7 +83,7 @@ Project
  ┃   ┃ ┗ package.xml               # Package Identificator  
  ┃   ┣ vision_ws                   # Package for vision (IN DEVELOPMENT)
  ┃   ┗ vision_ws_msgs              #
- ┣ robotics_project_ws             # Modified version of Placido's work
+ ┣ ros_ur5_interface             # Modified version of Placido's work
  ┃ ┣ config                        # configuration for the UR5 arm
  ┃ ┣ docker                        # 
  ┃ ┣ gripper                       # Scripts for changing of gripper state
@@ -79,7 +103,8 @@ Project
  ┗ Latex source                    # Folder with Original files from which the pdf was generated
 ```
 
-ros2_ur5_interface is a modified version of the git kindly offered from Placido ([link here](https://github.com/pla10/ros2_ur5_interface.git)), so that it will work better with our part.
+The `ros2_ur5_interface is from Falqueto Placido`, also known as pla10 on GitHub ([link of the project here](https://github.com/pla10/ros2_ur5_interface.git)).
+We modified some of his files to make them work better with our part.
 
 [Back to top](#table-of-contents)
 
@@ -132,7 +157,11 @@ brew install <missing command>
 ```
 brew will be updated and that command will be integrated in your terminal. So, install with this method gh.<br><br>
 
-WINDOWS //// TO FILL ////<br><br>
+
+To install gh on Windows WSL, open it and run the following command:
+```bash
+sudo apt update && sudo apt install -y curl && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install -y gh && gh --version
+```
 
 2. After the command run successfully, you will have to do some choices. Select Github.com then HTTPS, type Y and press Login with a web browser and then press enter. You can use any other type of method, but I'm going to explain it how I have done it<br>
 3. In the new open panel, insert the credentials and the one-time code generated on terminal and authorize the connection<br>
@@ -204,6 +233,29 @@ docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manip
 
 ### Setup localhost:6081
 
+With ros2.sh changed, run launchDocker.sh in the `robotics_project_ws` folder.
+
+After the bash script runs, open this link in your browser to access localhost:6081:
+
+```bash
+http://localhost:6081/vnc.html
+```
+
+when the page opens, click on connect.
+
+Now you are inside `localhost:6081`.
+
+For windows, it may not work on WSL. 
+
+In that case, open launchDocker.sh and change the tilde in the last line with the complete path.
+Before:
+```bash
+bash ~/Manipulator_UR5_Project/ros2_ur5_interface/scripts/ros2.sh
+```
+After:
+```bash
+bash Linux/Ubuntu/home/"nickname"/Manipulator_UR5_Project/ros2_ur5_interface/scripts/ros2.sh
+```
 [Back to top](#table-of-contents)
 
 ---
@@ -226,6 +278,13 @@ With time, Gazebo will open with a perfect-functioning simulated UR5 arm.
 ---
 
 # Work Contribution
+
+| Contributors | Detection Part | Object Manipulation | Image Manipulation | Movement | Block Spawning | Job Manager
+|----------|----------|----------|----------|----------|----------|----------|
+| Benassi Alessandro    | Responsible      |                  |                  | Helper           |                  |                  |
+| Calvo Daniele         |                  | Responsible      |                  | Responsible      |                  |                  |
+| Cristoforetti Niccolò |                  |                  | Responsible      | Responsible      |                  |                  |
+| Gottardelli Matteo    | Helper           | Helper           | Helper           | Helper           | Responsible      | Responsible      |
 
 [Back to top](#table-of-contents)
 
