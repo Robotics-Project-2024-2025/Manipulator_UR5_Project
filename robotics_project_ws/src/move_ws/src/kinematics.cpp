@@ -1,4 +1,4 @@
-//
+ //
 //  kinematics.cpp
 //  Kinematics
 //
@@ -575,7 +575,7 @@ bool linear_interpolation(Matrix61 qEs, Vector3d xES, Vector3d xEF, Vector3d phi
     return true;
 }
 
-bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int maxT, MatrixD6* Th, bool velocity, InverseType inv, double rot_gripper) {
+bool p2pMotionPlanPerturbation(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int maxT, MatrixD6* Th, bool velocity, InverseType inv, double rot_gripper) {
     MatrixXd xE;
     MatrixXd phiE;
     MatrixD6 qEF;
@@ -674,7 +674,76 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int max
     return false;  // Return false if no valid trajectory was found
 }
 
+bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int maxT, MatrixD6* Th, bool velocity, InverseType inv, double rot_gripper) {
+    MatrixXd xE;
+    MatrixXd phiE;
+    MatrixD6 qEF;
+    cout << "XEF: " << xEf << endl;
 
+    // Compute start position in Cartesian space
+    auto [xE_start, _] = Ur5Direct(qES);
+    cout << "xE_start: " << xE_start << endl;
+
+    // Compute inverse kinematics for the desired end-effector position and orientation
+   qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
+
+    if (!bestInverse(qES, qEF)) {
+        cout << "No Inverse is admissible" << endl;
+        return false;
+    }
+
+    cout << "qEF: " << qEF << endl;
+    double dt = DELTAT;
+    if (!velocity) {
+        dt = dt / 2;
+    }
+
+    // Generate trajectory with polynomial interpolation between qES and qEF
+    for (int i = 0; i < qEF.rows(); ++i) {
+        MatrixD6 A;
+        bool error = false;
+        MatrixD6 tempTh;
+
+        for (int j = 0; j < qES.rows(); j++) {
+            MatrixXd M(6, 6);
+            M << 1, minT, pow(minT, 2), pow(minT, 3), pow(minT, 4), pow(minT, 5),
+                 0, 1, 2 * minT, 3 * pow(minT, 2), 4 * pow(minT, 3), 5 * pow(minT, 4),
+                 0, 0, 2, 6 * minT, 12 * pow(minT, 2), 20 * pow(minT, 3),
+                 1, maxT, pow(maxT, 2), pow(maxT, 3), pow(maxT, 4), pow(maxT, 5),
+                 0, 1, 2 * maxT, 3 * pow(maxT, 2), 4 * pow(maxT, 3), 5 * pow(maxT, 4),
+                 0, 0, 2, 6 * maxT, 12 * pow(maxT, 2), 20 * pow(maxT, 3);
+
+            VectorXd b(6);
+            b << qES(j), 0, 0, qEF(i, j), 0, 0;
+
+            MatrixXd M_inv = M.inverse();
+            VectorXd coeff = M_inv * b;
+            A.conservativeResize(A.rows() + 1, Eigen::NoChange);
+            A.row(A.rows() - 1) = coeff.transpose();
+        }
+
+        for (double t = minT; t < maxT + dt && !error; t += dt) {
+            Matrix16 th;
+            for (int k = 0; k < qES.rows(); k++) {
+                th(k) = A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
+            }
+            if(!checkAngles(th)) {
+                cout << "TRAJECTORY ERROR" << endl;
+                error =true;
+            }
+            tempTh.conservativeResize(tempTh.rows() + 1, NUM_JOINTS);
+            tempTh.row(tempTh.rows() - 1) = th;
+        }
+
+        if (!error) {
+            Th->conservativeResize(Th->rows() + tempTh.rows(), NUM_JOINTS);
+            Th->bottomRows(tempTh.rows()) = tempTh;
+            return true;
+        }
+    }
+
+    return false;  // Return false if no valid trajectory was found
+}
 
 Matrix3d xRot(double theta){
     Matrix3d r;
