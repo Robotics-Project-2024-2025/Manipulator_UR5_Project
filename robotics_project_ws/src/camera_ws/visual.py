@@ -10,7 +10,7 @@ import numpy as np
 
 # Constants
 TABLE_DEFAULT = [[175, 88], [423, 81], [635, 288], [19, 313]]  # Original table points
-PERCENTAGE=0.5
+PERCENTAGE=0.25
 OFFSET = 25  # Padding around the table mask
 
 # Paths
