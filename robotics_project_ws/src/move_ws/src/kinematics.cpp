@@ -727,7 +727,7 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int max
             for (int k = 0; k < qES.rows(); k++) {
                 th(k) = A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
             }
-            if(!checkAngles(th)) {
+            if(!checkAngles(&th)) {
                 cout << "TRAJECTORY ERROR" << endl;
                 error =true;
             }
