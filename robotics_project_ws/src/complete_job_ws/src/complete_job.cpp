@@ -50,7 +50,7 @@ void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y, 
     blockPos=convertFromWorldFrameToMFrame(v);
     startFrameZ=sFZ;
     v << dest_x, dest_y, 0.72;
-    phiEf << sFZ, -M_PI, 0.0;
+    phiEf << sFZ, M_PI, 0.0;
     posHome << 0.0, -0.5, 0.4;
 }
 
