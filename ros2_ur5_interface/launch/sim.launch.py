@@ -58,6 +58,21 @@ def random_pos() -> tuple:
             spawned_positions.append((x, y, z))
             return (x, y, z)
     
+def random_pos_old() -> tuple:
+    precision=100*PRECISION
+    x_min=X_MIN*precision
+    x_max=X_MAX*precision
+    y_min=Y_MIN*precision
+    y_max=Y_MAX*precision
+    x=random.randrange(int(x_min), int(x_max))/precision
+    y=random.randrange(int(y_min), int(y_max))/precision
+    z=Z_TABLE
+    while is_collision((x, y, z)):
+        x = random.randrange(int(x_min), int(x_max)) / precision
+        y = random.randrange(int(y_min), int(y_max)) / precision
+    spawned_positions.append((x, y, z))
+    return(x,y,z)
+    
 def random_angle(precision: int = 3) -> float:
     return random.randint(0, int(2*math.pi*100000)) / 100000
     
