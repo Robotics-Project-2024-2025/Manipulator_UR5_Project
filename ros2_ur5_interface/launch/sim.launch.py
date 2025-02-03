@@ -45,20 +45,20 @@ def is_collision(position, threshold=0.15):
             return True
     return False
 
+#def random_pos() -> tuple:
+#    precision = 100 * PRECISION
+#    y_min = Y_MIN * precision
+#    y_max = Y_MAX * precision
+#    
+#    while True:
+#        y = random.randrange(int(y_min), int(y_max)) / precision
+#        x = CENTER_X - math.sqrt(RADIUS**2 - (y - CENTER_Y)**2)
+#        z = Z_TABLE
+#        if not is_collision((x, y, z)):
+#            spawned_positions.append((x, y, z))
+#            return (x, y, z)
+    
 def random_pos() -> tuple:
-    precision = 100 * PRECISION
-    y_min = Y_MIN * precision
-    y_max = Y_MAX * precision
-    
-    while True:
-        y = random.randrange(int(y_min), int(y_max)) / precision
-        x = CENTER_X - math.sqrt(RADIUS**2 - (y - CENTER_Y)**2)
-        z = Z_TABLE
-        if not is_collision((x, y, z)):
-            spawned_positions.append((x, y, z))
-            return (x, y, z)
-    
-def random_pos_old() -> tuple:
     precision=100*PRECISION
     x_min=X_MIN*precision
     x_max=X_MAX*precision
