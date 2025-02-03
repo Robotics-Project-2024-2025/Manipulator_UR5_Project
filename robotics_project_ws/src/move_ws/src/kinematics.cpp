@@ -202,7 +202,7 @@ bool bestInverse(Matrix16 start, MatrixD6& end) {
         }
     }
     int i=0;
-    while (i<end.rows()){
+    /*while (i<end.rows()){
         Matrix16 thi=end.row(i);
         if (!checkAngles(&thi)){
             removeRow(&end, i);
@@ -210,7 +210,7 @@ bool bestInverse(Matrix16 start, MatrixD6& end) {
         } else {
             i++;
         }
-    }
+    }*/
     std::vector<double> configs(end.rows());
     for (int i=0; i<end.rows(); i++) {
         configs[i]=0.0;
@@ -228,10 +228,10 @@ bool bestInverse(Matrix16 start, MatrixD6& end) {
             }
         }
     }
-    if (end.size()==0) {
+   /* if (end.size()==0) {
         cout << "NO POSSIBLE ERROR TRAJECTORY" << endl;
         return false;
-    }
+    }*/
     return true;
 }
 
@@ -580,35 +580,26 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int max
     MatrixXd phiE;
     MatrixD6 qEF;
     cout << "XEF: " << xEf << endl;
+
     // Compute start position in Cartesian space
     auto [xE_start, _] = Ur5Direct(qES);
     cout << "xE_start: " << xE_start << endl;
-    switch (inv) {
-        case VERTICAL:
-            qEF = Ur5InverseVerticalZ(xEf, eul2rotm(phiEf), qES(0), qES(4), rot_gripper);
-            break;
-        case HORIZONTAL:
-        
-            break;
-        case DEFAULT:
-            qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
-            break;
-        default:
-            cout << "Inverse mode not specified" << endl;
-            return false;
-    }
+
+    // Compute inverse kinematics for the desired end-effector position and orientation
+   qEF = Ur5Inverse(xEf, eul2rotm(phiEf));
 
     if (!bestInverse(qES, qEF)) {
         cout << "No Inverse is admissible" << endl;
         return false;
     }
 
-    cout << qEF << endl;
+    cout << "qEF: " << qEF << endl;
     double dt = DELTAT;
     if (!velocity) {
         dt = dt / 2;
     }
 
+    // Generate trajectory with polynomial interpolation between qES and qEF
     for (int i = 0; i < qEF.rows(); ++i) {
         MatrixD6 A;
         bool error = false;
@@ -637,11 +628,38 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int max
             for (int k = 0; k < qES.rows(); k++) {
                 th(k) = A(k, 0) + A(k, 1) * t + A(k, 2) * pow(t, 2) + A(k, 3) * pow(t, 3) + A(k, 4) * pow(t, 4) + A(k, 5) * pow(t, 5);
             }
-            cout << "Time " << t << ": " << th << endl;
-            if (!checkAngles(&th)) {
-                cout << "TRAJECTORY ERROR" << endl;
-                error = true;
+
+            cout << "Time " << t << ": " << th.transpose() << endl;
+            if (!checkAngles(&th) || !control_collision(&th)) {
+                cout << "Trajectory Error at t=" << t << " - Attempting correction..." << endl;
+                bool corrected = false;
+                for (int joint = 0; joint < NUM_JOINTS; joint++) {
+                    double original_value = th(joint);
+
+                    // Try perturbing the joint in small increments
+                    for (double perturb = 0; perturb < 2 * M_PI && !corrected; perturb += DELTAT) {
+                        th(joint) = original_value + perturb;
+
+                        // Recheck after perturbing just one joint
+                        if (!checkAngles(&th) || !control_collision(&th)) {
+                            cout << "Perturbation failed for joint " << joint << " at t=" << t << ", trying next perturbation..." << endl;
+                        } else {
+                            cout << "Correction successful for joint " << joint << " at t=" << t << endl;
+                            corrected = true;
+                            break;
+                        }
+                    }
+
+                    if (corrected) {
+                        break;
+                    }
+                }
+                if (!corrected) {
+                    cout << "No valid correction found for t=" << t << " - Trajectory Error remains." << endl;
+                    error = true;
+                }
             }
+
             tempTh.conservativeResize(tempTh.rows() + 1, NUM_JOINTS);
             tempTh.row(tempTh.rows() - 1) = th;
         }
@@ -653,8 +671,9 @@ bool p2pMotionPlan(Matrix61 qES, Vector3d xEf, Vector3d phiEf, int minT, int max
         }
     }
 
-    return false;
+    return false;  // Return false if no valid trajectory was found
 }
+
 
 
 Matrix3d xRot(double theta){
