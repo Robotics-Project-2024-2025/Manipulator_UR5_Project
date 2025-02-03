@@ -48,10 +48,10 @@ void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y, 
     Vector3d v;
     v << x, y, 0.9;
     blockPos=convertFromWorldFrameToMFrame(v);
-    v << dest_x, dest_y, 0.72;
-    phiEf << 0.0, 0.0, 0.0;
-    posHome << 0.0, -0.5, 0.4;
     startFrameZ=sFZ;
+    v << dest_x, dest_y, 0.72;
+    phiEf << sFZ, -M_PI, 0.0;
+    posHome << 0.0, -0.5, 0.4;
 }
 
 bool motion (Matrix16 qEs, Vector3d xEs, Vector3d xEf, Vector3d phiEf, double minT, double maxT, MatrixD6* Th, std::shared_ptr<rclcpp::Node> node) {
@@ -141,7 +141,7 @@ void oneIteration(std::shared_ptr<rclcpp::Node> node) {
     //auto [tras, rot]=Ur5Direct(configurationHome);
     //linear_interpolation(qEs.transpose(), posHome, posHome, phiEf, MINT, MAXT, &th);
         //return false;
-    //send_trajectory(configurationHome, node);
+    send_trajectory(configurationHome, node);
     //std::cout << "configurationHome size: " << configurationHome.rows() << "x" << configurationHome.cols() << std::endl;
     //std::cout << "qEs size: " << qEs.rows() << "x" << qEs.cols() << std::endl;
     /*if (!configurationHome.isApprox(qEs, 1e-2)) {
