@@ -22,8 +22,8 @@
 #define MINT 0
 #define MAXT 2
 #define NUM_JOINTS 6
-#define XMIN -0.7
-#define XMAX 0.7
+#define XMIN -1.5
+#define XMAX 1.5
 #define YMIN -0.7
 #define YMAX(i) ((i<NUM_JOINTS/2) ? 0.22 : 0.12)
 #define ZMIN 0.0
