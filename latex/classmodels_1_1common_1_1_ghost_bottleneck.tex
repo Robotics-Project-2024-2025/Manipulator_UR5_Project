@@ -1,0 +1,82 @@
+\doxysection{models.\+common.\+Ghost\+Bottleneck Class Reference}
+\hypertarget{classmodels_1_1common_1_1_ghost_bottleneck}{}\label{classmodels_1_1common_1_1_ghost_bottleneck}\index{models.common.GhostBottleneck@{models.common.GhostBottleneck}}
+Inheritance diagram for models.\+common.\+Ghost\+Bottleneck\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1common_1_1_ghost_bottleneck}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_ghost_bottleneck_a4e77b2675d30697bb18c9fe4ecbd19c3}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, k=3, s=1)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_ghost_bottleneck_a791f185d12330b116358ba5a320e6529}{forward}} (self, x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_ghost_bottleneck_a5e88618f2967bf316949ce34b0a095e4}{conv}}
+\item 
+tuple \mbox{\hyperlink{classmodels_1_1common_1_1_ghost_bottleneck_ab11e34c52b08b6bed4eda66e7fac9d00}{shortcut}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Efficient bottleneck layer using Ghost Convolutions, see https://github.com/huawei-noah/ghostnet.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1common_1_1_ghost_bottleneck_a4e77b2675d30697bb18c9fe4ecbd19c3}\index{models.common.GhostBottleneck@{models.common.GhostBottleneck}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.common.GhostBottleneck@{models.common.GhostBottleneck}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_ghost_bottleneck_a4e77b2675d30697bb18c9fe4ecbd19c3} 
+models.\+common.\+Ghost\+Bottleneck.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{k}{ = {\ttfamily 3}, }\item[{}]{s}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes GhostBottleneck with ch_in `c1`, ch_out `c2`, kernel size `k`, stride `s`; see https://github.com/huawei-noah/ghostnet.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1common_1_1_ghost_bottleneck_a791f185d12330b116358ba5a320e6529}\index{models.common.GhostBottleneck@{models.common.GhostBottleneck}!forward@{forward}}
+\index{forward@{forward}!models.common.GhostBottleneck@{models.common.GhostBottleneck}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_ghost_bottleneck_a791f185d12330b116358ba5a320e6529} 
+models.\+common.\+Ghost\+Bottleneck.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Processes input through conv and shortcut layers, returning their summed output.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1common_1_1_ghost_bottleneck_a5e88618f2967bf316949ce34b0a095e4}\index{models.common.GhostBottleneck@{models.common.GhostBottleneck}!conv@{conv}}
+\index{conv@{conv}!models.common.GhostBottleneck@{models.common.GhostBottleneck}}
+\doxysubsubsection{\texorpdfstring{conv}{conv}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_ghost_bottleneck_a5e88618f2967bf316949ce34b0a095e4} 
+models.\+common.\+Ghost\+Bottleneck.\+conv}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ nn.Sequential(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ GhostConv(c1,\ c\_,\ 1,\ 1),\ \ \textcolor{comment}{\#\ pw}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ DWConv(c\_,\ c\_,\ k,\ s,\ act=\textcolor{keyword}{False})\ \textcolor{keywordflow}{if}\ s\ ==\ 2\ \textcolor{keywordflow}{else}\ nn.Identity(),\ \ \textcolor{comment}{\#\ dw}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ GhostConv(c\_,\ c2,\ 1,\ 1,\ act=\textcolor{keyword}{False}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+\Hypertarget{classmodels_1_1common_1_1_ghost_bottleneck_ab11e34c52b08b6bed4eda66e7fac9d00}\index{models.common.GhostBottleneck@{models.common.GhostBottleneck}!shortcut@{shortcut}}
+\index{shortcut@{shortcut}!models.common.GhostBottleneck@{models.common.GhostBottleneck}}
+\doxysubsubsection{\texorpdfstring{shortcut}{shortcut}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_ghost_bottleneck_ab11e34c52b08b6bed4eda66e7fac9d00} 
+tuple models.\+common.\+Ghost\+Bottleneck.\+shortcut}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ nn.Sequential(DWConv(c1,\ c1,\ k,\ s,\ act=\textcolor{keyword}{False}),\ Conv(c1,\ c2,\ 1,\ 1,\ act=\textcolor{keyword}{False}))\ \textcolor{keywordflow}{if}\ s\ ==\ 2\ \textcolor{keywordflow}{else}\ nn.Identity()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{common_8py}{common.\+py}}\end{DoxyCompactItemize}

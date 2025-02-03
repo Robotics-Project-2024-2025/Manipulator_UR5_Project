@@ -1,0 +1,257 @@
+\doxysection{utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger Class Reference}
+\hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger}{}\label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ab58fd0b7edba267e15d1978db8de446f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, opt, run\+\_\+id=None, \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a8eb9bb1f913133eb2d5404e9bce058ed}{job\+\_\+type}}="{}Training"{})
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a38b3cd61158a5a5add771026ed6d8633}{setup\+\_\+training}} (self, opt)
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a37a194c09e8927f277c0a3bc4380e0bd}{log\+\_\+model}} (self, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}, opt, epoch, fitness\+\_\+score, best\+\_\+model=False)
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a3fee679d3e39f3d607800658d727f54e}{val\+\_\+one\+\_\+image}} (self, pred, predn, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}, names, im)
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a7771c6d891d069f6f228be631e0ebbaf}{log}} (self, \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abcf0cbcec7494c107f282814a94c260d}{log\+\_\+dict}})
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ac94c029c718b9960b3a50e243aec32a5}{end\+\_\+epoch}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a68f20cf9e903c566cce28f30da2c76cd}{finish\+\_\+run}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a8eb9bb1f913133eb2d5404e9bce058ed}{job\+\_\+type}} = job\+\_\+type
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}{wandb}}
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a57e419d95c85e27e59c31929552648fc}{wandb\+\_\+run}} = \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}{wandb}}, wandb.\+run if \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}{wandb}} else None
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a79dc38e4c05ccee9c17139a0e4286cdb}{val\+\_\+artifact}}
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ad1d6bb3664e7bfdb8541965b73c96e79}{train\+\_\+artifact}} = None, None
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a0ea6d3ec848b5a86fc319fe84e0404c7}{train\+\_\+artifact\+\_\+path}}
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a5c803ee90b9b85b32d91972b6a48ba7d}{val\+\_\+artifact\+\_\+path}} = None, None
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_adae90741d0dc70db4f9cb34df2850d9e}{result\+\_\+artifact}} = None
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a6786d6ad05b1dec2d2742fab7b248896}{val\+\_\+table}}
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a2d7b8f182dde84ed85bbf206d6f24ebe}{result\+\_\+table}} = None, None
+\item 
+int \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a617a665c6aff499bbe78a66864912483}{max\+\_\+imgs\+\_\+to\+\_\+log}} = 16
+\item 
+\mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a899bc3aa8e09967a2e5181fa73eb7a0d}{data\+\_\+dict}} = None
+\item 
+dict \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abcf0cbcec7494c107f282814a94c260d}{log\+\_\+dict}}
+\item 
+dict \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af122d8e1f50c396584df7d1214ab3f59}{current\+\_\+epoch}} = \{\}, 0
+\item 
+tuple \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a46d9bcadec5c6c687d3a509bdd235d76}{bbox\+\_\+interval}} = opt.\+bbox\+\_\+interval
+\item 
+str \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af31f3fa4cd2d2374b58eabf328e96023}{weights}} = Path(model\+\_\+dir) / "{}last.\+pt"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Log training runs, datasets, models, and predictions to Weights & Biases.
+
+This logger sends information to W&B at wandb.ai. By default, this information includes hyperparameters, system
+configuration and metrics, model metrics, and basic data metrics and analyses.
+
+By providing additional command line arguments to train.py, datasets, models and predictions can also be logged.
+
+For more on how this logger is used, see the Weights & Biases documentation:
+https://docs.wandb.com/guides/integrations/yolov5
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ab58fd0b7edba267e15d1978db8de446f}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ab58fd0b7edba267e15d1978db8de446f} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{opt}{, }\item[{}]{run\+\_\+id}{ = {\ttfamily None}, }\item[{}]{job\+\_\+type}{ = {\ttfamily "{}Training"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}- Initialize WandbLogger instance
+- Upload dataset if opt.upload_dataset is True
+- Setup training processes if job_type is 'Training'.
+
+Arguments:
+opt (namespace) -- Commandline arguments for this run
+run_id (str) -- Run ID of W&B run to be resumed
+job_type (str) -- To set the job_type for this run
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ac94c029c718b9960b3a50e243aec32a5}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!end\_epoch@{end\_epoch}}
+\index{end\_epoch@{end\_epoch}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{end\_epoch()}{end\_epoch()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ac94c029c718b9960b3a50e243aec32a5} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+end\+\_\+epoch (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Commit the log_dict, model artifacts and Tables to W&B and flush the log_dict.
+
+Arguments:
+best_result (boolean): Boolean representing if the result of this evaluation is best or not
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a68f20cf9e903c566cce28f30da2c76cd}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!finish\_run@{finish\_run}}
+\index{finish\_run@{finish\_run}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{finish\_run()}{finish\_run()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a68f20cf9e903c566cce28f30da2c76cd} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+finish\+\_\+run (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Log metrics if any and finish the current W&B run.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a7771c6d891d069f6f228be631e0ebbaf}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!log@{log}}
+\index{log@{log}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a7771c6d891d069f6f228be631e0ebbaf} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+log (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{log\+\_\+dict}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Save the metrics to the logging dictionary.
+
+Arguments:
+log_dict (Dict) -- metrics/media to be logged in current step
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a37a194c09e8927f277c0a3bc4380e0bd}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!log\_model@{log\_model}}
+\index{log\_model@{log\_model}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{log\_model()}{log\_model()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a37a194c09e8927f277c0a3bc4380e0bd} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+log\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{, }\item[{}]{opt}{, }\item[{}]{epoch}{, }\item[{}]{fitness\+\_\+score}{, }\item[{}]{best\+\_\+model}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Log the model checkpoint as W&B artifact.
+
+Arguments:
+path (Path)   -- Path of directory containing the checkpoints
+opt (namespace) -- Command line arguments for this run
+epoch (int)  -- Current epoch number
+fitness_score (float) -- fitness score for current epoch
+best_model (boolean) -- Boolean representing if the current checkpoint is the best yet.
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a38b3cd61158a5a5add771026ed6d8633}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!setup\_training@{setup\_training}}
+\index{setup\_training@{setup\_training}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{setup\_training()}{setup\_training()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a38b3cd61158a5a5add771026ed6d8633} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+setup\+\_\+training (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{opt}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Setup the necessary processes for training YOLO models:
+  - Attempt to download model checkpoint and dataset artifacts if opt.resume stats with WANDB_ARTIFACT_PREFIX
+  - Update data_dict, to contain info of previous run if resumed and the paths of dataset artifact if downloaded
+  - Setup log_dict, initialize bbox_interval.
+
+Arguments:
+opt (namespace) -- commandline arguments for this run
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a3fee679d3e39f3d607800658d727f54e}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!val\_one\_image@{val\_one\_image}}
+\index{val\_one\_image@{val\_one\_image}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{val\_one\_image()}{val\_one\_image()}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a3fee679d3e39f3d607800658d727f54e} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+val\+\_\+one\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{pred}{, }\item[{}]{predn}{, }\item[{}]{path}{, }\item[{}]{names}{, }\item[{}]{im}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluates model prediction for a single image, returning metrics and visualizations.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a46d9bcadec5c6c687d3a509bdd235d76}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!bbox\_interval@{bbox\_interval}}
+\index{bbox\_interval@{bbox\_interval}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{bbox\_interval}{bbox\_interval}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a46d9bcadec5c6c687d3a509bdd235d76} 
+tuple utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+bbox\+\_\+interval = opt.\+bbox\+\_\+interval}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af122d8e1f50c396584df7d1214ab3f59}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!current\_epoch@{current\_epoch}}
+\index{current\_epoch@{current\_epoch}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{current\_epoch}{current\_epoch}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af122d8e1f50c396584df7d1214ab3f59} 
+dict utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+current\+\_\+epoch = \{\}, 0}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a899bc3aa8e09967a2e5181fa73eb7a0d}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!data\_dict@{data\_dict}}
+\index{data\_dict@{data\_dict}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{data\_dict}{data\_dict}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a899bc3aa8e09967a2e5181fa73eb7a0d} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+data\+\_\+dict = None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a8eb9bb1f913133eb2d5404e9bce058ed}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!job\_type@{job\_type}}
+\index{job\_type@{job\_type}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{job\_type}{job\_type}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a8eb9bb1f913133eb2d5404e9bce058ed} 
+str utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+job\+\_\+type = job\+\_\+type}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abcf0cbcec7494c107f282814a94c260d}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!log\_dict@{log\_dict}}
+\index{log\_dict@{log\_dict}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{log\_dict}{log\_dict}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abcf0cbcec7494c107f282814a94c260d} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+log\+\_\+dict}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a617a665c6aff499bbe78a66864912483}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!max\_imgs\_to\_log@{max\_imgs\_to\_log}}
+\index{max\_imgs\_to\_log@{max\_imgs\_to\_log}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{max\_imgs\_to\_log}{max\_imgs\_to\_log}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a617a665c6aff499bbe78a66864912483} 
+int utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+max\+\_\+imgs\+\_\+to\+\_\+log = 16}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_adae90741d0dc70db4f9cb34df2850d9e}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!result\_artifact@{result\_artifact}}
+\index{result\_artifact@{result\_artifact}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{result\_artifact}{result\_artifact}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_adae90741d0dc70db4f9cb34df2850d9e} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+result\+\_\+artifact = None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a2d7b8f182dde84ed85bbf206d6f24ebe}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!result\_table@{result\_table}}
+\index{result\_table@{result\_table}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{result\_table}{result\_table}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a2d7b8f182dde84ed85bbf206d6f24ebe} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+result\+\_\+table = None, None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ad1d6bb3664e7bfdb8541965b73c96e79}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!train\_artifact@{train\_artifact}}
+\index{train\_artifact@{train\_artifact}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{train\_artifact}{train\_artifact}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_ad1d6bb3664e7bfdb8541965b73c96e79} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+train\+\_\+artifact = None, None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a0ea6d3ec848b5a86fc319fe84e0404c7}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!train\_artifact\_path@{train\_artifact\_path}}
+\index{train\_artifact\_path@{train\_artifact\_path}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{train\_artifact\_path}{train\_artifact\_path}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a0ea6d3ec848b5a86fc319fe84e0404c7} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+train\+\_\+artifact\+\_\+path}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a79dc38e4c05ccee9c17139a0e4286cdb}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!val\_artifact@{val\_artifact}}
+\index{val\_artifact@{val\_artifact}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{val\_artifact}{val\_artifact}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a79dc38e4c05ccee9c17139a0e4286cdb} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+val\+\_\+artifact}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a5c803ee90b9b85b32d91972b6a48ba7d}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!val\_artifact\_path@{val\_artifact\_path}}
+\index{val\_artifact\_path@{val\_artifact\_path}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{val\_artifact\_path}{val\_artifact\_path}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a5c803ee90b9b85b32d91972b6a48ba7d} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+val\+\_\+artifact\+\_\+path = None, None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a6786d6ad05b1dec2d2742fab7b248896}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!val\_table@{val\_table}}
+\index{val\_table@{val\_table}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{val\_table}{val\_table}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a6786d6ad05b1dec2d2742fab7b248896} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+val\+\_\+table}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!wandb@{wandb}}
+\index{wandb@{wandb}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{wandb}{wandb}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+wandb}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a57e419d95c85e27e59c31929552648fc}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!wandb\_run@{wandb\_run}}
+\index{wandb\_run@{wandb\_run}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{wandb\_run}{wandb\_run}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_a57e419d95c85e27e59c31929552648fc} 
+utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+wandb\+\_\+run = \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}{wandb}}, wandb.\+run if \mbox{\hyperlink{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_abe6e1cd06c2a79d901fefb140a5e8a22}{wandb}} else None}
+
+\Hypertarget{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af31f3fa4cd2d2374b58eabf328e96023}\index{utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}!weights@{weights}}
+\index{weights@{weights}!utils.loggers.wandb.wandb\_utils.WandbLogger@{utils.loggers.wandb.wandb\_utils.WandbLogger}}
+\doxysubsubsection{\texorpdfstring{weights}{weights}}
+{\footnotesize\ttfamily \label{classutils_1_1loggers_1_1wandb_1_1wandb__utils_1_1_wandb_logger_af31f3fa4cd2d2374b58eabf328e96023} 
+str utils.\+loggers.\+wandb.\+wandb\+\_\+utils.\+Wandb\+Logger.\+weights = Path(model\+\_\+dir) / "{}last.\+pt"{}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/loggers/wandb/\mbox{\hyperlink{wandb__utils_8py}{wandb\+\_\+utils.\+py}}\end{DoxyCompactItemize}

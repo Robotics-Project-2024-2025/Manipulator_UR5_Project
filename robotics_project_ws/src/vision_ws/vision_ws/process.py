@@ -1,3 +1,10 @@
+#
+#  process.py
+#  Robotics
+#
+#  Created by Matteo Gottardelli on 16/01/25.
+#
+
 import rclpy
 import sys
 import torch
@@ -242,8 +249,14 @@ class ConvertRealCoordinates(Node):
         
         tolerance = 1e-5
         scale=3
+        diff=0
+        while True:
+            bottom_row_points = [point for point in points if abs(point[0][1] - (max_y-diff)) < tolerance]
+    
+            if bottom_row_points:
+                break;
+            diff += 1
         
-        bottom_row_points = [point for point in points if abs(point[0][1] - (max_y-scale+1)) < tolerance]
         #most_right_pixel = max(bottom_row_points, key=lambda point: point[0][0])[0]
         #basePixel=most_right_pixel
         sorted_points = sorted(bottom_row_points, key=lambda point: point[0][0])
@@ -275,8 +288,8 @@ class ConvertRealCoordinates(Node):
         cv2.line(image, basePixel, most_bottom_right_pixel, red, thickness)
         cv2.line(image, basePixel, upper_column_base, blue, thickness)
         
-        response.x=center_3D[0]+0.5 #Adjustment because camera is distant 0.5 from the table
-        response.y=center_3D[1]
+        response.x=center_3D[0]+1.0 #Adjustment because camera is distant 0.5 from the table
+        response.y=center_3D[1]-0.1
         response.z=center_3D[2]
         response.rotation=angle_rad
         response.success=True

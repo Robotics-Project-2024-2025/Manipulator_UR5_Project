@@ -1,0 +1,78 @@
+\doxysection{utils.\+activations.\+AconC Class Reference}
+\hypertarget{classutils_1_1activations_1_1_acon_c}{}\label{classutils_1_1activations_1_1_acon_c}\index{utils.activations.AconC@{utils.activations.AconC}}
+Inheritance diagram for utils.\+activations.\+AconC\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutils_1_1activations_1_1_acon_c}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1activations_1_1_acon_c_a54925e923f82a61d3c945eb0d5a542f5}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1)
+\item 
+\mbox{\hyperlink{classutils_1_1activations_1_1_acon_c_ae87faa6dd7e065efede6e73b5bd71723}{forward}} (self, x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1activations_1_1_acon_c_a4cd3602e4b4680dcca52e827d20eaa24}{p1}} = nn.\+Parameter(torch.\+randn(1, c1, 1, 1))
+\item 
+\mbox{\hyperlink{classutils_1_1activations_1_1_acon_c_a929ecfa2a1208396c98493f733efb707}{p2}} = nn.\+Parameter(torch.\+randn(1, c1, 1, 1))
+\item 
+\mbox{\hyperlink{classutils_1_1activations_1_1_acon_c_ac19cf98f6f113e6c5be46ab694be8a18}{beta}} = nn.\+Parameter(torch.\+ones(1, c1, 1, 1))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}ACON activation (activate or not) function.
+
+AconC: (p1*x-p2*x) * sigmoid(beta*(p1*x-p2*x)) + p2*x, beta is a learnable parameter
+See "Activate or Not: Learning Customized Activation" https://arxiv.org/pdf/2009.04759.pdf.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1activations_1_1_acon_c_a54925e923f82a61d3c945eb0d5a542f5}\index{utils.activations.AconC@{utils.activations.AconC}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.activations.AconC@{utils.activations.AconC}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1activations_1_1_acon_c_a54925e923f82a61d3c945eb0d5a542f5} 
+utils.\+activations.\+Acon\+C.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes AconC with learnable parameters p1, p2, and beta for channel-wise activation control.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1activations_1_1_acon_c_ae87faa6dd7e065efede6e73b5bd71723}\index{utils.activations.AconC@{utils.activations.AconC}!forward@{forward}}
+\index{forward@{forward}!utils.activations.AconC@{utils.activations.AconC}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classutils_1_1activations_1_1_acon_c_ae87faa6dd7e065efede6e73b5bd71723} 
+utils.\+activations.\+Acon\+C.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies AconC activation function with learnable parameters for channel-wise control on input tensor x.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1activations_1_1_acon_c_ac19cf98f6f113e6c5be46ab694be8a18}\index{utils.activations.AconC@{utils.activations.AconC}!beta@{beta}}
+\index{beta@{beta}!utils.activations.AconC@{utils.activations.AconC}}
+\doxysubsubsection{\texorpdfstring{beta}{beta}}
+{\footnotesize\ttfamily \label{classutils_1_1activations_1_1_acon_c_ac19cf98f6f113e6c5be46ab694be8a18} 
+utils.\+activations.\+Acon\+C.\+beta = nn.\+Parameter(torch.\+ones(1, c1, 1, 1))}
+
+\Hypertarget{classutils_1_1activations_1_1_acon_c_a4cd3602e4b4680dcca52e827d20eaa24}\index{utils.activations.AconC@{utils.activations.AconC}!p1@{p1}}
+\index{p1@{p1}!utils.activations.AconC@{utils.activations.AconC}}
+\doxysubsubsection{\texorpdfstring{p1}{p1}}
+{\footnotesize\ttfamily \label{classutils_1_1activations_1_1_acon_c_a4cd3602e4b4680dcca52e827d20eaa24} 
+utils.\+activations.\+Acon\+C.\+p1 = nn.\+Parameter(torch.\+randn(1, c1, 1, 1))}
+
+\Hypertarget{classutils_1_1activations_1_1_acon_c_a929ecfa2a1208396c98493f733efb707}\index{utils.activations.AconC@{utils.activations.AconC}!p2@{p2}}
+\index{p2@{p2}!utils.activations.AconC@{utils.activations.AconC}}
+\doxysubsubsection{\texorpdfstring{p2}{p2}}
+{\footnotesize\ttfamily \label{classutils_1_1activations_1_1_acon_c_a929ecfa2a1208396c98493f733efb707} 
+utils.\+activations.\+Acon\+C.\+p2 = nn.\+Parameter(torch.\+randn(1, c1, 1, 1))}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{activations_8py}{activations.\+py}}\end{DoxyCompactItemize}

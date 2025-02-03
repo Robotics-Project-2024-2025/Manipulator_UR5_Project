@@ -1,0 +1,46 @@
+\doxysection{models.\+tf.\+Agnostic\+NMS Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_agnostic_n_m_s}{}\label{classmodels_1_1tf_1_1_agnostic_n_m_s}\index{models.tf.AgnosticNMS@{models.tf.AgnosticNMS}}
+Inheritance diagram for models.\+tf.\+Agnostic\+NMS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_agnostic_n_m_s}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_agnostic_n_m_s_a3fa11d4c0f0216c00164d4bb9eb3b296}{call}} (self, input, topk\+\_\+all, iou\+\_\+thres, conf\+\_\+thres)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_agnostic_n_m_s_a0da2e287ecd4f183d12417f11f00e624}{\+\_\+nms}} (x, topk\+\_\+all=100, iou\+\_\+thres=0.\+45, conf\+\_\+thres=0.\+25)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Performs agnostic non-maximum suppression (NMS) on detected objects using IoU and confidence thresholds.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_agnostic_n_m_s_a0da2e287ecd4f183d12417f11f00e624}\index{models.tf.AgnosticNMS@{models.tf.AgnosticNMS}!\_nms@{\_nms}}
+\index{\_nms@{\_nms}!models.tf.AgnosticNMS@{models.tf.AgnosticNMS}}
+\doxysubsubsection{\texorpdfstring{\_nms()}{\_nms()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_agnostic_n_m_s_a0da2e287ecd4f183d12417f11f00e624} 
+models.\+tf.\+Agnostic\+NMS.\+\_\+nms (\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{topk\+\_\+all}{ = {\ttfamily 100}, }\item[{}]{iou\+\_\+thres}{ = {\ttfamily 0.45}, }\item[{}]{conf\+\_\+thres}{ = {\ttfamily 0.25}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Performs agnostic non-maximum suppression (NMS) on detected objects, filtering based on IoU and confidence
+thresholds.
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1tf_1_1_agnostic_n_m_s_a3fa11d4c0f0216c00164d4bb9eb3b296}\index{models.tf.AgnosticNMS@{models.tf.AgnosticNMS}!call@{call}}
+\index{call@{call}!models.tf.AgnosticNMS@{models.tf.AgnosticNMS}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_agnostic_n_m_s_a3fa11d4c0f0216c00164d4bb9eb3b296} 
+models.\+tf.\+Agnostic\+NMS.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{input}{, }\item[{}]{topk\+\_\+all}{, }\item[{}]{iou\+\_\+thres}{, }\item[{}]{conf\+\_\+thres}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs agnostic NMS on input tensors using given thresholds and top-K selection.\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

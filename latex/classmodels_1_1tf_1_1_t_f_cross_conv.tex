@@ -1,0 +1,74 @@
+\doxysection{models.\+tf.\+TFCross\+Conv Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv}{}\label{classmodels_1_1tf_1_1_t_f_cross_conv}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+Inheritance diagram for models.\+tf.\+TFCross\+Conv\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_cross_conv}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_cross_conv_a7f67cc4ff34e9c505f730107789b12eb}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, k=3, s=1, g=1, e=1.\+0, shortcut=False, w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_cross_conv_a0b4fd388435fb19b1cea43ac903ad9b3}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_cross_conv_a16c9da984bd4211bfb81c4f216d4ff24}{cv1}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, (1, k), (1, s), w=w.\+cv1)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_cross_conv_a0c5be0c6c672746268c9d0a3c3fb37ab}{cv2}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c\+\_\+, c2, (k, 1), (s, 1), g=g, w=w.\+cv2)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_cross_conv_a6983940072a6759d41e4fb90497d04b4}{add}} = c2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements a cross convolutional layer with optional expansion, grouping, and shortcut for TensorFlow.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv_a7f67cc4ff34e9c505f730107789b12eb}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_cross_conv_a7f67cc4ff34e9c505f730107789b12eb} 
+models.\+tf.\+TFCross\+Conv.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{k}{ = {\ttfamily 3}, }\item[{}]{s}{ = {\ttfamily 1}, }\item[{}]{g}{ = {\ttfamily 1}, }\item[{}]{e}{ = {\ttfamily 1.0}, }\item[{}]{shortcut}{ = {\ttfamily False}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes cross convolution layer with optional expansion, grouping, and shortcut addition capabilities.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv_a0b4fd388435fb19b1cea43ac903ad9b3}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}!call@{call}}
+\index{call@{call}!models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_cross_conv_a0b4fd388435fb19b1cea43ac903ad9b3} 
+models.\+tf.\+TFCross\+Conv.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Passes input through two convolutions optionally adding the input if channel dimensions match.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv_a6983940072a6759d41e4fb90497d04b4}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}!add@{add}}
+\index{add@{add}!models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+\doxysubsubsection{\texorpdfstring{add}{add}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_cross_conv_a6983940072a6759d41e4fb90497d04b4} 
+models.\+tf.\+TFCross\+Conv.\+add = c2}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv_a16c9da984bd4211bfb81c4f216d4ff24}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}!cv1@{cv1}}
+\index{cv1@{cv1}!models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+\doxysubsubsection{\texorpdfstring{cv1}{cv1}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_cross_conv_a16c9da984bd4211bfb81c4f216d4ff24} 
+models.\+tf.\+TFCross\+Conv.\+cv1 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, (1, k), (1, s), w=w.\+cv1)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_cross_conv_a0c5be0c6c672746268c9d0a3c3fb37ab}\index{models.tf.TFCrossConv@{models.tf.TFCrossConv}!cv2@{cv2}}
+\index{cv2@{cv2}!models.tf.TFCrossConv@{models.tf.TFCrossConv}}
+\doxysubsubsection{\texorpdfstring{cv2}{cv2}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_cross_conv_a0c5be0c6c672746268c9d0a3c3fb37ab} 
+models.\+tf.\+TFCross\+Conv.\+cv2 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c\+\_\+, c2, (k, 1), (s, 1), g=g, w=w.\+cv2)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

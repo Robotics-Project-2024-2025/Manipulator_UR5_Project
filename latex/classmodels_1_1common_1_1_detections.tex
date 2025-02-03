@@ -1,0 +1,250 @@
+\doxysection{models.\+common.\+Detections Class Reference}
+\hypertarget{classmodels_1_1common_1_1_detections}{}\label{classmodels_1_1common_1_1_detections}\index{models.common.Detections@{models.common.Detections}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a7cabbf7f6864f8dc863c800356257b68}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a328d72d46f6125448104c390e6624038}{ims}}, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}}, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_ad1954b98e196b97d1abc1584b3a02cc5}{files}}, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749}{times}}=(0, 0, 0), \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2dda184aebfe28da2ebc08bfdb9e5ca1}{names}}=None, shape=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a8884d741f2db7cf10afb8877531c2c68}{show}} (self, labels=True)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2e79481231f155169c422abfc9f39d1a}{save}} (self, labels=True, save\+\_\+dir="{}runs/detect/exp"{}, exist\+\_\+ok=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a32fe63190b5abc177e83c2ca076fdced}{crop}} (self, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2e79481231f155169c422abfc9f39d1a}{save}}=True, save\+\_\+dir="{}runs/detect/exp"{}, exist\+\_\+ok=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a821629cd63a6f3b6714f05795ce09214}{render}} (self, labels=True)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a89a224a8212fa23658621b8dea1a64a4}{pandas}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a61bb44c52a37ba54dd9f4bbfd751fb07}{tolist}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a48be44feb30c38a16cf310b850811045}{print}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a57a79600d475d33d71ffd2a7464b9efa}{\+\_\+\+\_\+len\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a7e1647c69c4df05f712dc606b14f2819}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a1dbb0a8cd81f5fd73d521085ebb9d190}{\+\_\+\+\_\+repr\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a328d72d46f6125448104c390e6624038}{ims}} = ims
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}} = pred
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2dda184aebfe28da2ebc08bfdb9e5ca1}{names}} = names
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_ad1954b98e196b97d1abc1584b3a02cc5}{files}} = files
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749}{times}} = times
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_add00e5d41899caaab82ce8e2622792da}{xyxy}} = \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}}
+\item 
+list \mbox{\hyperlink{classmodels_1_1common_1_1_detections_ad4096ba70e95651b1d90672beec1b625}{xywh}} = \mbox{[}xyxy2xywh(x) for x in \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}}\mbox{]}
+\item 
+list \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a89b72d071ac484dc586dfb0db4cb7f10}{xyxyn}} = \mbox{[}x / g for x, g in zip(self.\+xyxy, gn)\mbox{]}
+\item 
+list \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a03c44036672cad12ab5ca8997d872d48}{xywhn}} = \mbox{[}x / g for x, g in zip(self.\+xywh, gn)\mbox{]}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_ae3661db10a63e7b2684d7a3f228c1edf}{n}} = len(self.\+pred)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2cb25f61622692501fc0a2a51f125e02}{t}} = tuple(x.\+t / self.\+n \texorpdfstring{$\ast$}{*} 1e3 for x in \mbox{\hyperlink{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749}{times}})
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_ad030cbc7bc0c29869cf4f67ecf7257e8}{s}} = tuple(shape)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detections_ab8d2b0d35180e2f4e8730ea9541c2fc7}{\+\_\+run}} (self, pprint=False, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a8884d741f2db7cf10afb8877531c2c68}{show}}=False, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a2e79481231f155169c422abfc9f39d1a}{save}}=False, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a32fe63190b5abc177e83c2ca076fdced}{crop}}=False, \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a821629cd63a6f3b6714f05795ce09214}{render}}=False, labels=True, save\+\_\+dir=Path("{}"{}))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Manages YOLOv5 detection results with methods for visualization, saving, cropping, and exporting detections.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detections_a7cabbf7f6864f8dc863c800356257b68}\index{models.common.Detections@{models.common.Detections}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a7cabbf7f6864f8dc863c800356257b68} 
+models.\+common.\+Detections.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ims}{, }\item[{}]{pred}{, }\item[{}]{files}{, }\item[{}]{times}{ = {\ttfamily (0,~0,~0)}, }\item[{}]{names}{ = {\ttfamily None}, }\item[{}]{shape}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes the YOLOv5 Detections class with image info, predictions, filenames, timing and normalization.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detections_a57a79600d475d33d71ffd2a7464b9efa}\index{models.common.Detections@{models.common.Detections}!\_\_len\_\_@{\_\_len\_\_}}
+\index{\_\_len\_\_@{\_\_len\_\_}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{\_\_len\_\_()}{\_\_len\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a57a79600d475d33d71ffd2a7464b9efa} 
+models.\+common.\+Detections.\+\_\+\+\_\+len\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the number of results stored, overrides the default len(results).\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a1dbb0a8cd81f5fd73d521085ebb9d190}\index{models.common.Detections@{models.common.Detections}!\_\_repr\_\_@{\_\_repr\_\_}}
+\index{\_\_repr\_\_@{\_\_repr\_\_}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{\_\_repr\_\_()}{\_\_repr\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a1dbb0a8cd81f5fd73d521085ebb9d190} 
+models.\+common.\+Detections.\+\_\+\+\_\+repr\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a string representation of the YOLOv5 object, including its class and formatted results.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a7e1647c69c4df05f712dc606b14f2819}\index{models.common.Detections@{models.common.Detections}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a7e1647c69c4df05f712dc606b14f2819} 
+models.\+common.\+Detections.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a string representation of the model's results, suitable for printing, overrides default
+print(results).
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_ab8d2b0d35180e2f4e8730ea9541c2fc7}\index{models.common.Detections@{models.common.Detections}!\_run@{\_run}}
+\index{\_run@{\_run}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{\_run()}{\_run()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ab8d2b0d35180e2f4e8730ea9541c2fc7} 
+models.\+common.\+Detections.\+\_\+run (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{pprint}{ = {\ttfamily False}, }\item[{}]{show}{ = {\ttfamily False}, }\item[{}]{save}{ = {\ttfamily False}, }\item[{}]{crop}{ = {\ttfamily False}, }\item[{}]{render}{ = {\ttfamily False}, }\item[{}]{labels}{ = {\ttfamily True}, }\item[{}]{save\+\_\+dir}{ = {\ttfamily Path("{}"{})}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Executes model predictions, displaying and/or saving outputs with optional crops and labels.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a32fe63190b5abc177e83c2ca076fdced}\index{models.common.Detections@{models.common.Detections}!crop@{crop}}
+\index{crop@{crop}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{crop()}{crop()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a32fe63190b5abc177e83c2ca076fdced} 
+models.\+common.\+Detections.\+crop (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{save}{ = {\ttfamily True}, }\item[{}]{save\+\_\+dir}{ = {\ttfamily "{}runs/detect/exp"{}}, }\item[{}]{exist\+\_\+ok}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Crops detection results, optionally saves them to a directory.
+
+Args: save (bool), save_dir (str), exist_ok (bool).
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a89a224a8212fa23658621b8dea1a64a4}\index{models.common.Detections@{models.common.Detections}!pandas@{pandas}}
+\index{pandas@{pandas}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{pandas()}{pandas()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a89a224a8212fa23658621b8dea1a64a4} 
+models.\+common.\+Detections.\+pandas (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns detections as pandas DataFrames for various box formats (xyxy, xyxyn, xywh, xywhn).
+
+Example: print(results.pandas().xyxy[0]).
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a48be44feb30c38a16cf310b850811045}\index{models.common.Detections@{models.common.Detections}!print@{print}}
+\index{print@{print}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a48be44feb30c38a16cf310b850811045} 
+models.\+common.\+Detections.\+print (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Logs the string representation of the current object's state via the LOGGER.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a821629cd63a6f3b6714f05795ce09214}\index{models.common.Detections@{models.common.Detections}!render@{render}}
+\index{render@{render}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a821629cd63a6f3b6714f05795ce09214} 
+models.\+common.\+Detections.\+render (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{labels}{ = {\ttfamily True}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Renders detection results with optional labels on images; args: labels (bool) indicating label inclusion.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a2e79481231f155169c422abfc9f39d1a}\index{models.common.Detections@{models.common.Detections}!save@{save}}
+\index{save@{save}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a2e79481231f155169c422abfc9f39d1a} 
+models.\+common.\+Detections.\+save (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{labels}{ = {\ttfamily True}, }\item[{}]{save\+\_\+dir}{ = {\ttfamily "{}runs/detect/exp"{}}, }\item[{}]{exist\+\_\+ok}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Saves detection results with optional labels to a specified directory.
+
+Usage: save(labels=True, save_dir='runs/detect/exp', exist_ok=False)
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a8884d741f2db7cf10afb8877531c2c68}\index{models.common.Detections@{models.common.Detections}!show@{show}}
+\index{show@{show}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a8884d741f2db7cf10afb8877531c2c68} 
+models.\+common.\+Detections.\+show (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{labels}{ = {\ttfamily True}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Displays detection results with optional labels.
+
+Usage: show(labels=True)
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detections_a61bb44c52a37ba54dd9f4bbfd751fb07}\index{models.common.Detections@{models.common.Detections}!tolist@{tolist}}
+\index{tolist@{tolist}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{tolist()}{tolist()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a61bb44c52a37ba54dd9f4bbfd751fb07} 
+models.\+common.\+Detections.\+tolist (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a Detections object into a list of individual detection results for iteration.
+
+Example: for result in results.tolist():
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detections_ad1954b98e196b97d1abc1584b3a02cc5}\index{models.common.Detections@{models.common.Detections}!files@{files}}
+\index{files@{files}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{files}{files}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ad1954b98e196b97d1abc1584b3a02cc5} 
+models.\+common.\+Detections.\+files = files}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a328d72d46f6125448104c390e6624038}\index{models.common.Detections@{models.common.Detections}!ims@{ims}}
+\index{ims@{ims}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{ims}{ims}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a328d72d46f6125448104c390e6624038} 
+models.\+common.\+Detections.\+ims = ims}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_ae3661db10a63e7b2684d7a3f228c1edf}\index{models.common.Detections@{models.common.Detections}!n@{n}}
+\index{n@{n}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ae3661db10a63e7b2684d7a3f228c1edf} 
+models.\+common.\+Detections.\+n = len(self.\+pred)}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a2dda184aebfe28da2ebc08bfdb9e5ca1}\index{models.common.Detections@{models.common.Detections}!names@{names}}
+\index{names@{names}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a2dda184aebfe28da2ebc08bfdb9e5ca1} 
+models.\+common.\+Detections.\+names = names}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}\index{models.common.Detections@{models.common.Detections}!pred@{pred}}
+\index{pred@{pred}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{pred}{pred}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452} 
+models.\+common.\+Detections.\+pred = pred}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_ad030cbc7bc0c29869cf4f67ecf7257e8}\index{models.common.Detections@{models.common.Detections}!s@{s}}
+\index{s@{s}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{s}{s}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ad030cbc7bc0c29869cf4f67ecf7257e8} 
+models.\+common.\+Detections.\+s = tuple(shape)}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a2cb25f61622692501fc0a2a51f125e02}\index{models.common.Detections@{models.common.Detections}!t@{t}}
+\index{t@{t}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{t}{t}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a2cb25f61622692501fc0a2a51f125e02} 
+models.\+common.\+Detections.\+t = tuple(x.\+t / self.\+n \texorpdfstring{$\ast$}{*} 1e3 for x in \mbox{\hyperlink{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749}{times}})}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749}\index{models.common.Detections@{models.common.Detections}!times@{times}}
+\index{times@{times}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{times}{times}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ab4e09d9b38889ca7688f018d45bd9749} 
+models.\+common.\+Detections.\+times = times}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_ad4096ba70e95651b1d90672beec1b625}\index{models.common.Detections@{models.common.Detections}!xywh@{xywh}}
+\index{xywh@{xywh}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{xywh}{xywh}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_ad4096ba70e95651b1d90672beec1b625} 
+list models.\+common.\+Detections.\+xywh = \mbox{[}xyxy2xywh(x) for x in \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}}\mbox{]}}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a03c44036672cad12ab5ca8997d872d48}\index{models.common.Detections@{models.common.Detections}!xywhn@{xywhn}}
+\index{xywhn@{xywhn}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{xywhn}{xywhn}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a03c44036672cad12ab5ca8997d872d48} 
+list models.\+common.\+Detections.\+xywhn = \mbox{[}x / g for x, g in zip(self.\+xywh, gn)\mbox{]}}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_add00e5d41899caaab82ce8e2622792da}\index{models.common.Detections@{models.common.Detections}!xyxy@{xyxy}}
+\index{xyxy@{xyxy}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{xyxy}{xyxy}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_add00e5d41899caaab82ce8e2622792da} 
+models.\+common.\+Detections.\+xyxy = \mbox{\hyperlink{classmodels_1_1common_1_1_detections_a53abcc899896b0d2c20b6f84cbe2c452}{pred}}}
+
+\Hypertarget{classmodels_1_1common_1_1_detections_a89b72d071ac484dc586dfb0db4cb7f10}\index{models.common.Detections@{models.common.Detections}!xyxyn@{xyxyn}}
+\index{xyxyn@{xyxyn}!models.common.Detections@{models.common.Detections}}
+\doxysubsubsection{\texorpdfstring{xyxyn}{xyxyn}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detections_a89b72d071ac484dc586dfb0db4cb7f10} 
+list models.\+common.\+Detections.\+xyxyn = \mbox{[}x / g for x, g in zip(self.\+xyxy, gn)\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{common_8py}{common.\+py}}\end{DoxyCompactItemize}

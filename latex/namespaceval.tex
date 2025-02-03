@@ -1,0 +1,394 @@
+\doxysection{val Namespace Reference}
+\hypertarget{namespaceval}{}\label{namespaceval}\index{val@{val}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceval_a68d1b6a8c7f3f4c30afe14a7f2492a8e}{run}} (data=\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}/"{}../datasets/mnist"{}, weights=\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}/"{}yolov5s-\/cls.\+pt"{}, batch\+\_\+size=128, imgsz=224, device="{}"{}, workers=8, verbose=False, project=\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}/"{}runs/val-\/cls"{}, name="{}exp"{}, exist\+\_\+ok=False, half=False, dnn=False, model=None, dataloader=None, criterion=None, pbar=None)
+\item 
+\mbox{\hyperlink{namespaceval_a994b1b7fd23511832a86459479c0a01a}{parse\+\_\+opt}} ()
+\item 
+\mbox{\hyperlink{namespaceval_aa85e72f2be85829c1d458402a4ad3196}{main}} (\mbox{\hyperlink{namespaceval_a1127a298ff36841c4ed64170b810536b}{opt}})
+\item 
+\mbox{\hyperlink{namespaceval_a6caa1705f339843632037dab90799a9f}{save\+\_\+one\+\_\+txt}} (predn, save\+\_\+conf, shape, file)
+\item 
+\mbox{\hyperlink{namespaceval_aa80c545ea2b3b16066f43c12b40ea2c8}{save\+\_\+one\+\_\+json}} (predn, jdict, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}, class\+\_\+map, pred\+\_\+masks)
+\item 
+\mbox{\hyperlink{namespaceval_a9047efe14a41ff80f40c5d7243797305}{process\+\_\+batch}} (detections, labels, iouv, pred\+\_\+masks=None, gt\+\_\+masks=None, overlap=False, masks=False)
+\item 
+\mbox{\hyperlink{namespaceval_a7bfb6be114374682907ab8c05af56395}{run}} (data, weights=None, batch\+\_\+size=32, imgsz=640, conf\+\_\+thres=0.\+001, iou\+\_\+thres=0.\+6, max\+\_\+det=300, task="{}val"{}, device="{}"{}, workers=8, single\+\_\+cls=False, augment=False, verbose=False, save\+\_\+txt=False, save\+\_\+hybrid=False, save\+\_\+conf=False, save\+\_\+json=False, project=\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}/"{}runs/val-\/seg"{}, name="{}exp"{}, exist\+\_\+ok=False, half=True, dnn=False, model=None, dataloader=None, save\+\_\+dir=Path("{}"{}), plots=True, overlap=False, mask\+\_\+downsample\+\_\+ratio=1, compute\+\_\+loss=None, callbacks=\mbox{\hyperlink{classutils_1_1callbacks_1_1_callbacks}{Callbacks}}())
+\item 
+\mbox{\hyperlink{namespaceval_afd6b3267839c853c0d5b19c4b1f47b5b}{save\+\_\+one\+\_\+json}} (predn, jdict, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}, class\+\_\+map)
+\item 
+\mbox{\hyperlink{namespaceval_aa671e970f9e83c81f90d3d33f09eab14}{process\+\_\+batch}} (detections, labels, iouv)
+\item 
+\mbox{\hyperlink{namespaceval_a67bf42f206b200c48937a5c024016850}{run}} (data, weights=None, batch\+\_\+size=32, imgsz=640, conf\+\_\+thres=0.\+001, iou\+\_\+thres=0.\+6, max\+\_\+det=300, task="{}val"{}, device="{}"{}, workers=8, single\+\_\+cls=False, augment=False, verbose=False, save\+\_\+txt=False, save\+\_\+hybrid=False, save\+\_\+conf=False, save\+\_\+json=False, project=\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}/"{}runs/val"{}, name="{}exp"{}, exist\+\_\+ok=False, half=True, dnn=False, model=None, dataloader=None, save\+\_\+dir=Path("{}"{}), plots=True, callbacks=\mbox{\hyperlink{classutils_1_1callbacks_1_1_callbacks}{Callbacks}}(), compute\+\_\+loss=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceval_a9572b46935104dab1c3fd617b1414f17}{FILE}} = Path(\+\_\+\+\_\+file\+\_\+\+\_\+).resolve()
+\item 
+\mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}} = FILE.\+parents\mbox{[}1\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceval_a1127a298ff36841c4ed64170b810536b}{opt}} = \mbox{\hyperlink{namespaceval_a994b1b7fd23511832a86459479c0a01a}{parse\+\_\+opt}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Validate a trained YOLOv5 classification model on a classification dataset.
+
+Usage:
+    $ bash data/scripts/get_imagenet.sh --val  # download ImageNet val split (6.3G, 50000 images)
+    $ python classify/val.py --weights yolov5m-cls.pt --data ../datasets/imagenet --img 224  # validate ImageNet
+
+Usage - formats:
+    $ python classify/val.py --weights yolov5s-cls.pt                 # PyTorch
+                                       yolov5s-cls.torchscript        # TorchScript
+                                       yolov5s-cls.onnx               # ONNX Runtime or OpenCV DNN with --dnn
+                                       yolov5s-cls_openvino_model     # OpenVINO
+                                       yolov5s-cls.engine             # TensorRT
+                                       yolov5s-cls.mlmodel            # CoreML (macOS-only)
+                                       yolov5s-cls_saved_model        # TensorFlow SavedModel
+                                       yolov5s-cls.pb                 # TensorFlow GraphDef
+                                       yolov5s-cls.tflite             # TensorFlow Lite
+                                       yolov5s-cls_edgetpu.tflite     # TensorFlow Edge TPU
+                                       yolov5s-cls_paddle_model       # PaddlePaddle
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Validate a trained YOLOv5 segment model on a segment dataset.
+
+Usage:
+    $ bash data/scripts/get_coco.sh --val --segments  # download COCO-segments val split (1G, 5000 images)
+    $ python segment/val.py --weights yolov5s-seg.pt --data coco.yaml --img 640  # validate COCO-segments
+
+Usage - formats:
+    $ python segment/val.py --weights yolov5s-seg.pt                 # PyTorch
+                                      yolov5s-seg.torchscript        # TorchScript
+                                      yolov5s-seg.onnx               # ONNX Runtime or OpenCV DNN with --dnn
+                                      yolov5s-seg_openvino_label     # OpenVINO
+                                      yolov5s-seg.engine             # TensorRT
+                                      yolov5s-seg.mlmodel            # CoreML (macOS-only)
+                                      yolov5s-seg_saved_model        # TensorFlow SavedModel
+                                      yolov5s-seg.pb                 # TensorFlow GraphDef
+                                      yolov5s-seg.tflite             # TensorFlow Lite
+                                      yolov5s-seg_edgetpu.tflite     # TensorFlow Edge TPU
+                                      yolov5s-seg_paddle_model       # PaddlePaddle
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Validate a trained YOLOv5 detection model on a detection dataset.
+
+Usage:
+    $ python val.py --weights yolov5s.pt --data coco128.yaml --img 640
+
+Usage - formats:
+    $ python val.py --weights yolov5s.pt                 # PyTorch
+                              yolov5s.torchscript        # TorchScript
+                              yolov5s.onnx               # ONNX Runtime or OpenCV DNN with --dnn
+                              yolov5s_openvino_model     # OpenVINO
+                              yolov5s.engine             # TensorRT
+                              yolov5s.mlpackage          # CoreML (macOS-only)
+                              yolov5s_saved_model        # TensorFlow SavedModel
+                              yolov5s.pb                 # TensorFlow GraphDef
+                              yolov5s.tflite             # TensorFlow Lite
+                              yolov5s_edgetpu.tflite     # TensorFlow Edge TPU
+                              yolov5s_paddle_model       # PaddlePaddle
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceval_aa85e72f2be85829c1d458402a4ad3196}\index{val@{val}!main@{main}}
+\index{main@{main}!val@{val}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespaceval_aa85e72f2be85829c1d458402a4ad3196} 
+val.\+main (\begin{DoxyParamCaption}\item[{}]{opt}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Executes the YOLOv5 model prediction workflow, handling argument parsing and requirement checks.\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Executes YOLOv5 tasks including training, validation, testing, speed, and study with configurable options.\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Executes YOLOv5 tasks like training, validation, testing, speed, and study benchmarks based on provided options.
+
+Args:
+    opt (argparse.Namespace): Parsed command-line options.
+        This includes values for parameters like 'data', 'weights', 'batch_size', 'imgsz', 'conf_thres',
+        'iou_thres', 'max_det', 'task', 'device', 'workers', 'single_cls', 'augment', 'verbose', 'save_txt',
+        'save_hybrid', 'save_conf', 'save_json', 'project', 'name', 'exist_ok', 'half', and 'dnn', essential
+        for configuring the YOLOv5 tasks.
+
+Returns:
+    None
+
+Examples:
+    To validate a trained YOLOv5 model on the COCO dataset with a specific weights file, use:
+    ```python
+    $ python val.py --weights yolov5s.pt --data coco128.yaml --img 640
+    ```
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a994b1b7fd23511832a86459479c0a01a}\index{val@{val}!parse\_opt@{parse\_opt}}
+\index{parse\_opt@{parse\_opt}!val@{val}}
+\doxysubsubsection{\texorpdfstring{parse\_opt()}{parse\_opt()}}
+{\footnotesize\ttfamily \label{namespaceval_a994b1b7fd23511832a86459479c0a01a} 
+val.\+parse\+\_\+opt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parses and returns command line arguments for YOLOv5 model evaluation and inference settings.\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Parses command line arguments for configuring YOLOv5 options like dataset path, weights, batch size, and
+inference settings.
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Parse command-line options for configuring YOLOv5 model inference.
+
+Args:
+    data (str, optional): Path to the dataset YAML file. Default is 'data/coco128.yaml'.
+    weights (list[str], optional): List of paths to model weight files. Default is 'yolov5s.pt'.
+    batch_size (int, optional): Batch size for inference. Default is 32.
+    imgsz (int, optional): Inference image size in pixels. Default is 640.
+    conf_thres (float, optional): Confidence threshold for predictions. Default is 0.001.
+    iou_thres (float, optional): IoU threshold for Non-Max Suppression (NMS). Default is 0.6.
+    max_det (int, optional): Maximum number of detections per image. Default is 300.
+    task (str, optional): Task type - options are 'train', 'val', 'test', 'speed', or 'study'. Default is 'val'.
+    device (str, optional): Device to run the model on. e.g., '0' or '0,1,2,3' or 'cpu'. Default is empty to let the system choose automatically.
+    workers (int, optional): Maximum number of dataloader workers per rank in DDP mode. Default is 8.
+    single_cls (bool, optional): If set, treats the dataset as a single-class dataset. Default is False.
+    augment (bool, optional): If set, performs augmented inference. Default is False.
+    verbose (bool, optional): If set, reports mAP by class. Default is False.
+    save_txt (bool, optional): If set, saves results to *.txt files. Default is False.
+    save_hybrid (bool, optional): If set, saves label+prediction hybrid results to *.txt files. Default is False.
+    save_conf (bool, optional): If set, saves confidences in --save-txt labels. Default is False.
+    save_json (bool, optional): If set, saves results to a COCO-JSON file. Default is False.
+    project (str, optional): Project directory to save results to. Default is 'runs/val'.
+    name (str, optional): Name of the directory to save results to. Default is 'exp'.
+    exist_ok (bool, optional): If set, existing directory will not be incremented. Default is False.
+    half (bool, optional): If set, uses FP16 half-precision inference. Default is False.
+    dnn (bool, optional): If set, uses OpenCV DNN for ONNX inference. Default is False.
+
+Returns:
+    argparse.Namespace: Parsed command-line options.
+
+Notes:
+    - The '--data' parameter is checked to ensure it ends with 'coco.yaml' if '--save-json' is set.
+    - The '--save-txt' option is set to True if '--save-hybrid' is enabled.
+    - Args are printed using `print_args` to facilitate debugging.
+
+Example:
+    To validate a trained YOLOv5 model on a COCO dataset:
+    ```python
+    $ python val.py --weights yolov5s.pt --data coco128.yaml --img 640
+    ```
+    Different model formats could be used instead of `yolov5s.pt`:
+    ```python
+    $ python val.py --weights yolov5s.pt yolov5s.torchscript yolov5s.onnx yolov5s_openvino_model yolov5s.engine
+    ```
+    Additional options include saving results in different formats, selecting devices, and more.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_aa671e970f9e83c81f90d3d33f09eab14}\index{val@{val}!process\_batch@{process\_batch}}
+\index{process\_batch@{process\_batch}!val@{val}}
+\doxysubsubsection{\texorpdfstring{process\_batch()}{process\_batch()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespaceval_aa671e970f9e83c81f90d3d33f09eab14} 
+val.\+process\+\_\+batch (\begin{DoxyParamCaption}\item[{}]{detections}{, }\item[{}]{labels}{, }\item[{}]{iouv}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return a correct prediction matrix given detections and labels at various IoU thresholds.
+
+Args:
+    detections (np.ndarray): Array of shape (N, 6) where each row corresponds to a detection with format
+        [x1, y1, x2, y2, conf, class].
+    labels (np.ndarray): Array of shape (M, 5) where each row corresponds to a ground truth label with format
+        [class, x1, y1, x2, y2].
+    iouv (np.ndarray): Array of IoU thresholds to evaluate at.
+
+Returns:
+    correct (np.ndarray): A binary array of shape (N, len(iouv)) indicating whether each detection is a true positive
+        for each IoU threshold. There are 10 IoU levels used in the evaluation.
+
+Example:
+    ```python
+    detections = np.array([[50, 50, 200, 200, 0.9, 1], [30, 30, 150, 150, 0.7, 0]])
+    labels = np.array([[1, 50, 50, 200, 200]])
+    iouv = np.linspace(0.5, 0.95, 10)
+    correct = process_batch(detections, labels, iouv)
+    ```
+
+Notes:
+    - This function is used as part of the evaluation pipeline for object detection models.
+    - IoU (Intersection over Union) is a common evaluation metric for object detection performance.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a9047efe14a41ff80f40c5d7243797305}\index{val@{val}!process\_batch@{process\_batch}}
+\index{process\_batch@{process\_batch}!val@{val}}
+\doxysubsubsection{\texorpdfstring{process\_batch()}{process\_batch()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespaceval_a9047efe14a41ff80f40c5d7243797305} 
+val.\+process\+\_\+batch (\begin{DoxyParamCaption}\item[{}]{detections}{, }\item[{}]{labels}{, }\item[{}]{iouv}{, }\item[{}]{pred\+\_\+masks}{ = {\ttfamily None}, }\item[{}]{gt\+\_\+masks}{ = {\ttfamily None}, }\item[{}]{overlap}{ = {\ttfamily False}, }\item[{}]{masks}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return correct prediction matrix
+Arguments:
+    detections (array[N, 6]), x1, y1, x2, y2, conf, class
+    labels (array[M, 5]), class, x1, y1, x2, y2
+Returns:
+    correct (array[N, 10]), for 10 IoU levels.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a67bf42f206b200c48937a5c024016850}\index{val@{val}!run@{run}}
+\index{run@{run}!val@{val}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{namespaceval_a67bf42f206b200c48937a5c024016850} 
+val.\+run (\begin{DoxyParamCaption}\item[{}]{data}{, }\item[{}]{weights}{ = {\ttfamily None}, }\item[{}]{batch\+\_\+size}{ = {\ttfamily 32}, }\item[{}]{imgsz}{ = {\ttfamily 640}, }\item[{}]{conf\+\_\+thres}{ = {\ttfamily 0.001}, }\item[{}]{iou\+\_\+thres}{ = {\ttfamily 0.6}, }\item[{}]{max\+\_\+det}{ = {\ttfamily 300}, }\item[{}]{task}{ = {\ttfamily "{}val"{}}, }\item[{}]{device}{ = {\ttfamily "{}"{}}, }\item[{}]{workers}{ = {\ttfamily 8}, }\item[{}]{single\+\_\+cls}{ = {\ttfamily False}, }\item[{}]{augment}{ = {\ttfamily False}, }\item[{}]{verbose}{ = {\ttfamily False}, }\item[{}]{save\+\_\+txt}{ = {\ttfamily False}, }\item[{}]{save\+\_\+hybrid}{ = {\ttfamily False}, }\item[{}]{save\+\_\+conf}{ = {\ttfamily False}, }\item[{}]{save\+\_\+json}{ = {\ttfamily False}, }\item[{}]{project}{ = {\ttfamily \mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}~/~"{}runs/val"{}}, }\item[{}]{name}{ = {\ttfamily "{}exp"{}}, }\item[{}]{exist\+\_\+ok}{ = {\ttfamily False}, }\item[{}]{half}{ = {\ttfamily True}, }\item[{}]{dnn}{ = {\ttfamily False}, }\item[{}]{model}{ = {\ttfamily None}, }\item[{}]{dataloader}{ = {\ttfamily None}, }\item[{}]{save\+\_\+dir}{ = {\ttfamily Path("{}"{})}, }\item[{}]{plots}{ = {\ttfamily True}, }\item[{}]{callbacks}{ = {\ttfamily \mbox{\hyperlink{classutils_1_1callbacks_1_1_callbacks}{Callbacks}}()}, }\item[{}]{compute\+\_\+loss}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluates a YOLOv5 model on a dataset and logs performance metrics.
+
+Args:
+    data (str | dict): Path to a dataset YAML file or a dataset dictionary.
+    weights (str | list[str], optional): Path to the model weights file(s). Supports various formats including PyTorch,
+        TorchScript, ONNX, OpenVINO, TensorRT, CoreML, TensorFlow SavedModel, TensorFlow GraphDef, TensorFlow Lite,
+        TensorFlow Edge TPU, and PaddlePaddle.
+    batch_size (int, optional): Batch size for inference. Default is 32.
+    imgsz (int, optional): Input image size (pixels). Default is 640.
+    conf_thres (float, optional): Confidence threshold for object detection. Default is 0.001.
+    iou_thres (float, optional): IoU threshold for Non-Maximum Suppression (NMS). Default is 0.6.
+    max_det (int, optional): Maximum number of detections per image. Default is 300.
+    task (str, optional): Task type - 'train', 'val', 'test', 'speed', or 'study'. Default is 'val'.
+    device (str, optional): Device to use for computation, e.g., '0' or '0,1,2,3' for CUDA or 'cpu' for CPU. Default is ''.
+    workers (int, optional): Number of dataloader workers. Default is 8.
+    single_cls (bool, optional): Treat dataset as a single class. Default is False.
+    augment (bool, optional): Enable augmented inference. Default is False.
+    verbose (bool, optional): Enable verbose output. Default is False.
+    save_txt (bool, optional): Save results to *.txt files. Default is False.
+    save_hybrid (bool, optional): Save label and prediction hybrid results to *.txt files. Default is False.
+    save_conf (bool, optional): Save confidences in --save-txt labels. Default is False.
+    save_json (bool, optional): Save a COCO-JSON results file. Default is False.
+    project (str | Path, optional): Directory to save results. Default is ROOT/'runs/val'.
+    name (str, optional): Name of the run. Default is 'exp'.
+    exist_ok (bool, optional): Overwrite existing project/name without incrementing. Default is False.
+    half (bool, optional): Use FP16 half-precision inference. Default is True.
+    dnn (bool, optional): Use OpenCV DNN for ONNX inference. Default is False.
+    model (torch.nn.Module, optional): Model object for training. Default is None.
+    dataloader (torch.utils.data.DataLoader, optional): Dataloader object. Default is None.
+    save_dir (Path, optional): Directory to save results. Default is Path('').
+    plots (bool, optional): Plot validation images and metrics. Default is True.
+    callbacks (utils.callbacks.Callbacks, optional): Callbacks for logging and monitoring. Default is Callbacks().
+    compute_loss (function, optional): Loss function for training. Default is None.
+
+Returns:
+    dict: Contains performance metrics including precision, recall, mAP50, and mAP50-95.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a7bfb6be114374682907ab8c05af56395}\index{val@{val}!run@{run}}
+\index{run@{run}!val@{val}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{namespaceval_a7bfb6be114374682907ab8c05af56395} 
+val.\+run (\begin{DoxyParamCaption}\item[{}]{data}{, }\item[{}]{weights}{ = {\ttfamily None}, }\item[{}]{batch\+\_\+size}{ = {\ttfamily 32}, }\item[{}]{imgsz}{ = {\ttfamily 640}, }\item[{}]{conf\+\_\+thres}{ = {\ttfamily 0.001}, }\item[{}]{iou\+\_\+thres}{ = {\ttfamily 0.6}, }\item[{}]{max\+\_\+det}{ = {\ttfamily 300}, }\item[{}]{task}{ = {\ttfamily "{}val"{}}, }\item[{}]{device}{ = {\ttfamily "{}"{}}, }\item[{}]{workers}{ = {\ttfamily 8}, }\item[{}]{single\+\_\+cls}{ = {\ttfamily False}, }\item[{}]{augment}{ = {\ttfamily False}, }\item[{}]{verbose}{ = {\ttfamily False}, }\item[{}]{save\+\_\+txt}{ = {\ttfamily False}, }\item[{}]{save\+\_\+hybrid}{ = {\ttfamily False}, }\item[{}]{save\+\_\+conf}{ = {\ttfamily False}, }\item[{}]{save\+\_\+json}{ = {\ttfamily False}, }\item[{}]{project}{ = {\ttfamily \mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}~/~"{}runs/val-\/seg"{}}, }\item[{}]{name}{ = {\ttfamily "{}exp"{}}, }\item[{}]{exist\+\_\+ok}{ = {\ttfamily False}, }\item[{}]{half}{ = {\ttfamily True}, }\item[{}]{dnn}{ = {\ttfamily False}, }\item[{}]{model}{ = {\ttfamily None}, }\item[{}]{dataloader}{ = {\ttfamily None}, }\item[{}]{save\+\_\+dir}{ = {\ttfamily Path("{}"{})}, }\item[{}]{plots}{ = {\ttfamily True}, }\item[{}]{overlap}{ = {\ttfamily False}, }\item[{}]{mask\+\_\+downsample\+\_\+ratio}{ = {\ttfamily 1}, }\item[{}]{compute\+\_\+loss}{ = {\ttfamily None}, }\item[{}]{callbacks}{ = {\ttfamily \mbox{\hyperlink{classutils_1_1callbacks_1_1_callbacks}{Callbacks}}()}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Validates a YOLOv5 segmentation model on specified dataset, producing metrics, plots, and optional JSON
+output.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a68d1b6a8c7f3f4c30afe14a7f2492a8e}\index{val@{val}!run@{run}}
+\index{run@{run}!val@{val}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{namespaceval_a68d1b6a8c7f3f4c30afe14a7f2492a8e} 
+val.\+run (\begin{DoxyParamCaption}\item[{}]{data}{ = {\ttfamily \mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}~/~"{}../datasets/mnist"{}}, }\item[{}]{weights}{ = {\ttfamily \mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}~/~"{}yolov5s-\/cls.pt"{}}, }\item[{}]{batch\+\_\+size}{ = {\ttfamily 128}, }\item[{}]{imgsz}{ = {\ttfamily 224}, }\item[{}]{device}{ = {\ttfamily "{}"{}}, }\item[{}]{workers}{ = {\ttfamily 8}, }\item[{}]{verbose}{ = {\ttfamily False}, }\item[{}]{project}{ = {\ttfamily \mbox{\hyperlink{namespaceval_a481b90651ac652c0165cbd271448a5af}{ROOT}}~/~"{}runs/val-\/cls"{}}, }\item[{}]{name}{ = {\ttfamily "{}exp"{}}, }\item[{}]{exist\+\_\+ok}{ = {\ttfamily False}, }\item[{}]{half}{ = {\ttfamily False}, }\item[{}]{dnn}{ = {\ttfamily False}, }\item[{}]{model}{ = {\ttfamily None}, }\item[{}]{dataloader}{ = {\ttfamily None}, }\item[{}]{criterion}{ = {\ttfamily None}, }\item[{}]{pbar}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Validates a YOLOv5 classification model on a dataset, computing metrics like top1 and top5 accuracy.\end{DoxyVerb}
+ \Hypertarget{namespaceval_afd6b3267839c853c0d5b19c4b1f47b5b}\index{val@{val}!save\_one\_json@{save\_one\_json}}
+\index{save\_one\_json@{save\_one\_json}!val@{val}}
+\doxysubsubsection{\texorpdfstring{save\_one\_json()}{save\_one\_json()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespaceval_afd6b3267839c853c0d5b19c4b1f47b5b} 
+val.\+save\+\_\+one\+\_\+json (\begin{DoxyParamCaption}\item[{}]{predn}{, }\item[{}]{jdict}{, }\item[{}]{path}{, }\item[{}]{class\+\_\+map}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Saves a single JSON detection result, including image ID, category ID, bounding box, and confidence score.
+
+Args:
+    predn (torch.Tensor): Predicted detections in xyxy format with shape (n, 6) where n is the number of detections.
+                          The tensor should contain [x_min, y_min, x_max, y_max, confidence, class_id] for each detection.
+    jdict (list[dict]): List to collect JSON formatted detection results.
+    path (pathlib.Path): Path object of the image file, used to extract image_id.
+    class_map (dict[int, int]): Mapping from model class indices to dataset-specific category IDs.
+
+Returns:
+    None: Appends detection results as dictionaries to `jdict` list in-place.
+
+Example:
+    ```python
+    predn = torch.tensor([[100, 50, 200, 150, 0.9, 0], [50, 30, 100, 80, 0.8, 1]])
+    jdict = []
+    path = Path("42.jpg")
+    class_map = {0: 18, 1: 19}
+    save_one_json(predn, jdict, path, class_map)
+    ```
+    This will append to `jdict`:
+    ```
+    [
+        {'image_id': 42, 'category_id': 18, 'bbox': [125.0, 75.0, 100.0, 100.0], 'score': 0.9},
+        {'image_id': 42, 'category_id': 19, 'bbox': [75.0, 55.0, 50.0, 50.0], 'score': 0.8}
+    ]
+    ```
+
+Notes:
+    The `bbox` values are formatted as [x, y, width, height], where x and y represent the top-left corner of the box.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_aa80c545ea2b3b16066f43c12b40ea2c8}\index{val@{val}!save\_one\_json@{save\_one\_json}}
+\index{save\_one\_json@{save\_one\_json}!val@{val}}
+\doxysubsubsection{\texorpdfstring{save\_one\_json()}{save\_one\_json()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespaceval_aa80c545ea2b3b16066f43c12b40ea2c8} 
+val.\+save\+\_\+one\+\_\+json (\begin{DoxyParamCaption}\item[{}]{predn}{, }\item[{}]{jdict}{, }\item[{}]{path}{, }\item[{}]{class\+\_\+map}{, }\item[{}]{pred\+\_\+masks}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Saves a JSON file with detection results including bounding boxes, category IDs, scores, and segmentation masks.
+
+Example JSON result: {"image_id": 42, "category_id": 18, "bbox": [258.15, 41.29, 348.26, 243.78], "score": 0.236}.
+\end{DoxyVerb}
+ \Hypertarget{namespaceval_a6caa1705f339843632037dab90799a9f}\index{val@{val}!save\_one\_txt@{save\_one\_txt}}
+\index{save\_one\_txt@{save\_one\_txt}!val@{val}}
+\doxysubsubsection{\texorpdfstring{save\_one\_txt()}{save\_one\_txt()}}
+{\footnotesize\ttfamily \label{namespaceval_a6caa1705f339843632037dab90799a9f} 
+val.\+save\+\_\+one\+\_\+txt (\begin{DoxyParamCaption}\item[{}]{predn}{, }\item[{}]{save\+\_\+conf}{, }\item[{}]{shape}{, }\item[{}]{file}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Saves detection results in txt format; includes class, xywh (normalized), optionally confidence if `save_conf` is
+True.
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Saves one detection result to a txt file in normalized xywh format, optionally including confidence.
+
+Args:
+    predn (torch.Tensor): Predicted bounding boxes and associated confidence scores and classes in xyxy format, tensor
+        of shape (N, 6) where N is the number of detections.
+    save_conf (bool): If True, saves the confidence scores along with the bounding box coordinates.
+    shape (tuple): Shape of the original image as (height, width).
+    file (str | Path): File path where the result will be saved.
+
+Returns:
+    None
+
+Notes:
+    The xyxy bounding box format represents the coordinates (xmin, ymin, xmax, ymax).
+    The xywh format represents the coordinates (center_x, center_y, width, height) and is normalized by the width and
+    height of the image.
+
+Example:
+    ```python
+    predn = torch.tensor([[10, 20, 30, 40, 0.9, 1]])  # example prediction
+    save_one_txt(predn, save_conf=True, shape=(640, 480), file="output.txt")
+    ```
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceval_a9572b46935104dab1c3fd617b1414f17}\index{val@{val}!FILE@{FILE}}
+\index{FILE@{FILE}!val@{val}}
+\doxysubsubsection{\texorpdfstring{FILE}{FILE}}
+{\footnotesize\ttfamily \label{namespaceval_a9572b46935104dab1c3fd617b1414f17} 
+val.\+FILE = Path(\+\_\+\+\_\+file\+\_\+\+\_\+).resolve()}
+
+\Hypertarget{namespaceval_a1127a298ff36841c4ed64170b810536b}\index{val@{val}!opt@{opt}}
+\index{opt@{opt}!val@{val}}
+\doxysubsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily \label{namespaceval_a1127a298ff36841c4ed64170b810536b} 
+val.\+opt = \mbox{\hyperlink{namespaceval_a994b1b7fd23511832a86459479c0a01a}{parse\+\_\+opt}}()}
+
+\Hypertarget{namespaceval_a481b90651ac652c0165cbd271448a5af}\index{val@{val}!ROOT@{ROOT}}
+\index{ROOT@{ROOT}!val@{val}}
+\doxysubsubsection{\texorpdfstring{ROOT}{ROOT}}
+{\footnotesize\ttfamily \label{namespaceval_a481b90651ac652c0165cbd271448a5af} 
+val.\+ROOT = FILE.\+parents\mbox{[}1\mbox{]}}
+

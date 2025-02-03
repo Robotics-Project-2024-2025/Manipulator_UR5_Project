@@ -53,7 +53,8 @@
   <!-- gripper -->
    <xacro:soft_robotics_gripper
      parent="tool0"
-     prefix=""
+     prefix="" 
+     rotation_z="$(arg rotation_z)"
      >
      <origin xyz="0 0 0" rpy="0 0 0" />          <!-- position robot in the desk -->
    </xacro:soft_robotics_gripper>

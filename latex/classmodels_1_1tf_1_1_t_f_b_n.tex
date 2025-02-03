@@ -1,0 +1,69 @@
+\doxysection{models.\+tf.\+TFBN Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_b_n}{}\label{classmodels_1_1tf_1_1_t_f_b_n}\index{models.tf.TFBN@{models.tf.TFBN}}
+Inheritance diagram for models.\+tf.\+TFBN\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_b_n}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_b_n_a127c03adae8704741079052cd9ef4ba5}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_b_n_aa82143ac606cbcf641748835539d604b}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_b_n_aeaf04762847bcae0940ffcc19d0b9601}{bn}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}TensorFlow BatchNormalization wrapper for initializing with optional pretrained weights.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_b_n_a127c03adae8704741079052cd9ef4ba5}\index{models.tf.TFBN@{models.tf.TFBN}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFBN@{models.tf.TFBN}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_b_n_a127c03adae8704741079052cd9ef4ba5} 
+models.\+tf.\+TFBN.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a TensorFlow BatchNormalization layer with optional pretrained weights.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_b_n_aa82143ac606cbcf641748835539d604b}\index{models.tf.TFBN@{models.tf.TFBN}!call@{call}}
+\index{call@{call}!models.tf.TFBN@{models.tf.TFBN}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_b_n_aa82143ac606cbcf641748835539d604b} 
+models.\+tf.\+TFBN.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies batch normalization to the inputs.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_b_n_aeaf04762847bcae0940ffcc19d0b9601}\index{models.tf.TFBN@{models.tf.TFBN}!bn@{bn}}
+\index{bn@{bn}!models.tf.TFBN@{models.tf.TFBN}}
+\doxysubsubsection{\texorpdfstring{bn}{bn}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_b_n_aeaf04762847bcae0940ffcc19d0b9601} 
+models.\+tf.\+TFBN.\+bn}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ keras.layers.BatchNormalization(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ beta\_initializer=keras.initializers.Constant(w.bias.numpy()),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ gamma\_initializer=keras.initializers.Constant(w.weight.numpy()),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ moving\_mean\_initializer=keras.initializers.Constant(w.running\_mean.numpy()),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ moving\_variance\_initializer=keras.initializers.Constant(w.running\_var.numpy()),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ epsilon=w.eps,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

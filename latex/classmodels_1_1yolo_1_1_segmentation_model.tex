@@ -1,0 +1,87 @@
+\doxysection{models.\+yolo.\+Segmentation\+Model Class Reference}
+\hypertarget{classmodels_1_1yolo_1_1_segmentation_model}{}\label{classmodels_1_1yolo_1_1_segmentation_model}\index{models.yolo.SegmentationModel@{models.yolo.SegmentationModel}}
+Inheritance diagram for models.\+yolo.\+Segmentation\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classmodels_1_1yolo_1_1_segmentation_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_segmentation_model_a1a4e0ae11fa7d196adc6151808d9a6f6}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}="{}yolov5s-\/seg.\+yaml"{}, ch=3, nc=None, anchors=None)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model}{models.\+yolo.\+Detection\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ad6630d4247a0f9224cd68370ecb5d587}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}="{}yolov5s.\+yaml"{}, ch=3, nc=None, anchors=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af01a89839d56c349fa7ff3e49c3ced33}{forward}} (self, x, augment=False, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9}{fuse}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5}{info}} (self, verbose=False, img\+\_\+size=640)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model}{models.\+yolo.\+Detection\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_a086f7d3071b5a4f56e778ece4df284cf}{yaml}} = \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af69520e1f2ebbc493236b46b38b10694}{yaml\+\_\+file}} = Path(\mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}).name
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_aa16a9856e54a0645279145e21dc86c0d}{save}} = \mbox{\hyperlink{namespacemodels_1_1yolo_aefa1f74c6cef6b61406774143aabec60}{parse\+\_\+model}}(deepcopy(self.\+yaml), ch=\mbox{[}ch\mbox{]})
+\item 
+list \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_afef8c0d23a376fe63641a45a52f2d0da}{names}} = \mbox{[}\mbox{\hyperlink{namespacemodels_1_1yolo_a07bf90234e815429482e9ab37fd8790b}{str}}(i) for i in range(self.\+yaml\mbox{[}"{}nc"{}\mbox{]})\mbox{]}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ae87c0b6b7b0d325206e62b08f703d53b}{inplace}} = self.\+yaml.\+get("{}inplace"{}, True)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af2e38a53abcbc61d9b2497e267adf247}{stride}} = m.\+stride
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0}{model}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model}{models.\+yolo.\+Detection\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_acdfaea93add0e6dee70f1b03e68bec08}{\+\_\+forward\+\_\+augment}} (self, x)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ade73f6944b8ddd537b5f7e63f4c47036}{\+\_\+descale\+\_\+pred}} (self, p, flips, scale, img\+\_\+size)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ae5fb55fb66decb52a270ed85c3b159e6}{\+\_\+clip\+\_\+augmented}} (self, y)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_aefd65ac3505c7ec0059e79c7450799bb}{\+\_\+initialize\+\_\+biases}} (self, cf=None)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852}{\+\_\+forward\+\_\+once}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089}{\+\_\+profile\+\_\+one\+\_\+layer}} (self, m, x, dt)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373}{\+\_\+apply}} (self, fn)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 segmentation model for object detection and segmentation tasks with configurable parameters.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_segmentation_model_a1a4e0ae11fa7d196adc6151808d9a6f6}\index{models.yolo.SegmentationModel@{models.yolo.SegmentationModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.yolo.SegmentationModel@{models.yolo.SegmentationModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_segmentation_model_a1a4e0ae11fa7d196adc6151808d9a6f6} 
+models.\+yolo.\+Segmentation\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cfg}{ = {\ttfamily "{}yolov5s-\/seg.yaml"{}}, }\item[{}]{ch}{ = {\ttfamily 3}, }\item[{}]{nc}{ = {\ttfamily None}, }\item[{}]{anchors}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a YOLOv5 segmentation model with configurable params: cfg (str) for configuration, ch (int) for channels, nc (int) for num classes, anchors (list).\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{yolo_8py}{yolo.\+py}}\end{DoxyCompactItemize}

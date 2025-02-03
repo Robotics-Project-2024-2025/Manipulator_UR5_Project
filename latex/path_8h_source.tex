@@ -1,0 +1,47 @@
+\doxysection{path.\+h}
+\hypertarget{path_8h_source}{}\label{path_8h_source}\index{robotics\_project\_ws/src/move\_ws/include/path.h@{robotics\_project\_ws/src/move\_ws/include/path.h}}
+\mbox{\hyperlink{path_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ path.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Robotics}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Niccol{\ucr}\ Cristoforetti\ on\ 05/12/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_PATH\_H\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_PATH\_H\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kinematics_8h}{kinematics.h}}"{}}\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kin__communication_8h}{kin\_communication.h}}"{}}\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//check}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cmath>}\ \textcolor{comment}{//check}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}\ \ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\#include\ <format>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}move\_ws/msg/vector3d.hpp"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}move\_ws/srv/moving.hpp"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}(Vector3d\ xE1,\ Vector3d\ phiE1,\ \mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ joint\_states,\ std::shared\_ptr<rclcpp::Node>\ node);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{using\ }\mbox{\hyperlink{path_8h_ac234037c86ebe68af9decdb4f31337d8}{MoveService}}=move\_ws::srv::Moving;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_my_vector_a580fe11e223c9fe233614a70fd36ea17}{MyVector}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_my_vector_a580fe11e223c9fe233614a70fd36ea17}{MyVector}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_vector_a6f7cd8c7221a95d02fdec2efb6771c53}{calculatePath}}(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ shared\_ptr<MoveService::Request>\ request,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shared\_ptr<MoveService::Response>\ response);}
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00036\ \ \ \ \ shared\_ptr<rclcpp::Service<MoveService>>\ service\_;}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ path\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+
+\end{DoxyCode}

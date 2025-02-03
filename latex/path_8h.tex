@@ -1,0 +1,46 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/move\+\_\+ws/include/path.h File Reference}
+\hypertarget{path_8h}{}\label{path_8h}\index{robotics\_project\_ws/src/move\_ws/include/path.h@{robotics\_project\_ws/src/move\_ws/include/path.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}kinematics.\+h"{}}\newline
+{\ttfamily \#include "{}kin\+\_\+communication.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$rclcpp/rclcpp.\+hpp$>$}\newline
+{\ttfamily \#include "{}move\+\_\+ws/msg/vector3d.\+hpp"{}}\newline
+{\ttfamily \#include "{}move\+\_\+ws/srv/moving.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_my_vector}{My\+Vector}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{path_8h_ac234037c86ebe68af9decdb4f31337d8}{Move\+Service}} = move\+\_\+ws\+::srv\+::\+Moving
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}} (Vector3d x\+E1, Vector3d phi\+E1, \mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} joint\+\_\+states, std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$ node)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{path_8h_ac234037c86ebe68af9decdb4f31337d8}\index{path.h@{path.h}!MoveService@{MoveService}}
+\index{MoveService@{MoveService}!path.h@{path.h}}
+\doxysubsubsection{\texorpdfstring{MoveService}{MoveService}}
+{\footnotesize\ttfamily \label{path_8h_ac234037c86ebe68af9decdb4f31337d8} 
+using \mbox{\hyperlink{path_8h_ac234037c86ebe68af9decdb4f31337d8}{Move\+Service}} = move\+\_\+ws\+::srv\+::\+Moving}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{path_8h_a7db999017e5f2d4adca6c857667f89b4}\index{path.h@{path.h}!path@{path}}
+\index{path@{path}!path.h@{path.h}}
+\doxysubsubsection{\texorpdfstring{path()}{path()}}
+{\footnotesize\ttfamily \label{path_8h_a7db999017e5f2d4adca6c857667f89b4} 
+bool path (\begin{DoxyParamCaption}\item[{Vector3d}]{x\+E1}{, }\item[{Vector3d}]{phi\+E1}{, }\item[{\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}}]{joint\+\_\+states}{, }\item[{std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$}]{node}{}\end{DoxyParamCaption})}
+

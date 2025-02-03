@@ -1,0 +1,52 @@
+\doxysection{calc\+\_\+medium\+\_\+value.\+h}
+\hypertarget{calc__medium__value_8h_source}{}\label{calc__medium__value_8h_source}\index{robotics\_project\_ws/src/camera\_ws/include/calc\_medium\_value.h@{robotics\_project\_ws/src/camera\_ws/include/calc\_medium\_value.h}}
+\mbox{\hyperlink{calc__medium__value_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ calc\_medium\_value.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ calc\_medium\_value}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Niccolò\ Cristoforetti\ on\ 12/12/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_CALC\_MEDIUM\_VALUE\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_CALC\_MEDIUM\_VALUE\_\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <sensor\_msgs/msg/image.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}camera\_ws/msg/point2\_d.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}camera\_ws/srv/depth\_get.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ SAMPLES\ 1}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}}\ \{\mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a11b4fd4b5bd83d22cff4fa79bb5c6e57}{SUBSCRIBER}},\ \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a5f6d448017ecd0a56245e38b76596e07}{SERVICE}}\}\ \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ }\mbox{\hyperlink{calc__medium__value_8h_a91bd3278ee85ebe7b09474b7adf8e6c2}{senseimage}}=sensor\_msgs::msg::Image;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{using\ }\mbox{\hyperlink{calc__medium__value_8h_a81a1d75dfe375e24342666412cbb74ba}{serviceDepth}}=camera\_ws::srv::DepthGet;}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_image_camera_aa7ef83e9db7c99a406080608c768465f}{ImageCamera}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_image_camera_aaf2b85070509bf37a8f6ff5fa8b98f7f}{ImageCamera}}(\mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}}\ mode);}
+\DoxyCodeLine{00030\ \ \ \ \ shared\_ptr<const\ senseimage>\ \mbox{\hyperlink{class_image_camera_ab02ff9f19ca897721d178152aeaf10c7}{get\_image\_content}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_camera_a8b4c8f91c6e8da5bc53e20f787c25ee2}{calculateDepth}}(}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ shared\_ptr<serviceDepth::Request>\ request,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shared\_ptr<serviceDepth::Response>\ response);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_camera_a55dfbef4e33c4fb6cb3341786d4e4a4b}{generateOutput}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_camera_a8ade04a246bd0487555783571026f22a}{printOnFile}}(\textcolor{keywordtype}{string}\ filename);}
+\DoxyCodeLine{00036\ \ \ \ \ atomic<int>\ \mbox{\hyperlink{class_image_camera_a5494218b60f3f8393a5d9e28a94b21aa}{get\_counter}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \ \ shared\_ptr<rclcpp::Subscription<senseimage>>\ image\_receiver\_;}
+\DoxyCodeLine{00039\ \ \ \ \ shared\_ptr<const\ senseimage>\ image\_content\_;}
+\DoxyCodeLine{00040\ \ \ \ \ shared\_ptr<rclcpp::Service<serviceDepth>>\ service\_;}
+\DoxyCodeLine{00041\ \ \ \ \ atomic<int>\ counter\_id\{1\};}
+\DoxyCodeLine{00042\ \ \ \ \ cv::Mat\ depth\_image;}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*calc\_medium\_value.h*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00046\ }
+
+\end{DoxyCode}

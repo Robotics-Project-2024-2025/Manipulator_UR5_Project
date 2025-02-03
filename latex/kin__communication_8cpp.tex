@@ -1,0 +1,42 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/move\+\_\+ws/src/kin\+\_\+communication.cpp File Reference}
+\hypertarget{kin__communication_8cpp}{}\label{kin__communication_8cpp}\index{robotics\_project\_ws/src/move\_ws/src/kin\_communication.cpp@{robotics\_project\_ws/src/move\_ws/src/kin\_communication.cpp}}
+{\ttfamily \#include "{}kin\+\_\+communication.\+h"{}}\newline
+{\ttfamily \#include "{}complete\+\_\+job.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{kin__communication_8cpp_a363861d2d15f714542a4dd4afd440214}{uuid\+\_\+to\+\_\+string}} (const std\+::array$<$ uint8\+\_\+t, 16 $>$ \&uuid)
+\item 
+void \mbox{\hyperlink{kin__communication_8cpp_a311c50bf5db615483fabbcc854056a4d}{send\+\_\+trajectory}} (\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} th, std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$ node)
+\item 
+void \mbox{\hyperlink{kin__communication_8cpp_a77219fe0fa2c38e71065abbf682bd3e4}{setup\+Communication}} (int argc, const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \mbox{\hyperlink{kin__communication_8cpp_a35066bc9e962862d90d15c13d6ed850b}{receive\+\_\+joint\+\_\+state}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kin__communication_8cpp_a35066bc9e962862d90d15c13d6ed850b}\index{kin\_communication.cpp@{kin\_communication.cpp}!receive\_joint\_state@{receive\_joint\_state}}
+\index{receive\_joint\_state@{receive\_joint\_state}!kin\_communication.cpp@{kin\_communication.cpp}}
+\doxysubsubsection{\texorpdfstring{receive\_joint\_state()}{receive\_joint\_state()}}
+{\footnotesize\ttfamily \label{kin__communication_8cpp_a35066bc9e962862d90d15c13d6ed850b} 
+\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} receive\+\_\+joint\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8cpp_a311c50bf5db615483fabbcc854056a4d}\index{kin\_communication.cpp@{kin\_communication.cpp}!send\_trajectory@{send\_trajectory}}
+\index{send\_trajectory@{send\_trajectory}!kin\_communication.cpp@{kin\_communication.cpp}}
+\doxysubsubsection{\texorpdfstring{send\_trajectory()}{send\_trajectory()}}
+{\footnotesize\ttfamily \label{kin__communication_8cpp_a311c50bf5db615483fabbcc854056a4d} 
+void send\+\_\+trajectory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}}}]{th}{, }\item[{std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8cpp_a77219fe0fa2c38e71065abbf682bd3e4}\index{kin\_communication.cpp@{kin\_communication.cpp}!setupCommunication@{setupCommunication}}
+\index{setupCommunication@{setupCommunication}!kin\_communication.cpp@{kin\_communication.cpp}}
+\doxysubsubsection{\texorpdfstring{setupCommunication()}{setupCommunication()}}
+{\footnotesize\ttfamily \label{kin__communication_8cpp_a77219fe0fa2c38e71065abbf682bd3e4} 
+void setup\+Communication (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8cpp_a363861d2d15f714542a4dd4afd440214}\index{kin\_communication.cpp@{kin\_communication.cpp}!uuid\_to\_string@{uuid\_to\_string}}
+\index{uuid\_to\_string@{uuid\_to\_string}!kin\_communication.cpp@{kin\_communication.cpp}}
+\doxysubsubsection{\texorpdfstring{uuid\_to\_string()}{uuid\_to\_string()}}
+{\footnotesize\ttfamily \label{kin__communication_8cpp_a363861d2d15f714542a4dd4afd440214} 
+std\+::string uuid\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::array$<$ uint8\+\_\+t, 16 $>$ \&}]{uuid}{}\end{DoxyParamCaption})}
+

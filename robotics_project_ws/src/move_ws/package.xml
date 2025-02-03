@@ -8,6 +8,7 @@
   <license>TODO: License declaration</license>
   <depend>rclcpp</depend>
   <depend>complete_job_ws</depend>
+  <depend>ros2_ur5_interface</depend>
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <test_depend>ament_lint_auto</test_depend>

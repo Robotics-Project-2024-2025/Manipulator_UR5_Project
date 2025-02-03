@@ -15,10 +15,26 @@ find_package(sensor_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/SetFloat64.srv"
+)
 
 add_executable(publish_trajectory_node src/publish_trajectory_node.cpp)
 add_executable(gripper_service src/gripper_service.cpp)
+
+include_directories(
+  /home/ubuntu/ros2_ws/build/move_ws/rosidl_generator_cpp
+)
+
+
+target_include_directories(gripper_service PRIVATE
+   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
+   $<INSTALL_INTERFACE:include>
+)
+
+rosidl_target_interfaces(gripper_service ${PROJECT_NAME} rosidl_typesupport_cpp)
 
 ament_target_dependencies(publish_trajectory_node
   rclcpp
@@ -58,4 +74,5 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+ament_export_dependencies(rosidl_default_runtime)
 ament_package()

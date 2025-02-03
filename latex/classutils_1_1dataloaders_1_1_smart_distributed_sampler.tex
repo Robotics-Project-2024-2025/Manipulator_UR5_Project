@@ -1,0 +1,62 @@
+\doxysection{utils.\+dataloaders.\+Smart\+Distributed\+Sampler Class Reference}
+\hypertarget{classutils_1_1dataloaders_1_1_smart_distributed_sampler}{}\label{classutils_1_1dataloaders_1_1_smart_distributed_sampler}\index{utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}}
+Inheritance diagram for utils.\+dataloaders.\+Smart\+Distributed\+Sampler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutils_1_1dataloaders_1_1_smart_distributed_sampler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_smart_distributed_sampler_add2eafcd1dfe7c5ac3bd03f533752238}{\+\_\+\+\_\+iter\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a1e50189ea4fa79695983bf30d8018c35}{epoch}}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a445a6299e541342aff5cfae8ba4f3458}{shuffle}} = torch.\+randperm(n, generator=g)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a15dffcc94751383f53b2afe5f087cac3}{drop\+\_\+last}} = idx.\+tolist()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}A distributed sampler ensuring deterministic shuffling and balanced data distribution across GPUs.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_smart_distributed_sampler_add2eafcd1dfe7c5ac3bd03f533752238}\index{utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}!\_\_iter\_\_@{\_\_iter\_\_}}
+\index{\_\_iter\_\_@{\_\_iter\_\_}!utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}}
+\doxysubsubsection{\texorpdfstring{\_\_iter\_\_()}{\_\_iter\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_smart_distributed_sampler_add2eafcd1dfe7c5ac3bd03f533752238} 
+utils.\+dataloaders.\+Smart\+Distributed\+Sampler.\+\_\+\+\_\+iter\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Yields indices for distributed data sampling, shuffled deterministically based on epoch and seed.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a15dffcc94751383f53b2afe5f087cac3}\index{utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}!drop\_last@{drop\_last}}
+\index{drop\_last@{drop\_last}!utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}}
+\doxysubsubsection{\texorpdfstring{drop\_last}{drop\_last}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a15dffcc94751383f53b2afe5f087cac3} 
+utils.\+dataloaders.\+Smart\+Distributed\+Sampler.\+drop\+\_\+last = idx.\+tolist()}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a1e50189ea4fa79695983bf30d8018c35}\index{utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}!epoch@{epoch}}
+\index{epoch@{epoch}!utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}}
+\doxysubsubsection{\texorpdfstring{epoch}{epoch}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a1e50189ea4fa79695983bf30d8018c35} 
+utils.\+dataloaders.\+Smart\+Distributed\+Sampler.\+epoch}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a445a6299e541342aff5cfae8ba4f3458}\index{utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!utils.dataloaders.SmartDistributedSampler@{utils.dataloaders.SmartDistributedSampler}}
+\doxysubsubsection{\texorpdfstring{shuffle}{shuffle}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_smart_distributed_sampler_a445a6299e541342aff5cfae8ba4f3458} 
+utils.\+dataloaders.\+Smart\+Distributed\+Sampler.\+shuffle = torch.\+randperm(n, generator=g)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{dataloaders_8py}{dataloaders.\+py}}\end{DoxyCompactItemize}

@@ -17,6 +17,7 @@
 ---
 
 # Introduction
+
 This paper describes the methodology and the results achieved by a ros2 based program
 that moves an UR5 robotic arm with a gripper, in order to grab and move some different
 randomly spawned blocks from a random start position to a desired position. The aim of
@@ -39,6 +40,7 @@ first is responsible of scanning the camera to extract an image, process it to l
 the blocks using Yolov5 and returning the coordinates of the bounding boxes to calculate
 the relative positions. The second controls the movement of the arm to reach the given
 position, grab the object, and put it in the designed position.
+
 
 [Back to top](#table-of-contents)
 
@@ -83,18 +85,18 @@ Project
  ┃   ┗ vision_ws_msgs              #
  ┣ ros_ur5_interface             # Modified version of Placido's work
  ┃ ┣ config                        # configuration for the UR5 arm
- ┃ ┣ docker                        # Contains Docker setup and entrypoint for the ROS 2 UR5 interface
+ ┃ ┣ docker                        # 
  ┃ ┣ gripper                       # Scripts for changing of gripper state
  ┃ ┣ images                        # 
- ┃ ┣ launch                        # Package for UR5 simulation and interaction in the gazebo 
+ ┃ ┣ launch                        # 
  ┃ ┃ ┣ interface.launch.py         # Launch file to simulate the UR5 robot in gazebo
  ┃ ┃ ┗ sim.launch.py               # Launch file to interact with simulated and real UR5 robot
  ┃ ┣ models                        # URDF files and more to prepare the configuration
  ┃ ┣ params                        # Parameters file for the Gazebo bridge 
- ┃ ┣ rviz                          # RViz configuration file
- ┃ ┣ scripts                       # The two scripts mentioned in the "Setup Containers" section
- ┃ ┣ src                           # service for changing the gripper state + node for trajectory publication
- ┃ ┣ worlds                        # Gazebo world file with plugins for the UR5 simulation
+ ┃ ┣ rviz                          # 
+ ┃ ┣ scripts                       # Folder containing two scripts mentioned in the `Setup Containers section`
+ ┃ ┣ src                           # 
+ ┃ ┣ worlds                        # 
  ┣ $FILES$.sh                      # Bash scripts for saving time
  ┣ ...
  ┣ Report.pdf                      # Report 
@@ -108,13 +110,13 @@ We modified some of his files to make them work better with our part.
 
 ---
 
-# Software Requirements
+# Software Requiremets
 
-- The latest version of the operating system
-- The latest version of Docker Desktop
-- A minimum of 20GB of free space to download everything needed to run
+- Last version of the Operating system
+- Last version of the DockerDesktop
+- Minimum 20gb to download what is needed to run all.
 
-If these prerequisites are not met, the proper functioning of this code cannot be guaranteed.
+If this prerequisites are not satisfied, it's not guaranteed the right functioning of this code.
 
 
 [Back to top](#table-of-contents)
@@ -123,11 +125,9 @@ If these prerequisites are not met, the proper functioning of this code cannot b
 
 # Installation and Configuration
 
-For Windows, it is necessary to install WSL (Windows Subsystem for Linux) to use a Linux console on a Windows system.
-
-WSL can be found on the Microsoft Store. From all the available versions, we chose Ubuntu 22.04.5 LTS, which can be downloaded from [here](https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=IT&ocid=pdpshare).
-
-When you open it for the first time, it will ask you to create a new profile by setting a nickname and password.
+For windows it's needed to install a wsl, so that it is possible to use a linux console on a windows system.
+The wsl can be found on microsoft store, from all the versions we chose `Ubuntu 22.04.5 TLS`, downloadable from [here](https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=IT&ocid=pdpshare).
+After opening it for the first time, it will asks you to create a new profile, with nickname and password.
 
 [Back to top](#table-of-contents)
 
@@ -175,6 +175,14 @@ To see, if you have successfully cloned the repository, try to access to it runn
 cd Manipulator_UR5_Project
 ```
 Now, your are in the folder.<br>
+7. Init and update the submodule of yolo doing:
+```bash
+git submodule init
+git submodule update
+```
+//SAY TO MODIFY THE PATH IN SH ros2.sh FILE
+
+Now, you have all the material you need on your native machine.<br><br>
 
 [Back to top](#table-of-contents)
 
@@ -185,7 +193,7 @@ Now, your are in the folder.<br>
 Click the link below:
 [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
-Then, click on `Download Docker Desktop` and choose the software for your operating system.
+Then, click on `Download Docker Desktop` and choose the software you're using
 
 If you're using windows:
 
@@ -198,9 +206,9 @@ Click on
 ```bash
 Enable integration with my default WSL distro
 ```
-and then enable it for your WSL version. This will automatically link Docker Desktop to your WSL.
+and then enable it for your WSL version. It will automatically link DockerDesktop to your WSL.
 
-Remember, `Docker Desktop must be open for the project to work`.
+Remember, `the DockerDesktop should be opened to make the project work`
 
 [Back to top](#table-of-contents)
 
@@ -208,11 +216,9 @@ Remember, `Docker Desktop must be open for the project to work`.
 
 ### Setup Containers
 
-There are two bashes needed to run the project. They are both from placido: `ros2.sh`.
+There are two bashes needed to run the project. They are both from placido: `ros2.sh` and `ur5.sh`
 
-It can be found in the folder `ros2_ur5_interface/scripts`.
-
-Modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
+Before running them, modify `ros2.sh`, adding a `-v` flag after the flag `-d` in the long command line, so that it will look like this:
 
 ```bash
 docker run --rm -d -v /path_of_the_project_folder:/home/ubuntu/ros2_ws/src/Manipulator_UR5_Project -p 6081:80 -p 50000-50020:50000-50020 --security-opt seccomp=unconfined --shm-size=512m --net ursim_net --ip 192.168.56.200 --name ros2 pla10/ros2_ur5_interface
@@ -250,8 +256,6 @@ After:
 ```bash
 bash Linux/Ubuntu/home/"nickname"/Manipulator_UR5_Project/ros2_ur5_interface/scripts/ros2.sh
 ```
-
-
 [Back to top](#table-of-contents)
 
 ---
@@ -262,13 +266,12 @@ run on the terminal the command:
 ```bash
 bash src/Manipulator_UR5_Project/start.sh 
 ```
-The first time, it will install packages for around 5 minutes.
 
-Then, the bash will prompt you to delete 3 files. Enter "Y" 3 times to accept the requests.
+First, The bash will ask to delete a folder, accept the request and press Y for 4 times when he asks you to.
 
-setupGazebo will automatically open from start.sh. It will then open two additional bash terminals, conversion.sh and yolo.sh. Return to setupGazebo, and set the number of blocks in the terminal of setupGazebo.sh.
-
-`Do not close any of the windows created by these bashes`, otherwise the project will not work.
+This bash will also call 4 other bashes, opening other 4 different terminal windows.
+Just avoid this windows, `without closing them`, always click again on the starting window, giving him what he asks.
+With time, Gazebo will open with a perfect-functioning simulated UR5 arm.
 
 [Back to top](#table-of-contents)
 
@@ -282,7 +285,6 @@ setupGazebo will automatically open from start.sh. It will then open two additio
 | Calvo Daniele         |                  | Responsible      |                  | Responsible      |                  |                  |
 | Cristoforetti Niccolò |                  |                  | Responsible      | Responsible      |                  |                  |
 | Gottardelli Matteo    | Helper           | Helper           | Helper           | Helper           | Responsible      | Responsible      |
-
 
 [Back to top](#table-of-contents)
 

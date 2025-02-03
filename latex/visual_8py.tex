@@ -1,0 +1,70 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/visual.py File Reference}
+\hypertarget{visual_8py}{}\label{visual_8py}\index{robotics\_project\_ws/src/camera\_ws/visual.py@{robotics\_project\_ws/src/camera\_ws/visual.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevisual}{visual}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacevisual_a2237693cd2dd0a2080a5303e2a4a292f}{visual.\+TABLE\+\_\+\+DEFAULT}} = \mbox{[}\mbox{[}175, 88\mbox{]}, \mbox{[}423, 81\mbox{]}, \mbox{[}635, 288\mbox{]}, \mbox{[}19, 313\mbox{]}\mbox{]}
+\item 
+float \mbox{\hyperlink{namespacevisual_afcb542f743ac9cc670ab07ec452b35d8}{visual.\+PERCENTAGE}} = 0.\+25
+\item 
+int \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{visual.\+OFFSET}} = 25
+\item 
+str \mbox{\hyperlink{namespacevisual_acbcd63611b2668265a9bc97c3021734e}{visual.\+image\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Image1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a842c2f576d018badba160cb8837bee04}{visual.\+image\+\_\+resize\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Resize1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a9f22818cd25e29bce3f171809641226b}{visual.\+no\+\_\+back\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/No\+Back1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}{visual.\+dest\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Dect\+Image1.\+png"{}
+\item 
+\mbox{\hyperlink{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}{visual.\+img}} = cv2.\+imread(\mbox{\hyperlink{namespacevisual_acbcd63611b2668265a9bc97c3021734e}{image\+\_\+path}})
+\item 
+\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{visual.\+resize\+\_\+width}}
+\item 
+\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{visual.\+resize\+\_\+height}}
+\item 
+\mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{visual.\+resized\+\_\+img}} = cv2.\+resize(\mbox{\hyperlink{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}{img}}, (\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}, \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}))
+\item 
+list \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{visual.\+TABLE\+\_\+\+RESIZED}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacevisual_a2b0d114776a6a3e32d9f75c5a002a103}{visual.\+new\+\_\+x}} = int(point\mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} / 640)
+\item 
+\mbox{\hyperlink{namespacevisual_afa85cde526aae0634f30a61adbcd1de0}{visual.\+new\+\_\+y}} = int(point\mbox{[}1\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} / 360)
+\item 
+\mbox{\hyperlink{namespacevisual_a75a655861a47e31dbab81bfac7dde144}{visual.\+min\+\_\+x}} = max(0, min(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a5e35b6e257f0e2808407bd55a5fd9b29}{visual.\+max\+\_\+x}} = min(\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} -\/ 1, max(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_ae31ad39dbff5c32de962083312d553b4}{visual.\+min\+\_\+y}} = max(0, min(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a50d3cae7f0371c3a15c077c41920be08}{visual.\+max\+\_\+y}} = min(\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} -\/ 1, max(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{visual.\+mask}} = np.\+array(\mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}, dtype=np.\+int32)
+\item 
+\mbox{\hyperlink{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}{visual.\+background}} = np.\+zeros((\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}, \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}), dtype=np.\+uint8)
+\item 
+\mbox{\hyperlink{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}{visual.\+mask\+\_\+background}} = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}{background}}, 1, 255)
+\item 
+\mbox{\hyperlink{namespacevisual_a743025d9f99ebc6bbacccd726540ea1a}{visual.\+roi}} = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}{mask\+\_\+background}})
+\item 
+\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{visual.\+image}} = cv2.\+imread(\mbox{\hyperlink{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}{dest\+\_\+path}})
+\item 
+\mbox{\hyperlink{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}{visual.\+hsv\+\_\+image}} = cv2.\+cvt\+Color(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, cv2.\+COLOR\+\_\+\+BGR2\+HSV)
+\item 
+dict \mbox{\hyperlink{namespacevisual_a073f8c77a42f03ae860c54436ab16541}{visual.\+color\+\_\+ranges}}
+\item 
+\mbox{\hyperlink{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}{visual.\+lower\+\_\+color}} = np.\+array(color\+\_\+range\mbox{[}0\mbox{]})
+\item 
+\mbox{\hyperlink{namespacevisual_addae1111204b28c113a8b689a3ef637e}{visual.\+upper\+\_\+color}} = np.\+array(color\+\_\+range\mbox{[}1\mbox{]})
+\item 
+\mbox{\hyperlink{namespacevisual_a9b080e4779d14ce248fbd4006e548a0b}{visual.\+color\+\_\+mask}} = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}{hsv\+\_\+image}}, \mbox{\hyperlink{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}{lower\+\_\+color}}, \mbox{\hyperlink{namespacevisual_addae1111204b28c113a8b689a3ef637e}{upper\+\_\+color}})
+\item 
+\mbox{\hyperlink{namespacevisual_a084010ff9b81f5917646be88e7c2cf27}{visual.\+result}} = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}})
+\item 
+str \mbox{\hyperlink{namespacevisual_a66ebdaee629aa285547605289bd14b42}{visual.\+dest\+\_\+image}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Only\+Blocks1.\+png"{}
+\end{DoxyCompactItemize}

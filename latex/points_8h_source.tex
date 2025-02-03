@@ -1,0 +1,39 @@
+\doxysection{points.\+h}
+\hypertarget{points_8h_source}{}\label{points_8h_source}\index{robotics\_project\_ws/src/camera\_ws/include/points.h@{robotics\_project\_ws/src/camera\_ws/include/points.h}}
+\mbox{\hyperlink{points_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ points.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Camera}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Danile\ Calvo\ on\ 12/12/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_POINTS\_H\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_POINTS\_H\_\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <sensor\_msgs/msg/point\_cloud2.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ SAMPLES\ 1}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ }\mbox{\hyperlink{points_8h_a403a535e3316cfca833777c280a0c0c2}{sensepoints}}=sensor\_msgs::msg::PointCloud2;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_points_camera_aae8567fa0a538da913e51a63a71d9dbd}{PointsCamera}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_points_camera_aae8567fa0a538da913e51a63a71d9dbd}{PointsCamera}}();}
+\DoxyCodeLine{00023\ \ \ \ \ shared\_ptr<const\ sensepoints>\ \mbox{\hyperlink{class_points_camera_a0f8997e40bcd4bb7d4a4076ed6fb731b}{get\_points\_content}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_points_camera_a85f058b5b4fbf56a71f4de56adc3d65c}{generateOutput}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_points_camera_a707f845324bf2d272cab66e328b75ca4}{printOnFile}}(\textcolor{keywordtype}{string}\ filename);}
+\DoxyCodeLine{00026\ \ \ \ \ atomic<int>\ \mbox{\hyperlink{class_points_camera_a92d8603c8aee9bf02755c405d96bc913}{get\_counter}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ shared\_ptr<rclcpp::Subscription<sensepoints>>\ points\_receiver\_;}
+\DoxyCodeLine{00029\ \ \ \ \ shared\_ptr<const\ sensepoints>\ points\_content\_;}
+\DoxyCodeLine{00030\ \ \ \ \ atomic<int>\ counter\_id\{1\};}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*points.h*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

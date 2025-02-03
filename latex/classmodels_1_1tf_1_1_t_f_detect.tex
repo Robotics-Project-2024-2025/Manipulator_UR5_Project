@@ -1,0 +1,156 @@
+\doxysection{models.\+tf.\+TFDetect Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_detect}{}\label{classmodels_1_1tf_1_1_t_f_detect}\index{models.tf.TFDetect@{models.tf.TFDetect}}
+Inheritance diagram for models.\+tf.\+TFDetect\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmodels_1_1tf_1_1_t_f_detect}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_adce8aedf35df26e8495da6eb8a05205c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf}{nc}}=80, \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}}=(), ch=(), \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_ab874f0fef9050a25f69a04283b37dfd0}{imgsz}}=(640, 640), w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a7990bd2a944f030f214772f87244697f}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a3dd22b02aadc49294d7d234591e4d088}{stride}} = tf.\+convert\+\_\+to\+\_\+tensor(w.\+stride.\+numpy(), dtype=tf.\+float32)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf}{nc}} = nc
+\item 
+int \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a71ce7d1f818a2c00dfbdbe56b60b3682}{no}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf}{nc}} + 5
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_ae805940568e6a90030ce3b4597e597d0}{nl}} = len(\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}})
+\item 
+int \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a6bd731ba7db5eb78e87fe6317c9191e7}{na}} = len(\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}}\mbox{[}0\mbox{]}) // 2
+\item 
+list \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_abd09b532a1c30c772147be8b6148b5e8}{grid}} = \mbox{[}tf.\+zeros(1)\mbox{]} \texorpdfstring{$\ast$}{*} self.\+nl
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}} = tf.\+convert\+\_\+to\+\_\+tensor(w.\+anchors.\+numpy(), dtype=tf.\+float32)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_ae86171114e0f7ffcb7221aad499522ff}{anchor\+\_\+grid}} = tf.\+reshape(self.\+anchors \texorpdfstring{$\ast$}{*} tf.\+reshape(self.\+stride, \mbox{[}self.\+nl, 1, 1\mbox{]}), \mbox{[}self.\+nl, 1, -\/1, 1, 2\mbox{]})
+\item 
+list \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a485909eb889c0a2abcd41c9594748bdb}{m}} = \mbox{[}\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv2d}{TFConv2d}}(x, self.\+no \texorpdfstring{$\ast$}{*} self.\+na, 1, w=w.\+m\mbox{[}i\mbox{]}) for i, x in enumerate(ch)\mbox{]}
+\item 
+bool \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a6b957ac82304b3f94d87c0a0fc223fb8}{training}} = False
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_ab874f0fef9050a25f69a04283b37dfd0}{imgsz}} = imgsz
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a982e6f0512fb408a7a0103af3d6348c5}{\+\_\+make\+\_\+grid}} (nx=20, ny=20)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements YOLOv5 object detection layer in TensorFlow for predicting bounding boxes and class probabilities.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_adce8aedf35df26e8495da6eb8a05205c}\index{models.tf.TFDetect@{models.tf.TFDetect}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_adce8aedf35df26e8495da6eb8a05205c} 
+models.\+tf.\+TFDetect.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{nc}{ = {\ttfamily 80}, }\item[{}]{anchors}{ = {\ttfamily ()}, }\item[{}]{ch}{ = {\ttfamily ()}, }\item[{}]{imgsz}{ = {\ttfamily (640,~640)}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes YOLOv5 detection layer for TensorFlow with configurable classes, anchors, channels, and image
+size.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a982e6f0512fb408a7a0103af3d6348c5}\index{models.tf.TFDetect@{models.tf.TFDetect}!\_make\_grid@{\_make\_grid}}
+\index{\_make\_grid@{\_make\_grid}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{\_make\_grid()}{\_make\_grid()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a982e6f0512fb408a7a0103af3d6348c5} 
+models.\+tf.\+TFDetect.\+\_\+make\+\_\+grid (\begin{DoxyParamCaption}\item[{}]{nx}{ = {\ttfamily 20}, }\item[{}]{ny}{ = {\ttfamily 20}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Generates a 2D grid of coordinates in (x, y) format with shape [1, 1, ny*nx, 2].\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a7990bd2a944f030f214772f87244697f}\index{models.tf.TFDetect@{models.tf.TFDetect}!call@{call}}
+\index{call@{call}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a7990bd2a944f030f214772f87244697f} 
+models.\+tf.\+TFDetect.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs forward pass through the model layers to predict object bounding boxes and classifications.\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_segment_af811f879f6a093667bfba2f7a903896b}{models.\+tf.\+TFSegment}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_ae86171114e0f7ffcb7221aad499522ff}\index{models.tf.TFDetect@{models.tf.TFDetect}!anchor\_grid@{anchor\_grid}}
+\index{anchor\_grid@{anchor\_grid}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{anchor\_grid}{anchor\_grid}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_ae86171114e0f7ffcb7221aad499522ff} 
+models.\+tf.\+TFDetect.\+anchor\+\_\+grid = tf.\+reshape(self.\+anchors \texorpdfstring{$\ast$}{*} tf.\+reshape(self.\+stride, \mbox{[}self.\+nl, 1, 1\mbox{]}), \mbox{[}self.\+nl, 1, -\/1, 1, 2\mbox{]})}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}\index{models.tf.TFDetect@{models.tf.TFDetect}!anchors@{anchors}}
+\index{anchors@{anchors}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{anchors}{anchors}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a} 
+models.\+tf.\+TFDetect.\+anchors = tf.\+convert\+\_\+to\+\_\+tensor(w.\+anchors.\+numpy(), dtype=tf.\+float32)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_abd09b532a1c30c772147be8b6148b5e8}\index{models.tf.TFDetect@{models.tf.TFDetect}!grid@{grid}}
+\index{grid@{grid}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_abd09b532a1c30c772147be8b6148b5e8} 
+list models.\+tf.\+TFDetect.\+grid = \mbox{[}tf.\+zeros(1)\mbox{]} \texorpdfstring{$\ast$}{*} self.\+nl}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_ab874f0fef9050a25f69a04283b37dfd0}\index{models.tf.TFDetect@{models.tf.TFDetect}!imgsz@{imgsz}}
+\index{imgsz@{imgsz}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{imgsz}{imgsz}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_ab874f0fef9050a25f69a04283b37dfd0} 
+models.\+tf.\+TFDetect.\+imgsz = imgsz}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a485909eb889c0a2abcd41c9594748bdb}\index{models.tf.TFDetect@{models.tf.TFDetect}!m@{m}}
+\index{m@{m}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a485909eb889c0a2abcd41c9594748bdb} 
+list models.\+tf.\+TFDetect.\+m = \mbox{[}\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv2d}{TFConv2d}}(x, self.\+no \texorpdfstring{$\ast$}{*} self.\+na, 1, w=w.\+m\mbox{[}i\mbox{]}) for i, x in enumerate(ch)\mbox{]}}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a6bd731ba7db5eb78e87fe6317c9191e7}\index{models.tf.TFDetect@{models.tf.TFDetect}!na@{na}}
+\index{na@{na}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{na}{na}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a6bd731ba7db5eb78e87fe6317c9191e7} 
+int models.\+tf.\+TFDetect.\+na = len(\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}}\mbox{[}0\mbox{]}) // 2}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf}\index{models.tf.TFDetect@{models.tf.TFDetect}!nc@{nc}}
+\index{nc@{nc}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{nc}{nc}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf} 
+models.\+tf.\+TFDetect.\+nc = nc}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_ae805940568e6a90030ce3b4597e597d0}\index{models.tf.TFDetect@{models.tf.TFDetect}!nl@{nl}}
+\index{nl@{nl}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{nl}{nl}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_ae805940568e6a90030ce3b4597e597d0} 
+models.\+tf.\+TFDetect.\+nl = len(\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_a002bb2a6abcdb2a9d8bfe6bf50c0433a}{anchors}})}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a71ce7d1f818a2c00dfbdbe56b60b3682}\index{models.tf.TFDetect@{models.tf.TFDetect}!no@{no}}
+\index{no@{no}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{no}{no}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a71ce7d1f818a2c00dfbdbe56b60b3682} 
+int models.\+tf.\+TFDetect.\+no = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_detect_af83f616f1c6abf9a9d56bd1244c8c1bf}{nc}} + 5}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a3dd22b02aadc49294d7d234591e4d088}\index{models.tf.TFDetect@{models.tf.TFDetect}!stride@{stride}}
+\index{stride@{stride}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a3dd22b02aadc49294d7d234591e4d088} 
+models.\+tf.\+TFDetect.\+stride = tf.\+convert\+\_\+to\+\_\+tensor(w.\+stride.\+numpy(), dtype=tf.\+float32)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_detect_a6b957ac82304b3f94d87c0a0fc223fb8}\index{models.tf.TFDetect@{models.tf.TFDetect}!training@{training}}
+\index{training@{training}!models.tf.TFDetect@{models.tf.TFDetect}}
+\doxysubsubsection{\texorpdfstring{training}{training}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_detect_a6b957ac82304b3f94d87c0a0fc223fb8} 
+bool models.\+tf.\+TFDetect.\+training = False}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

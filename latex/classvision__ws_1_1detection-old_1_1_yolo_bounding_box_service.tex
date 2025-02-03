@@ -1,0 +1,60 @@
+\doxysection{vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service Class Reference}
+\hypertarget{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service}{}\label{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service}\index{vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}}
+Inheritance diagram for vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_a51c3ec76b39ab945a4330f3f0e77e16e}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af1453f889e35ea2a7475e1d005052fd4}{handle\+\_\+bounding\+\_\+boxes\+\_\+request}} (self, request, response)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af2eaa062ffcb8eab6f09392d6b7beac0}{model}} = yolov5.\+load(\textquotesingle{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/block\+Train.\+pt\textquotesingle{})
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_ab3eb7af257643b7ed077376263d2581d}{service}} = self.\+create\+\_\+service(Boundingbox, \textquotesingle{}yolo\+\_\+bounding\+\_\+box\+\_\+service\textquotesingle{}, self.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_a51c3ec76b39ab945a4330f3f0e77e16e}\index{vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_a51c3ec76b39ab945a4330f3f0e77e16e} 
+vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af1453f889e35ea2a7475e1d005052fd4}\index{vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}!handle\_bounding\_boxes\_request@{handle\_bounding\_boxes\_request}}
+\index{handle\_bounding\_boxes\_request@{handle\_bounding\_boxes\_request}!vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{handle\_bounding\_boxes\_request()}{handle\_bounding\_boxes\_request()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af1453f889e35ea2a7475e1d005052fd4} 
+vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{request}{, }\item[{}]{response}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af2eaa062ffcb8eab6f09392d6b7beac0}\index{vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}!model@{model}}
+\index{model@{model}!vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_af2eaa062ffcb8eab6f09392d6b7beac0} 
+vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service.\+model = yolov5.\+load(\textquotesingle{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/block\+Train.\+pt\textquotesingle{})}
+
+\Hypertarget{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_ab3eb7af257643b7ed077376263d2581d}\index{vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}!service@{service}}
+\index{service@{service}!vision\_ws.detection-\/old.YoloBoundingBoxService@{vision\_ws.detection-\/old.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection-old_1_1_yolo_bounding_box_service_ab3eb7af257643b7ed077376263d2581d} 
+vision\+\_\+ws.\+detection-\/old.\+Yolo\+Bounding\+Box\+Service.\+service = self.\+create\+\_\+service(Boundingbox, \textquotesingle{}yolo\+\_\+bounding\+\_\+box\+\_\+service\textquotesingle{}, self.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/vision\+\_\+ws/\mbox{\hyperlink{detection-old_8py}{detection-\/old.\+py}}\end{DoxyCompactItemize}

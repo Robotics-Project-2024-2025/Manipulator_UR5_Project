@@ -1,3 +1,11 @@
+//
+//  publish_trajectory_node.cpp
+//  Robotics
+//
+//  Created by Matteo Gottardelli on 10/01/25.
+//
+//  Inspired by Placido Falqueto Code
+
 #include <rclcpp/rclcpp.hpp>
 #include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <control_msgs/msg/joint_tolerance.hpp>

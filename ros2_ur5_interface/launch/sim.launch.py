@@ -1,8 +1,17 @@
+#
+#  sim.launch.py
+#  Robotics
+#
+#  Created by Matteo Gottardelli on 09/01/25.
+#
+#  Inspired by Placido Falqueto Code
+
 import os
 import random
 import math
 import time
 import subprocess
+from launch_ros.parameter_descriptions import ParameterValue
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.event_handlers import OnProcessExit, OnShutdown
@@ -16,14 +25,13 @@ from launch.actions import AppendEnvironmentVariable, ExecuteProcess, TimerActio
 package_name = 'ros2_ur5_interface'
 
 MIN_BLOCK = 1
-MAX_BLOCK = 9
-X_MIN=0.1
-#X_MIN=-0.2
-X_MAX=0.4
-Y_MIN=0.25
-Y_MAX=0.675
-Z_TABLE=0.9
-PRECISION=3
+MAX_BLOCK = 4
+PRECISION = 3
+X_MIN, X_MAX = 0, 0.5
+Y_MIN, Y_MAX = 0.3, 0.7
+CENTER_X, CENTER_Y = 0.5, 0.35
+RADIUS = 0.5
+Z_TABLE = 0.9
 
 random.seed()
 
@@ -38,6 +46,19 @@ def is_collision(position, threshold=0.15):
     return False
 
 def random_pos() -> tuple:
+    precision = 100 * PRECISION
+    y_min = Y_MIN * precision
+    y_max = Y_MAX * precision
+    
+    while True:
+        y = random.randrange(int(y_min), int(y_max)) / precision
+        x = CENTER_X - math.sqrt(RADIUS**2 - (y - CENTER_Y)**2)
+        z = Z_TABLE
+        if not is_collision((x, y, z)):
+            spawned_positions.append((x, y, z))
+            return (x, y, z)
+    
+def random_pos_old() -> tuple:
     precision=100*PRECISION
     x_min=X_MIN*precision
     x_max=X_MAX*precision
@@ -202,7 +223,7 @@ def generate_spawn_block_nodes(context, *args, **kwargs):
         "yellow": "1 1 0 1",
         #"magenta": "1 0 1 1",
         "orange": "1 0.65 0 1",
-        "cyan": "0 1 1 1",
+        #"cyan": "0 1 1 1",
         "brown": "0.6 0.3 0.1 1",
         #"light_green": "0.6 1 0.6 1"
     }
@@ -270,9 +291,15 @@ def generate_launch_description():
             " ",
             "simulation_controllers:=",
             PathJoinSubstitution([FindPackageShare(package_name), "config", "ur_controllers.yaml"]),
+            " ",
+            "rotation_z:=", "0.0"
         ]
     )
-
+    
+    robot_description_param = {
+        'robot_description': ParameterValue(robot_description_content, value_type=str)
+    }
+    
     set_env_vars = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
         os.path.join(get_package_share_directory(package_name), 'models') +
@@ -302,7 +329,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         name='robot_state_publisher',
-        parameters=[{'robot_description': robot_description_content}]
+        parameters=[robot_description_param]
     )
 
     # Desk robot state publisher node

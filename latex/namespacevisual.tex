@@ -1,0 +1,265 @@
+\doxysection{visual Namespace Reference}
+\hypertarget{namespacevisual}{}\label{namespacevisual}\index{visual@{visual}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacevisual_a2237693cd2dd0a2080a5303e2a4a292f}{TABLE\+\_\+\+DEFAULT}} = \mbox{[}\mbox{[}175, 88\mbox{]}, \mbox{[}423, 81\mbox{]}, \mbox{[}635, 288\mbox{]}, \mbox{[}19, 313\mbox{]}\mbox{]}
+\item 
+float \mbox{\hyperlink{namespacevisual_afcb542f743ac9cc670ab07ec452b35d8}{PERCENTAGE}} = 0.\+25
+\item 
+int \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}} = 25
+\item 
+str \mbox{\hyperlink{namespacevisual_acbcd63611b2668265a9bc97c3021734e}{image\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Image1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a842c2f576d018badba160cb8837bee04}{image\+\_\+resize\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Resize1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a9f22818cd25e29bce3f171809641226b}{no\+\_\+back\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/No\+Back1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}{dest\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Dect\+Image1.\+png"{}
+\item 
+\mbox{\hyperlink{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}{img}} = cv2.\+imread(\mbox{\hyperlink{namespacevisual_acbcd63611b2668265a9bc97c3021734e}{image\+\_\+path}})
+\item 
+\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}
+\item 
+\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}
+\item 
+\mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}} = cv2.\+resize(\mbox{\hyperlink{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}{img}}, (\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}, \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}))
+\item 
+list \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacevisual_a2b0d114776a6a3e32d9f75c5a002a103}{new\+\_\+x}} = int(point\mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} / 640)
+\item 
+\mbox{\hyperlink{namespacevisual_afa85cde526aae0634f30a61adbcd1de0}{new\+\_\+y}} = int(point\mbox{[}1\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} / 360)
+\item 
+\mbox{\hyperlink{namespacevisual_a75a655861a47e31dbab81bfac7dde144}{min\+\_\+x}} = max(0, min(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a5e35b6e257f0e2808407bd55a5fd9b29}{max\+\_\+x}} = min(\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} -\/ 1, max(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_ae31ad39dbff5c32de962083312d553b4}{min\+\_\+y}} = max(0, min(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a50d3cae7f0371c3a15c077c41920be08}{max\+\_\+y}} = min(\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} -\/ 1, max(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}} = np.\+array(\mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}, dtype=np.\+int32)
+\item 
+\mbox{\hyperlink{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}{background}} = np.\+zeros((\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}, \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}), dtype=np.\+uint8)
+\item 
+\mbox{\hyperlink{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}{mask\+\_\+background}} = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}{background}}, 1, 255)
+\item 
+\mbox{\hyperlink{namespacevisual_a743025d9f99ebc6bbacccd726540ea1a}{roi}} = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}{mask\+\_\+background}})
+\item 
+\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}} = cv2.\+imread(\mbox{\hyperlink{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}{dest\+\_\+path}})
+\item 
+\mbox{\hyperlink{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}{hsv\+\_\+image}} = cv2.\+cvt\+Color(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, cv2.\+COLOR\+\_\+\+BGR2\+HSV)
+\item 
+dict \mbox{\hyperlink{namespacevisual_a073f8c77a42f03ae860c54436ab16541}{color\+\_\+ranges}}
+\item 
+\mbox{\hyperlink{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}{lower\+\_\+color}} = np.\+array(color\+\_\+range\mbox{[}0\mbox{]})
+\item 
+\mbox{\hyperlink{namespacevisual_addae1111204b28c113a8b689a3ef637e}{upper\+\_\+color}} = np.\+array(color\+\_\+range\mbox{[}1\mbox{]})
+\item 
+\mbox{\hyperlink{namespacevisual_a9b080e4779d14ce248fbd4006e548a0b}{color\+\_\+mask}} = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}{hsv\+\_\+image}}, \mbox{\hyperlink{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}{lower\+\_\+color}}, \mbox{\hyperlink{namespacevisual_addae1111204b28c113a8b689a3ef637e}{upper\+\_\+color}})
+\item 
+\mbox{\hyperlink{namespacevisual_a084010ff9b81f5917646be88e7c2cf27}{result}} = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}})
+\item 
+str \mbox{\hyperlink{namespacevisual_a66ebdaee629aa285547605289bd14b42}{dest\+\_\+image}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Only\+Blocks1.\+png"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}\index{visual@{visual}!background@{background}}
+\index{background@{background}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a} 
+visual.\+background = np.\+zeros((\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}, \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}), dtype=np.\+uint8)}
+
+\Hypertarget{namespacevisual_a9b080e4779d14ce248fbd4006e548a0b}\index{visual@{visual}!color\_mask@{color\_mask}}
+\index{color\_mask@{color\_mask}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{color\_mask}{color\_mask}}
+{\footnotesize\ttfamily \label{namespacevisual_a9b080e4779d14ce248fbd4006e548a0b} 
+visual.\+color\+\_\+mask = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}{hsv\+\_\+image}}, \mbox{\hyperlink{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}{lower\+\_\+color}}, \mbox{\hyperlink{namespacevisual_addae1111204b28c113a8b689a3ef637e}{upper\+\_\+color}})}
+
+\Hypertarget{namespacevisual_a073f8c77a42f03ae860c54436ab16541}\index{visual@{visual}!color\_ranges@{color\_ranges}}
+\index{color\_ranges@{color\_ranges}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{color\_ranges}{color\_ranges}}
+{\footnotesize\ttfamily \label{namespacevisual_a073f8c77a42f03ae860c54436ab16541} 
+dict visual.\+color\+\_\+ranges}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'red'}:\ [(0,\ 50,\ 50),\ (10,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 0-\/10}}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{'green'}:\ [(36,\ 50,\ 50),\ (70,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 36-\/70}}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{stringliteral}{'blue'}:\ [(90,\ 50,\ 50),\ (130,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 90-\/130}}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{stringliteral}{'yellow'}:\ [(20,\ 50,\ 50),\ (35,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 20-\/35}}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{stringliteral}{'magenta'}:\ [(290,\ 50,\ 50),\ (310,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 290-\/310}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{stringliteral}{'orange'}:\ [(11,\ 50,\ 50),\ (25,\ 255,\ 255)],\ \textcolor{comment}{\#\ Hue\ range:\ 11-\/25}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{stringliteral}{'cyan'}:\ [(170,\ 50,\ 50),\ (190,\ 255,\ 255)],\ \ \textcolor{comment}{\#\ Hue\ range:\ 170-\/190}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{stringliteral}{'pink'}:\ [(330,\ 50,\ 50),\ (350,\ 255,\ 255)],\ \ \textcolor{comment}{\#\ Hue\ range:\ 330-\/350}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{stringliteral}{'brown'}:\ [(20,\ 50,\ 50),\ (40,\ 255,\ 255)],\ \ \textcolor{comment}{\#\ Hue\ range:\ 20-\/40}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{stringliteral}{'light\_green'}:\ [(80,\ 50,\ 50),\ (100,\ 255,\ 255)]\ \ \textcolor{comment}{\#\ Hue\ range:\ 80-\/100}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespacevisual_a66ebdaee629aa285547605289bd14b42}\index{visual@{visual}!dest\_image@{dest\_image}}
+\index{dest\_image@{dest\_image}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{dest\_image}{dest\_image}}
+{\footnotesize\ttfamily \label{namespacevisual_a66ebdaee629aa285547605289bd14b42} 
+str visual.\+dest\+\_\+image = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Only\+Blocks1.\+png"{}}
+
+\Hypertarget{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}\index{visual@{visual}!dest\_path@{dest\_path}}
+\index{dest\_path@{dest\_path}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{dest\_path}{dest\_path}}
+{\footnotesize\ttfamily \label{namespacevisual_a3de552651d5060d018649c3fcf7c86d0} 
+str visual.\+dest\+\_\+path = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Dect\+Image1.\+png"{}}
+
+\Hypertarget{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7}\index{visual@{visual}!hsv\_image@{hsv\_image}}
+\index{hsv\_image@{hsv\_image}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{hsv\_image}{hsv\_image}}
+{\footnotesize\ttfamily \label{namespacevisual_ac0a27d590936cb58b5ce1a07df3baae7} 
+visual.\+hsv\+\_\+image = cv2.\+cvt\+Color(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, cv2.\+COLOR\+\_\+\+BGR2\+HSV)}
+
+\Hypertarget{namespacevisual_af71b7eff682bd4c947659fe9ae226681}\index{visual@{visual}!image@{image}}
+\index{image@{image}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily \label{namespacevisual_af71b7eff682bd4c947659fe9ae226681} 
+visual.\+image = cv2.\+imread(\mbox{\hyperlink{namespacevisual_a3de552651d5060d018649c3fcf7c86d0}{dest\+\_\+path}})}
+
+\Hypertarget{namespacevisual_acbcd63611b2668265a9bc97c3021734e}\index{visual@{visual}!image\_path@{image\_path}}
+\index{image\_path@{image\_path}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{image\_path}{image\_path}}
+{\footnotesize\ttfamily \label{namespacevisual_acbcd63611b2668265a9bc97c3021734e} 
+str visual.\+image\+\_\+path = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Image1.\+png"{}}
+
+\Hypertarget{namespacevisual_a842c2f576d018badba160cb8837bee04}\index{visual@{visual}!image\_resize\_path@{image\_resize\_path}}
+\index{image\_resize\_path@{image\_resize\_path}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{image\_resize\_path}{image\_resize\_path}}
+{\footnotesize\ttfamily \label{namespacevisual_a842c2f576d018badba160cb8837bee04} 
+str visual.\+image\+\_\+resize\+\_\+path = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Resize1.\+png"{}}
+
+\Hypertarget{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}\index{visual@{visual}!img@{img}}
+\index{img@{img}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{img}{img}}
+{\footnotesize\ttfamily \label{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733} 
+visual.\+img = cv2.\+imread(\mbox{\hyperlink{namespacevisual_acbcd63611b2668265a9bc97c3021734e}{image\+\_\+path}})}
+
+\Hypertarget{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24}\index{visual@{visual}!lower\_color@{lower\_color}}
+\index{lower\_color@{lower\_color}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{lower\_color}{lower\_color}}
+{\footnotesize\ttfamily \label{namespacevisual_a4ee94139d40e1ce9cb49270bb0ae9a24} 
+visual.\+lower\+\_\+color = np.\+array(color\+\_\+range\mbox{[}0\mbox{]})}
+
+\Hypertarget{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}\index{visual@{visual}!mask@{mask}}
+\index{mask@{mask}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{mask}{mask}}
+{\footnotesize\ttfamily \label{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d} 
+visual.\+mask = np.\+array(\mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}, dtype=np.\+int32)}
+
+\Hypertarget{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}\index{visual@{visual}!mask\_background@{mask\_background}}
+\index{mask\_background@{mask\_background}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{mask\_background}{mask\_background}}
+{\footnotesize\ttfamily \label{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823} 
+visual.\+mask\+\_\+background = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual_a17c5e1e661bc24c1448b189feb04ab0a}{background}}, 1, 255)}
+
+\Hypertarget{namespacevisual_a5e35b6e257f0e2808407bd55a5fd9b29}\index{visual@{visual}!max\_x@{max\_x}}
+\index{max\_x@{max\_x}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{max\_x}{max\_x}}
+{\footnotesize\ttfamily \label{namespacevisual_a5e35b6e257f0e2808407bd55a5fd9b29} 
+visual.\+max\+\_\+x = min(\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} -\/ 1, max(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})}
+
+\Hypertarget{namespacevisual_a50d3cae7f0371c3a15c077c41920be08}\index{visual@{visual}!max\_y@{max\_y}}
+\index{max\_y@{max\_y}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{max\_y}{max\_y}}
+{\footnotesize\ttfamily \label{namespacevisual_a50d3cae7f0371c3a15c077c41920be08} 
+visual.\+max\+\_\+y = min(\mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} -\/ 1, max(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})}
+
+\Hypertarget{namespacevisual_a75a655861a47e31dbab81bfac7dde144}\index{visual@{visual}!min\_x@{min\_x}}
+\index{min\_x@{min\_x}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{min\_x}{min\_x}}
+{\footnotesize\ttfamily \label{namespacevisual_a75a655861a47e31dbab81bfac7dde144} 
+visual.\+min\+\_\+x = max(0, min(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})}
+
+\Hypertarget{namespacevisual_ae31ad39dbff5c32de962083312d553b4}\index{visual@{visual}!min\_y@{min\_y}}
+\index{min\_y@{min\_y}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{min\_y}{min\_y}}
+{\footnotesize\ttfamily \label{namespacevisual_ae31ad39dbff5c32de962083312d553b4} 
+visual.\+min\+\_\+y = max(0, min(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual_aa8e42a926b527a2961494f04f2da129b}{OFFSET}})}
+
+\Hypertarget{namespacevisual_a2b0d114776a6a3e32d9f75c5a002a103}\index{visual@{visual}!new\_x@{new\_x}}
+\index{new\_x@{new\_x}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{new\_x}{new\_x}}
+{\footnotesize\ttfamily \label{namespacevisual_a2b0d114776a6a3e32d9f75c5a002a103} 
+visual.\+new\+\_\+x = int(point\mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}} / 640)}
+
+\Hypertarget{namespacevisual_afa85cde526aae0634f30a61adbcd1de0}\index{visual@{visual}!new\_y@{new\_y}}
+\index{new\_y@{new\_y}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{new\_y}{new\_y}}
+{\footnotesize\ttfamily \label{namespacevisual_afa85cde526aae0634f30a61adbcd1de0} 
+visual.\+new\+\_\+y = int(point\mbox{[}1\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}} / 360)}
+
+\Hypertarget{namespacevisual_a9f22818cd25e29bce3f171809641226b}\index{visual@{visual}!no\_back\_path@{no\_back\_path}}
+\index{no\_back\_path@{no\_back\_path}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{no\_back\_path}{no\_back\_path}}
+{\footnotesize\ttfamily \label{namespacevisual_a9f22818cd25e29bce3f171809641226b} 
+str visual.\+no\+\_\+back\+\_\+path = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/No\+Back1.\+png"{}}
+
+\Hypertarget{namespacevisual_aa8e42a926b527a2961494f04f2da129b}\index{visual@{visual}!OFFSET@{OFFSET}}
+\index{OFFSET@{OFFSET}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{OFFSET}{OFFSET}}
+{\footnotesize\ttfamily \label{namespacevisual_aa8e42a926b527a2961494f04f2da129b} 
+int visual.\+OFFSET = 25}
+
+\Hypertarget{namespacevisual_afcb542f743ac9cc670ab07ec452b35d8}\index{visual@{visual}!PERCENTAGE@{PERCENTAGE}}
+\index{PERCENTAGE@{PERCENTAGE}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{PERCENTAGE}{PERCENTAGE}}
+{\footnotesize\ttfamily \label{namespacevisual_afcb542f743ac9cc670ab07ec452b35d8} 
+float visual.\+PERCENTAGE = 0.\+25}
+
+\Hypertarget{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}\index{visual@{visual}!resize\_height@{resize\_height}}
+\index{resize\_height@{resize\_height}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{resize\_height}{resize\_height}}
+{\footnotesize\ttfamily \label{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9} 
+visual.\+resize\+\_\+height}
+
+\Hypertarget{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}\index{visual@{visual}!resize\_width@{resize\_width}}
+\index{resize\_width@{resize\_width}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{resize\_width}{resize\_width}}
+{\footnotesize\ttfamily \label{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d} 
+visual.\+resize\+\_\+width}
+
+\Hypertarget{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}\index{visual@{visual}!resized\_img@{resized\_img}}
+\index{resized\_img@{resized\_img}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{resized\_img}{resized\_img}}
+{\footnotesize\ttfamily \label{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1} 
+visual.\+resized\+\_\+img = cv2.\+resize(\mbox{\hyperlink{namespacevisual_af7715202c32d2d2c3038d6b9db6ca733}{img}}, (\mbox{\hyperlink{namespacevisual_a24d9ce0f69e70fbd9891a3292cf33a9d}{resize\+\_\+width}}, \mbox{\hyperlink{namespacevisual_af7d874a01c3b9a76cb02d46de42c8ed9}{resize\+\_\+height}}))}
+
+\Hypertarget{namespacevisual_a084010ff9b81f5917646be88e7c2cf27}\index{visual@{visual}!result@{result}}
+\index{result@{result}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily \label{namespacevisual_a084010ff9b81f5917646be88e7c2cf27} 
+visual.\+result = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_af71b7eff682bd4c947659fe9ae226681}{image}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}})}
+
+\Hypertarget{namespacevisual_a743025d9f99ebc6bbacccd726540ea1a}\index{visual@{visual}!roi@{roi}}
+\index{roi@{roi}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{roi}{roi}}
+{\footnotesize\ttfamily \label{namespacevisual_a743025d9f99ebc6bbacccd726540ea1a} 
+visual.\+roi = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a7bf705e878535bfb14f5a6f531db04c1}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual_a9aeb59b56d53d730d55084f60aa4998d}{mask}}=\mbox{\hyperlink{namespacevisual_abfe662ff69ab2b1478aaebbd38b83823}{mask\+\_\+background}})}
+
+\Hypertarget{namespacevisual_a2237693cd2dd0a2080a5303e2a4a292f}\index{visual@{visual}!TABLE\_DEFAULT@{TABLE\_DEFAULT}}
+\index{TABLE\_DEFAULT@{TABLE\_DEFAULT}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{TABLE\_DEFAULT}{TABLE\_DEFAULT}}
+{\footnotesize\ttfamily \label{namespacevisual_a2237693cd2dd0a2080a5303e2a4a292f} 
+list visual.\+TABLE\+\_\+\+DEFAULT = \mbox{[}\mbox{[}175, 88\mbox{]}, \mbox{[}423, 81\mbox{]}, \mbox{[}635, 288\mbox{]}, \mbox{[}19, 313\mbox{]}\mbox{]}}
+
+\Hypertarget{namespacevisual_a692d519c8f031b5e834f5155bb3666e3}\index{visual@{visual}!TABLE\_RESIZED@{TABLE\_RESIZED}}
+\index{TABLE\_RESIZED@{TABLE\_RESIZED}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{TABLE\_RESIZED}{TABLE\_RESIZED}}
+{\footnotesize\ttfamily \label{namespacevisual_a692d519c8f031b5e834f5155bb3666e3} 
+list visual.\+TABLE\+\_\+\+RESIZED = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacevisual_addae1111204b28c113a8b689a3ef637e}\index{visual@{visual}!upper\_color@{upper\_color}}
+\index{upper\_color@{upper\_color}!visual@{visual}}
+\doxysubsubsection{\texorpdfstring{upper\_color}{upper\_color}}
+{\footnotesize\ttfamily \label{namespacevisual_addae1111204b28c113a8b689a3ef637e} 
+visual.\+upper\+\_\+color = np.\+array(color\+\_\+range\mbox{[}1\mbox{]})}
+

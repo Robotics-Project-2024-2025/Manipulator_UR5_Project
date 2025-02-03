@@ -1,0 +1,147 @@
+\doxysection{utils.\+dataloaders.\+HUBDataset\+Stats Class Reference}
+\hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats}{}\label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a021462d629d374fe8b906d6479c4eb04}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}="{}coco128.\+yaml"{}, autodownload=False)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a6b1c9e1417b366a3b7e789675952bc1a}{get\+\_\+json}} (self, save=False, verbose=False)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ac12b10b40154aa3927450f49df7b7260}{process\+\_\+images}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_acf32c825af98388fb39c0fd7136f6dcf}{hub\+\_\+dir}} = Path(\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}path"{}\mbox{]} + "{}-\/hub"{})
+\item 
+str \mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ad8b9006e7b4b08869b6e450e854ca0de}{im\+\_\+dir}} = self.\+hub\+\_\+dir / "{}images"{}
+\item 
+dict \mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a20bce62d18290293eb1f3511421e51e0}{stats}} = \{"{}nc"{}\+: \mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}nc"{}\mbox{]}, "{}names"{}\+: list(\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}names"{}\mbox{]}.values())\}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}} = data
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_abc32456ecfaccd849ef86a129ddd9354}{\+\_\+unzip}} (self, \mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}})
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a0b8972bcefb343a8ac5f92a76e2622ca}{\+\_\+hub\+\_\+ops}} (self, f, max\+\_\+dim=1920)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a82509e32475e2dad74714d71dbdcd38e}{\+\_\+find\+\_\+yaml}} (dir)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_aa5bc5284da56d4c98711a368c1234699}{\+\_\+hub\+\_\+ops}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Class for generating HUB dataset JSON and `-hub` dataset directory.
+
+Arguments:
+    path:           Path to data.yaml or data.zip (with data.yaml inside data.zip)
+    autodownload:   Attempt to download dataset if not found locally
+
+Usage
+    from utils.dataloaders import HUBDatasetStats
+    stats = HUBDatasetStats('coco128.yaml', autodownload=True)  # usage 1
+    stats = HUBDatasetStats('path/to/coco128.zip')  # usage 2
+    stats.get_json(save=False)
+    stats.process_images()
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a021462d629d374fe8b906d6479c4eb04}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a021462d629d374fe8b906d6479c4eb04} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{ = {\ttfamily "{}coco128.yaml"{}}, }\item[{}]{autodownload}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes HUBDatasetStats with optional auto-download for datasets, given a path to dataset YAML or ZIP
+file.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a82509e32475e2dad74714d71dbdcd38e}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!\_find\_yaml@{\_find\_yaml}}
+\index{\_find\_yaml@{\_find\_yaml}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{\_find\_yaml()}{\_find\_yaml()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a82509e32475e2dad74714d71dbdcd38e} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+\_\+find\+\_\+yaml (\begin{DoxyParamCaption}\item[{}]{dir}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Finds and returns the path to a single '.yaml' file in the specified directory, preferring files that match
+the directory name.
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a0b8972bcefb343a8ac5f92a76e2622ca}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!\_hub\_ops@{\_hub\_ops}}
+\index{\_hub\_ops@{\_hub\_ops}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{\_hub\_ops()}{\_hub\_ops()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a0b8972bcefb343a8ac5f92a76e2622ca} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+\_\+hub\+\_\+ops (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{f}{, }\item[{}]{max\+\_\+dim}{ = {\ttfamily 1920}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Resizes and saves an image at reduced quality for web/app viewing, supporting both PIL and OpenCV.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_abc32456ecfaccd849ef86a129ddd9354}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!\_unzip@{\_unzip}}
+\index{\_unzip@{\_unzip}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{\_unzip()}{\_unzip()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_abc32456ecfaccd849ef86a129ddd9354} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+\_\+unzip (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Unzips a .zip file at 'path', returning success status, unzipped directory, and path to YAML file within.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a6b1c9e1417b366a3b7e789675952bc1a}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!get\_json@{get\_json}}
+\index{get\_json@{get\_json}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{get\_json()}{get\_json()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a6b1c9e1417b366a3b7e789675952bc1a} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+get\+\_\+json (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{save}{ = {\ttfamily False}, }\item[{}]{verbose}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generates dataset JSON for Ultralytics HUB, optionally saves or prints it; save=bool, verbose=bool.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ac12b10b40154aa3927450f49df7b7260}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!process\_images@{process\_images}}
+\index{process\_images@{process\_images}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{process\_images()}{process\_images()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ac12b10b40154aa3927450f49df7b7260} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+process\+\_\+images (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compresses images for Ultralytics HUB across 'train', 'val', 'test' splits and saves to specified
+directory.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_aa5bc5284da56d4c98711a368c1234699}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!\_hub\_ops@{\_hub\_ops}}
+\index{\_hub\_ops@{\_hub\_ops}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{\_hub\_ops}{\_hub\_ops}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_aa5bc5284da56d4c98711a368c1234699} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+\_\+hub\+\_\+ops\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!data@{data}}
+\index{data@{data}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+data = data}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_acf32c825af98388fb39c0fd7136f6dcf}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!hub\_dir@{hub\_dir}}
+\index{hub\_dir@{hub\_dir}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{hub\_dir}{hub\_dir}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_acf32c825af98388fb39c0fd7136f6dcf} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+hub\+\_\+dir = Path(\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}path"{}\mbox{]} + "{}-\/hub"{})}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ad8b9006e7b4b08869b6e450e854ca0de}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!im\_dir@{im\_dir}}
+\index{im\_dir@{im\_dir}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{im\_dir}{im\_dir}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ad8b9006e7b4b08869b6e450e854ca0de} 
+str utils.\+dataloaders.\+HUBDataset\+Stats.\+im\+\_\+dir = self.\+hub\+\_\+dir / "{}images"{}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a20bce62d18290293eb1f3511421e51e0}\index{utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}!stats@{stats}}
+\index{stats@{stats}!utils.dataloaders.HUBDatasetStats@{utils.dataloaders.HUBDatasetStats}}
+\doxysubsubsection{\texorpdfstring{stats}{stats}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_a20bce62d18290293eb1f3511421e51e0} 
+utils.\+dataloaders.\+HUBDataset\+Stats.\+stats = \{"{}nc"{}\+: \mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}nc"{}\mbox{]}, "{}names"{}\+: list(\mbox{\hyperlink{classutils_1_1dataloaders_1_1_h_u_b_dataset_stats_ae9f7f5ae568ef863dc434607f3fd17d7}{data}}\mbox{[}"{}names"{}\mbox{]}.values())\}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{dataloaders_8py}{dataloaders.\+py}}\end{DoxyCompactItemize}

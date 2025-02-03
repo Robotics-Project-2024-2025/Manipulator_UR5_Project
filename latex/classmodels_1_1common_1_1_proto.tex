@@ -1,0 +1,82 @@
+\doxysection{models.\+common.\+Proto Class Reference}
+\hypertarget{classmodels_1_1common_1_1_proto}{}\label{classmodels_1_1common_1_1_proto}\index{models.common.Proto@{models.common.Proto}}
+Inheritance diagram for models.\+common.\+Proto\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1common_1_1_proto}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_abbb3d71a30f02467048c98b403d1a24c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c\+\_\+=256, c2=32)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_a53ad18bcb0a5d0bd611c9fb6b3151d3f}{forward}} (self, x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_ab6a542eef5eee3465627ba4506e22f41}{cv1}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c1, c\+\_\+, k=3)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_a579a85525191d169afe3db9318135c4d}{upsample}} = nn.\+Upsample(scale\+\_\+factor=2, mode="{}nearest"{})
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_a206019d0151cae1865908b0b46ce7a8a}{cv2}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c\+\_\+, c\+\_\+, k=3)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_proto_a85bac2f85801e95f60becfe2210f0f21}{cv3}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c\+\_\+, c2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 mask Proto module for segmentation models, performing convolutions and upsampling on input tensors.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1common_1_1_proto_abbb3d71a30f02467048c98b403d1a24c}\index{models.common.Proto@{models.common.Proto}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_abbb3d71a30f02467048c98b403d1a24c} 
+models.\+common.\+Proto.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c\+\_\+}{ = {\ttfamily 256}, }\item[{}]{c2}{ = {\ttfamily 32}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes YOLOv5 Proto module for segmentation with input, proto, and mask channels configuration.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1common_1_1_proto_a53ad18bcb0a5d0bd611c9fb6b3151d3f}\index{models.common.Proto@{models.common.Proto}!forward@{forward}}
+\index{forward@{forward}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_a53ad18bcb0a5d0bd611c9fb6b3151d3f} 
+models.\+common.\+Proto.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs a forward pass using convolutional layers and upsampling on input tensor `x`.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1common_1_1_proto_ab6a542eef5eee3465627ba4506e22f41}\index{models.common.Proto@{models.common.Proto}!cv1@{cv1}}
+\index{cv1@{cv1}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{cv1}{cv1}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_ab6a542eef5eee3465627ba4506e22f41} 
+models.\+common.\+Proto.\+cv1 = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c1, c\+\_\+, k=3)}
+
+\Hypertarget{classmodels_1_1common_1_1_proto_a206019d0151cae1865908b0b46ce7a8a}\index{models.common.Proto@{models.common.Proto}!cv2@{cv2}}
+\index{cv2@{cv2}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{cv2}{cv2}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_a206019d0151cae1865908b0b46ce7a8a} 
+models.\+common.\+Proto.\+cv2 = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c\+\_\+, c\+\_\+, k=3)}
+
+\Hypertarget{classmodels_1_1common_1_1_proto_a85bac2f85801e95f60becfe2210f0f21}\index{models.common.Proto@{models.common.Proto}!cv3@{cv3}}
+\index{cv3@{cv3}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{cv3}{cv3}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_a85bac2f85801e95f60becfe2210f0f21} 
+models.\+common.\+Proto.\+cv3 = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c\+\_\+, c2)}
+
+\Hypertarget{classmodels_1_1common_1_1_proto_a579a85525191d169afe3db9318135c4d}\index{models.common.Proto@{models.common.Proto}!upsample@{upsample}}
+\index{upsample@{upsample}!models.common.Proto@{models.common.Proto}}
+\doxysubsubsection{\texorpdfstring{upsample}{upsample}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_proto_a579a85525191d169afe3db9318135c4d} 
+models.\+common.\+Proto.\+upsample = nn.\+Upsample(scale\+\_\+factor=2, mode="{}nearest"{})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{common_8py}{common.\+py}}\end{DoxyCompactItemize}

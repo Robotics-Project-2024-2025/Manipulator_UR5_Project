@@ -1,0 +1,152 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/move\+\_\+ws/include/kin\+\_\+communication.h File Reference}
+\hypertarget{kin__communication_8h}{}\label{kin__communication_8h}\index{robotics\_project\_ws/src/move\_ws/include/kin\_communication.h@{robotics\_project\_ws/src/move\_ws/include/kin\_communication.h}}
+{\ttfamily \#include "{}kinematics.\+h"{}}\newline
+{\ttfamily \#include $<$rclcpp/rclcpp.\+hpp$>$}\newline
+{\ttfamily \#include $<$control\+\_\+msgs/action/follow\+\_\+joint\+\_\+trajectory.\+hpp$>$}\newline
+{\ttfamily \#include $<$trajectory\+\_\+msgs/msg/joint\+\_\+trajectory.\+hpp$>$}\newline
+{\ttfamily \#include $<$sensor\+\_\+msgs/msg/joint\+\_\+state.\+hpp$>$}\newline
+{\ttfamily \#include $<$rclcpp\+\_\+action/rclcpp\+\_\+action.\+hpp$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_trajectory_action_client}{Trajectory\+Action\+Client}}
+\item 
+class \mbox{\hyperlink{class_joint_receiver}{Joint\+Receiver}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_acae0695145b57fe8a3230596fa4250a4}{SHOULDER\+\_\+\+PAN}}~"{}shoulder\+\_\+pan\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_aad71eb960a9501e3bfdf4995ed7aae7e}{SHOULDER\+\_\+\+LIFT}}~"{}shoulder\+\_\+lift\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_a0337754e85d12313455fa62a2da1b377}{ELBOW}}~"{}elbow\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_a24d72ebf66fde5f04308946b0965ec7f}{WRIST\+\_\+1}}~"{}wrist\+\_\+1\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_a67fda6bed9556e3fd9bbf37429f2a3ac}{WRIST\+\_\+2}}~"{}wrist\+\_\+2\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_ab73d656af03662ef1fa33fd979d8cd50}{WRIST\+\_\+3}}~"{}wrist\+\_\+3\+\_\+joint"{}
+\item 
+\#define \mbox{\hyperlink{kin__communication_8h_af742980593d698725375a7d12711c24f}{NUM\+\_\+\+JOINTS}}~6
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} = Matrix$<$double, -\/1, 6$>$
+\item 
+using \mbox{\hyperlink{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}{Follow\+Joint\+Trajectory}} = control\+\_\+msgs\+::action\+::\+Follow\+Joint\+Trajectory
+\item 
+using \mbox{\hyperlink{kin__communication_8h_a4b643e12388cf1378bf23973777678d1}{Goal\+Handle\+Follow\+Joint\+Trajectory}} = rclcpp\+\_\+action\+::\+Client\+Goal\+Handle$<$\mbox{\hyperlink{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}{Follow\+Joint\+Trajectory}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \mbox{\hyperlink{kin__communication_8h_a35066bc9e962862d90d15c13d6ed850b}{receive\+\_\+joint\+\_\+state}} ()
+\item 
+void \mbox{\hyperlink{kin__communication_8h_a311c50bf5db615483fabbcc854056a4d}{send\+\_\+trajectory}} (\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} th, std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$ node)
+\item 
+void \mbox{\hyperlink{kin__communication_8h_a77219fe0fa2c38e71065abbf682bd3e4}{setup\+Communication}} (int argc, const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\item 
+std\+::string \mbox{\hyperlink{kin__communication_8h_a363861d2d15f714542a4dd4afd440214}{uuid\+\_\+to\+\_\+string}} (const std\+::array$<$ uint8\+\_\+t, 16 $>$ \&uuid)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{kin__communication_8h_a0337754e85d12313455fa62a2da1b377}\index{kin\_communication.h@{kin\_communication.h}!ELBOW@{ELBOW}}
+\index{ELBOW@{ELBOW}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{ELBOW}{ELBOW}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a0337754e85d12313455fa62a2da1b377} 
+\#define ELBOW~"{}elbow\+\_\+joint"{}}
+
+\Hypertarget{kin__communication_8h_af742980593d698725375a7d12711c24f}\index{kin\_communication.h@{kin\_communication.h}!NUM\_JOINTS@{NUM\_JOINTS}}
+\index{NUM\_JOINTS@{NUM\_JOINTS}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_JOINTS}{NUM\_JOINTS}}
+{\footnotesize\ttfamily \label{kin__communication_8h_af742980593d698725375a7d12711c24f} 
+\#define NUM\+\_\+\+JOINTS~6}
+
+\Hypertarget{kin__communication_8h_aad71eb960a9501e3bfdf4995ed7aae7e}\index{kin\_communication.h@{kin\_communication.h}!SHOULDER\_LIFT@{SHOULDER\_LIFT}}
+\index{SHOULDER\_LIFT@{SHOULDER\_LIFT}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{SHOULDER\_LIFT}{SHOULDER\_LIFT}}
+{\footnotesize\ttfamily \label{kin__communication_8h_aad71eb960a9501e3bfdf4995ed7aae7e} 
+\#define SHOULDER\+\_\+\+LIFT~"{}shoulder\+\_\+lift\+\_\+joint"{}}
+
+\Hypertarget{kin__communication_8h_acae0695145b57fe8a3230596fa4250a4}\index{kin\_communication.h@{kin\_communication.h}!SHOULDER\_PAN@{SHOULDER\_PAN}}
+\index{SHOULDER\_PAN@{SHOULDER\_PAN}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{SHOULDER\_PAN}{SHOULDER\_PAN}}
+{\footnotesize\ttfamily \label{kin__communication_8h_acae0695145b57fe8a3230596fa4250a4} 
+\#define SHOULDER\+\_\+\+PAN~"{}shoulder\+\_\+pan\+\_\+joint"{}}
+
+\Hypertarget{kin__communication_8h_a24d72ebf66fde5f04308946b0965ec7f}\index{kin\_communication.h@{kin\_communication.h}!WRIST\_1@{WRIST\_1}}
+\index{WRIST\_1@{WRIST\_1}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{WRIST\_1}{WRIST\_1}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a24d72ebf66fde5f04308946b0965ec7f} 
+\#define WRIST\+\_\+1~"{}wrist\+\_\+1\+\_\+joint"{}}
+
+\Hypertarget{kin__communication_8h_a67fda6bed9556e3fd9bbf37429f2a3ac}\index{kin\_communication.h@{kin\_communication.h}!WRIST\_2@{WRIST\_2}}
+\index{WRIST\_2@{WRIST\_2}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{WRIST\_2}{WRIST\_2}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a67fda6bed9556e3fd9bbf37429f2a3ac} 
+\#define WRIST\+\_\+2~"{}wrist\+\_\+2\+\_\+joint"{}}
+
+\Hypertarget{kin__communication_8h_ab73d656af03662ef1fa33fd979d8cd50}\index{kin\_communication.h@{kin\_communication.h}!WRIST\_3@{WRIST\_3}}
+\index{WRIST\_3@{WRIST\_3}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{WRIST\_3}{WRIST\_3}}
+{\footnotesize\ttfamily \label{kin__communication_8h_ab73d656af03662ef1fa33fd979d8cd50} 
+\#define WRIST\+\_\+3~"{}wrist\+\_\+3\+\_\+joint"{}}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}\index{kin\_communication.h@{kin\_communication.h}!FollowJointTrajectory@{FollowJointTrajectory}}
+\index{FollowJointTrajectory@{FollowJointTrajectory}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{FollowJointTrajectory}{FollowJointTrajectory}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b} 
+using \mbox{\hyperlink{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}{Follow\+Joint\+Trajectory}} = control\+\_\+msgs\+::action\+::\+Follow\+Joint\+Trajectory}
+
+\Hypertarget{kin__communication_8h_a4b643e12388cf1378bf23973777678d1}\index{kin\_communication.h@{kin\_communication.h}!GoalHandleFollowJointTrajectory@{GoalHandleFollowJointTrajectory}}
+\index{GoalHandleFollowJointTrajectory@{GoalHandleFollowJointTrajectory}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{GoalHandleFollowJointTrajectory}{GoalHandleFollowJointTrajectory}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a4b643e12388cf1378bf23973777678d1} 
+using \mbox{\hyperlink{kin__communication_8h_a4b643e12388cf1378bf23973777678d1}{Goal\+Handle\+Follow\+Joint\+Trajectory}} = rclcpp\+\_\+action\+::\+Client\+Goal\+Handle$<$\mbox{\hyperlink{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}{Follow\+Joint\+Trajectory}}$>$}
+
+\Hypertarget{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}\index{kin\_communication.h@{kin\_communication.h}!MatrixD6@{MatrixD6}}
+\index{MatrixD6@{MatrixD6}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{MatrixD6}{MatrixD6}}
+{\footnotesize\ttfamily \label{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185} 
+using \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} = Matrix$<$double, -\/1, 6$>$}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kin__communication_8h_a35066bc9e962862d90d15c13d6ed850b}\index{kin\_communication.h@{kin\_communication.h}!receive\_joint\_state@{receive\_joint\_state}}
+\index{receive\_joint\_state@{receive\_joint\_state}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{receive\_joint\_state()}{receive\_joint\_state()}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a35066bc9e962862d90d15c13d6ed850b} 
+\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} receive\+\_\+joint\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8h_a311c50bf5db615483fabbcc854056a4d}\index{kin\_communication.h@{kin\_communication.h}!send\_trajectory@{send\_trajectory}}
+\index{send\_trajectory@{send\_trajectory}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{send\_trajectory()}{send\_trajectory()}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a311c50bf5db615483fabbcc854056a4d} 
+void send\+\_\+trajectory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}}}]{th}{, }\item[{std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8h_a77219fe0fa2c38e71065abbf682bd3e4}\index{kin\_communication.h@{kin\_communication.h}!setupCommunication@{setupCommunication}}
+\index{setupCommunication@{setupCommunication}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{setupCommunication()}{setupCommunication()}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a77219fe0fa2c38e71065abbf682bd3e4} 
+void setup\+Communication (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{kin__communication_8h_a363861d2d15f714542a4dd4afd440214}\index{kin\_communication.h@{kin\_communication.h}!uuid\_to\_string@{uuid\_to\_string}}
+\index{uuid\_to\_string@{uuid\_to\_string}!kin\_communication.h@{kin\_communication.h}}
+\doxysubsubsection{\texorpdfstring{uuid\_to\_string()}{uuid\_to\_string()}}
+{\footnotesize\ttfamily \label{kin__communication_8h_a363861d2d15f714542a4dd4afd440214} 
+std\+::string uuid\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::array$<$ uint8\+\_\+t, 16 $>$ \&}]{uuid}{}\end{DoxyParamCaption})}
+

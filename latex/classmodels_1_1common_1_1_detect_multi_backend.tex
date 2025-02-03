@@ -1,0 +1,220 @@
+\doxysection{models.\+common.\+Detect\+Multi\+Backend Class Reference}
+\hypertarget{classmodels_1_1common_1_1_detect_multi_backend}{}\label{classmodels_1_1common_1_1_detect_multi_backend}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+Inheritance diagram for models.\+common.\+Detect\+Multi\+Backend\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1common_1_1_detect_multi_backend}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a15cee4d4f9de61de68124d728d5c1446}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, weights="{}yolov5s.\+pt"{}, \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a064f4f675f84aeda2af1e1bfff425e91}{device}}=torch.\+device("{}cpu"{}), \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a35b2c8db3d36c684721458f5e703fd15}{dnn}}=False, data=None, fp16=False, fuse=True)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a6dc72a2a512ee6c91c50443150da3a0c}{forward}} (self, im, augment=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a58410ee261013bf6669a564e24ad3bdd}{from\+\_\+numpy}} (self, x)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a7a587e5a1fcc67d08b1295d2e0b380fb}{warmup}} (self, imgsz=(1, 3, 640, 640))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a033df5e210331fcfa64d74fc55bc2260}{model}} = model
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_ad798d8f8d19bd728fae3f75873fa8a46}{nhwc}}
+\item 
+\# Py\+Torch \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a64f91a29587e8569889ee5758b6a81d4}{pt}} = im.\+permute(0, 2, 3, 1)
+\item 
+\# Torch\+Script \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_aacc7f9b39608e350564ed356ea70bc51}{jit}} = self.\+model(im, augment=augment, visualize=visualize) if augment or visualize else self.\+model(im)
+\item 
+\# ONNX Open\+CV DNN \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a35b2c8db3d36c684721458f5e703fd15}{dnn}} = self.\+model(im)
+\item 
+\# ONNX Runtime \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a4bb655881214c53e7be7d60b9d6c7534}{onnx}} = self.\+net.\+forward()
+\item 
+\# Open\+VINO \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a84681d76e1f0474ec0e197747cb05ef2}{xml}} = self.\+session.\+run(self.\+output\+\_\+names, \{self.\+session.\+get\+\_\+inputs()\mbox{[}0\mbox{]}.name\+: im\})
+\item 
+\# Tensor\+RT \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a1a010e64b5160f2479e4da23dd54c7aa}{engine}} = list(self.\+ov\+\_\+compiled\+\_\+model(im).values())
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a893d43852bf22e469fb596ab90daff3e}{output\+\_\+names}} = self.\+bindings\mbox{[}"{}images"{}\mbox{]}.\+\_\+replace(shape=im.\+shape)
+\item 
+\# Core\+ML \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a32ba6c2cf72d0cb4353d4b7ed356c3b7}{coreml}} = \mbox{[}self.\+bindings\mbox{[}x\mbox{]}.data for x in sorted(self.\+output\+\_\+names)\mbox{]}
+\item 
+\# Paddle\+Paddle \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a01d22631b848034699106042994b4815}{paddle}} = list(reversed(y.\+values()))
+\item 
+\# NVIDIA Triton Inference Server \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_aea0632b6e650b5f6017ba18108b68431}{triton}} = \mbox{[}self.\+predictor.\+get\+\_\+output\+\_\+handle(x).copy\+\_\+to\+\_\+cpu() for x in self.\+output\+\_\+names\mbox{]}
+\item 
+\# Saved\+Model \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a5b1a9aa90e57fe09db2f158460e8ec6f}{saved\+\_\+model}} = im.\+cpu().numpy()
+\item 
+\# Graph\+Def \mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a65456a20134a9e3e62934ee06c29588e}{pb}} = self.\+model(im, training=False) if self.\+keras else self.\+model(im)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a6982d86543742e35e23db509ac76faf1}{output\+\_\+details}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a064f4f675f84aeda2af1e1bfff425e91}{device}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a44967ccbbf9583ae1d997dbbdfcf2972}{\+\_\+model\+\_\+type}} (p="{}path/to/model.\+pt"{})
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_detect_multi_backend_a43dd9d6acfff7d0e011dbb58750047f1}{\+\_\+load\+\_\+metadata}} (f=Path("{}path/to/meta.\+yaml"{}))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 MultiBackend class for inference on various backends including PyTorch, ONNX, TensorRT, and more.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a15cee4d4f9de61de68124d728d5c1446}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a15cee4d4f9de61de68124d728d5c1446} 
+models.\+common.\+Detect\+Multi\+Backend.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{weights}{ = {\ttfamily "{}yolov5s.pt"{}}, }\item[{}]{device}{ = {\ttfamily torch.device("{}cpu"{})}, }\item[{}]{dnn}{ = {\ttfamily False}, }\item[{}]{data}{ = {\ttfamily None}, }\item[{}]{fp16}{ = {\ttfamily False}, }\item[{}]{fuse}{ = {\ttfamily True}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes DetectMultiBackend with support for various inference backends, including PyTorch and ONNX.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a43dd9d6acfff7d0e011dbb58750047f1}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!\_load\_metadata@{\_load\_metadata}}
+\index{\_load\_metadata@{\_load\_metadata}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{\_load\_metadata()}{\_load\_metadata()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a43dd9d6acfff7d0e011dbb58750047f1} 
+models.\+common.\+Detect\+Multi\+Backend.\+\_\+load\+\_\+metadata (\begin{DoxyParamCaption}\item[{}]{f}{ = {\ttfamily Path("{}path/to/meta.yaml"{})}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Loads metadata from a YAML file, returning strides and names if the file exists, otherwise `None`.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a44967ccbbf9583ae1d997dbbdfcf2972}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!\_model\_type@{\_model\_type}}
+\index{\_model\_type@{\_model\_type}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{\_model\_type()}{\_model\_type()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a44967ccbbf9583ae1d997dbbdfcf2972} 
+models.\+common.\+Detect\+Multi\+Backend.\+\_\+model\+\_\+type (\begin{DoxyParamCaption}\item[{}]{p}{ = {\ttfamily "{}path/to/model.pt"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Determines model type from file path or URL, supporting various export formats.
+
+Example: path='path/to/model.onnx' -> type=onnx
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a6dc72a2a512ee6c91c50443150da3a0c}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!forward@{forward}}
+\index{forward@{forward}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a6dc72a2a512ee6c91c50443150da3a0c} 
+models.\+common.\+Detect\+Multi\+Backend.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{im}{, }\item[{}]{augment}{ = {\ttfamily False}, }\item[{}]{visualize}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs YOLOv5 inference on input images with options for augmentation and visualization.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a58410ee261013bf6669a564e24ad3bdd}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!from\_numpy@{from\_numpy}}
+\index{from\_numpy@{from\_numpy}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{from\_numpy()}{from\_numpy()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a58410ee261013bf6669a564e24ad3bdd} 
+models.\+common.\+Detect\+Multi\+Backend.\+from\+\_\+numpy (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a NumPy array to a torch tensor, maintaining device compatibility.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a7a587e5a1fcc67d08b1295d2e0b380fb}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!warmup@{warmup}}
+\index{warmup@{warmup}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{warmup()}{warmup()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a7a587e5a1fcc67d08b1295d2e0b380fb} 
+models.\+common.\+Detect\+Multi\+Backend.\+warmup (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{imgsz}{ = {\ttfamily (1,~3,~640,~640)}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs a single inference warmup to initialize model weights, accepting an `imgsz` tuple for image size.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a32ba6c2cf72d0cb4353d4b7ed356c3b7}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!coreml@{coreml}}
+\index{coreml@{coreml}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{coreml}{coreml}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a32ba6c2cf72d0cb4353d4b7ed356c3b7} 
+\# Core\+ML models.\+common.\+Detect\+Multi\+Backend.\+coreml = \mbox{[}self.\+bindings\mbox{[}x\mbox{]}.data for x in sorted(self.\+output\+\_\+names)\mbox{]}}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a064f4f675f84aeda2af1e1bfff425e91}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!device@{device}}
+\index{device@{device}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a064f4f675f84aeda2af1e1bfff425e91} 
+models.\+common.\+Detect\+Multi\+Backend.\+device}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a35b2c8db3d36c684721458f5e703fd15}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!dnn@{dnn}}
+\index{dnn@{dnn}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{dnn}{dnn}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a35b2c8db3d36c684721458f5e703fd15} 
+\# ONNX Open\+CV DNN models.\+common.\+Detect\+Multi\+Backend.\+dnn = self.\+model(im)}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a1a010e64b5160f2479e4da23dd54c7aa}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!engine@{engine}}
+\index{engine@{engine}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a1a010e64b5160f2479e4da23dd54c7aa} 
+\# Tensor\+RT models.\+common.\+Detect\+Multi\+Backend.\+engine = list(self.\+ov\+\_\+compiled\+\_\+model(im).values())}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_aacc7f9b39608e350564ed356ea70bc51}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!jit@{jit}}
+\index{jit@{jit}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{jit}{jit}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_aacc7f9b39608e350564ed356ea70bc51} 
+\# Torch\+Script models.\+common.\+Detect\+Multi\+Backend.\+jit = self.\+model(im, augment=augment, visualize=visualize) if augment or visualize else self.\+model(im)}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a033df5e210331fcfa64d74fc55bc2260}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!model@{model}}
+\index{model@{model}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a033df5e210331fcfa64d74fc55bc2260} 
+models.\+common.\+Detect\+Multi\+Backend.\+model = model}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_ad798d8f8d19bd728fae3f75873fa8a46}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!nhwc@{nhwc}}
+\index{nhwc@{nhwc}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{nhwc}{nhwc}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_ad798d8f8d19bd728fae3f75873fa8a46} 
+models.\+common.\+Detect\+Multi\+Backend.\+nhwc}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a4bb655881214c53e7be7d60b9d6c7534}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!onnx@{onnx}}
+\index{onnx@{onnx}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{onnx}{onnx}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a4bb655881214c53e7be7d60b9d6c7534} 
+\# ONNX Runtime models.\+common.\+Detect\+Multi\+Backend.\+onnx = self.\+net.\+forward()}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a6982d86543742e35e23db509ac76faf1}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!output\_details@{output\_details}}
+\index{output\_details@{output\_details}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{output\_details}{output\_details}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a6982d86543742e35e23db509ac76faf1} 
+models.\+common.\+Detect\+Multi\+Backend.\+output\+\_\+details = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a893d43852bf22e469fb596ab90daff3e}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!output\_names@{output\_names}}
+\index{output\_names@{output\_names}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{output\_names}{output\_names}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a893d43852bf22e469fb596ab90daff3e} 
+models.\+common.\+Detect\+Multi\+Backend.\+output\+\_\+names = self.\+bindings\mbox{[}"{}images"{}\mbox{]}.\+\_\+replace(shape=im.\+shape)}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a01d22631b848034699106042994b4815}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!paddle@{paddle}}
+\index{paddle@{paddle}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{paddle}{paddle}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a01d22631b848034699106042994b4815} 
+\# Paddle\+Paddle models.\+common.\+Detect\+Multi\+Backend.\+paddle = list(reversed(y.\+values()))}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a65456a20134a9e3e62934ee06c29588e}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!pb@{pb}}
+\index{pb@{pb}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{pb}{pb}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a65456a20134a9e3e62934ee06c29588e} 
+\# Graph\+Def models.\+common.\+Detect\+Multi\+Backend.\+pb = self.\+model(im, training=False) if self.\+keras else self.\+model(im)}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a64f91a29587e8569889ee5758b6a81d4}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!pt@{pt}}
+\index{pt@{pt}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{pt}{pt}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a64f91a29587e8569889ee5758b6a81d4} 
+\# Py\+Torch models.\+common.\+Detect\+Multi\+Backend.\+pt = im.\+permute(0, 2, 3, 1)}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a5b1a9aa90e57fe09db2f158460e8ec6f}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!saved\_model@{saved\_model}}
+\index{saved\_model@{saved\_model}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{saved\_model}{saved\_model}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a5b1a9aa90e57fe09db2f158460e8ec6f} 
+\# Saved\+Model models.\+common.\+Detect\+Multi\+Backend.\+saved\+\_\+model = im.\+cpu().numpy()}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_aea0632b6e650b5f6017ba18108b68431}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!triton@{triton}}
+\index{triton@{triton}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{triton}{triton}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_aea0632b6e650b5f6017ba18108b68431} 
+\# NVIDIA Triton Inference Server models.\+common.\+Detect\+Multi\+Backend.\+triton = \mbox{[}self.\+predictor.\+get\+\_\+output\+\_\+handle(x).copy\+\_\+to\+\_\+cpu() for x in self.\+output\+\_\+names\mbox{]}}
+
+\Hypertarget{classmodels_1_1common_1_1_detect_multi_backend_a84681d76e1f0474ec0e197747cb05ef2}\index{models.common.DetectMultiBackend@{models.common.DetectMultiBackend}!xml@{xml}}
+\index{xml@{xml}!models.common.DetectMultiBackend@{models.common.DetectMultiBackend}}
+\doxysubsubsection{\texorpdfstring{xml}{xml}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_detect_multi_backend_a84681d76e1f0474ec0e197747cb05ef2} 
+\# Open\+VINO models.\+common.\+Detect\+Multi\+Backend.\+xml = self.\+session.\+run(self.\+output\+\_\+names, \{self.\+session.\+get\+\_\+inputs()\mbox{[}0\mbox{]}.name\+: im\})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{common_8py}{common.\+py}}\end{DoxyCompactItemize}

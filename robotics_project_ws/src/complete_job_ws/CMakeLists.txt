@@ -18,6 +18,7 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(camera_ws REQUIRED)
 find_package(vision_ws_msgs REQUIRED)
 #find_package(vision_ws REQUIRED)
+find_package(ros2_ur5_interface REQUIRED)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
@@ -48,6 +49,7 @@ ament_target_dependencies(
   std_srvs
   camera_ws
   vision_ws_msgs
+  ros2_ur5_interface
 )
 
 install(

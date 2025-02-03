@@ -1,0 +1,34 @@
+\doxysection{utils.\+segment.\+augmentations Namespace Reference}
+\hypertarget{namespaceutils_1_1segment_1_1augmentations}{}\label{namespaceutils_1_1segment_1_1augmentations}\index{utils.segment.augmentations@{utils.segment.augmentations}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceutils_1_1segment_1_1augmentations_a5e87d32b688b04c9199f905a578c9230}{mixup}} (im, labels, segments, im2, labels2, segments2)
+\item 
+\mbox{\hyperlink{namespaceutils_1_1segment_1_1augmentations_a03edb460a775740e9df50ed89bfeff7c}{random\+\_\+perspective}} (im, targets=(), segments=(), degrees=10, translate=0.\+1, scale=0.\+1, shear=10, perspective=0.\+0, border=(0, 0))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Image augmentation functions.\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceutils_1_1segment_1_1augmentations_a5e87d32b688b04c9199f905a578c9230}\index{utils.segment.augmentations@{utils.segment.augmentations}!mixup@{mixup}}
+\index{mixup@{mixup}!utils.segment.augmentations@{utils.segment.augmentations}}
+\doxysubsubsection{\texorpdfstring{mixup()}{mixup()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1segment_1_1augmentations_a5e87d32b688b04c9199f905a578c9230} 
+utils.\+segment.\+augmentations.\+mixup (\begin{DoxyParamCaption}\item[{}]{im}{, }\item[{}]{labels}{, }\item[{}]{segments}{, }\item[{}]{im2}{, }\item[{}]{labels2}{, }\item[{}]{segments2}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies MixUp augmentation blending two images, labels, and segments with a random ratio.
+
+See https://arxiv.org/pdf/1710.09412.pdf
+\end{DoxyVerb}
+ \Hypertarget{namespaceutils_1_1segment_1_1augmentations_a03edb460a775740e9df50ed89bfeff7c}\index{utils.segment.augmentations@{utils.segment.augmentations}!random\_perspective@{random\_perspective}}
+\index{random\_perspective@{random\_perspective}!utils.segment.augmentations@{utils.segment.augmentations}}
+\doxysubsubsection{\texorpdfstring{random\_perspective()}{random\_perspective()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1segment_1_1augmentations_a03edb460a775740e9df50ed89bfeff7c} 
+utils.\+segment.\+augmentations.\+random\+\_\+perspective (\begin{DoxyParamCaption}\item[{}]{im}{, }\item[{}]{targets}{ = {\ttfamily ()}, }\item[{}]{segments}{ = {\ttfamily ()}, }\item[{}]{degrees}{ = {\ttfamily 10}, }\item[{}]{translate}{ = {\ttfamily 0.1}, }\item[{}]{scale}{ = {\ttfamily 0.1}, }\item[{}]{shear}{ = {\ttfamily 10}, }\item[{}]{perspective}{ = {\ttfamily 0.0}, }\item[{}]{border}{ = {\ttfamily (0,~0)}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies random perspective, rotation, scale, shear, and translation augmentations to an image and targets.\end{DoxyVerb}
+ 

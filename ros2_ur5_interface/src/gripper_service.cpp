@@ -1,3 +1,11 @@
+//
+//  publish_trajectory_node.cpp
+//  Robotics
+//
+//  Created by Matteo Gottardelli on 08/01/25.
+//
+//  Inspired by Placido Falqueto Code
+
 #include "rclcpp/rclcpp.hpp"
 #include <std_srvs/srv/trigger.hpp>
 #include <control_msgs/action/follow_joint_trajectory.hpp>
@@ -5,13 +13,12 @@
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
 #include <rclcpp_action/rclcpp_action.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
-#include <ament_index_cpp/get_package_share_directory.hpp>
 #include <boost/asio.hpp>
 #include <memory>
 #include <vector>
 #include <string>
 #include <iostream>
-#include <fstream>
+#include "ros2_ur5_interface/srv/set_float64.hpp"
 
 using boost::asio::ip::tcp;
 
@@ -25,13 +32,6 @@ public:
           time_between_points_(0.1),
           current_state_("neutral")
     {
-        // Dynamically find script paths
-        std::string package_share_dir = ament_index_cpp::get_package_share_directory("ros2_ur5_interface");
-        close_script_ = package_share_dir + "/gripper/close.script";
-        open_script_ = package_share_dir + "/gripper/open.script";
-        neutral_from_open_script_ = package_share_dir + "/gripper/neutral_from_open.script";
-        neutral_from_closed_script_ = package_share_dir + "/gripper/neutral_from_closed.script";
-
         // Create services
         open_service_ = this->create_service<std_srvs::srv::Trigger>(
             "open_gripper", std::bind(&GripperController::open, this, std::placeholders::_1, std::placeholders::_2));
@@ -39,6 +39,9 @@ public:
             "close_gripper", std::bind(&GripperController::close, this, std::placeholders::_1, std::placeholders::_2));
         neutral_service_ = this->create_service<std_srvs::srv::Trigger>(
             "neutral_gripper", std::bind(&GripperController::neutral, this, std::placeholders::_1, std::placeholders::_2));
+        rotation_service_ = this->create_service<ros2_ur5_interface::srv::SetFloat64>(
+            "rotate_gripper",
+            std::bind(&GripperController::rotate, this, std::placeholders::_1, std::placeholders::_2));
 
         // Create a client for the Trigger service
         client_ = this->create_client<std_srvs::srv::Trigger>("/dashboard_client/play");
@@ -54,15 +57,12 @@ public:
         RCLCPP_INFO(this->get_logger(), "Gripper controller node initialized.");
 
         // Send the gripper to the neutral position at startup
-        send_script(neutral_from_open_script_);
-        send_script(neutral_from_closed_script_);
         send_action({0.0, 0.0});
     }
 
 private:
     std::string host_;
     int port_;
-    std::string close_script_, open_script_, neutral_from_closed_script_, neutral_from_open_script_;
     std::vector<double> start_config_;
     double time_between_points_;
     std::string current_state_;
@@ -73,12 +73,58 @@ private:
     rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr client_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_;
     rclcpp_action::Client<control_msgs::action::FollowJointTrajectory>::SharedPtr action_client_;
+    rclcpp::Service<ros2_ur5_interface::srv::SetFloat64>::SharedPtr rotation_service_;
 
     void joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
     {
         if (msg->position.size() > 7) // Ensure valid indices
         {
             start_config_ = {msg->position[5], msg->position[7]};
+        }
+    }
+
+    void rotate(const std::shared_ptr<ros2_ur5_interface::srv::SetFloat64::Request> request,
+                std::shared_ptr<ros2_ur5_interface::srv::SetFloat64::Response> response)
+    {
+        double rotation_angle = request->data;  // Get the rotation angle in radians
+        RCLCPP_INFO(this->get_logger(), "Received rotation command: %f", rotation_angle);
+
+        // Send a custom command for rotation
+        std::string rotation_command = "rotate " + std::to_string(rotation_angle) + "\n";
+        if (send_command(rotation_command))
+        {
+            RCLCPP_INFO(this->get_logger(), "Rotation executed successfully.");
+            response->success = true;
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Failed to execute rotation.");
+            response->success = false;
+        }
+    }
+
+    bool send_command(const std::string &command)
+    {
+        try
+        {
+            boost::asio::io_context io_context;
+            tcp::socket socket(io_context);
+            tcp::resolver resolver(io_context);
+
+            // Connect to the robot
+            boost::asio::connect(socket, resolver.resolve(host_, std::to_string(port_)));
+
+            // Send the command
+            boost::asio::write(socket, boost::asio::buffer(command));
+
+            RCLCPP_INFO(this->get_logger(), "Command sent successfully: %s", command.c_str());
+            socket.close();
+            return true;
+        }
+        catch (const std::exception &e)
+        {
+            RCLCPP_ERROR(this->get_logger(), "Error sending command: %s", e.what());
+            return false;
         }
     }
 
@@ -119,44 +165,6 @@ private:
         action_client_->async_send_goal(goal_msg, send_goal_options);
     }
 
-    void send_script(const std::string &script_path)
-    {
-        try
-        {
-            boost::asio::io_context io_context;
-            tcp::socket socket(io_context);
-
-            tcp::resolver resolver(io_context);
-            boost::asio::connect(socket, resolver.resolve(host_, std::to_string(port_)));
-
-            std::ifstream scriptFile(script_path, std::ios::binary);
-            if (!scriptFile.is_open())
-            {
-                throw std::runtime_error("Failed to open script file: " + script_path);
-            }
-
-            char buffer[2024];
-            while (scriptFile.read(buffer, sizeof(buffer)) || scriptFile.gcount() > 0)
-            {
-                boost::asio::write(socket, boost::asio::buffer(buffer, scriptFile.gcount()));
-            }
-
-            RCLCPP_INFO(this->get_logger(), "Script sent successfully!");
-            socket.close();
-
-            // Create a request object
-            auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
-
-            // Call the service asynchronously
-            rclcpp::sleep_for(std::chrono::seconds(1));
-            auto future = client_->async_send_request(request);
-        }
-        catch (const std::exception &e)
-        {
-            RCLCPP_ERROR(this->get_logger(), "Error sending script: %s", e.what());
-        }
-    }
-
     void open(const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
               std::shared_ptr<std_srvs::srv::Trigger::Response> response)
     {
@@ -169,7 +177,6 @@ private:
         }
 
         RCLCPP_INFO(this->get_logger(), "Request to open the gripper received.");
-        send_script(open_script_);
         send_action({0.3, 0.3});
         current_state_ = "open";
         response->success = true;
@@ -187,7 +194,6 @@ private:
         }
 
         RCLCPP_INFO(this->get_logger(), "Request to close the gripper received.");
-        send_script(close_script_);
         send_action({-0.3, -0.3});
         current_state_ = "close";
         response->success = true;
@@ -205,11 +211,6 @@ private:
         }
 
         RCLCPP_INFO(this->get_logger(), "Request to move the gripper to neutral position received.");
-        if (current_state_ == "open")
-            send_script(neutral_from_open_script_);
-        else if (current_state_ == "close")
-            send_script(neutral_from_closed_script_);
-        else
         send_action({0.0, 0.0});
         current_state_ = "neutral";
         response->success = true;

@@ -1,0 +1,113 @@
+\doxysection{models.\+yolo.\+Classification\+Model Class Reference}
+\hypertarget{classmodels_1_1yolo_1_1_classification_model}{}\label{classmodels_1_1yolo_1_1_classification_model}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+Inheritance diagram for models.\+yolo.\+Classification\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmodels_1_1yolo_1_1_classification_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_a541a3b2aa154f572b2331046d49b7c41}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}=None, \mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model}{model}}=None, \mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_ab44618febf1f26c7bb56dfa2e98ec8d1}{nc}}=1000, cutoff=10)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a95afbfe6a613b4217c1560f5670ce855}{forward}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9}{fuse}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5}{info}} (self, verbose=False, img\+\_\+size=640)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_a37d8e726f10552a631b007745124eeb0}{stride}} = model.\+stride
+\item 
+list \mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_a4264acf448e5637805855b9386b40a6b}{save}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_ab44618febf1f26c7bb56dfa2e98ec8d1}{nc}} = nc
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0}{model}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_adc84701ba2ffcdccf16f390f2b16ad19}{\+\_\+from\+\_\+detection\+\_\+model}} (self, \mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model}{model}}, \mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_ab44618febf1f26c7bb56dfa2e98ec8d1}{nc}}=1000, cutoff=10)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_classification_model_aad3ae5332b7219ac709b4fd5dc9b215b}{\+\_\+from\+\_\+yaml}} (self, \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852}{\+\_\+forward\+\_\+once}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089}{\+\_\+profile\+\_\+one\+\_\+layer}} (self, m, x, dt)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373}{\+\_\+apply}} (self, fn)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 classification model for image classification tasks, initialized with a config file or detection model.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_classification_model_a541a3b2aa154f572b2331046d49b7c41}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_a541a3b2aa154f572b2331046d49b7c41} 
+models.\+yolo.\+Classification\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cfg}{ = {\ttfamily None}, }\item[{}]{model}{ = {\ttfamily None}, }\item[{}]{nc}{ = {\ttfamily 1000}, }\item[{}]{cutoff}{ = {\ttfamily 10}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes YOLOv5 model with config file `cfg`, input channels `ch`, number of classes `nc`, and `cuttoff`
+index.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_classification_model_adc84701ba2ffcdccf16f390f2b16ad19}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!\_from\_detection\_model@{\_from\_detection\_model}}
+\index{\_from\_detection\_model@{\_from\_detection\_model}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{\_from\_detection\_model()}{\_from\_detection\_model()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_adc84701ba2ffcdccf16f390f2b16ad19} 
+models.\+yolo.\+Classification\+Model.\+\_\+from\+\_\+detection\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{model}{, }\item[{}]{nc}{ = {\ttfamily 1000}, }\item[{}]{cutoff}{ = {\ttfamily 10}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Creates a classification model from a YOLOv5 detection model, slicing at `cutoff` and adding a classification
+layer.
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_classification_model_aad3ae5332b7219ac709b4fd5dc9b215b}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!\_from\_yaml@{\_from\_yaml}}
+\index{\_from\_yaml@{\_from\_yaml}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{\_from\_yaml()}{\_from\_yaml()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_aad3ae5332b7219ac709b4fd5dc9b215b} 
+models.\+yolo.\+Classification\+Model.\+\_\+from\+\_\+yaml (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cfg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Creates a YOLOv5 classification model from a specified *.yaml configuration file.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_classification_model_ab44618febf1f26c7bb56dfa2e98ec8d1}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!nc@{nc}}
+\index{nc@{nc}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{nc}{nc}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_ab44618febf1f26c7bb56dfa2e98ec8d1} 
+models.\+yolo.\+Classification\+Model.\+nc = nc}
+
+\Hypertarget{classmodels_1_1yolo_1_1_classification_model_a4264acf448e5637805855b9386b40a6b}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!save@{save}}
+\index{save@{save}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{save}{save}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_a4264acf448e5637805855b9386b40a6b} 
+list models.\+yolo.\+Classification\+Model.\+save = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodels_1_1yolo_1_1_classification_model_a37d8e726f10552a631b007745124eeb0}\index{models.yolo.ClassificationModel@{models.yolo.ClassificationModel}!stride@{stride}}
+\index{stride@{stride}!models.yolo.ClassificationModel@{models.yolo.ClassificationModel}}
+\doxysubsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_classification_model_a37d8e726f10552a631b007745124eeb0} 
+models.\+yolo.\+Classification\+Model.\+stride = model.\+stride}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{yolo_8py}{yolo.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,157 @@
+\doxysection{restapi Namespace Reference}
+\hypertarget{namespacerestapi}{}\label{namespacerestapi}\index{restapi@{restapi}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacerestapi_ab44e64eec77404117680dbd8f64af1c5}{predict}} (model)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacerestapi_ab67e91eafeedfce76d273d228bfcc61f}{app}} = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\item 
+dict \mbox{\hyperlink{namespacerestapi_ac0561d6bd3e61c18f7372bcbcb2215d3}{models}} = \{\}
+\item 
+str \mbox{\hyperlink{namespacerestapi_ac731cfb6b52686ce829f4b250c24e8cf}{DETECTION\+\_\+\+URL}} = "{}/v1/object-\/detection/$<$model$>$"{}
+\item 
+\mbox{\hyperlink{namespacerestapi_ac09a9470500f718df112000df104b8e9}{parser}} = argparse.\+Argument\+Parser(description="{}Flask API exposing YOLOv5 model"{})
+\item 
+\mbox{\hyperlink{namespacerestapi_a4c0e625ca8c34606cb87b26cd4a4f990}{default}}
+\item 
+\mbox{\hyperlink{namespacerestapi_a01928afb3531bb7753423125f110ec00}{type}}
+\item 
+\mbox{\hyperlink{namespacerestapi_afb0b7610bdae6b238281ac6d234e20c0}{int}}
+\item 
+\mbox{\hyperlink{namespacerestapi_aa5e69f0f49976c9f4398a99f33a15e43}{help}}
+\item 
+\mbox{\hyperlink{namespacerestapi_a56f7c035458cca7c2fba5d65842a1adb}{nargs}}
+\item 
+\mbox{\hyperlink{namespacerestapi_ab7471cdf9817b51f9dd2f85d823ef128}{opt}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespacerestapi_ab270340971d5632ae17ae42ac63919fa}{m}}
+\item 
+\mbox{\hyperlink{namespacerestapi_a8acfd45dc7ebf611fc048552c581b00f}{force\+\_\+reload}}
+\item 
+\mbox{\hyperlink{namespacerestapi_a039e472ede5c1e4d170d1f2334acd70f}{True}}
+\item 
+\mbox{\hyperlink{namespacerestapi_a6b0208ef4ffc92d36cf0a4b463656543}{skip\+\_\+validation}}
+\item 
+\mbox{\hyperlink{namespacerestapi_ac999ff2b63c7ab76d82e8d674b739ed4}{host}}
+\item 
+\mbox{\hyperlink{namespacerestapi_afe9c0ef8ee6f8f5303964f6b3f3741f2}{port}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Run a Flask REST API exposing one or more YOLOv5s models.\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacerestapi_ab44e64eec77404117680dbd8f64af1c5}\index{restapi@{restapi}!predict@{predict}}
+\index{predict@{predict}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily \label{namespacerestapi_ab44e64eec77404117680dbd8f64af1c5} 
+restapi.\+predict (\begin{DoxyParamCaption}\item[{}]{model}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Predict and return object detections in JSON format given an image and model name via a Flask REST API POST
+request.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacerestapi_ab67e91eafeedfce76d273d228bfcc61f}\index{restapi@{restapi}!app@{app}}
+\index{app@{app}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily \label{namespacerestapi_ab67e91eafeedfce76d273d228bfcc61f} 
+restapi.\+app = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)}
+
+\Hypertarget{namespacerestapi_a4c0e625ca8c34606cb87b26cd4a4f990}\index{restapi@{restapi}!default@{default}}
+\index{default@{default}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily \label{namespacerestapi_a4c0e625ca8c34606cb87b26cd4a4f990} 
+restapi.\+default}
+
+\Hypertarget{namespacerestapi_ac731cfb6b52686ce829f4b250c24e8cf}\index{restapi@{restapi}!DETECTION\_URL@{DETECTION\_URL}}
+\index{DETECTION\_URL@{DETECTION\_URL}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{DETECTION\_URL}{DETECTION\_URL}}
+{\footnotesize\ttfamily \label{namespacerestapi_ac731cfb6b52686ce829f4b250c24e8cf} 
+str restapi.\+DETECTION\+\_\+\+URL = "{}/v1/object-\/detection/$<$model$>$"{}}
+
+\Hypertarget{namespacerestapi_a8acfd45dc7ebf611fc048552c581b00f}\index{restapi@{restapi}!force\_reload@{force\_reload}}
+\index{force\_reload@{force\_reload}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{force\_reload}{force\_reload}}
+{\footnotesize\ttfamily \label{namespacerestapi_a8acfd45dc7ebf611fc048552c581b00f} 
+restapi.\+force\+\_\+reload}
+
+\Hypertarget{namespacerestapi_aa5e69f0f49976c9f4398a99f33a15e43}\index{restapi@{restapi}!help@{help}}
+\index{help@{help}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily \label{namespacerestapi_aa5e69f0f49976c9f4398a99f33a15e43} 
+restapi.\+help}
+
+\Hypertarget{namespacerestapi_ac999ff2b63c7ab76d82e8d674b739ed4}\index{restapi@{restapi}!host@{host}}
+\index{host@{host}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily \label{namespacerestapi_ac999ff2b63c7ab76d82e8d674b739ed4} 
+restapi.\+host}
+
+\Hypertarget{namespacerestapi_afb0b7610bdae6b238281ac6d234e20c0}\index{restapi@{restapi}!int@{int}}
+\index{int@{int}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily \label{namespacerestapi_afb0b7610bdae6b238281ac6d234e20c0} 
+restapi.\+int}
+
+\Hypertarget{namespacerestapi_ab270340971d5632ae17ae42ac63919fa}\index{restapi@{restapi}!m@{m}}
+\index{m@{m}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{namespacerestapi_ab270340971d5632ae17ae42ac63919fa} 
+restapi.\+m}
+
+\Hypertarget{namespacerestapi_ac0561d6bd3e61c18f7372bcbcb2215d3}\index{restapi@{restapi}!models@{models}}
+\index{models@{models}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{models}{models}}
+{\footnotesize\ttfamily \label{namespacerestapi_ac0561d6bd3e61c18f7372bcbcb2215d3} 
+dict restapi.\+models = \{\}}
+
+\Hypertarget{namespacerestapi_a56f7c035458cca7c2fba5d65842a1adb}\index{restapi@{restapi}!nargs@{nargs}}
+\index{nargs@{nargs}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{nargs}{nargs}}
+{\footnotesize\ttfamily \label{namespacerestapi_a56f7c035458cca7c2fba5d65842a1adb} 
+restapi.\+nargs}
+
+\Hypertarget{namespacerestapi_ab7471cdf9817b51f9dd2f85d823ef128}\index{restapi@{restapi}!opt@{opt}}
+\index{opt@{opt}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily \label{namespacerestapi_ab7471cdf9817b51f9dd2f85d823ef128} 
+restapi.\+opt = parser.\+parse\+\_\+args()}
+
+\Hypertarget{namespacerestapi_ac09a9470500f718df112000df104b8e9}\index{restapi@{restapi}!parser@{parser}}
+\index{parser@{parser}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily \label{namespacerestapi_ac09a9470500f718df112000df104b8e9} 
+restapi.\+parser = argparse.\+Argument\+Parser(description="{}Flask API exposing YOLOv5 model"{})}
+
+\Hypertarget{namespacerestapi_afe9c0ef8ee6f8f5303964f6b3f3741f2}\index{restapi@{restapi}!port@{port}}
+\index{port@{port}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily \label{namespacerestapi_afe9c0ef8ee6f8f5303964f6b3f3741f2} 
+restapi.\+port}
+
+\Hypertarget{namespacerestapi_a6b0208ef4ffc92d36cf0a4b463656543}\index{restapi@{restapi}!skip\_validation@{skip\_validation}}
+\index{skip\_validation@{skip\_validation}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{skip\_validation}{skip\_validation}}
+{\footnotesize\ttfamily \label{namespacerestapi_a6b0208ef4ffc92d36cf0a4b463656543} 
+restapi.\+skip\+\_\+validation}
+
+\Hypertarget{namespacerestapi_a039e472ede5c1e4d170d1f2334acd70f}\index{restapi@{restapi}!True@{True}}
+\index{True@{True}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{True}{True}}
+{\footnotesize\ttfamily \label{namespacerestapi_a039e472ede5c1e4d170d1f2334acd70f} 
+restapi.\+True}
+
+\Hypertarget{namespacerestapi_a01928afb3531bb7753423125f110ec00}\index{restapi@{restapi}!type@{type}}
+\index{type@{type}!restapi@{restapi}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{namespacerestapi_a01928afb3531bb7753423125f110ec00} 
+restapi.\+type}
+

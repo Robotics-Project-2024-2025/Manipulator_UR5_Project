@@ -1,0 +1,555 @@
+\doxysection{hubconf Namespace Reference}
+\hypertarget{namespacehubconf}{}\label{namespacehubconf}\index{hubconf@{hubconf}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacehubconf_ad1d70c80a477c02404f5d552f251714b}{\+\_\+create}} (name, pretrained=True, channels=3, classes=80, autoshape=True, verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a16d39dd15d18ab44069aa4c5c4c4cc05}{custom}} (\mbox{\hyperlink{path_8h_a7db999017e5f2d4adca6c857667f89b4}{path}}="{}path/to/model.\+pt"{}, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_aa3bd4bd5dc3e644f595bb2b667e579a5}{yolov5n}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_ac78e21ec08a9246e87624b2958fff424}{yolov5s}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a517002f3c2b9ad1b591f7d54324f13f3}{yolov5m}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a6c5ee0f926496e6d2246afd884f0d7aa}{yolov5l}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a7e55f8421f72caed04d54e7219402d35}{yolov5x}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a59338090e7436955f82d1d7389c6f4dd}{yolov5n6}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a74b6664af8902452d73286f55088007c}{yolov5s6}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_adc72000311015a96777c679b2fae9937}{yolov5m6}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_a24fc6cb7c5358f589d7626fc6254c085}{yolov5l6}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\item 
+\mbox{\hyperlink{namespacehubconf_ab7cea48afe0bf842f7069e16dbfcfb05}{yolov5x6}} (pretrained=True, channels=3, classes=80, autoshape=True, \+\_\+verbose=True, device=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacehubconf_a4bc49af68a6600ac86b67f7d69ec5282}{parser}} = argparse.\+Argument\+Parser()
+\item 
+\mbox{\hyperlink{namespacehubconf_a424169d5596a42c1eab4ae1d7139a51d}{type}}
+\item 
+\mbox{\hyperlink{namespacehubconf_a26f9fdf1c00ab7424de305fd1fb7a5c0}{str}}
+\item 
+\mbox{\hyperlink{namespacehubconf_a695f0a9ddf0d81caf5cc07310bb3c0e5}{default}}
+\item 
+\mbox{\hyperlink{namespacehubconf_adfcf708de8d493e0f20a49bc5b81784d}{help}}
+\item 
+\mbox{\hyperlink{namespacehubconf_ad5b15592f4ba74cdc435e06c1785d0a1}{opt}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespacehubconf_a121754ebff6ebf330a6c0113afe25550}{model}} = \mbox{\hyperlink{namespacehubconf_ad1d70c80a477c02404f5d552f251714b}{\+\_\+create}}(name=opt.\+model, pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)
+\item 
+list \mbox{\hyperlink{namespacehubconf_af4d150499d1d02ae1ad95234cdc82a29}{imgs}}
+\item 
+\mbox{\hyperlink{namespacehubconf_a42799aa2cc6319465e4d8653c1d67474}{results}} = \mbox{\hyperlink{namespacehubconf_a121754ebff6ebf330a6c0113afe25550}{model}}(\mbox{\hyperlink{namespacehubconf_af4d150499d1d02ae1ad95234cdc82a29}{imgs}}, size=320)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}PyTorch Hub models https://pytorch.org/hub/ultralytics_yolov5.
+
+Usage:
+    import torch
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # official model
+    model = torch.hub.load('ultralytics/yolov5:master', 'yolov5s')  # from branch
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'yolov5s.pt')  # custom/local model
+    model = torch.hub.load('.', 'custom', 'yolov5s.pt', source='local')  # local repo
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacehubconf_ad1d70c80a477c02404f5d552f251714b}\index{hubconf@{hubconf}!\_create@{\_create}}
+\index{\_create@{\_create}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{\_create()}{\_create()}}
+{\footnotesize\ttfamily \label{namespacehubconf_ad1d70c80a477c02404f5d552f251714b} 
+hubconf.\+\_\+create (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Creates or loads a YOLOv5 model, with options for pretrained weights and model customization.
+
+Args:
+    name (str): Model name (e.g., 'yolov5s') or path to the model checkpoint (e.g., 'path/to/best.pt').
+    pretrained (bool, optional): If True, loads pretrained weights into the model. Defaults to True.
+    channels (int, optional): Number of input channels the model expects. Defaults to 3.
+    classes (int, optional): Number of classes the model is expected to detect. Defaults to 80.
+    autoshape (bool, optional): If True, applies the YOLOv5 .autoshape() wrapper for various input formats. Defaults to True.
+    verbose (bool, optional): If True, prints detailed information during the model creation/loading process. Defaults to True.
+    device (str | torch.device | None, optional): Device to use for model parameters (e.g., 'cpu', 'cuda'). If None, selects
+        the best available device. Defaults to None.
+
+Returns:
+    (DetectMultiBackend | AutoShape): The loaded YOLOv5 model, potentially wrapped with AutoShape if specified.
+
+Examples:
+    ```python
+    import torch
+    from ultralytics import _create
+
+    # Load an official YOLOv5s model with pretrained weights
+    model = _create('yolov5s')
+
+    # Load a custom model from a local checkpoint
+    model = _create('path/to/custom_model.pt', pretrained=False)
+
+    # Load a model with specific input channels and classes
+    model = _create('yolov5s', channels=1, classes=10)
+    ```
+
+Notes:
+    For more information on model loading and customization, visit the
+    [YOLOv5 PyTorch Hub Documentation](https://docs.ultralytics.com/yolov5/tutorials/pytorch_hub_model_loading).
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a16d39dd15d18ab44069aa4c5c4c4cc05}\index{hubconf@{hubconf}!custom@{custom}}
+\index{custom@{custom}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{custom()}{custom()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a16d39dd15d18ab44069aa4c5c4c4cc05} 
+hubconf.\+custom (\begin{DoxyParamCaption}\item[{}]{path}{ = {\ttfamily "{}path/to/model.pt"{}}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads a custom or local YOLOv5 model from a given path with optional autoshaping and device specification.
+
+Args:
+    path (str): Path to the custom model file (e.g., 'path/to/model.pt').
+    autoshape (bool): Apply YOLOv5 .autoshape() wrapper to model if True, enabling compatibility with various input
+        types (default is True).
+    _verbose (bool): If True, prints all informational messages to the screen; otherwise, operates silently
+        (default is True).
+    device (str | torch.device | None): Device to load the model on, e.g., 'cpu', 'cuda', torch.device('cuda:0'), etc.
+        (default is None, which automatically selects the best available device).
+
+Returns:
+    torch.nn.Module: A YOLOv5 model loaded with the specified parameters.
+
+Notes:
+    For more details on loading models from PyTorch Hub:
+    https://docs.ultralytics.com/yolov5/tutorials/pytorch_hub_model_loading
+
+Examples:
+    ```python
+    # Load model from a given path with autoshape enabled on the best available device
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'yolov5s.pt')
+
+    # Load model from a local path without autoshape on the CPU device
+    model = torch.hub.load('.', 'custom', 'yolov5s.pt', source='local', autoshape=False, device='cpu')
+    ```
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a6c5ee0f926496e6d2246afd884f0d7aa}\index{hubconf@{hubconf}!yolov5l@{yolov5l}}
+\index{yolov5l@{yolov5l}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5l()}{yolov5l()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a6c5ee0f926496e6d2246afd884f0d7aa} 
+hubconf.\+yolov5l (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates YOLOv5-large model with options for pretraining, channels, classes, autoshaping, verbosity, and device
+selection.
+
+Args:
+    pretrained (bool): Load pretrained weights into the model. Default is True.
+    channels (int): Number of input channels. Default is 3.
+    classes (int): Number of model classes. Default is 80.
+    autoshape (bool): Apply YOLOv5 .autoshape() wrapper to model. Default is True.
+    _verbose (bool): Print all information to screen. Default is True.
+    device (str | torch.device | None): Device to use for model parameters, e.g., 'cpu', 'cuda', or a torch.device instance.
+        Default is None.
+
+Returns:
+    YOLOv5 model (torch.nn.Module): The YOLOv5-large model instantiated with specified configurations and possibly
+    pretrained weights.
+
+Examples:
+    ```python
+    import torch
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5l')
+    ```
+
+Notes:
+    For additional details, refer to the PyTorch Hub models documentation:
+    https://pytorch.org/hub/ultralytics_yolov5
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a24fc6cb7c5358f589d7626fc6254c085}\index{hubconf@{hubconf}!yolov5l6@{yolov5l6}}
+\index{yolov5l6@{yolov5l6}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5l6()}{yolov5l6()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a24fc6cb7c5358f589d7626fc6254c085} 
+hubconf.\+yolov5l6 (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Instantiate the YOLOv5-large-P6 model with options for pretraining, channel and class counts, autoshaping,
+verbosity, and device selection.
+
+Args:
+    pretrained (bool, optional): If True, load pretrained weights into the model. Default is True.
+    channels (int, optional): Number of input channels. Default is 3.
+    classes (int, optional): Number of model classes. Default is 80.
+    autoshape (bool, optional): If True, apply YOLOv5 .autoshape() wrapper to the model for input flexibility. Default is True.
+    _verbose (bool, optional): If True, print all information to the screen. Default is True.
+    device (str | torch.device | None, optional): Device to use for model parameters, e.g., 'cpu', 'cuda', or torch.device.
+        If None, automatically selects the best available device. Default is None.
+
+Returns:
+    torch.nn.Module: The instantiated YOLOv5-large-P6 model.
+
+Example:
+    ```python
+    import torch
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5l6')  # official model
+    model = torch.hub.load('ultralytics/yolov5:master', 'yolov5l6')  # from specific branch
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'path/to/yolov5l6.pt')  # custom/local model
+    model = torch.hub.load('.', 'custom', 'path/to/yolov5l6.pt', source='local')  # local repository
+    ```
+
+Note:
+    Refer to [PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5) for additional usage instructions.
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a517002f3c2b9ad1b591f7d54324f13f3}\index{hubconf@{hubconf}!yolov5m@{yolov5m}}
+\index{yolov5m@{yolov5m}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5m()}{yolov5m()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a517002f3c2b9ad1b591f7d54324f13f3} 
+hubconf.\+yolov5m (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Instantiates the YOLOv5-medium model with customizable pretraining, channel count, class count, autoshaping,
+verbosity, and device.
+
+Args:
+    pretrained (bool, optional): Whether to load pretrained weights into the model. Default is True.
+    channels (int, optional): Number of input channels. Default is 3.
+    classes (int, optional): Number of model classes. Default is 80.
+    autoshape (bool, optional): Apply YOLOv5 .autoshape() wrapper to the model for handling various input formats.
+        Default is True.
+    _verbose (bool, optional): Whether to print detailed information to the screen. Default is True.
+    device (str | torch.device | None, optional): Device specification to use for model parameters (e.g., 'cpu', 'cuda').
+        Default is None.
+
+Returns:
+    torch.nn.Module: The instantiated YOLOv5-medium model.
+
+Usage Example:
+    ```python
+    import torch
+
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5m')  # Load YOLOv5-medium from Ultralytics repository
+    model = torch.hub.load('ultralytics/yolov5:master', 'yolov5m')  # Load from the master branch
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'yolov5m.pt')  # Load a custom/local YOLOv5-medium model
+    model = torch.hub.load('.', 'custom', 'yolov5m.pt', source='local')  # Load from a local repository
+    ```
+
+For more information, visit https://pytorch.org/hub/ultralytics_yolov5.
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_adc72000311015a96777c679b2fae9937}\index{hubconf@{hubconf}!yolov5m6@{yolov5m6}}
+\index{yolov5m6@{yolov5m6}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5m6()}{yolov5m6()}}
+{\footnotesize\ttfamily \label{namespacehubconf_adc72000311015a96777c679b2fae9937} 
+hubconf.\+yolov5m6 (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create YOLOv5-medium-P6 model with options for pretraining, channel count, class count, autoshaping, verbosity, and
+device.
+
+Args:
+    pretrained (bool): If True, loads pretrained weights. Default is True.
+    channels (int): Number of input channels. Default is 3.
+    classes (int): Number of model classes. Default is 80.
+    autoshape (bool): Apply YOLOv5 .autoshape() wrapper to the model for file/URI/PIL/cv2/np inputs and NMS.
+        Default is True.
+    _verbose (bool): If True, prints detailed information to the screen. Default is True.
+    device (str | torch.device | None): Device to use for model parameters. Default is None, which uses the
+        best available device.
+
+Returns:
+    torch.nn.Module: The YOLOv5-medium-P6 model.
+
+Refer to the PyTorch Hub models documentation: https://pytorch.org/hub/ultralytics_yolov5 for additional details.
+
+Example:
+    ```python
+    import torch
+
+    # Load YOLOv5-medium-P6 model
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5m6')
+    ```
+
+Notes:
+    - The model can be loaded with pre-trained weights for better performance on specific tasks.
+    - The autoshape feature simplifies input handling by allowing various popular data formats.
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_aa3bd4bd5dc3e644f595bb2b667e579a5}\index{hubconf@{hubconf}!yolov5n@{yolov5n}}
+\index{yolov5n@{yolov5n}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5n()}{yolov5n()}}
+{\footnotesize\ttfamily \label{namespacehubconf_aa3bd4bd5dc3e644f595bb2b667e579a5} 
+hubconf.\+yolov5n (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Instantiates the YOLOv5-nano model with options for pretraining, input channels, class count, autoshaping,
+verbosity, and device.
+
+Args:
+    pretrained (bool): If True, loads pretrained weights into the model. Defaults to True.
+    channels (int): Number of input channels for the model. Defaults to 3.
+    classes (int): Number of classes for object detection. Defaults to 80.
+    autoshape (bool): If True, applies the YOLOv5 .autoshape() wrapper to the model for various formats (file/URI/PIL/
+        cv2/np) and non-maximum suppression (NMS) during inference. Defaults to True.
+    _verbose (bool): If True, prints detailed information to the screen. Defaults to True.
+    device (str | torch.device | None): Specifies the device to use for model computation. If None, uses the best device
+        available (i.e., GPU if available, otherwise CPU). Defaults to None.
+
+Returns:
+    DetectionModel | ClassificationModel | SegmentationModel: The instantiated YOLOv5-nano model, potentially with
+        pretrained weights and autoshaping applied.
+
+Notes:
+    For further details on loading models from PyTorch Hub, refer to [PyTorch Hub models](https://pytorch.org/hub/
+    ultralytics_yolov5).
+
+Examples:
+    ```python
+    import torch
+    from ultralytics import yolov5n
+
+    # Load the YOLOv5-nano model with defaults
+    model = yolov5n()
+
+    # Load the YOLOv5-nano model with a specific device
+    model = yolov5n(device='cuda')
+    ```
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a59338090e7436955f82d1d7389c6f4dd}\index{hubconf@{hubconf}!yolov5n6@{yolov5n6}}
+\index{yolov5n6@{yolov5n6}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5n6()}{yolov5n6()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a59338090e7436955f82d1d7389c6f4dd} 
+hubconf.\+yolov5n6 (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates YOLOv5-nano-P6 model with options for pretraining, channels, classes, autoshaping, verbosity, and device.
+
+Args:
+    pretrained (bool, optional): If True, loads pretrained weights into the model. Default is True.
+    channels (int, optional): Number of input channels. Default is 3.
+    classes (int, optional): Number of model classes. Default is 80.
+    autoshape (bool, optional): If True, applies the YOLOv5 .autoshape() wrapper to the model. Default is True.
+    _verbose (bool, optional): If True, prints all information to screen. Default is True.
+    device (str | torch.device | None, optional): Device to use for model parameters. Can be 'cpu', 'cuda', or None.
+        Default is None.
+
+Returns:
+    torch.nn.Module: YOLOv5-nano-P6 model loaded with the specified configurations.
+
+Example:
+    ```python
+    import torch
+    model = yolov5n6(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=True, device='cuda')
+    ```
+
+Notes:
+    For more information on PyTorch Hub models, visit: https://pytorch.org/hub/ultralytics_yolov5
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_ac78e21ec08a9246e87624b2958fff424}\index{hubconf@{hubconf}!yolov5s@{yolov5s}}
+\index{yolov5s@{yolov5s}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5s()}{yolov5s()}}
+{\footnotesize\ttfamily \label{namespacehubconf_ac78e21ec08a9246e87624b2958fff424} 
+hubconf.\+yolov5s (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a YOLOv5-small (yolov5s) model with options for pretraining, input channels, class count, autoshaping,
+verbosity, and device configuration.
+
+Args:
+    pretrained (bool, optional): Flag to load pretrained weights into the model. Defaults to True.
+    channels (int, optional): Number of input channels. Defaults to 3.
+    classes (int, optional): Number of model classes. Defaults to 80.
+    autoshape (bool, optional): Whether to wrap the model with YOLOv5's .autoshape() for handling various input formats.
+        Defaults to True.
+    _verbose (bool, optional): Flag to print detailed information regarding model loading. Defaults to True.
+    device (str | torch.device | None, optional): Device to use for model computation, can be 'cpu', 'cuda', or
+        torch.device instances. If None, automatically selects the best available device. Defaults to None.
+
+Returns:
+    torch.nn.Module: The YOLOv5-small model configured and loaded according to the specified parameters.
+
+Example:
+    ```python
+    import torch
+
+    # Load the official YOLOv5-small model with pretrained weights
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+
+    # Load the YOLOv5-small model from a specific branch
+    model = torch.hub.load('ultralytics/yolov5:master', 'yolov5s')
+
+    # Load a custom YOLOv5-small model from a local checkpoint
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'yolov5s.pt')
+
+    # Load a local YOLOv5-small model specifying source as local repository
+    model = torch.hub.load('.', 'custom', 'yolov5s.pt', source='local')
+    ```
+
+Notes:
+    For more details on model loading and customization, visit
+    the [YOLOv5 PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5).
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a74b6664af8902452d73286f55088007c}\index{hubconf@{hubconf}!yolov5s6@{yolov5s6}}
+\index{yolov5s6@{yolov5s6}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5s6()}{yolov5s6()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a74b6664af8902452d73286f55088007c} 
+hubconf.\+yolov5s6 (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Instantiate the YOLOv5-small-P6 model with options for pretraining, input channels, number of classes, autoshaping,
+verbosity, and device selection.
+
+Args:
+    pretrained (bool): If True, loads pretrained weights. Default is True.
+    channels (int): Number of input channels. Default is 3.
+    classes (int): Number of object detection classes. Default is 80.
+    autoshape (bool): If True, applies YOLOv5 .autoshape() wrapper to the model, allowing for varied input formats.
+        Default is True.
+    _verbose (bool): If True, prints detailed information during model loading. Default is True.
+    device (str | torch.device | None): Device specification for model parameters (e.g., 'cpu', 'cuda', or torch.device).
+        Default is None, which selects an available device automatically.
+
+Returns:
+    torch.nn.Module: The YOLOv5-small-P6 model instance.
+
+Usage:
+    ```python
+    import torch
+
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s6')
+    model = torch.hub.load('ultralytics/yolov5:master', 'yolov5s6')  # load from a specific branch
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'path/to/yolov5s6.pt')  # custom/local model
+    model = torch.hub.load('.', 'custom', 'path/to/yolov5s6.pt', source='local')  # local repo model
+    ```
+
+Notes:
+    - For more information, refer to the PyTorch Hub models documentation at https://pytorch.org/hub/ultralytics_yolov5
+
+Raises:
+    Exception: If there is an error during model creation or loading, with a suggestion to visit the YOLOv5
+        tutorials for help.
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_a7e55f8421f72caed04d54e7219402d35}\index{hubconf@{hubconf}!yolov5x@{yolov5x}}
+\index{yolov5x@{yolov5x}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5x()}{yolov5x()}}
+{\footnotesize\ttfamily \label{namespacehubconf_a7e55f8421f72caed04d54e7219402d35} 
+hubconf.\+yolov5x (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Perform object detection using the YOLOv5-xlarge model with options for pretraining, input channels, class count,
+autoshaping, verbosity, and device specification.
+
+Args:
+    pretrained (bool): If True, loads pretrained weights into the model. Defaults to True.
+    channels (int): Number of input channels for the model. Defaults to 3.
+    classes (int): Number of model classes for object detection. Defaults to 80.
+    autoshape (bool): If True, applies the YOLOv5 .autoshape() wrapper for handling different input formats. Defaults to
+        True.
+    _verbose (bool): If True, prints detailed information during model loading. Defaults to True.
+    device (str | torch.device | None): Device specification for computing the model, e.g., 'cpu', 'cuda:0', torch.device('cuda').
+        Defaults to None.
+
+Returns:
+    torch.nn.Module: The YOLOv5-xlarge model loaded with the specified parameters, optionally with pretrained weights and
+    autoshaping applied.
+
+Example:
+    ```python
+    import torch
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5x')
+    ```
+
+For additional details, refer to the official YOLOv5 PyTorch Hub models documentation:
+https://pytorch.org/hub/ultralytics_yolov5
+\end{DoxyVerb}
+ \Hypertarget{namespacehubconf_ab7cea48afe0bf842f7069e16dbfcfb05}\index{hubconf@{hubconf}!yolov5x6@{yolov5x6}}
+\index{yolov5x6@{yolov5x6}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{yolov5x6()}{yolov5x6()}}
+{\footnotesize\ttfamily \label{namespacehubconf_ab7cea48afe0bf842f7069e16dbfcfb05} 
+hubconf.\+yolov5x6 (\begin{DoxyParamCaption}\item[{}]{pretrained}{ = {\ttfamily True}, }\item[{}]{channels}{ = {\ttfamily 3}, }\item[{}]{classes}{ = {\ttfamily 80}, }\item[{}]{autoshape}{ = {\ttfamily True}, }\item[{}]{\+\_\+verbose}{ = {\ttfamily True}, }\item[{}]{device}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates the YOLOv5-xlarge-P6 model with options for pretraining, number of input channels, class count, autoshaping,
+verbosity, and device selection.
+
+Args:
+    pretrained (bool): If True, loads pretrained weights into the model. Default is True.
+    channels (int): Number of input channels. Default is 3.
+    classes (int): Number of model classes. Default is 80.
+    autoshape (bool): If True, applies YOLOv5 .autoshape() wrapper to the model. Default is True.
+    _verbose (bool): If True, prints all information to the screen. Default is True.
+    device (str | torch.device | None): Device to use for model parameters, can be a string, torch.device object, or
+        None for default device selection. Default is None.
+
+Returns:
+    torch.nn.Module: The instantiated YOLOv5-xlarge-P6 model.
+
+Example:
+    ```python
+    import torch
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')  # load the YOLOv5-xlarge-P6 model
+    ```
+
+Note:
+    For more information on YOLOv5 models, visit the official documentation:
+    https://docs.ultralytics.com/yolov5
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacehubconf_a695f0a9ddf0d81caf5cc07310bb3c0e5}\index{hubconf@{hubconf}!default@{default}}
+\index{default@{default}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily \label{namespacehubconf_a695f0a9ddf0d81caf5cc07310bb3c0e5} 
+hubconf.\+default}
+
+\Hypertarget{namespacehubconf_adfcf708de8d493e0f20a49bc5b81784d}\index{hubconf@{hubconf}!help@{help}}
+\index{help@{help}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily \label{namespacehubconf_adfcf708de8d493e0f20a49bc5b81784d} 
+hubconf.\+help}
+
+\Hypertarget{namespacehubconf_af4d150499d1d02ae1ad95234cdc82a29}\index{hubconf@{hubconf}!imgs@{imgs}}
+\index{imgs@{imgs}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{imgs}{imgs}}
+{\footnotesize\ttfamily \label{namespacehubconf_af4d150499d1d02ae1ad95234cdc82a29} 
+list hubconf.\+imgs}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ [}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/images/zidane.jpg"{}},\ \ \textcolor{comment}{\#\ filename}}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ Path(\textcolor{stringliteral}{"{}data/images/zidane.jpg"{}}),\ \ \textcolor{comment}{\#\ Path}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}https://ultralytics.com/images/zidane.jpg"{}},\ \ \textcolor{comment}{\#\ URI}}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ cv2.imread(\textcolor{stringliteral}{"{}data/images/bus.jpg"{}})[:,\ :,\ ::-\/1],\ \ \textcolor{comment}{\#\ OpenCV}}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ Image.open(\textcolor{stringliteral}{"{}data/images/bus.jpg"{}}),\ \ \textcolor{comment}{\#\ PIL}}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ np.zeros((320,\ 640,\ 3)),}
+\DoxyCodeLine{00008\ \ \ \ \ ]}
+
+\end{DoxyCode}
+\Hypertarget{namespacehubconf_a121754ebff6ebf330a6c0113afe25550}\index{hubconf@{hubconf}!model@{model}}
+\index{model@{model}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{namespacehubconf_a121754ebff6ebf330a6c0113afe25550} 
+hubconf.\+model = \mbox{\hyperlink{namespacehubconf_ad1d70c80a477c02404f5d552f251714b}{\+\_\+create}}(name=opt.\+model, pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)}
+
+\Hypertarget{namespacehubconf_ad5b15592f4ba74cdc435e06c1785d0a1}\index{hubconf@{hubconf}!opt@{opt}}
+\index{opt@{opt}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily \label{namespacehubconf_ad5b15592f4ba74cdc435e06c1785d0a1} 
+hubconf.\+opt = parser.\+parse\+\_\+args()}
+
+\Hypertarget{namespacehubconf_a4bc49af68a6600ac86b67f7d69ec5282}\index{hubconf@{hubconf}!parser@{parser}}
+\index{parser@{parser}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily \label{namespacehubconf_a4bc49af68a6600ac86b67f7d69ec5282} 
+hubconf.\+parser = argparse.\+Argument\+Parser()}
+
+\Hypertarget{namespacehubconf_a42799aa2cc6319465e4d8653c1d67474}\index{hubconf@{hubconf}!results@{results}}
+\index{results@{results}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily \label{namespacehubconf_a42799aa2cc6319465e4d8653c1d67474} 
+hubconf.\+results = \mbox{\hyperlink{namespacehubconf_a121754ebff6ebf330a6c0113afe25550}{model}}(\mbox{\hyperlink{namespacehubconf_af4d150499d1d02ae1ad95234cdc82a29}{imgs}}, size=320)}
+
+\Hypertarget{namespacehubconf_a26f9fdf1c00ab7424de305fd1fb7a5c0}\index{hubconf@{hubconf}!str@{str}}
+\index{str@{str}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily \label{namespacehubconf_a26f9fdf1c00ab7424de305fd1fb7a5c0} 
+hubconf.\+str}
+
+\Hypertarget{namespacehubconf_a424169d5596a42c1eab4ae1d7139a51d}\index{hubconf@{hubconf}!type@{type}}
+\index{type@{type}!hubconf@{hubconf}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{namespacehubconf_a424169d5596a42c1eab4ae1d7139a51d} 
+hubconf.\+type}
+

@@ -1,0 +1,63 @@
+\doxysection{utils.\+augmentations.\+Center\+Crop Class Reference}
+\hypertarget{classutils_1_1augmentations_1_1_center_crop}{}\label{classutils_1_1augmentations_1_1_center_crop}\index{utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_center_crop_aec771deafa939a34c07e729988a06e41}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, size=640)
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_center_crop_a991c3d399dc885619cac77a3366a948f}{\+\_\+\+\_\+call\+\_\+\+\_\+}} (self, im)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_center_crop_a881a6578039c47d00d79314617848995}{h}}
+\item 
+tuple \mbox{\hyperlink{classutils_1_1augmentations_1_1_center_crop_a93e4d051ca04707a7d73a1f7340068cc}{w}} = (size, size) if isinstance(size, int) else size
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Applies center crop to an image, resizing it to the specified size while maintaining aspect ratio.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_center_crop_aec771deafa939a34c07e729988a06e41}\index{utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_center_crop_aec771deafa939a34c07e729988a06e41} 
+utils.\+augmentations.\+Center\+Crop.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{size}{ = {\ttfamily 640}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes CenterCrop for image preprocessing, accepting single int or tuple for size, defaults to 640.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_center_crop_a991c3d399dc885619cac77a3366a948f}\index{utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}!\_\_call\_\_@{\_\_call\_\_}}
+\index{\_\_call\_\_@{\_\_call\_\_}!utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}}
+\doxysubsubsection{\texorpdfstring{\_\_call\_\_()}{\_\_call\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_center_crop_a991c3d399dc885619cac77a3366a948f} 
+utils.\+augmentations.\+Center\+Crop.\+\_\+\+\_\+call\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{im}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies center crop to the input image and resizes it to a specified size, maintaining aspect ratio.
+
+im = np.array HWC
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_center_crop_a881a6578039c47d00d79314617848995}\index{utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}!h@{h}}
+\index{h@{h}!utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}}
+\doxysubsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_center_crop_a881a6578039c47d00d79314617848995} 
+utils.\+augmentations.\+Center\+Crop.\+h}
+
+\Hypertarget{classutils_1_1augmentations_1_1_center_crop_a93e4d051ca04707a7d73a1f7340068cc}\index{utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}!w@{w}}
+\index{w@{w}!utils.augmentations.CenterCrop@{utils.augmentations.CenterCrop}}
+\doxysubsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_center_crop_a93e4d051ca04707a7d73a1f7340068cc} 
+utils.\+augmentations.\+Center\+Crop.\+w = (size, size) if isinstance(size, int) else size}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{augmentations_8py}{augmentations.\+py}}\end{DoxyCompactItemize}
