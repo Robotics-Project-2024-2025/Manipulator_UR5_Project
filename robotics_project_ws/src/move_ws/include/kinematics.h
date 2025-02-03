@@ -20,7 +20,7 @@
 #define DELTAT 0.01
 #define ERROR 0.0025
 #define MINT 0
-#define MAXT 6
+#define MAXT 2
 #define NUM_JOINTS 6
 #define XMIN -0.7
 #define XMAX 0.7
