@@ -873,7 +873,7 @@ double singularityCheck(int angle, double value) {
 //HORIZONTAL MOTION
 Matrix86 Ur5Inverse(Vector3d v, Matrix3d m){ //vector = punti di destinazione; m= matrice rotazionale
     Matrix44 T60;
-    //v[1]=-v[1];
+    v[1]=-v[1];
     //v[2]=-v[2];
     T60 << m(0,0), m(0,1), m(0,2), v(0),
            m(1,0), m(1,1), m(1,2), v(1),
