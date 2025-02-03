@@ -1,0 +1,56 @@
+\doxysection{utils.\+augmentations.\+To\+Tensor Class Reference}
+\hypertarget{classutils_1_1augmentations_1_1_to_tensor}{}\label{classutils_1_1augmentations_1_1_to_tensor}\index{utils.augmentations.ToTensor@{utils.augmentations.ToTensor}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_to_tensor_aca3a1c1c2d840da304addb34093b5d0b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classutils_1_1augmentations_1_1_to_tensor_af4c2eff27e0df391d3ac469baff502e1}{half}}=False)
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_to_tensor_af1c9d2846a0b26faaa7267fc21760ff9}{\+\_\+\+\_\+call\+\_\+\+\_\+}} (self, im)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1augmentations_1_1_to_tensor_af4c2eff27e0df391d3ac469baff502e1}{half}} = half
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Converts BGR np.array image from HWC to RGB CHW format, normalizes to [0, 1], and supports FP16 if half=True.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_to_tensor_aca3a1c1c2d840da304addb34093b5d0b}\index{utils.augmentations.ToTensor@{utils.augmentations.ToTensor}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.augmentations.ToTensor@{utils.augmentations.ToTensor}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_to_tensor_aca3a1c1c2d840da304addb34093b5d0b} 
+utils.\+augmentations.\+To\+Tensor.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{half}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes ToTensor for YOLOv5 image preprocessing, with optional half precision (half=True for FP16).\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_to_tensor_af1c9d2846a0b26faaa7267fc21760ff9}\index{utils.augmentations.ToTensor@{utils.augmentations.ToTensor}!\_\_call\_\_@{\_\_call\_\_}}
+\index{\_\_call\_\_@{\_\_call\_\_}!utils.augmentations.ToTensor@{utils.augmentations.ToTensor}}
+\doxysubsubsection{\texorpdfstring{\_\_call\_\_()}{\_\_call\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_to_tensor_af1c9d2846a0b26faaa7267fc21760ff9} 
+utils.\+augmentations.\+To\+Tensor.\+\_\+\+\_\+call\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{im}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts BGR np.array image from HWC to RGB CHW format, and normalizes to [0, 1], with support for FP16 if
+`half=True`.
+
+im = np.array HWC in BGR order
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1augmentations_1_1_to_tensor_af4c2eff27e0df391d3ac469baff502e1}\index{utils.augmentations.ToTensor@{utils.augmentations.ToTensor}!half@{half}}
+\index{half@{half}!utils.augmentations.ToTensor@{utils.augmentations.ToTensor}}
+\doxysubsubsection{\texorpdfstring{half}{half}}
+{\footnotesize\ttfamily \label{classutils_1_1augmentations_1_1_to_tensor_af4c2eff27e0df391d3ac469baff502e1} 
+utils.\+augmentations.\+To\+Tensor.\+half = half}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{augmentations_8py}{augmentations.\+py}}\end{DoxyCompactItemize}

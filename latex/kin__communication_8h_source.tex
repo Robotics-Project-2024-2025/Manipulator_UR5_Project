@@ -1,0 +1,91 @@
+\doxysection{kin\+\_\+communication.\+h}
+\hypertarget{kin__communication_8h_source}{}\label{kin__communication_8h_source}\index{robotics\_project\_ws/src/move\_ws/include/kin\_communication.h@{robotics\_project\_ws/src/move\_ws/include/kin\_communication.h}}
+\mbox{\hyperlink{kin__communication_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ kin\_communication.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Kinematics}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Matteo\ Gottardelli\ on\ 28/11/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ kin\_communication\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ kin\_communication\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kinematics_8h}{kinematics.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <control\_msgs/action/follow\_joint\_trajectory.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <trajectory\_msgs/msg/joint\_trajectory.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <sensor\_msgs/msg/joint\_state.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <rclcpp\_action/rclcpp\_action.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \#\ The\ header\ is\ used\ to\ specify\ the\ coordinate\ frame\ and\ the\ reference\ time\ for}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \#\ the\ trajectory\ durations}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ std\_msgs/Header\ header}}
+\DoxyCodeLine{00028\ \textcolor{comment}{}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \#\ The\ names\ of\ the\ active\ joints\ in\ each\ trajectory\ point.\ These\ names\ are}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \#\ ordered\ and\ must\ correspond\ to\ the\ values\ in\ each\ trajectory\ point.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ string[]\ joint\_names}}
+\DoxyCodeLine{00032\ \textcolor{comment}{}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \#\ Array\ of\ trajectory\ points,\ which\ describe\ the\ positions,\ velocities,}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \#\ accelerations\ and/or\ efforts\ of\ the\ joints\ at\ each\ time\ point.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ JointTrajectoryPoint[]\ points*/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SHOULDER\_PAN\ "{}shoulder\_pan\_joint"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SHOULDER\_LIFT\ "{}shoulder\_lift\_joint"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ ELBOW\ "{}elbow\_joint"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ WRIST\_1\ "{}wrist\_1\_joint"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WRIST\_2\ "{}wrist\_2\_joint"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ WRIST\_3\ "{}wrist\_3\_joint"{}}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ NUM\_JOINTS\ 6}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00045\ \textcolor{keyword}{using\ namespace\ }Eigen;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}=Matrix<double,\ -\/1,\ 6>;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{using\ namespace\ }std::chrono\_literals;}
+\DoxyCodeLine{00049\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kin__communication_8h_a018274b36adaf39f1ee311f33ffcdb0b}{FollowJointTrajectory}}\ =\ control\_msgs::action::FollowJointTrajectory;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kin__communication_8h_a4b643e12388cf1378bf23973777678d1}{GoalHandleFollowJointTrajectory}}\ =\ rclcpp\_action::ClientGoalHandle<FollowJointTrajectory>;}
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trajectory_action_client_a726c12e55dd87a6f15db4beb13db51e0}{TrajectoryActionClient}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_trajectory_action_client_a85988924556baf419a8cd8bf49e4f333}{TrajectoryActionClient}}(\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}\ Th,\ std::shared\_ptr<rclcpp::Node>\ node);}
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ time\_between\_points\_;}
+\DoxyCodeLine{00057\ \ \ \ \ rclcpp\_action::Client<FollowJointTrajectory>::SharedPtr\ action\_client\_;}
+\DoxyCodeLine{00058\ \ \ \ \ rclcpp::Subscription<sensor\_msgs::msg::JointState>::SharedPtr\ subscription\_;}
+\DoxyCodeLine{00059\ \ \ \ \ rclcpp::TimerBase::SharedPtr\ timer\_;}
+\DoxyCodeLine{00060\ \ \ \ \ std::shared\_ptr<rclcpp::Node>\ origin\_node;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ publish\_iter(\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}\ Th);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ init\_Trajectory(trajectory\_msgs::msg::JointTrajectory*\ traj\_msg);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{string}\ chooseName(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ naming\_Points(trajectory\_msgs::msg::JointTrajectory*\ traj\_msg);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_point(trajectory\_msgs::msg::JointTrajectory*\ traj\_msg,\ trajectory\_msgs::msg::JointTrajectoryPoint\ p);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ publish\_trajectory(trajectory\_msgs::msg::JointTrajectory\ traj\_msg);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ handle\_trajectory\_success();}
+\DoxyCodeLine{00068\ \ \ \ \ trajectory\_msgs::msg::JointTrajectory\ traj\_msg;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_joint_receiver_ad0b8a7f8f1dfb961095f34fdf202bd25}{JointReceiver}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_joint_receiver_ad0b8a7f8f1dfb961095f34fdf202bd25}{JointReceiver}}();}
+\DoxyCodeLine{00075\ \ \ \ \ shared\_ptr<\textcolor{keyword}{const}}
+\DoxyCodeLine{00076\ \ \ \ \ sensor\_msgs::msg::JointState>\mbox{\hyperlink{class_joint_receiver_ab27438e122f095fde2448cdc57a256a8}{get\_joint\_state}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00078\ \ \ \ \ rclcpp::Subscription<\ sensor\_msgs::msg::JointState>::SharedPtr\ joint\_receiver\_;}
+\DoxyCodeLine{00079\ \ \ \ \ shared\_ptr<const\ sensor\_msgs::msg::JointState>\ joint\_state\_;}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ \mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ \mbox{\hyperlink{kin__communication_8h_a35066bc9e962862d90d15c13d6ed850b}{receive\_joint\_state}}();}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kin__communication_8h_a311c50bf5db615483fabbcc854056a4d}{send\_trajectory}}(\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}\ th,\ std::shared\_ptr<rclcpp::Node>\ node);}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kin__communication_8h_a77219fe0fa2c38e71065abbf682bd3e4}{setupCommunication}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ argv[]);}
+\DoxyCodeLine{00084\ std::string\ \mbox{\hyperlink{kin__communication_8h_a363861d2d15f714542a4dd4afd440214}{uuid\_to\_string}}(\textcolor{keyword}{const}\ std::array<uint8\_t,\ 16>\&\ uuid);}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ kin\_communication\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

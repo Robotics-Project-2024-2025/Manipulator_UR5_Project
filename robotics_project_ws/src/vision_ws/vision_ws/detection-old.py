@@ -1,3 +1,10 @@
+#
+#  detection-old.py
+#  Robotics
+#
+#  Created by Alessandro Benassi on 15/12/24.
+#
+
 import rclpy
 import sys
 import torch

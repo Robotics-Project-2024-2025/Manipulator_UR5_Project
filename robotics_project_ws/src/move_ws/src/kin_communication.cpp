@@ -200,7 +200,9 @@ shared_ptr<const sensor_msgs::msg::JointState> JointReceiver::get_joint_state() 
 
 void send_trajectory(MatrixD6 th, std::shared_ptr<rclcpp::Node> node) {
     cout << "Sending trajectory..." << endl;
-    rclcpp::spin_some(std::make_shared<TrajectoryActionClient>(th, node));
+    auto traj_node=std::make_shared<TrajectoryActionClient>(th, node);
+    rclcpp::spin_some(traj_node);
+    //traj_node.destroy_node();
     cout << "End Sending trajectory" << endl;
 }
 

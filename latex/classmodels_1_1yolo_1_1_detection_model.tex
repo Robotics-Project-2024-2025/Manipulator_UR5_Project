@@ -1,0 +1,167 @@
+\doxysection{models.\+yolo.\+Detection\+Model Class Reference}
+\hypertarget{classmodels_1_1yolo_1_1_detection_model}{}\label{classmodels_1_1yolo_1_1_detection_model}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+Inheritance diagram for models.\+yolo.\+Detection\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classmodels_1_1yolo_1_1_detection_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ad6630d4247a0f9224cd68370ecb5d587}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}="{}yolov5s.\+yaml"{}, ch=3, nc=None, anchors=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af01a89839d56c349fa7ff3e49c3ced33}{forward}} (self, x, augment=False, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9}{fuse}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5}{info}} (self, verbose=False, img\+\_\+size=640)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_a086f7d3071b5a4f56e778ece4df284cf}{yaml}} = \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af69520e1f2ebbc493236b46b38b10694}{yaml\+\_\+file}} = Path(\mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}).name
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_aa16a9856e54a0645279145e21dc86c0d}{save}} = \mbox{\hyperlink{namespacemodels_1_1yolo_aefa1f74c6cef6b61406774143aabec60}{parse\+\_\+model}}(deepcopy(self.\+yaml), ch=\mbox{[}ch\mbox{]})
+\item 
+list \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_afef8c0d23a376fe63641a45a52f2d0da}{names}} = \mbox{[}\mbox{\hyperlink{namespacemodels_1_1yolo_a07bf90234e815429482e9ab37fd8790b}{str}}(i) for i in range(self.\+yaml\mbox{[}"{}nc"{}\mbox{]})\mbox{]}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ae87c0b6b7b0d325206e62b08f703d53b}{inplace}} = self.\+yaml.\+get("{}inplace"{}, True)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af2e38a53abcbc61d9b2497e267adf247}{stride}} = m.\+stride
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0}{model}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_acdfaea93add0e6dee70f1b03e68bec08}{\+\_\+forward\+\_\+augment}} (self, x)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ade73f6944b8ddd537b5f7e63f4c47036}{\+\_\+descale\+\_\+pred}} (self, p, flips, scale, img\+\_\+size)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_ae5fb55fb66decb52a270ed85c3b159e6}{\+\_\+clip\+\_\+augmented}} (self, y)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_aefd65ac3505c7ec0059e79c7450799bb}{\+\_\+initialize\+\_\+biases}} (self, cf=None)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model}{models.\+yolo.\+Base\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852}{\+\_\+forward\+\_\+once}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089}{\+\_\+profile\+\_\+one\+\_\+layer}} (self, m, x, dt)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373}{\+\_\+apply}} (self, fn)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 detection model class for object detection tasks, supporting custom configurations and anchors.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_ad6630d4247a0f9224cd68370ecb5d587}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_ad6630d4247a0f9224cd68370ecb5d587} 
+models.\+yolo.\+Detection\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cfg}{ = {\ttfamily "{}yolov5s.yaml"{}}, }\item[{}]{ch}{ = {\ttfamily 3}, }\item[{}]{nc}{ = {\ttfamily None}, }\item[{}]{anchors}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes YOLOv5 model with configuration file, input channels, number of classes, and custom anchors.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_ae5fb55fb66decb52a270ed85c3b159e6}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!\_clip\_augmented@{\_clip\_augmented}}
+\index{\_clip\_augmented@{\_clip\_augmented}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{\_clip\_augmented()}{\_clip\_augmented()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_ae5fb55fb66decb52a270ed85c3b159e6} 
+models.\+yolo.\+Detection\+Model.\+\_\+clip\+\_\+augmented (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Clips augmented inference tails for YOLOv5 models, affecting first and last tensors based on grid points and
+layer counts.
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_detection_model_ade73f6944b8ddd537b5f7e63f4c47036}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!\_descale\_pred@{\_descale\_pred}}
+\index{\_descale\_pred@{\_descale\_pred}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{\_descale\_pred()}{\_descale\_pred()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_ade73f6944b8ddd537b5f7e63f4c47036} 
+models.\+yolo.\+Detection\+Model.\+\_\+descale\+\_\+pred (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{p}{, }\item[{}]{flips}{, }\item[{}]{scale}{, }\item[{}]{img\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}De-scales predictions from augmented inference, adjusting for flips and image size.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_detection_model_acdfaea93add0e6dee70f1b03e68bec08}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!\_forward\_augment@{\_forward\_augment}}
+\index{\_forward\_augment@{\_forward\_augment}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{\_forward\_augment()}{\_forward\_augment()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_acdfaea93add0e6dee70f1b03e68bec08} 
+models.\+yolo.\+Detection\+Model.\+\_\+forward\+\_\+augment (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Performs augmented inference across different scales and flips, returning combined detections.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_detection_model_aefd65ac3505c7ec0059e79c7450799bb}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!\_initialize\_biases@{\_initialize\_biases}}
+\index{\_initialize\_biases@{\_initialize\_biases}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{\_initialize\_biases()}{\_initialize\_biases()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_aefd65ac3505c7ec0059e79c7450799bb} 
+models.\+yolo.\+Detection\+Model.\+\_\+initialize\+\_\+biases (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cf}{ = {\ttfamily None}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Initializes biases for YOLOv5's Detect() module, optionally using class frequencies (cf).
+
+For details see https://arxiv.org/abs/1708.02002 section 3.3.
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_detection_model_af01a89839d56c349fa7ff3e49c3ced33}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!forward@{forward}}
+\index{forward@{forward}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_af01a89839d56c349fa7ff3e49c3ced33} 
+models.\+yolo.\+Detection\+Model.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{, }\item[{}]{augment}{ = {\ttfamily False}, }\item[{}]{profile}{ = {\ttfamily False}, }\item[{}]{visualize}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs single-scale or augmented inference and may include profiling or visualization.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a95afbfe6a613b4217c1560f5670ce855}{models.\+yolo.\+Base\+Model}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_ae87c0b6b7b0d325206e62b08f703d53b}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!inplace@{inplace}}
+\index{inplace@{inplace}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{inplace}{inplace}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_ae87c0b6b7b0d325206e62b08f703d53b} 
+models.\+yolo.\+Detection\+Model.\+inplace = self.\+yaml.\+get("{}inplace"{}, True)}
+
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_afef8c0d23a376fe63641a45a52f2d0da}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!names@{names}}
+\index{names@{names}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_afef8c0d23a376fe63641a45a52f2d0da} 
+list models.\+yolo.\+Detection\+Model.\+names = \mbox{[}\mbox{\hyperlink{namespacemodels_1_1yolo_a07bf90234e815429482e9ab37fd8790b}{str}}(i) for i in range(self.\+yaml\mbox{[}"{}nc"{}\mbox{]})\mbox{]}}
+
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_aa16a9856e54a0645279145e21dc86c0d}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!save@{save}}
+\index{save@{save}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{save}{save}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_aa16a9856e54a0645279145e21dc86c0d} 
+models.\+yolo.\+Detection\+Model.\+save = \mbox{\hyperlink{namespacemodels_1_1yolo_aefa1f74c6cef6b61406774143aabec60}{parse\+\_\+model}}(deepcopy(self.\+yaml), ch=\mbox{[}ch\mbox{]})}
+
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_af2e38a53abcbc61d9b2497e267adf247}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!stride@{stride}}
+\index{stride@{stride}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_af2e38a53abcbc61d9b2497e267adf247} 
+models.\+yolo.\+Detection\+Model.\+stride = m.\+stride}
+
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_a086f7d3071b5a4f56e778ece4df284cf}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!yaml@{yaml}}
+\index{yaml@{yaml}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{yaml}{yaml}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_a086f7d3071b5a4f56e778ece4df284cf} 
+models.\+yolo.\+Detection\+Model.\+yaml = \mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}}
+
+\Hypertarget{classmodels_1_1yolo_1_1_detection_model_af69520e1f2ebbc493236b46b38b10694}\index{models.yolo.DetectionModel@{models.yolo.DetectionModel}!yaml\_file@{yaml\_file}}
+\index{yaml\_file@{yaml\_file}!models.yolo.DetectionModel@{models.yolo.DetectionModel}}
+\doxysubsubsection{\texorpdfstring{yaml\_file}{yaml\_file}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_detection_model_af69520e1f2ebbc493236b46b38b10694} 
+models.\+yolo.\+Detection\+Model.\+yaml\+\_\+file = Path(\mbox{\hyperlink{namespacemodels_1_1yolo_a8c1d0198d6f446d8ac2d5d0c971fc191}{cfg}}).name}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{yolo_8py}{yolo.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,92 @@
+\doxysection{vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service Class Reference}
+\hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service}{}\label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+Inheritance diagram for vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvision__ws_1_1detection_1_1_yolo_bounding_box_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4e1994b0f2afaf64c0931b4b2eddffbd}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_aa279afa8ab6a1bc786ffaf0e2e131c89}{handle\+\_\+bounding\+\_\+boxes\+\_\+request}} (self, request, response)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4aac141baf11e7312fbc42be67d5fd2f}{model}} = Detect\+Multi\+Backend(weights, device=device, data=data, fp16=False)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a2082f52877caed3eaf0f9cb45b1eed2c}{imgsz}} = check\+\_\+img\+\_\+size(imgsz, s=self.\+model.\+stride)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4dcd71cb13f03f163cc03cc7cde28d6f}{conf\+\_\+thres}} = conf\+\_\+thres
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a1c5b55c07c1496a64d9d9d5a6dd0e663}{iou\+\_\+thres}} = iou\+\_\+thres
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_ae031a7b6f7b3a3171f8069ad4c57e649}{max\+\_\+det}} = max\+\_\+det
+\item 
+\mbox{\hyperlink{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a6a1c1ba6cbb4b5e33c578699a7032a8a}{service}} = self.\+create\+\_\+service(Boundingbox, \textquotesingle{}yolo\+\_\+bounding\+\_\+box\+\_\+service\textquotesingle{}, self.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4e1994b0f2afaf64c0931b4b2eddffbd}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4e1994b0f2afaf64c0931b4b2eddffbd} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_aa279afa8ab6a1bc786ffaf0e2e131c89}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!handle\_bounding\_boxes\_request@{handle\_bounding\_boxes\_request}}
+\index{handle\_bounding\_boxes\_request@{handle\_bounding\_boxes\_request}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{handle\_bounding\_boxes\_request()}{handle\_bounding\_boxes\_request()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_aa279afa8ab6a1bc786ffaf0e2e131c89} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{request}{, }\item[{}]{response}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4dcd71cb13f03f163cc03cc7cde28d6f}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!conf\_thres@{conf\_thres}}
+\index{conf\_thres@{conf\_thres}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{conf\_thres}{conf\_thres}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4dcd71cb13f03f163cc03cc7cde28d6f} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+conf\+\_\+thres = conf\+\_\+thres}
+
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a2082f52877caed3eaf0f9cb45b1eed2c}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!imgsz@{imgsz}}
+\index{imgsz@{imgsz}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{imgsz}{imgsz}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a2082f52877caed3eaf0f9cb45b1eed2c} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+imgsz = check\+\_\+img\+\_\+size(imgsz, s=self.\+model.\+stride)}
+
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a1c5b55c07c1496a64d9d9d5a6dd0e663}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!iou\_thres@{iou\_thres}}
+\index{iou\_thres@{iou\_thres}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{iou\_thres}{iou\_thres}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a1c5b55c07c1496a64d9d9d5a6dd0e663} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+iou\+\_\+thres = iou\+\_\+thres}
+
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_ae031a7b6f7b3a3171f8069ad4c57e649}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!max\_det@{max\_det}}
+\index{max\_det@{max\_det}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{max\_det}{max\_det}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_ae031a7b6f7b3a3171f8069ad4c57e649} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+max\+\_\+det = max\+\_\+det}
+
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4aac141baf11e7312fbc42be67d5fd2f}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!model@{model}}
+\index{model@{model}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a4aac141baf11e7312fbc42be67d5fd2f} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+model = Detect\+Multi\+Backend(weights, device=device, data=data, fp16=False)}
+
+\Hypertarget{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a6a1c1ba6cbb4b5e33c578699a7032a8a}\index{vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}!service@{service}}
+\index{service@{service}!vision\_ws.detection.YoloBoundingBoxService@{vision\_ws.detection.YoloBoundingBoxService}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1detection_1_1_yolo_bounding_box_service_a6a1c1ba6cbb4b5e33c578699a7032a8a} 
+vision\+\_\+ws.\+detection.\+Yolo\+Bounding\+Box\+Service.\+service = self.\+create\+\_\+service(Boundingbox, \textquotesingle{}yolo\+\_\+bounding\+\_\+box\+\_\+service\textquotesingle{}, self.\+handle\+\_\+bounding\+\_\+boxes\+\_\+request)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/vision\+\_\+ws/\mbox{\hyperlink{detection_8py}{detection.\+py}}\end{DoxyCompactItemize}

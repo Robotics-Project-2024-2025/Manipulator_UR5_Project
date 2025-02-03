@@ -1,0 +1,92 @@
+\doxysection{models.\+tf.\+TFC3x Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_c3x}{}\label{classmodels_1_1tf_1_1_t_f_c3x}\index{models.tf.TFC3x@{models.tf.TFC3x}}
+Inheritance diagram for models.\+tf.\+TFC3x\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_c3x}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_aaa20b23d9ebd6896ca7036fa4ad6c0ef}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, n=1, shortcut=True, g=1, e=0.\+5, w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_a051c76e3ad4267890b3ec3e710f799de}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_a8088af1e010bb74a536067c868fcd4c9}{cv1}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv1)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_a846837f580f6069abecf6c56086b1ee1}{cv2}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv2)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_a1b2b62bbbbc98f4567e980fb3c2f35dd}{cv3}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(2 \texorpdfstring{$\ast$}{*} c\+\_\+, c2, 1, 1, w=w.\+cv3)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_c3x_ae72c2f487487c41a64bf34c4730080d0}{m}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}A TensorFlow layer for enhanced feature extraction using cross-convolutions in object detection models.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_aaa20b23d9ebd6896ca7036fa4ad6c0ef}\index{models.tf.TFC3x@{models.tf.TFC3x}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_aaa20b23d9ebd6896ca7036fa4ad6c0ef} 
+models.\+tf.\+TFC3x.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{n}{ = {\ttfamily 1}, }\item[{}]{shortcut}{ = {\ttfamily True}, }\item[{}]{g}{ = {\ttfamily 1}, }\item[{}]{e}{ = {\ttfamily 0.5}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes layer with cross-convolutions for enhanced feature extraction in object detection models.
+
+Inputs are ch_in, ch_out, number, shortcut, groups, expansion.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_a051c76e3ad4267890b3ec3e710f799de}\index{models.tf.TFC3x@{models.tf.TFC3x}!call@{call}}
+\index{call@{call}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_a051c76e3ad4267890b3ec3e710f799de} 
+models.\+tf.\+TFC3x.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Processes input through cascaded convolutions and merges features, returning the final tensor output.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_a8088af1e010bb74a536067c868fcd4c9}\index{models.tf.TFC3x@{models.tf.TFC3x}!cv1@{cv1}}
+\index{cv1@{cv1}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{cv1}{cv1}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_a8088af1e010bb74a536067c868fcd4c9} 
+models.\+tf.\+TFC3x.\+cv1 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv1)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_a846837f580f6069abecf6c56086b1ee1}\index{models.tf.TFC3x@{models.tf.TFC3x}!cv2@{cv2}}
+\index{cv2@{cv2}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{cv2}{cv2}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_a846837f580f6069abecf6c56086b1ee1} 
+models.\+tf.\+TFC3x.\+cv2 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv2)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_a1b2b62bbbbc98f4567e980fb3c2f35dd}\index{models.tf.TFC3x@{models.tf.TFC3x}!cv3@{cv3}}
+\index{cv3@{cv3}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{cv3}{cv3}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_a1b2b62bbbbc98f4567e980fb3c2f35dd} 
+models.\+tf.\+TFC3x.\+cv3 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(2 \texorpdfstring{$\ast$}{*} c\+\_\+, c2, 1, 1, w=w.\+cv3)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_c3x_ae72c2f487487c41a64bf34c4730080d0}\index{models.tf.TFC3x@{models.tf.TFC3x}!m@{m}}
+\index{m@{m}!models.tf.TFC3x@{models.tf.TFC3x}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_c3x_ae72c2f487487c41a64bf34c4730080d0} 
+models.\+tf.\+TFC3x.\+m}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ keras.Sequential(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ [TFCrossConv(c\_,\ c\_,\ k=3,\ s=1,\ g=g,\ e=1.0,\ shortcut=shortcut,\ w=w.m[j])\ \textcolor{keywordflow}{for}\ j\ \textcolor{keywordflow}{in}\ range(n)]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

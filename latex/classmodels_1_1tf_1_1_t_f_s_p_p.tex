@@ -1,0 +1,74 @@
+\doxysection{models.\+tf.\+TFSPP Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p}{}\label{classmodels_1_1tf_1_1_t_f_s_p_p}\index{models.tf.TFSPP@{models.tf.TFSPP}}
+Inheritance diagram for models.\+tf.\+TFSPP\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_s_p_p}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_s_p_p_a98cd4df9b1bc98ed0fa76d7d18b7112c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, k=(5, 9, 13), w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_s_p_p_a10673eacc17fdf283f9bd87c89625b95}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_s_p_p_a720b7900c48993e637b4d9be0930b94a}{cv1}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv1)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_s_p_p_ad47abc0126b47ee42bf2601687a5c4d7}{cv2}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c\+\_\+ \texorpdfstring{$\ast$}{*} (len(k) + 1), c2, 1, 1, w=w.\+cv2)
+\item 
+list \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_s_p_p_ac85a9a252042cc6a94d01a03a3f18161}{m}} = \mbox{[}keras.\+layers.\+Max\+Pool2D(pool\+\_\+size=x, strides=1, padding="{}SAME"{}) for x in k\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements spatial pyramid pooling for YOLOv3-SPP with specific channels and kernel sizes.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p_a98cd4df9b1bc98ed0fa76d7d18b7112c}\index{models.tf.TFSPP@{models.tf.TFSPP}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFSPP@{models.tf.TFSPP}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_s_p_p_a98cd4df9b1bc98ed0fa76d7d18b7112c} 
+models.\+tf.\+TFSPP.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{k}{ = {\ttfamily (5,~9,~13)}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a YOLOv3-SPP layer with specific input/output channels and kernel sizes for pooling.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p_a10673eacc17fdf283f9bd87c89625b95}\index{models.tf.TFSPP@{models.tf.TFSPP}!call@{call}}
+\index{call@{call}!models.tf.TFSPP@{models.tf.TFSPP}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_s_p_p_a10673eacc17fdf283f9bd87c89625b95} 
+models.\+tf.\+TFSPP.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Processes input through two TFConv layers and concatenates with max-pooled outputs at intermediate stage.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p_a720b7900c48993e637b4d9be0930b94a}\index{models.tf.TFSPP@{models.tf.TFSPP}!cv1@{cv1}}
+\index{cv1@{cv1}!models.tf.TFSPP@{models.tf.TFSPP}}
+\doxysubsubsection{\texorpdfstring{cv1}{cv1}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_s_p_p_a720b7900c48993e637b4d9be0930b94a} 
+models.\+tf.\+TFSPP.\+cv1 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c1, c\+\_\+, 1, 1, w=w.\+cv1)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p_ad47abc0126b47ee42bf2601687a5c4d7}\index{models.tf.TFSPP@{models.tf.TFSPP}!cv2@{cv2}}
+\index{cv2@{cv2}!models.tf.TFSPP@{models.tf.TFSPP}}
+\doxysubsubsection{\texorpdfstring{cv2}{cv2}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_s_p_p_ad47abc0126b47ee42bf2601687a5c4d7} 
+models.\+tf.\+TFSPP.\+cv2 = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv}{TFConv}}(c\+\_\+ \texorpdfstring{$\ast$}{*} (len(k) + 1), c2, 1, 1, w=w.\+cv2)}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_s_p_p_ac85a9a252042cc6a94d01a03a3f18161}\index{models.tf.TFSPP@{models.tf.TFSPP}!m@{m}}
+\index{m@{m}!models.tf.TFSPP@{models.tf.TFSPP}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_s_p_p_ac85a9a252042cc6a94d01a03a3f18161} 
+list models.\+tf.\+TFSPP.\+m = \mbox{[}keras.\+layers.\+Max\+Pool2D(pool\+\_\+size=x, strides=1, padding="{}SAME"{}) for x in k\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

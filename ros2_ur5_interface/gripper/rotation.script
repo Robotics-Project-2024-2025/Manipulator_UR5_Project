@@ -1,0 +1,21 @@
+def rotate_gripper(angle):
+  # Set the TCP (Tool Center Point) if needed
+  set_tcp(p[0.0, 0.0, 0.1, 0.0, 0.0, 0.0])
+
+  # Define the rotation command
+  rotate_command = "movej(get_actual_joint_positions() + [0, 0, 0, 0, 0, " + str(angle) + "], a=1.2, v=0.25)"
+
+
+  # Execute the rotation command
+  send_command(rotate_command)
+
+  # Wait for the rotation to complete
+  sleep(1.0)
+
+  # Log the rotation
+  log("Gripper rotated to angle: " + str(angle))
+
+end
+
+# Call the rotation function with the placeholder angle
+rotate_gripper(ROTATION_PLACEHOLDER)

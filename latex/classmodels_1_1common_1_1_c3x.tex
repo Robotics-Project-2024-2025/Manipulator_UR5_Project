@@ -1,0 +1,53 @@
+\doxysection{models.\+common.\+C3x Class Reference}
+\hypertarget{classmodels_1_1common_1_1_c3x}{}\label{classmodels_1_1common_1_1_c3x}\index{models.common.C3x@{models.common.C3x}}
+Inheritance diagram for models.\+common.\+C3x\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmodels_1_1common_1_1_c3x}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3x_a1f9f675b1cda468c25c6ab0732b7f48f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, n=1, shortcut=True, g=1, e=0.\+5)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodels_1_1common_1_1_c3}{models.\+common.\+C3}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_a3bd0255c2a81e9bcdd6f55170cec2c7b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, n=1, shortcut=True, g=1, e=0.\+5)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_a915d4ba897501a9d13c3a5608ae625f9}{forward}} (self, x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1common_1_1_c3}{models.\+common.\+C3}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_a0dfdab68d86dff6c0ca4029af2407339}{cv1}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c1, c\+\_\+, 1, 1)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_a63cf8f78eef054075279900dd84e5139}{cv2}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(c1, c\+\_\+, 1, 1)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_a865fc81369279cff14d60572366cb26e}{cv3}} = \mbox{\hyperlink{classmodels_1_1common_1_1_conv}{Conv}}(2 \texorpdfstring{$\ast$}{*} c\+\_\+, c2, 1)
+\item 
+\mbox{\hyperlink{classmodels_1_1common_1_1_c3_ad2b3fec6e8d0955a819289b4bd76fba4}{m}} = nn.\+Sequential(\texorpdfstring{$\ast$}{*}(\mbox{\hyperlink{classmodels_1_1common_1_1_bottleneck}{Bottleneck}}(c\+\_\+, c\+\_\+, shortcut, g, e=1.\+0) for \+\_\+ in range(n)))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Extends the C3 module with cross-convolutions for enhanced feature extraction in neural networks.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1common_1_1_c3x_a1f9f675b1cda468c25c6ab0732b7f48f}\index{models.common.C3x@{models.common.C3x}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.common.C3x@{models.common.C3x}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1common_1_1_c3x_a1f9f675b1cda468c25c6ab0732b7f48f} 
+models.\+common.\+C3x.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{n}{ = {\ttfamily 1}, }\item[{}]{shortcut}{ = {\ttfamily True}, }\item[{}]{g}{ = {\ttfamily 1}, }\item[{}]{e}{ = {\ttfamily 0.5}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes C3x module with cross-convolutions, extending C3 with customizable channel dimensions, groups,
+and expansion.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{common_8py}{common.\+py}}\end{DoxyCompactItemize}

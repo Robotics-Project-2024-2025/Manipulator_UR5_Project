@@ -1,0 +1,70 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/visual\+\_\+old.py File Reference}
+\hypertarget{visual__old_8py}{}\label{visual__old_8py}\index{robotics\_project\_ws/src/camera\_ws/visual\_old.py@{robotics\_project\_ws/src/camera\_ws/visual\_old.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevisual__old}{visual\+\_\+old}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacevisual__old_acd0e14f72a212cf85b361e92fcfe23a5}{visual\+\_\+old.\+TABLE\+\_\+\+DEFAULT}} = \mbox{[}\mbox{[}175, 88\mbox{]}, \mbox{[}423, 81\mbox{]}, \mbox{[}635, 288\mbox{]}, \mbox{[}19, 313\mbox{]}\mbox{]}
+\item 
+float \mbox{\hyperlink{namespacevisual__old_a4ce4384cedae5ef6b99689ac031786c4}{visual\+\_\+old.\+PERCENTAGE}} = 0.\+5
+\item 
+int \mbox{\hyperlink{namespacevisual__old_a98731d656e4aed8ed268ffc9623a9b56}{visual\+\_\+old.\+OFFSET}} = 25
+\item 
+str \mbox{\hyperlink{namespacevisual__old_ab9380d269fd8080df9812deecaf4b102}{visual\+\_\+old.\+image\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Image1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual__old_ae11f3c4b789ec427b12a037b2df5fe4f}{visual\+\_\+old.\+image\+\_\+resize\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Resize1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual__old_a02f3003599235b5c5ccbd182f658ee33}{visual\+\_\+old.\+no\+\_\+back\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/No\+Back1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual__old_acca50eb650919e58275c900b749dc10a}{visual\+\_\+old.\+contorns\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/contorns1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual__old_a8576bfee9e2ccc488b7093a58f5d965e}{visual\+\_\+old.\+dest\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Above\+Table1.\+png"{}
+\item 
+str \mbox{\hyperlink{namespacevisual__old_a7ad65e28385ece3e11a504d19c38d8a1}{visual\+\_\+old.\+real\+\_\+path}} = "{}/home/ubuntu/ros2\+\_\+ws/src/Manipulator\+\_\+\+UR5\+\_\+\+Project/robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/generated/Real\+Table1.\+png"{}
+\item 
+\mbox{\hyperlink{namespacevisual__old_ace6ebc5a9e3fdd2247158729d793993c}{visual\+\_\+old.\+img}} = cv2.\+imread(\mbox{\hyperlink{namespacevisual__old_ab9380d269fd8080df9812deecaf4b102}{image\+\_\+path}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_ae21a871a28342e20e5dfdced5e015c63}{visual\+\_\+old.\+resize\+\_\+width}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_a2685d03fc44f664f9b4eba8705e78343}{visual\+\_\+old.\+resize\+\_\+height}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_a6130a4dac0c6e6e429f3e2e13a9acfc8}{visual\+\_\+old.\+resized\+\_\+img}} = cv2.\+resize(\mbox{\hyperlink{namespacevisual__old_ace6ebc5a9e3fdd2247158729d793993c}{img}}, (\mbox{\hyperlink{namespacevisual__old_ae21a871a28342e20e5dfdced5e015c63}{resize\+\_\+width}}, \mbox{\hyperlink{namespacevisual__old_a2685d03fc44f664f9b4eba8705e78343}{resize\+\_\+height}}))
+\item 
+list \mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{visual\+\_\+old.\+TABLE\+\_\+\+RESIZED}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacevisual__old_ac029a24db12968f2ad6862d21c50f2e8}{visual\+\_\+old.\+new\+\_\+x}} = int(point\mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual__old_ae21a871a28342e20e5dfdced5e015c63}{resize\+\_\+width}} / 640)
+\item 
+\mbox{\hyperlink{namespacevisual__old_a76006a6640252725e118aa857553280b}{visual\+\_\+old.\+new\+\_\+y}} = int(point\mbox{[}1\mbox{]} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacevisual__old_a2685d03fc44f664f9b4eba8705e78343}{resize\+\_\+height}} / 360)
+\item 
+\mbox{\hyperlink{namespacevisual__old_a5f45eca5a56d8763e40867d8f322a34f}{visual\+\_\+old.\+min\+\_\+x}} = max(0, min(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual__old_a98731d656e4aed8ed268ffc9623a9b56}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_ac075e9ac42a48436eae808441ff04e23}{visual\+\_\+old.\+max\+\_\+x}} = min(\mbox{\hyperlink{namespacevisual__old_ae21a871a28342e20e5dfdced5e015c63}{resize\+\_\+width}} -\/ 1, max(\mbox{[}p\mbox{[}0\mbox{]} for p in \mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual__old_a98731d656e4aed8ed268ffc9623a9b56}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_a58e5070bbaa037b39d1073e22700a8bd}{visual\+\_\+old.\+min\+\_\+y}} = max(0, min(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}\mbox{]}) -\/ \mbox{\hyperlink{namespacevisual__old_a98731d656e4aed8ed268ffc9623a9b56}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_a9f465893c9e8a3909e1571a51e8d817e}{visual\+\_\+old.\+max\+\_\+y}} = min(\mbox{\hyperlink{namespacevisual__old_a2685d03fc44f664f9b4eba8705e78343}{resize\+\_\+height}} -\/ 1, max(\mbox{[}p\mbox{[}1\mbox{]} for p in \mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}\mbox{]}) + \mbox{\hyperlink{namespacevisual__old_a98731d656e4aed8ed268ffc9623a9b56}{OFFSET}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_acb26b48b4f1344b6a4950a9a4be4c409}{visual\+\_\+old.\+mask}} = np.\+array(\mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}, dtype=np.\+int32)
+\item 
+\mbox{\hyperlink{namespacevisual__old_a4262192aaadba99cac35bca6c5b28259}{visual\+\_\+old.\+background}} = np.\+zeros((\mbox{\hyperlink{namespacevisual__old_a2685d03fc44f664f9b4eba8705e78343}{resize\+\_\+height}}, \mbox{\hyperlink{namespacevisual__old_ae21a871a28342e20e5dfdced5e015c63}{resize\+\_\+width}}), dtype=np.\+uint8)
+\item 
+\mbox{\hyperlink{namespacevisual__old_ab2f008fb1b4757ee0196985b202a13c0}{visual\+\_\+old.\+mask\+\_\+background}} = cv2.\+in\+Range(\mbox{\hyperlink{namespacevisual__old_a4262192aaadba99cac35bca6c5b28259}{background}}, 1, 255)
+\item 
+\mbox{\hyperlink{namespacevisual__old_a8ef9b333c247619f35a5795598710132}{visual\+\_\+old.\+roi}} = cv2.\+bitwise\+\_\+and(\mbox{\hyperlink{namespacevisual__old_a6130a4dac0c6e6e429f3e2e13a9acfc8}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual__old_a6130a4dac0c6e6e429f3e2e13a9acfc8}{resized\+\_\+img}}, \mbox{\hyperlink{namespacevisual__old_acb26b48b4f1344b6a4950a9a4be4c409}{mask}}=\mbox{\hyperlink{namespacevisual__old_ab2f008fb1b4757ee0196985b202a13c0}{mask\+\_\+background}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_a4cabb6d5686a59ae26f4913e5d74a5ba}{visual\+\_\+old.\+rows}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_ac27fa0af009ddb9ea06b7913eab6e413}{visual\+\_\+old.\+cols}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_a1756239f8c4d7f11d0f3561ab4925422}{visual\+\_\+old.\+ch}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_abeec211028f72b76f0cb6e8cc850825d}{visual\+\_\+old.\+pts2}}
+\item 
+\mbox{\hyperlink{namespacevisual__old_ab72e5578358c2dce22716a4e9757fdb3}{visual\+\_\+old.\+M}} = cv2.\+get\+Perspective\+Transform(\mbox{\hyperlink{namespacevisual__old_a31dd3447c24a9a5ccbc98360a82245ef}{TABLE\+\_\+\+RESIZED}}, \mbox{\hyperlink{namespacevisual__old_abeec211028f72b76f0cb6e8cc850825d}{pts2}})
+\item 
+\mbox{\hyperlink{namespacevisual__old_ab92fe428a3c4e87c91258539a46fc1a5}{visual\+\_\+old.\+dst}} = cv2.\+warp\+Perspective(\mbox{\hyperlink{namespacevisual__old_ace6ebc5a9e3fdd2247158729d793993c}{img}}, \mbox{\hyperlink{namespacevisual__old_ab72e5578358c2dce22716a4e9757fdb3}{M}}, (\mbox{\hyperlink{namespacevisual__old_ac27fa0af009ddb9ea06b7913eab6e413}{cols}}, \mbox{\hyperlink{namespacevisual__old_ac27fa0af009ddb9ea06b7913eab6e413}{cols}}))
+\end{DoxyCompactItemize}

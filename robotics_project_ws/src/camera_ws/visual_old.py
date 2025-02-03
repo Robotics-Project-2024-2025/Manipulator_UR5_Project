@@ -1,3 +1,9 @@
+#
+#  visual.h
+#  Robotics
+#
+#  Created by Matteo Gottardelli on 23/12/24.
+#
 import cv2
 import numpy as np
 

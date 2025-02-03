@@ -1,0 +1,108 @@
+\doxysection{vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates Class Reference}
+\hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates}{}\label{classvision__ws_1_1process_1_1_convert_real_coordinates}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+Inheritance diagram for vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvision__ws_1_1process_1_1_convert_real_coordinates}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a75c21b09c20e12d5ed4b1a3611343377}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_ae0ef2977f0962538f800dd23cad82857}{get\+\_\+point\+\_\+cloud\+\_\+msg}} (self, node, topic)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a5031390f44e1f76d9e4336684c83fc92}{get\+\_\+camera\+\_\+info}} (self, node, topic)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a47559e1bcd4922ad9a4af6572f648f05}{get\+\_\+depth}} (self, node, topic)
+\item 
+list \mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_ac7f8a25e05c39ba0facd2cfad95779d3}{convert\+\_\+to\+\_\+gazebo\+\_\+world\+\_\+frame}} (self, list points)
+\item 
+tuple \mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_ad0622d2f484262b44021ddc6066122d9}{linear\+\_\+operation}} (self, tuple p1, tuple p2)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a800ada4f24e403044b571158597dda8f}{verify\+\_\+points}} (self, points)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a366541d902e4886593d0149b3d017a4a}{process\+\_\+object\+\_\+box\+\_\+request}} (self, request, response)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a3dcacb86b32b9c1055ab27e1518aaed7}{service}} = self.\+create\+\_\+service(Convert2din3d, \textquotesingle{}convert\+\_\+coordinates\textquotesingle{}, self.\+process\+\_\+object\+\_\+box\+\_\+request)
+\item 
+\mbox{\hyperlink{classvision__ws_1_1process_1_1_convert_real_coordinates_a0004f5ff3ff94d3d450d10d6197c719f}{bridge}} = Cv\+Bridge()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a75c21b09c20e12d5ed4b1a3611343377}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a75c21b09c20e12d5ed4b1a3611343377} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_ac7f8a25e05c39ba0facd2cfad95779d3}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!convert\_to\_gazebo\_world\_frame@{convert\_to\_gazebo\_world\_frame}}
+\index{convert\_to\_gazebo\_world\_frame@{convert\_to\_gazebo\_world\_frame}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{convert\_to\_gazebo\_world\_frame()}{convert\_to\_gazebo\_world\_frame()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_ac7f8a25e05c39ba0facd2cfad95779d3} 
+ list vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+convert\+\_\+to\+\_\+gazebo\+\_\+world\+\_\+frame (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{list}]{points}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a5031390f44e1f76d9e4336684c83fc92}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!get\_camera\_info@{get\_camera\_info}}
+\index{get\_camera\_info@{get\_camera\_info}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{get\_camera\_info()}{get\_camera\_info()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a5031390f44e1f76d9e4336684c83fc92} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+get\+\_\+camera\+\_\+info (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{node}{, }\item[{}]{topic}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a47559e1bcd4922ad9a4af6572f648f05}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!get\_depth@{get\_depth}}
+\index{get\_depth@{get\_depth}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{get\_depth()}{get\_depth()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a47559e1bcd4922ad9a4af6572f648f05} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+get\+\_\+depth (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{node}{, }\item[{}]{topic}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_ae0ef2977f0962538f800dd23cad82857}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!get\_point\_cloud\_msg@{get\_point\_cloud\_msg}}
+\index{get\_point\_cloud\_msg@{get\_point\_cloud\_msg}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{get\_point\_cloud\_msg()}{get\_point\_cloud\_msg()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_ae0ef2977f0962538f800dd23cad82857} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+get\+\_\+point\+\_\+cloud\+\_\+msg (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{node}{, }\item[{}]{topic}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_ad0622d2f484262b44021ddc6066122d9}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!linear\_operation@{linear\_operation}}
+\index{linear\_operation@{linear\_operation}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{linear\_operation()}{linear\_operation()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_ad0622d2f484262b44021ddc6066122d9} 
+ tuple vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+linear\+\_\+operation (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{tuple}]{p1}{, }\item[{tuple}]{p2}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a366541d902e4886593d0149b3d017a4a}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!process\_object\_box\_request@{process\_object\_box\_request}}
+\index{process\_object\_box\_request@{process\_object\_box\_request}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{process\_object\_box\_request()}{process\_object\_box\_request()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a366541d902e4886593d0149b3d017a4a} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+process\+\_\+object\+\_\+box\+\_\+request (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{request}{, }\item[{}]{response}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a800ada4f24e403044b571158597dda8f}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!verify\_points@{verify\_points}}
+\index{verify\_points@{verify\_points}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{verify\_points()}{verify\_points()}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a800ada4f24e403044b571158597dda8f} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+verify\+\_\+points (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{points}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a0004f5ff3ff94d3d450d10d6197c719f}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!bridge@{bridge}}
+\index{bridge@{bridge}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{bridge}{bridge}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a0004f5ff3ff94d3d450d10d6197c719f} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+bridge = Cv\+Bridge()}
+
+\Hypertarget{classvision__ws_1_1process_1_1_convert_real_coordinates_a3dcacb86b32b9c1055ab27e1518aaed7}\index{vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}!service@{service}}
+\index{service@{service}!vision\_ws.process.ConvertRealCoordinates@{vision\_ws.process.ConvertRealCoordinates}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{classvision__ws_1_1process_1_1_convert_real_coordinates_a3dcacb86b32b9c1055ab27e1518aaed7} 
+vision\+\_\+ws.\+process.\+Convert\+Real\+Coordinates.\+service = self.\+create\+\_\+service(Convert2din3d, \textquotesingle{}convert\+\_\+coordinates\textquotesingle{}, self.\+process\+\_\+object\+\_\+box\+\_\+request)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/vision\+\_\+ws/\mbox{\hyperlink{process_8py}{process.\+py}}\end{DoxyCompactItemize}

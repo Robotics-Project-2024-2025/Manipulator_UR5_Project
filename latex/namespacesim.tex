@@ -1,0 +1,142 @@
+\doxysection{sim Namespace Reference}
+\hypertarget{namespacesim}{}\label{namespacesim}\index{sim@{sim}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacesim_a8447d9f2673377fe3cc82652de0b3dae}{is\+\_\+collision}} (position, threshold=0.\+15)
+\item 
+tuple \mbox{\hyperlink{namespacesim_a4f0d6e58d4884a9a113c6a9045b12ce9}{random\+\_\+pos}} ()
+\item 
+float \mbox{\hyperlink{namespacesim_afc3bd85406e542bb65fcdcf5c3aeb188}{random\+\_\+angle}} (int precision=3)
+\item 
+\mbox{\hyperlink{namespacesim_af0853533198f55a203282044759bc17c}{spawn\+\_\+block\+\_\+with\+\_\+params}} (context, block\+\_\+type, color\+\_\+value, position, orientation, count)
+\item 
+\mbox{\hyperlink{namespacesim_a84d2d7cdf3b00e5e669d3ae042841983}{generate\+\_\+spawn\+\_\+block\+\_\+nodes}} (context, \texorpdfstring{$\ast$}{*}args, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\item 
+\mbox{\hyperlink{namespacesim_a589412043623e8e2ddd9be6b42308b59}{generate\+\_\+launch\+\_\+description}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespacesim_aa1ff95e42289a79fe5eacbb59fcf6e7b}{package\+\_\+name}} = \textquotesingle{}ros2\+\_\+ur5\+\_\+interface\textquotesingle{}
+\item 
+int \mbox{\hyperlink{namespacesim_a19344687a2ace5b819267c3baeb8b2b5}{MIN\+\_\+\+BLOCK}} = 1
+\item 
+int \mbox{\hyperlink{namespacesim_a60888633ae0e3c456a18363c14adc501}{MAX\+\_\+\+BLOCK}} = 4
+\item 
+float \mbox{\hyperlink{namespacesim_adc44ec2d7ce668d1fe4bb1123179ae03}{X\+\_\+\+MIN}} = 0.\+1
+\item 
+float \mbox{\hyperlink{namespacesim_a3597d6d12529e5d94bf4c2e641e47231}{X\+\_\+\+MAX}} = 0.\+3
+\item 
+float \mbox{\hyperlink{namespacesim_ab9f3f969c15a555ac0031b0347dcc197}{Y\+\_\+\+MIN}} = 0.\+4
+\item 
+float \mbox{\hyperlink{namespacesim_a0065aaad761fc590fc5d835083587d61}{Y\+\_\+\+MAX}} = 0.\+7
+\item 
+float \mbox{\hyperlink{namespacesim_aa82ea9f9ea54f9f8eeb6ffabbd21692f}{Z\+\_\+\+TABLE}} = 0.\+9
+\item 
+int \mbox{\hyperlink{namespacesim_a582cc352211018cb83a987f3cdf93377}{PRECISION}} = 3
+\item 
+list \mbox{\hyperlink{namespacesim_adf2df97fef7e49d8c3d3ed2200ce6714}{spawned\+\_\+positions}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesim_a589412043623e8e2ddd9be6b42308b59}\index{sim@{sim}!generate\_launch\_description@{generate\_launch\_description}}
+\index{generate\_launch\_description@{generate\_launch\_description}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{generate\_launch\_description()}{generate\_launch\_description()}}
+{\footnotesize\ttfamily \label{namespacesim_a589412043623e8e2ddd9be6b42308b59} 
+sim.\+generate\+\_\+launch\+\_\+description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacesim_a84d2d7cdf3b00e5e669d3ae042841983}\index{sim@{sim}!generate\_spawn\_block\_nodes@{generate\_spawn\_block\_nodes}}
+\index{generate\_spawn\_block\_nodes@{generate\_spawn\_block\_nodes}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{generate\_spawn\_block\_nodes()}{generate\_spawn\_block\_nodes()}}
+{\footnotesize\ttfamily \label{namespacesim_a84d2d7cdf3b00e5e669d3ae042841983} 
+sim.\+generate\+\_\+spawn\+\_\+block\+\_\+nodes (\begin{DoxyParamCaption}\item[{}]{context}{, }\item[{\texorpdfstring{$\ast$}{*}}]{args}{, }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacesim_a8447d9f2673377fe3cc82652de0b3dae}\index{sim@{sim}!is\_collision@{is\_collision}}
+\index{is\_collision@{is\_collision}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{is\_collision()}{is\_collision()}}
+{\footnotesize\ttfamily \label{namespacesim_a8447d9f2673377fe3cc82652de0b3dae} 
+sim.\+is\+\_\+collision (\begin{DoxyParamCaption}\item[{}]{position}{, }\item[{}]{threshold}{ = {\ttfamily 0.15}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacesim_afc3bd85406e542bb65fcdcf5c3aeb188}\index{sim@{sim}!random\_angle@{random\_angle}}
+\index{random\_angle@{random\_angle}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{random\_angle()}{random\_angle()}}
+{\footnotesize\ttfamily \label{namespacesim_afc3bd85406e542bb65fcdcf5c3aeb188} 
+ float sim.\+random\+\_\+angle (\begin{DoxyParamCaption}\item[{int }]{precision}{ = {\ttfamily 3}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacesim_a4f0d6e58d4884a9a113c6a9045b12ce9}\index{sim@{sim}!random\_pos@{random\_pos}}
+\index{random\_pos@{random\_pos}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{random\_pos()}{random\_pos()}}
+{\footnotesize\ttfamily \label{namespacesim_a4f0d6e58d4884a9a113c6a9045b12ce9} 
+ tuple sim.\+random\+\_\+pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacesim_af0853533198f55a203282044759bc17c}\index{sim@{sim}!spawn\_block\_with\_params@{spawn\_block\_with\_params}}
+\index{spawn\_block\_with\_params@{spawn\_block\_with\_params}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{spawn\_block\_with\_params()}{spawn\_block\_with\_params()}}
+{\footnotesize\ttfamily \label{namespacesim_af0853533198f55a203282044759bc17c} 
+sim.\+spawn\+\_\+block\+\_\+with\+\_\+params (\begin{DoxyParamCaption}\item[{}]{context}{, }\item[{}]{block\+\_\+type}{, }\item[{}]{color\+\_\+value}{, }\item[{}]{position}{, }\item[{}]{orientation}{, }\item[{}]{count}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacesim_a60888633ae0e3c456a18363c14adc501}\index{sim@{sim}!MAX\_BLOCK@{MAX\_BLOCK}}
+\index{MAX\_BLOCK@{MAX\_BLOCK}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{MAX\_BLOCK}{MAX\_BLOCK}}
+{\footnotesize\ttfamily \label{namespacesim_a60888633ae0e3c456a18363c14adc501} 
+int sim.\+MAX\+\_\+\+BLOCK = 4}
+
+\Hypertarget{namespacesim_a19344687a2ace5b819267c3baeb8b2b5}\index{sim@{sim}!MIN\_BLOCK@{MIN\_BLOCK}}
+\index{MIN\_BLOCK@{MIN\_BLOCK}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{MIN\_BLOCK}{MIN\_BLOCK}}
+{\footnotesize\ttfamily \label{namespacesim_a19344687a2ace5b819267c3baeb8b2b5} 
+int sim.\+MIN\+\_\+\+BLOCK = 1}
+
+\Hypertarget{namespacesim_aa1ff95e42289a79fe5eacbb59fcf6e7b}\index{sim@{sim}!package\_name@{package\_name}}
+\index{package\_name@{package\_name}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{package\_name}{package\_name}}
+{\footnotesize\ttfamily \label{namespacesim_aa1ff95e42289a79fe5eacbb59fcf6e7b} 
+str sim.\+package\+\_\+name = \textquotesingle{}ros2\+\_\+ur5\+\_\+interface\textquotesingle{}}
+
+\Hypertarget{namespacesim_a582cc352211018cb83a987f3cdf93377}\index{sim@{sim}!PRECISION@{PRECISION}}
+\index{PRECISION@{PRECISION}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{PRECISION}{PRECISION}}
+{\footnotesize\ttfamily \label{namespacesim_a582cc352211018cb83a987f3cdf93377} 
+int sim.\+PRECISION = 3}
+
+\Hypertarget{namespacesim_adf2df97fef7e49d8c3d3ed2200ce6714}\index{sim@{sim}!spawned\_positions@{spawned\_positions}}
+\index{spawned\_positions@{spawned\_positions}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{spawned\_positions}{spawned\_positions}}
+{\footnotesize\ttfamily \label{namespacesim_adf2df97fef7e49d8c3d3ed2200ce6714} 
+list sim.\+spawned\+\_\+positions = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacesim_a3597d6d12529e5d94bf4c2e641e47231}\index{sim@{sim}!X\_MAX@{X\_MAX}}
+\index{X\_MAX@{X\_MAX}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{X\_MAX}{X\_MAX}}
+{\footnotesize\ttfamily \label{namespacesim_a3597d6d12529e5d94bf4c2e641e47231} 
+float sim.\+X\+\_\+\+MAX = 0.\+3}
+
+\Hypertarget{namespacesim_adc44ec2d7ce668d1fe4bb1123179ae03}\index{sim@{sim}!X\_MIN@{X\_MIN}}
+\index{X\_MIN@{X\_MIN}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{X\_MIN}{X\_MIN}}
+{\footnotesize\ttfamily \label{namespacesim_adc44ec2d7ce668d1fe4bb1123179ae03} 
+float sim.\+X\+\_\+\+MIN = 0.\+1}
+
+\Hypertarget{namespacesim_a0065aaad761fc590fc5d835083587d61}\index{sim@{sim}!Y\_MAX@{Y\_MAX}}
+\index{Y\_MAX@{Y\_MAX}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{Y\_MAX}{Y\_MAX}}
+{\footnotesize\ttfamily \label{namespacesim_a0065aaad761fc590fc5d835083587d61} 
+float sim.\+Y\+\_\+\+MAX = 0.\+7}
+
+\Hypertarget{namespacesim_ab9f3f969c15a555ac0031b0347dcc197}\index{sim@{sim}!Y\_MIN@{Y\_MIN}}
+\index{Y\_MIN@{Y\_MIN}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{Y\_MIN}{Y\_MIN}}
+{\footnotesize\ttfamily \label{namespacesim_ab9f3f969c15a555ac0031b0347dcc197} 
+float sim.\+Y\+\_\+\+MIN = 0.\+4}
+
+\Hypertarget{namespacesim_aa82ea9f9ea54f9f8eeb6ffabbd21692f}\index{sim@{sim}!Z\_TABLE@{Z\_TABLE}}
+\index{Z\_TABLE@{Z\_TABLE}!sim@{sim}}
+\doxysubsubsection{\texorpdfstring{Z\_TABLE}{Z\_TABLE}}
+{\footnotesize\ttfamily \label{namespacesim_aa82ea9f9ea54f9f8eeb6ffabbd21692f} 
+float sim.\+Z\+\_\+\+TABLE = 0.\+9}
+

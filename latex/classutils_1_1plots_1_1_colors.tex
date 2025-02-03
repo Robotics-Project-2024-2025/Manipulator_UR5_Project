@@ -1,0 +1,75 @@
+\doxysection{utils.\+plots.\+Colors Class Reference}
+\hypertarget{classutils_1_1plots_1_1_colors}{}\label{classutils_1_1plots_1_1_colors}\index{utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1plots_1_1_colors_a56fb1a0f90caf71196b25ddd9abb49ef}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1plots_1_1_colors_ae4c1d98b9444fe2e329f9604056fa95d}{\+\_\+\+\_\+call\+\_\+\+\_\+}} (self, i, bgr=False)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1plots_1_1_colors_a9f0bcf300d0d9778ef7fffbb19a754d3}{hex2rgb}} (h)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{classutils_1_1plots_1_1_colors_a4088474d189516bf1512ab385ec76c45}{palette}} = \mbox{[}self.\+hex2rgb(f"{}\#\{c\}"{}) for c in hexs\mbox{]}
+\item 
+\mbox{\hyperlink{classutils_1_1plots_1_1_colors_aa58503fbe54abce1070192cee8cb381e}{n}} = len(self.\+palette)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Provides an RGB color palette derived from Ultralytics color scheme for visualization tasks.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1plots_1_1_colors_a56fb1a0f90caf71196b25ddd9abb49ef}\index{utils.plots.Colors@{utils.plots.Colors}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1plots_1_1_colors_a56fb1a0f90caf71196b25ddd9abb49ef} 
+utils.\+plots.\+Colors.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes the Colors class with a palette derived from Ultralytics color scheme, converting hex codes to RGB.
+
+Colors derived from `hex = matplotlib.colors.TABLEAU_COLORS.values()`.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1plots_1_1_colors_ae4c1d98b9444fe2e329f9604056fa95d}\index{utils.plots.Colors@{utils.plots.Colors}!\_\_call\_\_@{\_\_call\_\_}}
+\index{\_\_call\_\_@{\_\_call\_\_}!utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection{\texorpdfstring{\_\_call\_\_()}{\_\_call\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1plots_1_1_colors_ae4c1d98b9444fe2e329f9604056fa95d} 
+utils.\+plots.\+Colors.\+\_\+\+\_\+call\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{i}{, }\item[{}]{bgr}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns color from palette by index `i`, in BGR format if `bgr=True`, else RGB; `i` is an integer index.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1plots_1_1_colors_a9f0bcf300d0d9778ef7fffbb19a754d3}\index{utils.plots.Colors@{utils.plots.Colors}!hex2rgb@{hex2rgb}}
+\index{hex2rgb@{hex2rgb}!utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection{\texorpdfstring{hex2rgb()}{hex2rgb()}}
+{\footnotesize\ttfamily \label{classutils_1_1plots_1_1_colors_a9f0bcf300d0d9778ef7fffbb19a754d3} 
+utils.\+plots.\+Colors.\+hex2rgb (\begin{DoxyParamCaption}\item[{}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Converts hexadecimal color `h` to an RGB tuple (PIL-compatible) with order (R, G, B).\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1plots_1_1_colors_aa58503fbe54abce1070192cee8cb381e}\index{utils.plots.Colors@{utils.plots.Colors}!n@{n}}
+\index{n@{n}!utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{classutils_1_1plots_1_1_colors_aa58503fbe54abce1070192cee8cb381e} 
+utils.\+plots.\+Colors.\+n = len(self.\+palette)}
+
+\Hypertarget{classutils_1_1plots_1_1_colors_a4088474d189516bf1512ab385ec76c45}\index{utils.plots.Colors@{utils.plots.Colors}!palette@{palette}}
+\index{palette@{palette}!utils.plots.Colors@{utils.plots.Colors}}
+\doxysubsubsection{\texorpdfstring{palette}{palette}}
+{\footnotesize\ttfamily \label{classutils_1_1plots_1_1_colors_a4088474d189516bf1512ab385ec76c45} 
+list utils.\+plots.\+Colors.\+palette = \mbox{[}self.\+hex2rgb(f"{}\#\{c\}"{}) for c in hexs\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{plots_8py}{plots.\+py}}\end{DoxyCompactItemize}

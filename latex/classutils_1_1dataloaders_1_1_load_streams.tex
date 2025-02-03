@@ -1,0 +1,179 @@
+\doxysection{utils.\+dataloaders.\+Load\+Streams Class Reference}
+\hypertarget{classutils_1_1dataloaders_1_1_load_streams}{}\label{classutils_1_1dataloaders_1_1_load_streams}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_ae4ae6975cd3a610023d8be1c195b9697}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a226beb28f51fb40d6ddb7c4345794ff9}{sources}}="{}file.\+streams"{}, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a1c3c481bb55684b28e4cd33e65ce2d82}{img\+\_\+size}}=640, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_aa9686db88958386e109cac83330bcb78}{stride}}=32, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a698dc4edbbbf7dee7147165a96f6c80b}{auto}}=True, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_acdfb78e33e19a9c5407fdb1df77166b8}{transforms}}=None, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_abdd3f1f505ab49488a72d573eb403048}{vid\+\_\+stride}}=1)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_aedd0ae5ba3f9a773ac56c20338dea462}{update}} (self, i, cap, stream)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a9b968937d47e7626ad86ed3297060cab}{\+\_\+\+\_\+iter\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_abe6401966820ae105038541bfcf4c488}{\+\_\+\+\_\+next\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a872c303fd19993200de629ce40502f7b}{\+\_\+\+\_\+len\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a6d112c8b61b99f19a9cb6001b2d1aae6}{mode}} = "{}stream"{}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a1c3c481bb55684b28e4cd33e65ce2d82}{img\+\_\+size}} = img\+\_\+size
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_aa9686db88958386e109cac83330bcb78}{stride}} = stride
+\item 
+int \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_abdd3f1f505ab49488a72d573eb403048}{vid\+\_\+stride}} = vid\+\_\+stride
+\item 
+list \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a226beb28f51fb40d6ddb7c4345794ff9}{sources}} = \mbox{[}clean\+\_\+str(x) for x in sources\mbox{]}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a4c104efb408874bb5731b799197dca22}{imgs}}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_ae0086415665914e4ba7215d5a53192b1}{fps}}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_ab348f344ba2c0f2cbc11260e0e0fbb51}{frames}}
+\item 
+list \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a1df5b65513df91086bb03fe06b635a81}{threads}} = \mbox{[}None\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}None\mbox{]} \texorpdfstring{$\ast$}{*} n
+\item 
+int \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a414cb273fe432559d910f28f3133c940}{rect}} = 1
+\item 
+int \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a698dc4edbbbf7dee7147165a96f6c80b}{auto}} = auto and self.\+rect
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_acdfb78e33e19a9c5407fdb1df77166b8}{transforms}} = transforms
+\item 
+int \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_streams_a86b577088cc770647956fc98ab982da4}{count}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Loads and processes video streams for YOLOv5, supporting various sources including YouTube and IP cameras.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_ae4ae6975cd3a610023d8be1c195b9697}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_ae4ae6975cd3a610023d8be1c195b9697} 
+utils.\+dataloaders.\+Load\+Streams.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{sources}{ = {\ttfamily "{}file.streams"{}}, }\item[{}]{img\+\_\+size}{ = {\ttfamily 640}, }\item[{}]{stride}{ = {\ttfamily 32}, }\item[{}]{auto}{ = {\ttfamily True}, }\item[{}]{transforms}{ = {\ttfamily None}, }\item[{}]{vid\+\_\+stride}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a stream loader for processing video streams with YOLOv5, supporting various sources including
+YouTube.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a9b968937d47e7626ad86ed3297060cab}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!\_\_iter\_\_@{\_\_iter\_\_}}
+\index{\_\_iter\_\_@{\_\_iter\_\_}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{\_\_iter\_\_()}{\_\_iter\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a9b968937d47e7626ad86ed3297060cab} 
+utils.\+dataloaders.\+Load\+Streams.\+\_\+\+\_\+iter\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resets and returns the iterator for iterating over video frames or images in a dataset.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a872c303fd19993200de629ce40502f7b}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!\_\_len\_\_@{\_\_len\_\_}}
+\index{\_\_len\_\_@{\_\_len\_\_}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{\_\_len\_\_()}{\_\_len\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a872c303fd19993200de629ce40502f7b} 
+utils.\+dataloaders.\+Load\+Streams.\+\_\+\+\_\+len\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the number of sources in the dataset, supporting up to 32 streams at 30 FPS over 30 years.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_load_streams_abe6401966820ae105038541bfcf4c488}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!\_\_next\_\_@{\_\_next\_\_}}
+\index{\_\_next\_\_@{\_\_next\_\_}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{\_\_next\_\_()}{\_\_next\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_abe6401966820ae105038541bfcf4c488} 
+utils.\+dataloaders.\+Load\+Streams.\+\_\+\+\_\+next\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Iterates over video frames or images, halting on thread stop or 'q' key press, raising `StopIteration` when
+done.
+\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_load_streams_aedd0ae5ba3f9a773ac56c20338dea462}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!update@{update}}
+\index{update@{update}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_aedd0ae5ba3f9a773ac56c20338dea462} 
+utils.\+dataloaders.\+Load\+Streams.\+update (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{i}{, }\item[{}]{cap}{, }\item[{}]{stream}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reads frames from stream `i`, updating imgs array; handles stream reopening on signal loss.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a698dc4edbbbf7dee7147165a96f6c80b}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!auto@{auto}}
+\index{auto@{auto}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{auto}{auto}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a698dc4edbbbf7dee7147165a96f6c80b} 
+int utils.\+dataloaders.\+Load\+Streams.\+auto = auto and self.\+rect}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a86b577088cc770647956fc98ab982da4}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!count@{count}}
+\index{count@{count}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a86b577088cc770647956fc98ab982da4} 
+int utils.\+dataloaders.\+Load\+Streams.\+count = -\/1}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_ae0086415665914e4ba7215d5a53192b1}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!fps@{fps}}
+\index{fps@{fps}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{fps}{fps}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_ae0086415665914e4ba7215d5a53192b1} 
+utils.\+dataloaders.\+Load\+Streams.\+fps}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_ab348f344ba2c0f2cbc11260e0e0fbb51}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!frames@{frames}}
+\index{frames@{frames}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{frames}{frames}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_ab348f344ba2c0f2cbc11260e0e0fbb51} 
+utils.\+dataloaders.\+Load\+Streams.\+frames}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a1c3c481bb55684b28e4cd33e65ce2d82}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!img\_size@{img\_size}}
+\index{img\_size@{img\_size}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{img\_size}{img\_size}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a1c3c481bb55684b28e4cd33e65ce2d82} 
+utils.\+dataloaders.\+Load\+Streams.\+img\+\_\+size = img\+\_\+size}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a4c104efb408874bb5731b799197dca22}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!imgs@{imgs}}
+\index{imgs@{imgs}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{imgs}{imgs}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a4c104efb408874bb5731b799197dca22} 
+utils.\+dataloaders.\+Load\+Streams.\+imgs}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a6d112c8b61b99f19a9cb6001b2d1aae6}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!mode@{mode}}
+\index{mode@{mode}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a6d112c8b61b99f19a9cb6001b2d1aae6} 
+str utils.\+dataloaders.\+Load\+Streams.\+mode = "{}stream"{}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a414cb273fe432559d910f28f3133c940}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!rect@{rect}}
+\index{rect@{rect}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a414cb273fe432559d910f28f3133c940} 
+int utils.\+dataloaders.\+Load\+Streams.\+rect = 1}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a226beb28f51fb40d6ddb7c4345794ff9}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!sources@{sources}}
+\index{sources@{sources}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{sources}{sources}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a226beb28f51fb40d6ddb7c4345794ff9} 
+utils.\+dataloaders.\+Load\+Streams.\+sources = \mbox{[}clean\+\_\+str(x) for x in sources\mbox{]}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_aa9686db88958386e109cac83330bcb78}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!stride@{stride}}
+\index{stride@{stride}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_aa9686db88958386e109cac83330bcb78} 
+utils.\+dataloaders.\+Load\+Streams.\+stride = stride}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_a1df5b65513df91086bb03fe06b635a81}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!threads@{threads}}
+\index{threads@{threads}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{threads}{threads}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_a1df5b65513df91086bb03fe06b635a81} 
+utils.\+dataloaders.\+Load\+Streams.\+threads = \mbox{[}None\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} n, \mbox{[}None\mbox{]} \texorpdfstring{$\ast$}{*} n}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_acdfb78e33e19a9c5407fdb1df77166b8}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!transforms@{transforms}}
+\index{transforms@{transforms}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{transforms}{transforms}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_acdfb78e33e19a9c5407fdb1df77166b8} 
+utils.\+dataloaders.\+Load\+Streams.\+transforms = transforms}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_streams_abdd3f1f505ab49488a72d573eb403048}\index{utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}!vid\_stride@{vid\_stride}}
+\index{vid\_stride@{vid\_stride}!utils.dataloaders.LoadStreams@{utils.dataloaders.LoadStreams}}
+\doxysubsubsection{\texorpdfstring{vid\_stride}{vid\_stride}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_streams_abdd3f1f505ab49488a72d573eb403048} 
+int utils.\+dataloaders.\+Load\+Streams.\+vid\+\_\+stride = vid\+\_\+stride}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{dataloaders_8py}{dataloaders.\+py}}\end{DoxyCompactItemize}

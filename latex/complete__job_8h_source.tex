@@ -1,0 +1,152 @@
+\doxysection{complete\+\_\+job.\+h}
+\hypertarget{complete__job_8h_source}{}\label{complete__job_8h_source}\index{robotics\_project\_ws/src/complete\_job\_ws/include/complete\_job.h@{robotics\_project\_ws/src/complete\_job\_ws/include/complete\_job.h}}
+\mbox{\hyperlink{complete__job_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ complete\_job.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Robotics}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Matteo\ Gottardelli\ on\ 05/01/25.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_COMPLETE\_JOB\_H\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_COMPLETE\_JOB\_H\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <rclcpp\_action/rclcpp\_action.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}camera\_ws/srv/conversion.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}vision\_ws\_msgs/srv/boundingbox.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}vision\_ws\_msgs/msg/boundstruct.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}vision\_ws\_msgs/srv/convert2din3d.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}vision\_ws\_msgs/msg/point2d.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}std\_srvs/srv/trigger.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kin__communication_8h}{kin\_communication.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kinematics_8h}{kinematics.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}ros2\_ur5\_interface/srv/set\_float64.hpp"{}}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point2_d}{Point2D}}\ \{}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_point2_d_a2a5ef0ad00bc9e912a9aefcedf004cc4}{x}};}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_point2_d_a989485fd2d8026ceec5d57e8c7e629ab}{y}};}
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{struct_point2_d}{Point2D}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point3_d}{Point3D}}\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_point3_d_ab0893e4111116772fb777b1519176763}{x}};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_point3_d_ada6edc689bd7733d4dc05d449c5694ea}{y}};}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_point3_d_a6e72b27633aeb7ed2e6f4b98da554b39}{z}};}
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{struct_point3_d}{Point3D}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gripper_communicator}{GripperCommunicator}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\ \{}
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_gripper_communicator_a6f329846319e1ed4f495d9d35964d732}{GripperCommunicator}}()\ :\ Node(\textcolor{stringliteral}{"{}gripper\_communicator"{}})\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ open\_gripper\_client\_\ =\ this-\/>create\_client<std\_srvs::srv::Trigger>(\textcolor{stringliteral}{"{}open\_gripper"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ close\_gripper\_client\_\ =\ this-\/>create\_client<std\_srvs::srv::Trigger>(\textcolor{stringliteral}{"{}close\_gripper"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ rotation\_gripper\_client\_=this-\/>create\_client<ros2\_ur5\_interface::srv::SetFloat64>(\textcolor{stringliteral}{"{}rotate\_gripper"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!open\_gripper\_client\_-\/>wait\_for\_service(std::chrono::seconds(5)))\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_ERROR(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}Service\ open\_gripper\ not\ available."{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!close\_gripper\_client\_-\/>wait\_for\_service(std::chrono::seconds(5)))\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_ERROR(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}Service\ close\_gripper\ not\ available."{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!rotation\_gripper\_client\_-\/>wait\_for\_service(std::chrono::seconds(5)))\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_ERROR(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}Service\ rotate\_gripper\ not\ available."{}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gripper_communicator_a44ad6c1c70f0b56a5852588d691cef90}{open}}()\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ callService(open\_gripper\_client\_,\ \textcolor{stringliteral}{"{}Opening\ the\ gripper"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gripper_communicator_ae85ece5cfdc22aab90e5aee17866d7e3}{close}}()\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ callService(close\_gripper\_client\_,\ \textcolor{stringliteral}{"{}Closing\ the\ gripper"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gripper_communicator_ab82742bca144c0d525b4bced5625bf11}{rotate\_gripper}}(\textcolor{keywordtype}{float}\ rot)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ callServiceRotate(rotation\_gripper\_client\_,\ rot,\ \textcolor{stringliteral}{"{}Rotating\ Service\ Sending"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ rclcpp::Client<std\_srvs::srv::Trigger>::SharedPtr\ open\_gripper\_client\_;}
+\DoxyCodeLine{00065\ \ \ \ \ rclcpp::Client<std\_srvs::srv::Trigger>::SharedPtr\ close\_gripper\_client\_;}
+\DoxyCodeLine{00066\ \ \ \ \ rclcpp::Client<ros2\_ur5\_interface::srv::SetFloat64>::SharedPtr\ rotation\_gripper\_client\_;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ServiceClient>\ \textcolor{keywordtype}{void}\ callServiceRotate(ServiceClient\ client,\ \textcolor{keywordtype}{float}\ rot,\ \textcolor{keyword}{const}\ std::string\ \&action)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ RCLCPP\_INFO(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s"{}},\ action.c\_str());}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ request=std::make\_shared<ros2\_ur5\_interface::srv::SetFloat64::Request>();}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ request-\/>data=rot;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ future=client-\/>async\_send\_request(request);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rclcpp::spin\_until\_future\_complete(this-\/>get\_node\_base\_interface(),\ future)==rclcpp::FutureReturnCode::SUCCESS)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ response=future.get();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(response-\/>success)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_INFO(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s:\ Rotation\ Sent\ Successfully"{}},\ action.c\_str());}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_WARN(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s:\ Rotation\ Went\ Wrong"{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str());}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_ERROR(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s\ service\ call\ timed\ out."{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str());}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ServiceClient>}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ callService(ServiceClient\ client,\ \textcolor{keyword}{const}\ std::string\ \&action)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_INFO(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s"{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str());}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ request\ =\ std::make\_shared<std\_srvs::srv::Trigger::Request>();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ future\ =\ client-\/>async\_send\_request(request);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rclcpp::spin\_until\_future\_complete(this-\/>get\_node\_base\_interface(),\ future)\ ==}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rclcpp::FutureReturnCode::SUCCESS)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceexample__request_a3cf6fb92d0e0606172ab7127ba4e597c}{response}}\ =\ future.get();}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespaceexample__request_a3cf6fb92d0e0606172ab7127ba4e597c}{response}}-\/>success)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_INFO(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s\ succeeded:\ \%s"{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str(),\ \mbox{\hyperlink{namespaceexample__request_a3cf6fb92d0e0606172ab7127ba4e597c}{response}}-\/>message.c\_str());}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_WARN(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s\ failed:\ \%s"{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str(),\ \mbox{\hyperlink{namespaceexample__request_a3cf6fb92d0e0606172ab7127ba4e597c}{response}}-\/>message.c\_str());}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RCLCPP\_ERROR(this-\/>get\_logger(),\ \textcolor{stringliteral}{"{}\%s\ service\ call\ timed\ out."{}},\ \mbox{\hyperlink{namespacemodels_1_1yolo_a268aa218ba8d1d33b370723cf6e4d508}{action}}.c\_str());}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_conversion_client}{ConversionClient}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\{}
+\DoxyCodeLine{00106\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{class_conversion_client_a7297dc4bd4254f73da3ec2fac7858ab7}{ConversionClient}}();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Function\ for\ sending\ an\ async\ request\ to\ the\ service}}
+\DoxyCodeLine{00110\ \ \ \ \ std::shared\_future<std::shared\_ptr<vision\_ws\_msgs::srv::Convert2din3d::Response>>\ \mbox{\hyperlink{class_conversion_client_afa875e795b16cf0c1104266e5a26d6ea}{sendRequest}}(\mbox{\hyperlink{struct_point2_d}{Point2D}}\ pmin,\ \mbox{\hyperlink{struct_point2_d}{Point2D}}\ pmax,\ \textcolor{keywordtype}{string}\ image\_path);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Function\ that\ wait\ for\ the\ request\ to\ be\ completed}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_conversion_client_adbfcc0ef6656c51e1a39bd8d6cd725f7}{spinUntilFutureComplete}}(std::shared\_future<std::shared\_ptr<vision\_ws\_msgs::srv::Convert2din3d::Response>>\ future);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00116\ \ \ \ \ rclcpp::Client<vision\_ws\_msgs::srv::Convert2din3d>::SharedPtr\ client\_;\ \textcolor{comment}{//\ Service\ client}}
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_yolo_client}{YoloClient}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\{}
+\DoxyCodeLine{00120\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_yolo_client_aaa63b04bfa32d2f32826d02ce9875b51}{YoloClient}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Function\ for\ sending\ an\ async\ request\ to\ the\ service}}
+\DoxyCodeLine{00124\ \ \ \ \ std::shared\_future<std::shared\_ptr<vision\_ws\_msgs::srv::Boundingbox::Response>>\ \mbox{\hyperlink{class_yolo_client_ab602a1f214351b926cc18a23ecbfd2cc}{sendRequest}}(\textcolor{keywordtype}{string}\ image\_path);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ Function\ that\ wait\ for\ the\ request\ to\ be\ completed}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_yolo_client_a7aff405ec2ec166fe5fc4a22f2f2164b}{spinUntilFutureComplete}}(std::shared\_future<std::shared\_ptr<vision\_ws\_msgs::srv::Boundingbox::Response>>\ future);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00130\ \ \ \ \ rclcpp::Client<vision\_ws\_msgs::srv::Boundingbox>::SharedPtr\ client\_;\ \textcolor{comment}{//\ Service\ client}}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_point3_d}{Point3D}}\ \mbox{\hyperlink{complete__job-old_8h_aded154c8fd65f3f1ed96d3f32c632ea8}{blockPos}};}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_point3_d}{Point3D}}\ \mbox{\hyperlink{complete__job-old_8h_ad44a08aeddb245746da08270ba1e46de}{finalPos}};}
+\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}};}
+\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{complete__job_8h_a41bd25c5d9e93dd6ac8569fb1c1be154}{startFrameZ}};}
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ Vector3d\ \mbox{\hyperlink{complete__job_8h_a3626c698f12419d2f6d3d55026c531b9}{posHome}};}
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{complete__job_8h_a185d4d011a03c725937ebffb1ade9748}{oneIteration}}(std::shared\_ptr<rclcpp::Node>\ node);}
+\DoxyCodeLine{00138\ \mbox{\hyperlink{struct_point2_d}{Point2D}}\ \mbox{\hyperlink{complete__job_8h_a5330563f4f001a8df7104faa702a9688}{findCenter}}(\mbox{\hyperlink{struct_point2_d}{Point2D}}\ pmin,\ \mbox{\hyperlink{struct_point2_d}{Point2D}}\ pmax);}
+\DoxyCodeLine{00139\ \mbox{\hyperlink{struct_point2_d}{Point2D}}\ \mbox{\hyperlink{complete__job_8h_a8582576ca2dec0f7fb7c3caaa1998b38}{getDestination}}(\textcolor{keywordtype}{int}\ class\_id);}
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{complete__job_8h_a2b3226b8abb3b9fbaa9a211bff7f6cb3}{initializeBlocks}}(\textcolor{keywordtype}{float}\ block\_x,\ \textcolor{keywordtype}{float}\ block\_y,\ \textcolor{keywordtype}{float}\ dest\_x,\ \textcolor{keywordtype}{float}\ dest\_y,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{complete__job_8h_a41bd25c5d9e93dd6ac8569fb1c1be154}{startFrameZ}});}
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{complete__job_8h_a3a5e38345cdee2586a11e542a92dff4e}{areEqual}}(\textcolor{keywordtype}{double}\ n1,\ \textcolor{keywordtype}{double}\ n2,\ \textcolor{keywordtype}{double}\ precision);}
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{complete__job_8h_a50b184b7f8101fe0de16854fc752159a}{motion}}\ (\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ qEs,\ Vector3d\ xEs,\ Vector3d\ xEf,\ Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}},\ \textcolor{keywordtype}{double}\ minT,\ \textcolor{keywordtype}{double}\ maxT,\ \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}*\ Th,\ std::shared\_ptr<rclcpp::Node>\ node);}
+\DoxyCodeLine{00143\ \mbox{\hyperlink{struct_point3_d}{Point3D}}\ \mbox{\hyperlink{complete__job_8h_a744a32d089a25b792c23d046f1e0a71d}{convertFromWorldFrameToMFrame}}(Vector3d\ start);}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ path\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+
+\end{DoxyCode}

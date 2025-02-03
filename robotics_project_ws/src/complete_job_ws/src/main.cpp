@@ -1,3 +1,9 @@
+//
+//  complete_job.h
+//  Robotics
+//
+//  Created by Matteo Gottardelli on 05/01/25.
+//
 #include "complete_job.h"
 
 int main(int argc, const char* argv[])
@@ -62,7 +68,12 @@ int main(int argc, const char* argv[])
             pmax={response_yolo->boxes[choose].xmax, response_yolo->boxes[choose].ymax};
             class_id=response_yolo->boxes[choose].class_id;
         }
-        
+        ret_code=system("open /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/generated/Yolo1.png");
+        if (ret_code == 0) {
+            cout << "Image Successfully Opened\n";
+        } else {
+            cerr << "Image Opening Failed with return code: " << ret_code << '\n';
+        }
         //TEST TRANSFORM IMAGE
         auto nodeConv = std::make_shared<ConversionClient>();
         
@@ -86,19 +97,27 @@ int main(int argc, const char* argv[])
             double yaw=response->rotation;
             Eigen::Quaterniond q=Quaterniond(roll, pitch, yaw, 1.0);
             Eigen::Vector3d euler = q.toRotationMatrix().eulerAngles(2,1,0);
+            double xr=euler(0);
+            double yr=euler(1);
             double startFrameZ = -euler(2);
-            cout << euler << std::endl;
+            RCLCPP_INFO(node->get_logger(), "%.2f %.2f %.2f", xr, yr, startFrameZ);
             if (areEqual(startFrameZ, M_PI, 0.001)){
                 startFrameZ = 0;
             }
-            cout << startFrameZ << std::endl;
-            Point2D destination = getDestination(counter_blocks);//Point2D destination = getDestination(class_id);
+            cout << startFrameZ << endl;
+            Point2D destination =getDestination(counter_blocks);//Point2D destination = getDestination(class_id);
             initializeBlocks(response->x, response->y, destination.x, destination.y, startFrameZ);
         }
         else {
             RCLCPP_INFO(node->get_logger(), "Infinite elaboration error");
             rclcpp::shutdown();
             return 0;
+        }
+        ret_code=system("open /home/ubuntu/ros2_ws/src/Manipulator_UR5_Project/robotics_project_ws/src/vision_ws/generated/Obj1.png");
+        if (ret_code == 0) {
+            cout << "Image Successfully Opened\n";
+        } else {
+            cerr << "Image Opening Failed with return code: " << ret_code << '\n';
         }
         oneIteration(node);
         counter_blocks++;

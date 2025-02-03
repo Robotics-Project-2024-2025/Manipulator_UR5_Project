@@ -1,0 +1,86 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/camera\+\_\+ws/include/calc\+\_\+medium\+\_\+value.h File Reference}
+\hypertarget{calc__medium__value_8h}{}\label{calc__medium__value_8h}\index{robotics\_project\_ws/src/camera\_ws/include/calc\_medium\_value.h@{robotics\_project\_ws/src/camera\_ws/include/calc\_medium\_value.h}}
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$rclcpp/rclcpp.\+hpp$>$}\newline
+{\ttfamily \#include $<$sensor\+\_\+msgs/msg/image.\+hpp$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\newline
+{\ttfamily \#include "{}camera\+\_\+ws/msg/point2\+\_\+d.\+hpp"{}}\newline
+{\ttfamily \#include "{}camera\+\_\+ws/srv/depth\+\_\+get.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_image_camera}{Image\+Camera}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{calc__medium__value_8h_ad0c329adebc27917fc0a4f51079acf6a}{SAMPLES}}~1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}} \mbox{\hyperlink{calc__medium__value_8h_a27e0b80eae69f3ea0f661dea593912c8}{Mode}}
+\item 
+using \mbox{\hyperlink{calc__medium__value_8h_a91bd3278ee85ebe7b09474b7adf8e6c2}{senseimage}} = sensor\+\_\+msgs\+::msg\+::\+Image
+\item 
+using \mbox{\hyperlink{calc__medium__value_8h_a81a1d75dfe375e24342666412cbb74ba}{service\+Depth}} = camera\+\_\+ws\+::srv\+::\+Depth\+Get
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}} \{ \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a11b4fd4b5bd83d22cff4fa79bb5c6e57}{SUBSCRIBER}}
+, \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a5f6d448017ecd0a56245e38b76596e07}{SERVICE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{calc__medium__value_8h_ad0c329adebc27917fc0a4f51079acf6a}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!SAMPLES@{SAMPLES}}
+\index{SAMPLES@{SAMPLES}!calc\_medium\_value.h@{calc\_medium\_value.h}}
+\doxysubsubsection{\texorpdfstring{SAMPLES}{SAMPLES}}
+{\footnotesize\ttfamily \label{calc__medium__value_8h_ad0c329adebc27917fc0a4f51079acf6a} 
+\#define SAMPLES~1}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{calc__medium__value_8h_a27e0b80eae69f3ea0f661dea593912c8}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!Mode@{Mode}}
+\index{Mode@{Mode}!calc\_medium\_value.h@{calc\_medium\_value.h}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily \label{calc__medium__value_8h_a27e0b80eae69f3ea0f661dea593912c8} 
+typedef enum \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}} \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}}}
+
+\Hypertarget{calc__medium__value_8h_a91bd3278ee85ebe7b09474b7adf8e6c2}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!senseimage@{senseimage}}
+\index{senseimage@{senseimage}!calc\_medium\_value.h@{calc\_medium\_value.h}}
+\doxysubsubsection{\texorpdfstring{senseimage}{senseimage}}
+{\footnotesize\ttfamily \label{calc__medium__value_8h_a91bd3278ee85ebe7b09474b7adf8e6c2} 
+using \mbox{\hyperlink{calc__medium__value_8h_a91bd3278ee85ebe7b09474b7adf8e6c2}{senseimage}} = sensor\+\_\+msgs\+::msg\+::\+Image}
+
+\Hypertarget{calc__medium__value_8h_a81a1d75dfe375e24342666412cbb74ba}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!serviceDepth@{serviceDepth}}
+\index{serviceDepth@{serviceDepth}!calc\_medium\_value.h@{calc\_medium\_value.h}}
+\doxysubsubsection{\texorpdfstring{serviceDepth}{serviceDepth}}
+{\footnotesize\ttfamily \label{calc__medium__value_8h_a81a1d75dfe375e24342666412cbb74ba} 
+using \mbox{\hyperlink{calc__medium__value_8h_a81a1d75dfe375e24342666412cbb74ba}{service\+Depth}} = camera\+\_\+ws\+::srv\+::\+Depth\+Get}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!Mode@{Mode}}
+\index{Mode@{Mode}!calc\_medium\_value.h@{calc\_medium\_value.h}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily \label{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911} 
+enum \mbox{\hyperlink{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}{Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUBSCRIBER@{SUBSCRIBER}!calc\_medium\_value.h@{calc\_medium\_value.h}}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!SUBSCRIBER@{SUBSCRIBER}}}\Hypertarget{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a11b4fd4b5bd83d22cff4fa79bb5c6e57}\label{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a11b4fd4b5bd83d22cff4fa79bb5c6e57} 
+SUBSCRIBER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SERVICE@{SERVICE}!calc\_medium\_value.h@{calc\_medium\_value.h}}\index{calc\_medium\_value.h@{calc\_medium\_value.h}!SERVICE@{SERVICE}}}\Hypertarget{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a5f6d448017ecd0a56245e38b76596e07}\label{calc__medium__value_8h_a46c8a310cf4c094f8c80e1cb8dc1f911a5f6d448017ecd0a56245e38b76596e07} 
+SERVICE&\\
+\hline
+
+\end{DoxyEnumFields}

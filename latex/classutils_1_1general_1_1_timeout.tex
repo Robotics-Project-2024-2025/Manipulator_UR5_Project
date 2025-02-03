@@ -1,0 +1,106 @@
+\doxysection{utils.\+general.\+Timeout Class Reference}
+\hypertarget{classutils_1_1general_1_1_timeout}{}\label{classutils_1_1general_1_1_timeout}\index{utils.general.Timeout@{utils.general.Timeout}}
+Inheritance diagram for utils.\+general.\+Timeout\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutils_1_1general_1_1_timeout}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a22bd573b5ed4f92109baced06cb821e2}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classutils_1_1general_1_1_timeout_af0ba2c3dd475bb7cbc5163e904b914a2}{seconds}}, \texorpdfstring{$\ast$}{*}, timeout\+\_\+msg="{}"{}, suppress\+\_\+timeout\+\_\+errors=True)
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a38e6cee5b209173aad898e3ef383d5db}{\+\_\+\+\_\+enter\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a796760ff42f6e6600472ed195ce58aa9}{\+\_\+\+\_\+exit\+\_\+\+\_\+}} (self, exc\+\_\+type, exc\+\_\+val, exc\+\_\+tb)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_af0ba2c3dd475bb7cbc5163e904b914a2}{seconds}} = int(seconds)
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_af3361ed85de63088d4c8543ef4bf8fb6}{timeout\+\_\+message}} = timeout\+\_\+msg
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a92b93eba05704c693ad5603e18b441f3}{suppress}} = bool(suppress\+\_\+timeout\+\_\+errors)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a5c056f83069ffb8db2b2d2b063a46733}{\+\_\+timeout\+\_\+handler}} (self, signum, frame)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1general_1_1_timeout_a2abb6d8be7de956e1e92d356f7027d18}{\+\_\+timeout\+\_\+handler}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Enforces a timeout on code execution, raising TimeoutError if the specified duration is exceeded.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1general_1_1_timeout_a22bd573b5ed4f92109baced06cb821e2}\index{utils.general.Timeout@{utils.general.Timeout}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a22bd573b5ed4f92109baced06cb821e2} 
+utils.\+general.\+Timeout.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{seconds}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{}]{timeout\+\_\+msg}{ = {\ttfamily "{}"{}}, }\item[{}]{suppress\+\_\+timeout\+\_\+errors}{ = {\ttfamily True}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a timeout context/decorator with defined seconds, optional message, and error suppression.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1general_1_1_timeout_a38e6cee5b209173aad898e3ef383d5db}\index{utils.general.Timeout@{utils.general.Timeout}!\_\_enter\_\_@{\_\_enter\_\_}}
+\index{\_\_enter\_\_@{\_\_enter\_\_}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{\_\_enter\_\_()}{\_\_enter\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a38e6cee5b209173aad898e3ef383d5db} 
+utils.\+general.\+Timeout.\+\_\+\+\_\+enter\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes timeout mechanism on non-Windows platforms, starting a countdown to raise TimeoutError.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1general_1_1_timeout_a796760ff42f6e6600472ed195ce58aa9}\index{utils.general.Timeout@{utils.general.Timeout}!\_\_exit\_\_@{\_\_exit\_\_}}
+\index{\_\_exit\_\_@{\_\_exit\_\_}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{\_\_exit\_\_()}{\_\_exit\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a796760ff42f6e6600472ed195ce58aa9} 
+utils.\+general.\+Timeout.\+\_\+\+\_\+exit\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{exc\+\_\+type}{, }\item[{}]{exc\+\_\+val}{, }\item[{}]{exc\+\_\+tb}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Disables active alarm on non-Windows systems and optionally suppresses TimeoutError if set.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1general_1_1_timeout_a5c056f83069ffb8db2b2d2b063a46733}\index{utils.general.Timeout@{utils.general.Timeout}!\_timeout\_handler@{\_timeout\_handler}}
+\index{\_timeout\_handler@{\_timeout\_handler}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{\_timeout\_handler()}{\_timeout\_handler()}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a5c056f83069ffb8db2b2d2b063a46733} 
+utils.\+general.\+Timeout.\+\_\+timeout\+\_\+handler (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{signum}{, }\item[{}]{frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Raises a TimeoutError with a custom message when a timeout event occurs.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1general_1_1_timeout_a2abb6d8be7de956e1e92d356f7027d18}\index{utils.general.Timeout@{utils.general.Timeout}!\_timeout\_handler@{\_timeout\_handler}}
+\index{\_timeout\_handler@{\_timeout\_handler}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{\_timeout\_handler}{\_timeout\_handler}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a2abb6d8be7de956e1e92d356f7027d18} 
+utils.\+general.\+Timeout.\+\_\+timeout\+\_\+handler\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classutils_1_1general_1_1_timeout_af0ba2c3dd475bb7cbc5163e904b914a2}\index{utils.general.Timeout@{utils.general.Timeout}!seconds@{seconds}}
+\index{seconds@{seconds}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_af0ba2c3dd475bb7cbc5163e904b914a2} 
+utils.\+general.\+Timeout.\+seconds = int(seconds)}
+
+\Hypertarget{classutils_1_1general_1_1_timeout_a92b93eba05704c693ad5603e18b441f3}\index{utils.general.Timeout@{utils.general.Timeout}!suppress@{suppress}}
+\index{suppress@{suppress}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{suppress}{suppress}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_a92b93eba05704c693ad5603e18b441f3} 
+utils.\+general.\+Timeout.\+suppress = bool(suppress\+\_\+timeout\+\_\+errors)}
+
+\Hypertarget{classutils_1_1general_1_1_timeout_af3361ed85de63088d4c8543ef4bf8fb6}\index{utils.general.Timeout@{utils.general.Timeout}!timeout\_message@{timeout\_message}}
+\index{timeout\_message@{timeout\_message}!utils.general.Timeout@{utils.general.Timeout}}
+\doxysubsubsection{\texorpdfstring{timeout\_message}{timeout\_message}}
+{\footnotesize\ttfamily \label{classutils_1_1general_1_1_timeout_af3361ed85de63088d4c8543ef4bf8fb6} 
+utils.\+general.\+Timeout.\+timeout\+\_\+message = timeout\+\_\+msg}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{general_8py}{general.\+py}}\end{DoxyCompactItemize}

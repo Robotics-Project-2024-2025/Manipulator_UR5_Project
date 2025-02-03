@@ -1,0 +1,102 @@
+\doxysection{export.\+i\+OSModel Class Reference}
+\hypertarget{classexport_1_1i_o_s_model}{}\label{classexport_1_1i_o_s_model}\index{export.iOSModel@{export.iOSModel}}
+Inheritance diagram for export.\+i\+OSModel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classexport_1_1i_o_s_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexport_1_1i_o_s_model_a799eb2f71bb398ebb7141390e1c8270d}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classexport_1_1i_o_s_model_a1128a5d38c7990aa4337e03d59437675}{model}}, im)
+\item 
+\mbox{\hyperlink{classexport_1_1i_o_s_model_a7f57fa8c08eba0afd487f173bbe23bb1}{forward}} (self, x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexport_1_1i_o_s_model_a1128a5d38c7990aa4337e03d59437675}{model}} = model
+\item 
+\mbox{\hyperlink{classexport_1_1i_o_s_model_a184866e5a8bd01739fdf697264226772}{nc}} = model.\+nc
+\item 
+float \mbox{\hyperlink{classexport_1_1i_o_s_model_aad58000e0e5edf945f6f8ace29c39b7e}{normalize}} = 1.\+0 / w
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}An iOS-compatible wrapper for YOLOv5 models that normalizes input images based on their dimensions.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classexport_1_1i_o_s_model_a799eb2f71bb398ebb7141390e1c8270d}\index{export.iOSModel@{export.iOSModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!export.iOSModel@{export.iOSModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classexport_1_1i_o_s_model_a799eb2f71bb398ebb7141390e1c8270d} 
+export.\+i\+OSModel.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{model}{, }\item[{}]{im}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes an iOS compatible model with normalization based on image dimensions.
+
+Args:
+    model (torch.nn.Module): The PyTorch model to be adapted for iOS compatibility.
+    im (torch.Tensor): An input tensor representing a batch of images with shape (B, C, H, W).
+
+Returns:
+    None: This method does not return any value.
+
+Notes:
+    This initializer configures normalization based on the input image dimensions, which is critical for
+    ensuring the model's compatibility and proper functionality on iOS devices. The normalization step
+    involves dividing by the image width if the image is square; otherwise, additional conditions might apply.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classexport_1_1i_o_s_model_a7f57fa8c08eba0afd487f173bbe23bb1}\index{export.iOSModel@{export.iOSModel}!forward@{forward}}
+\index{forward@{forward}!export.iOSModel@{export.iOSModel}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classexport_1_1i_o_s_model_a7f57fa8c08eba0afd487f173bbe23bb1} 
+export.\+i\+OSModel.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Run a forward pass on the input tensor, returning class confidences and normalized coordinates.
+
+Args:
+    x (torch.Tensor): Input tensor containing the image data with shape (batch, channels, height, width).
+
+Returns:
+    torch.Tensor: Concatenated tensor with normalized coordinates (xywh), confidence scores (conf),
+    and class probabilities (cls), having shape (N, 4 + 1 + C), where N is the number of predictions,
+    and C is the number of classes.
+
+Examples:
+    ```python
+    model = iOSModel(pretrained_model, input_image)
+    output = model.forward(torch_input_tensor)
+    ```
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classexport_1_1i_o_s_model_a1128a5d38c7990aa4337e03d59437675}\index{export.iOSModel@{export.iOSModel}!model@{model}}
+\index{model@{model}!export.iOSModel@{export.iOSModel}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{classexport_1_1i_o_s_model_a1128a5d38c7990aa4337e03d59437675} 
+export.\+i\+OSModel.\+model = model}
+
+\Hypertarget{classexport_1_1i_o_s_model_a184866e5a8bd01739fdf697264226772}\index{export.iOSModel@{export.iOSModel}!nc@{nc}}
+\index{nc@{nc}!export.iOSModel@{export.iOSModel}}
+\doxysubsubsection{\texorpdfstring{nc}{nc}}
+{\footnotesize\ttfamily \label{classexport_1_1i_o_s_model_a184866e5a8bd01739fdf697264226772} 
+export.\+i\+OSModel.\+nc = model.\+nc}
+
+\Hypertarget{classexport_1_1i_o_s_model_aad58000e0e5edf945f6f8ace29c39b7e}\index{export.iOSModel@{export.iOSModel}!normalize@{normalize}}
+\index{normalize@{normalize}!export.iOSModel@{export.iOSModel}}
+\doxysubsubsection{\texorpdfstring{normalize}{normalize}}
+{\footnotesize\ttfamily \label{classexport_1_1i_o_s_model_aad58000e0e5edf945f6f8ace29c39b7e} 
+float export.\+i\+OSModel.\+normalize = 1.\+0 / w}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/\mbox{\hyperlink{export_8py}{export.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,76 @@
+\doxysection{utils.\+torch\+\_\+utils.\+Early\+Stopping Class Reference}
+\hypertarget{classutils_1_1torch__utils_1_1_early_stopping}{}\label{classutils_1_1torch__utils_1_1_early_stopping}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_a4531d899c844b2a42d7a28a082595149}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_ae0a9c701fd7a296a49f4db1513f5634d}{patience}}=30)
+\item 
+\mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_ac25b6a69afdae7d73d93a65b63109792}{\+\_\+\+\_\+call\+\_\+\+\_\+}} (self, epoch, fitness)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_a01420e9bf800c215539d98bcf2a5d1ab}{best\+\_\+fitness}} = 0.\+0
+\item 
+int \mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_a51bc8dd8a10250865824e502acff5f6b}{best\+\_\+epoch}} = 0
+\item 
+\mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_ae0a9c701fd7a296a49f4db1513f5634d}{patience}} = patience or float("{}inf"{})
+\item 
+bool \mbox{\hyperlink{classutils_1_1torch__utils_1_1_early_stopping_a0f80723268da84333ad2c40ba303a7a8}{possible\+\_\+stop}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements early stopping to halt training when no improvement is observed for a specified number of epochs.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_a4531d899c844b2a42d7a28a082595149}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_a4531d899c844b2a42d7a28a082595149} 
+utils.\+torch\+\_\+utils.\+Early\+Stopping.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{patience}{ = {\ttfamily 30}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes simple early stopping mechanism for YOLOv5, with adjustable patience for non-improving epochs.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_ac25b6a69afdae7d73d93a65b63109792}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!\_\_call\_\_@{\_\_call\_\_}}
+\index{\_\_call\_\_@{\_\_call\_\_}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{\_\_call\_\_()}{\_\_call\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_ac25b6a69afdae7d73d93a65b63109792} 
+utils.\+torch\+\_\+utils.\+Early\+Stopping.\+\_\+\+\_\+call\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{epoch}{, }\item[{}]{fitness}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluates if training should stop based on fitness improvement and patience, returning a boolean.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_a51bc8dd8a10250865824e502acff5f6b}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!best\_epoch@{best\_epoch}}
+\index{best\_epoch@{best\_epoch}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{best\_epoch}{best\_epoch}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_a51bc8dd8a10250865824e502acff5f6b} 
+int utils.\+torch\+\_\+utils.\+Early\+Stopping.\+best\+\_\+epoch = 0}
+
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_a01420e9bf800c215539d98bcf2a5d1ab}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!best\_fitness@{best\_fitness}}
+\index{best\_fitness@{best\_fitness}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{best\_fitness}{best\_fitness}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_a01420e9bf800c215539d98bcf2a5d1ab} 
+float utils.\+torch\+\_\+utils.\+Early\+Stopping.\+best\+\_\+fitness = 0.\+0}
+
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_ae0a9c701fd7a296a49f4db1513f5634d}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!patience@{patience}}
+\index{patience@{patience}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{patience}{patience}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_ae0a9c701fd7a296a49f4db1513f5634d} 
+utils.\+torch\+\_\+utils.\+Early\+Stopping.\+patience = patience or float("{}inf"{})}
+
+\Hypertarget{classutils_1_1torch__utils_1_1_early_stopping_a0f80723268da84333ad2c40ba303a7a8}\index{utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}!possible\_stop@{possible\_stop}}
+\index{possible\_stop@{possible\_stop}!utils.torch\_utils.EarlyStopping@{utils.torch\_utils.EarlyStopping}}
+\doxysubsubsection{\texorpdfstring{possible\_stop}{possible\_stop}}
+{\footnotesize\ttfamily \label{classutils_1_1torch__utils_1_1_early_stopping_a0f80723268da84333ad2c40ba303a7a8} 
+bool utils.\+torch\+\_\+utils.\+Early\+Stopping.\+possible\+\_\+stop = False}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{torch__utils_8py}{torch\+\_\+utils.\+py}}\end{DoxyCompactItemize}

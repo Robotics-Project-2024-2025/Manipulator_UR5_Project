@@ -1,0 +1,102 @@
+\doxysection{models.\+yolo.\+Base\+Model Class Reference}
+\hypertarget{classmodels_1_1yolo_1_1_base_model}{}\label{classmodels_1_1yolo_1_1_base_model}\index{models.yolo.BaseModel@{models.yolo.BaseModel}}
+Inheritance diagram for models.\+yolo.\+Base\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classmodels_1_1yolo_1_1_base_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a95afbfe6a613b4217c1560f5670ce855}{forward}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9}{fuse}} (self)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5}{info}} (self, verbose=False, img\+\_\+size=640)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0}{model}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852}{\+\_\+forward\+\_\+once}} (self, x, \mbox{\hyperlink{namespacemodels_1_1yolo_a4b14e512181db7694c7fb2b46810326e}{profile}}=False, visualize=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089}{\+\_\+profile\+\_\+one\+\_\+layer}} (self, m, x, dt)
+\item 
+\mbox{\hyperlink{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373}{\+\_\+apply}} (self, fn)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 base model.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!\_apply@{\_apply}}
+\index{\_apply@{\_apply}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{\_apply()}{\_apply()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a72d309360e43681af85f33be4626c373} 
+models.\+yolo.\+Base\+Model.\+\_\+apply (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{fn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Applies transformations like to(), cpu(), cuda(), half() to model tensors excluding parameters or registered
+buffers.
+\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!\_forward\_once@{\_forward\_once}}
+\index{\_forward\_once@{\_forward\_once}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{\_forward\_once()}{\_forward\_once()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a2718d7e308e1f18dfd69d6a0f6fbf852} 
+models.\+yolo.\+Base\+Model.\+\_\+forward\+\_\+once (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{, }\item[{}]{profile}{ = {\ttfamily False}, }\item[{}]{visualize}{ = {\ttfamily False}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Performs a forward pass on the YOLOv5 model, enabling profiling and feature visualization options.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!\_profile\_one\_layer@{\_profile\_one\_layer}}
+\index{\_profile\_one\_layer@{\_profile\_one\_layer}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{\_profile\_one\_layer()}{\_profile\_one\_layer()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a8697ef6e060e9f933bb0b353e00b3089} 
+models.\+yolo.\+Base\+Model.\+\_\+profile\+\_\+one\+\_\+layer (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{m}{, }\item[{}]{x}{, }\item[{}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Profiles a single layer's performance by computing GFLOPs, execution time, and parameters.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_base_model_a95afbfe6a613b4217c1560f5670ce855}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!forward@{forward}}
+\index{forward@{forward}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a95afbfe6a613b4217c1560f5670ce855} 
+models.\+yolo.\+Base\+Model.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{, }\item[{}]{profile}{ = {\ttfamily False}, }\item[{}]{visualize}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Executes a single-scale inference or training pass on the YOLOv5 base model, with options for profiling and
+visualization.
+\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodels_1_1yolo_1_1_detection_model_af01a89839d56c349fa7ff3e49c3ced33}{models.\+yolo.\+Detection\+Model}}.
+
+\Hypertarget{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!fuse@{fuse}}
+\index{fuse@{fuse}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{fuse()}{fuse()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a0526d3fc944103192269ae20f646f5a9} 
+models.\+yolo.\+Base\+Model.\+fuse (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Fuses Conv2d() and BatchNorm2d() layers in the model to improve inference speed.\end{DoxyVerb}
+ \Hypertarget{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!info@{info}}
+\index{info@{info}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_a6cab83297738c769a0cec7b1c3d7a5b5} 
+models.\+yolo.\+Base\+Model.\+info (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{verbose}{ = {\ttfamily False}, }\item[{}]{img\+\_\+size}{ = {\ttfamily 640}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Prints model information given verbosity and image size, e.g., `info(verbose=True, img_size=640)`.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0}\index{models.yolo.BaseModel@{models.yolo.BaseModel}!model@{model}}
+\index{model@{model}!models.yolo.BaseModel@{models.yolo.BaseModel}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{classmodels_1_1yolo_1_1_base_model_ae78eb70ceda6bec1c15d19c8a9a7eaa0} 
+models.\+yolo.\+Base\+Model.\+model}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{yolo_8py}{yolo.\+py}}\end{DoxyCompactItemize}

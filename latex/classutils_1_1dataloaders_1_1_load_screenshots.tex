@@ -1,0 +1,163 @@
+\doxysection{utils.\+dataloaders.\+Load\+Screenshots Class Reference}
+\hypertarget{classutils_1_1dataloaders_1_1_load_screenshots}{}\label{classutils_1_1dataloaders_1_1_load_screenshots}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a972f8f7074c713bfe9170c38f63c75bc}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, source, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a8d78e46a44ba57e3a7485614dff7067a}{img\+\_\+size}}=640, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a719e966ed0f38ab9641bd49e5d14958e}{stride}}=32, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a4bf54bdb454bfbe05db520a1faf5ecce}{auto}}=True, \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_abfb530d0a890799fda2a00d44f2b3718}{transforms}}=None)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a799c7f01a7e80dd9f9bd5123e54dc885}{\+\_\+\+\_\+iter\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a87d939a866676c725d428e5cac80914f}{\+\_\+\+\_\+next\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a1398d44e4ba8943718241531eaac3d3f}{screen}} = 5\+:
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a8d78e46a44ba57e3a7485614dff7067a}{img\+\_\+size}} = img\+\_\+size
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a719e966ed0f38ab9641bd49e5d14958e}{stride}} = stride
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_abfb530d0a890799fda2a00d44f2b3718}{transforms}} = transforms
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a4bf54bdb454bfbe05db520a1faf5ecce}{auto}} = auto
+\item 
+str \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a98ceae6e5d98e4fa1269608edb25876f}{mode}} = "{}stream"{}
+\item 
+int \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_aa1ae9472f7d72281c0b833abdb9e19e7}{frame}} = 0
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_acafb3dd29de8c22cc972a86a32447162}{sct}} = mss.\+mss()
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_ac402c4c5fb9ddb484424a17365540886}{top}} = \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}top"{}\mbox{]} if top is None else (\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}top"{}\mbox{]} + top)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a7a3027d3dadcd01cc20c9ad6d01050dd}{left}} = \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}left"{}\mbox{]} if left is None else (\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}left"{}\mbox{]} + left)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a761a6e99d4489be7420c10f3be6d9000}{width}} = width or \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}width"{}\mbox{]}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a284c3ee38180183eadd6451367ef08cc}{height}} = height or \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}height"{}\mbox{]}
+\item 
+dict \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}} = \{"{}left"{}\+: self.\+left, "{}top"{}\+: self.\+top, "{}width"{}\+: self.\+width, "{}height"{}\+: self.\+height\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Loads and processes screenshots for YOLOv5 detection from specified screen regions using mss.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a972f8f7074c713bfe9170c38f63c75bc}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a972f8f7074c713bfe9170c38f63c75bc} 
+utils.\+dataloaders.\+Load\+Screenshots.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{source}{, }\item[{}]{img\+\_\+size}{ = {\ttfamily 640}, }\item[{}]{stride}{ = {\ttfamily 32}, }\item[{}]{auto}{ = {\ttfamily True}, }\item[{}]{transforms}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a screenshot dataloader for YOLOv5 with specified source region, image size, stride, auto, and
+transforms.
+
+Source = [screen_number left top width height] (pixels)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a799c7f01a7e80dd9f9bd5123e54dc885}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!\_\_iter\_\_@{\_\_iter\_\_}}
+\index{\_\_iter\_\_@{\_\_iter\_\_}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{\_\_iter\_\_()}{\_\_iter\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a799c7f01a7e80dd9f9bd5123e54dc885} 
+utils.\+dataloaders.\+Load\+Screenshots.\+\_\+\+\_\+iter\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Iterates over itself, enabling use in loops and iterable contexts.\end{DoxyVerb}
+ \Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a87d939a866676c725d428e5cac80914f}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!\_\_next\_\_@{\_\_next\_\_}}
+\index{\_\_next\_\_@{\_\_next\_\_}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{\_\_next\_\_()}{\_\_next\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a87d939a866676c725d428e5cac80914f} 
+utils.\+dataloaders.\+Load\+Screenshots.\+\_\+\+\_\+next\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Captures and returns the next screen frame as a BGR numpy array, cropping to only the first three channels
+from BGRA.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a4bf54bdb454bfbe05db520a1faf5ecce}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!auto@{auto}}
+\index{auto@{auto}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{auto}{auto}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a4bf54bdb454bfbe05db520a1faf5ecce} 
+utils.\+dataloaders.\+Load\+Screenshots.\+auto = auto}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_aa1ae9472f7d72281c0b833abdb9e19e7}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!frame@{frame}}
+\index{frame@{frame}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{frame}{frame}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_aa1ae9472f7d72281c0b833abdb9e19e7} 
+int utils.\+dataloaders.\+Load\+Screenshots.\+frame = 0}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a284c3ee38180183eadd6451367ef08cc}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!height@{height}}
+\index{height@{height}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a284c3ee38180183eadd6451367ef08cc} 
+utils.\+dataloaders.\+Load\+Screenshots.\+height = height or \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}height"{}\mbox{]}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a8d78e46a44ba57e3a7485614dff7067a}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!img\_size@{img\_size}}
+\index{img\_size@{img\_size}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{img\_size}{img\_size}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a8d78e46a44ba57e3a7485614dff7067a} 
+utils.\+dataloaders.\+Load\+Screenshots.\+img\+\_\+size = img\+\_\+size}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a7a3027d3dadcd01cc20c9ad6d01050dd}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!left@{left}}
+\index{left@{left}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{left}{left}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a7a3027d3dadcd01cc20c9ad6d01050dd} 
+utils.\+dataloaders.\+Load\+Screenshots.\+left = \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}left"{}\mbox{]} if left is None else (\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}left"{}\mbox{]} + left)}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a98ceae6e5d98e4fa1269608edb25876f}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!mode@{mode}}
+\index{mode@{mode}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a98ceae6e5d98e4fa1269608edb25876f} 
+str utils.\+dataloaders.\+Load\+Screenshots.\+mode = "{}stream"{}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!monitor@{monitor}}
+\index{monitor@{monitor}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{monitor}{monitor}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259} 
+dict utils.\+dataloaders.\+Load\+Screenshots.\+monitor = \{"{}left"{}\+: self.\+left, "{}top"{}\+: self.\+top, "{}width"{}\+: self.\+width, "{}height"{}\+: self.\+height\}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a1398d44e4ba8943718241531eaac3d3f}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!screen@{screen}}
+\index{screen@{screen}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a1398d44e4ba8943718241531eaac3d3f} 
+utils.\+dataloaders.\+Load\+Screenshots.\+screen = 5\+:}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_acafb3dd29de8c22cc972a86a32447162}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!sct@{sct}}
+\index{sct@{sct}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{sct}{sct}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_acafb3dd29de8c22cc972a86a32447162} 
+utils.\+dataloaders.\+Load\+Screenshots.\+sct = mss.\+mss()}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a719e966ed0f38ab9641bd49e5d14958e}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!stride@{stride}}
+\index{stride@{stride}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a719e966ed0f38ab9641bd49e5d14958e} 
+utils.\+dataloaders.\+Load\+Screenshots.\+stride = stride}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_ac402c4c5fb9ddb484424a17365540886}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!top@{top}}
+\index{top@{top}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{top}{top}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_ac402c4c5fb9ddb484424a17365540886} 
+utils.\+dataloaders.\+Load\+Screenshots.\+top = \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}top"{}\mbox{]} if top is None else (\mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}top"{}\mbox{]} + top)}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_abfb530d0a890799fda2a00d44f2b3718}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!transforms@{transforms}}
+\index{transforms@{transforms}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{transforms}{transforms}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_abfb530d0a890799fda2a00d44f2b3718} 
+utils.\+dataloaders.\+Load\+Screenshots.\+transforms = transforms}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_load_screenshots_a761a6e99d4489be7420c10f3be6d9000}\index{utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}!width@{width}}
+\index{width@{width}!utils.dataloaders.LoadScreenshots@{utils.dataloaders.LoadScreenshots}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_load_screenshots_a761a6e99d4489be7420c10f3be6d9000} 
+utils.\+dataloaders.\+Load\+Screenshots.\+width = width or \mbox{\hyperlink{classutils_1_1dataloaders_1_1_load_screenshots_a148436329d7bd79644cfe643ef0c3259}{monitor}}\mbox{[}"{}width"{}\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{dataloaders_8py}{dataloaders.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,226 @@
+\doxysection{ros2\+\_\+ur5\+\_\+interface Directory Reference}
+\hypertarget{dir_4640deee4e3b0d613e1451d31ee9e7c5}{}\label{dir_4640deee4e3b0d613e1451d31ee9e7c5}\index{ros2\_ur5\_interface Directory Reference@{ros2\_ur5\_interface Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_4f955cb32c794a9a59d4006da78ea6d9}{launch}}
+\item 
+directory \mbox{\hyperlink{dir_f86f08730adf22633f02c384ac8fbd34}{src}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This repository provides {\bfseries{auxiliary resources}} to help students and robotics enthusiasts visualize simulations and create new nodes for their projects. It complements the \href{https://hub.docker.com/r/pla10/ros2_ur5_interface}{\texttt{ {\bfseries{pla10/ros2\+\_\+ur5\+\_\+interface}}}} Docker image, which delivers a pre-\/configured ROS 2 Jazzy environment tailored for the {\bfseries{UR5 manipulator robot}}. This repo is included, at its latest release, in the /home/ubuntu/ros2\+\_\+ws of the \href{https://hub.docker.com/r/pla10/ros2_ur5_interface}{\texttt{ {\bfseries{pla10/ros2\+\_\+ur5\+\_\+interface}}}} Docker image.
+
+The resources in this repository were developed for the {\bfseries{"{}\+Fundamentals of Robotics"{} course}} at the {\bfseries{University of Trento}} and aim to streamline project development and learning.
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md115}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{README.md_autotoc_md115}
+
+\begin{DoxyItemize}
+\item {\bfseries{Simulation visualization}}\+: Tools to interact with the UR5 simulation in a graphical environment.
+\item {\bfseries{Example ROS 2 nodes}}\+: Includes a sample node for trajectory publication to get you started.
+\item {\bfseries{Launch files}}\+: Ready-\/to-\/use launch files for interacting with the simulated or real UR5 robot.
+\item {\bfseries{Bash scripts}}\+: Simplifies running the UR5 simulation and ROS 2 environments with pre-\/defined commands.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md117}{}\doxysubsection{\texorpdfstring{Repository Structure}{Repository Structure}}\label{README.md_autotoc_md117}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.}
+\DoxyCodeLine{├──\ launch/}
+\DoxyCodeLine{│\ \ \ ├──\ sim.launch.py\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Launch\ file\ to\ simulate\ the\ UR5\ robot\ in\ gazebo}
+\DoxyCodeLine{│\ \ \ ├──\ interface.launch.py\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Launch\ file\ to\ interact\ with\ simulated\ and\ real\ UR5\ robot}
+\DoxyCodeLine{├──\ src/}
+\DoxyCodeLine{│\ \ \ ├──\ gripper\_service.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Node\ that\ provides\ a\ service\ to\ open/close\ the\ gripper}
+\DoxyCodeLine{│\ \ \ ├──\ publish\_trajectory\_node.cpp\ \ \ \ \ \ \ \#\ Example\ node\ for\ trajectory\ publication}
+\DoxyCodeLine{├──\ config/}
+\DoxyCodeLine{│\ \ \ ├──\ ur\_controllers.yaml\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Configuration\ file\ for\ the\ UR5\ controllers}
+\DoxyCodeLine{├──\ params/}
+\DoxyCodeLine{│\ \ \ ├──\ ur5\_bridge.yaml\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Parameters\ file\ for\ the\ Gazebo\ bridge}
+\DoxyCodeLine{├──\ gripper/}
+\DoxyCodeLine{│\ \ \ ├──\ open.script\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Script\ to\ open\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ ├──\ close.script\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Script\ to\ close\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ ├──\ neutral\_from\_open.script\ \ \ \ \ \ \ \ \ \ \#\ Script\ to\ move\ the\ gripper\ to\ a\ neutral\ position\ from\ the\ open\ position}
+\DoxyCodeLine{│\ \ \ ├──\ neutral\_from\_closed.script\ \ \ \ \ \ \ \ \#\ Script\ to\ move\ the\ gripper\ to\ a\ neutral\ position\ from\ the\ closed\ position}
+\DoxyCodeLine{├──\ models/}
+\DoxyCodeLine{│\ \ \ ├──\ desk.urdf.xacro\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ URDF\ file\ that\ defines\ the\ desk\ where\ the\ UR5\ is\ mounted}
+\DoxyCodeLine{│\ \ \ ├──\ desk.config\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Config\ file\ auxiliary\ to\ the\ SDF\ file}
+\DoxyCodeLine{│\ \ \ ├──\ ur\_gz.ros2\_control.xacro\ \ \ \ \ \ \ \ \ \ \#\ URDF\ file\ that\ defines\ the\ UR5\ robot\ with\ ROS\ 2\ control}
+\DoxyCodeLine{│\ \ \ ├──\ ur\_gz.urdf.xacro\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ URDF\ file\ that\ defines\ the\ UR5\ robot}
+\DoxyCodeLine{│\ \ \ ├──\ soft\_robotics\_gripper.urdf.xacro\ \ \#\ URDF\ file\ that\ defines\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ ├──\ camera.sdf\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ SDF\ file\ that\ defines\ the\ RGBD\ camera}
+\DoxyCodeLine{│\ \ \ ├──\ block.urdf.xacro\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ URDF\ file\ that\ defines\ a\ block}
+\DoxyCodeLine{│\ \ \ ├──\ block.config\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Config\ file\ auxiliary\ to\ the\ SDF\ file}
+\DoxyCodeLine{│\ \ \ ├──\ meshes}
+\DoxyCodeLine{│\ \ \ |\ \ \ ├──\ desk.stl\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ STL\ file\ with\ the\ 3D\ mesh\ of\ the\ desk}
+\DoxyCodeLine{│\ \ \ |\ \ \ ├──\ base.stl\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ STL\ file\ with\ the\ 3D\ mesh\ of\ the\ base\ of\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ |\ \ \ ├──\ link1.stl\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ STL\ file\ with\ the\ 3D\ mesh\ of\ the\ first\ link\ of\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ |\ \ \ ├──\ link2.stl\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ STL\ file\ with\ the\ 3D\ mesh\ of\ the\ second\ link\ of\ the\ soft\ robotics\ gripper}
+\DoxyCodeLine{│\ \ \ |\ \ \ ├──\ X*-\/Y*-\/Z*.stl\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ STL\ files\ with\ the\ 3D\ mesh\ of\ the\ blocks}
+\DoxyCodeLine{├──\ docker/}
+\DoxyCodeLine{│\ \ \ ├──\ Dockerfile\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Dockerfile\ for\ the\ ROS\ 2\ UR5\ interface\ docker\ image}
+\DoxyCodeLine{│\ \ \ ├──\ entrypoint.sh\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Entrypoint\ script\ used\ in\ the\ docker}
+\DoxyCodeLine{├──\ scripts/}
+\DoxyCodeLine{│\ \ \ ├──\ ur5.sh\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Starts\ the\ URSim\ simulator\ container}
+\DoxyCodeLine{│\ \ \ ├──\ ros2.sh\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Starts\ the\ pla10/ros2\_ur5\_interface\ container}
+\DoxyCodeLine{├──\ worlds/}
+\DoxyCodeLine{│\ \ \ ├──\ empty.world\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Gazebo\ world\ file\ with\ plugins\ for\ the\ UR5\ simulation}
+\DoxyCodeLine{├──\ rviz/}
+\DoxyCodeLine{│\ \ \ ├──\ ur5.rviz\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ RViz\ configuration\ file}
+\DoxyCodeLine{├──\ README.md\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Project\ overview\ and\ instructions}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md119}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{README.md_autotoc_md119}
+
+\begin{DoxyItemize}
+\item {\bfseries{Docker}}\+: Ensure Docker is installed and running on your system.
+\item {\bfseries{Docker Network Setup}}\+: Create a Docker network named {\ttfamily ursim\+\_\+net} before running the containers\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{docker\ network\ create\ -\/-\/subnet=192.168.56.0/24\ ursim\_net}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md120}{}\doxysubsection{\texorpdfstring{Simulation}{Simulation}}\label{README.md_autotoc_md120}
+You can choose between two simulation environments\+:
+\begin{DoxyItemize}
+\item {\bfseries{URSim}}\+: A graphical simulation environment for the UR5 robot that uses a dedicated Docker container. This solution is preferred since it is lightweight and simulates the real connection with the robot. But with this solution you can simulate ONLY the robot, not the environment (no cameras, external sensors, etc).
+\item {\bfseries{Gazebo}}\+: A more complex simulation environment that uses the ROS 2 Gazebo bridge and is included in the \href{https://hub.docker.com/r/pla10/ros2_ur5_interface}{\texttt{ pla10/ros2\+\_\+ur5\+\_\+interface}} Docker image.
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md121}{}\doxysubsection{\texorpdfstring{How to Use (URSim)}{How to Use (URSim)}}\label{README.md_autotoc_md121}
+\hypertarget{README.md_autotoc_md122}{}\doxysubsubsection{\texorpdfstring{1. Start the UR5 Simulator}{1. Start the UR5 Simulator}}\label{README.md_autotoc_md122}
+Run the URSim container using the provided bash script\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ scripts/ur5.sh}
+
+\end{DoxyCode}
+ This starts the \href{https://hub.docker.com/r/pla10/ursim_e-series}{\texttt{ pla10/ursim\+\_\+e-\/series}} Docker container for UR5 simulation. Access the simulator via your browser at \href{http://localhost:6080}{\texttt{ http\+://localhost\+:6080}}.
+
+
+
+To prepare the robot to work with ROS2 you need to go to the program tab and add the URCaps \texorpdfstring{$>$}{>} External Control.
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md124}{}\doxysubsubsection{\texorpdfstring{2. Start the ROS 2 Interface}{2. Start the ROS 2 Interface}}\label{README.md_autotoc_md124}
+Run the ROS 2 container using the provided bash script\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ scripts/ros2.sh}
+
+\end{DoxyCode}
+ This starts the \href{https://hub.docker.com/r/pla10/ros2_ur5_interface}{\texttt{ pla10/ros2\+\_\+ur5\+\_\+interface}} container. Access the environment via no\+VNC at \href{http://localhost:6081}{\texttt{ http\+://localhost\+:6081}}.
+
+
+
+The user password is "{}ubuntu"{}.
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md126}{}\doxysubsubsection{\texorpdfstring{3. Run ROS 2 Nodes}{3. Run ROS 2 Nodes}}\label{README.md_autotoc_md126}
+
+\begin{DoxyItemize}
+\item Open a terminal inside the ROS 2 container (accessible via no\+VNC).
+\item Navigate to the ROS 2 workspace\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ /home/ubuntu/ros2\_ws}
+
+\end{DoxyCode}
+
+\item Source the ROS 2 setup\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source\ install/setup.bash}
+
+\end{DoxyCode}
+
+\item Launch the control nodes using the provided launch files\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ launch\ ros2\_ur5\_interface\ interface.launch.py}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md127}{}\doxysubsection{\texorpdfstring{How to Use (Gazebo)}{How to Use (Gazebo)}}\label{README.md_autotoc_md127}
+\hypertarget{README.md_autotoc_md128}{}\doxysubsubsection{\texorpdfstring{1. Start the UR5 Gazebo Simulation}{1. Start the UR5 Gazebo Simulation}}\label{README.md_autotoc_md128}
+Run the ROS 2 container using the provided bash script\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ scripts/ros2.sh}
+
+\end{DoxyCode}
+ This starts the \href{https://hub.docker.com/r/pla10/ros2_ur5_interface}{\texttt{ pla10/ros2\+\_\+ur5\+\_\+interface}} container. Access the environment via no\+VNC at \href{http://localhost:6081}{\texttt{ http\+://localhost\+:6081}}.
+
+
+\begin{DoxyItemize}
+\item Open a terminal inside the ROS 2 container (accessible via no\+VNC).
+\item Navigate to the ROS 2 workspace\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ /home/ubuntu/ros2\_ws}
+
+\end{DoxyCode}
+
+\item Source the ROS 2 setup\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source\ install/setup.bash}
+
+\end{DoxyCode}
+
+\item Launch the simulation nodes using the provided launch files\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ launch\ ros2\_ur5\_interface\ sim.launch.py}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md129}{}\doxysubsubsection{\texorpdfstring{2. Run ROS 2 Example Node}{2. Run ROS 2 Example Node}}\label{README.md_autotoc_md129}
+Run the trajectory publication node to visualize the UR5 robot moving\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ run\ ros2\_ur5\_interface\ publish\_trajectory\_node}
+
+\end{DoxyCode}
+
+
+
+
+~\newline
+~\newline
+\hypertarget{README.md_autotoc_md130}{}\doxysubsection{\texorpdfstring{Connect to the real UR5 robot}{Connect to the real UR5 robot}}\label{README.md_autotoc_md130}
+Check the robot\textquotesingle{}s IP address by following these steps\+:
+\begin{DoxyEnumerate}
+\item Press the burger menu button on the top right of the robot\textquotesingle{}s teach pendant.
+\item Select "{}\+Settings"{}.
+\item Navigate to "{}\+System"{} \texorpdfstring{$>$}{>} "{}\+Network"{}.
+\item Check the IP address.
+\end{DoxyEnumerate}
+
+
+
+~\newline
+~\newline
+
+
+Check under the installation tab if in the URCaps \texorpdfstring{$>$}{>} External Control your IP address is the same as the one you are using to connect to the robot.
+
+
+
+~\newline
+~\newline
+
+
+To connect to the real UR5 robot you need to specify the IP address of the robot when launching the \doxylink{interface_8launch_8py}{interface.\+launch.\+py} file. You can do this by adding the following argument to the launch command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ launch\ ros2\_ur5\_interface\ interface.launch.py\ robot\_ip:=<robot\_ip>}
+
+\end{DoxyCode}
+
+
+~\newline
+~\newline
+
+
+  
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md132}{}\doxysubsection{\texorpdfstring{Contributions}{Contributions}}\label{README.md_autotoc_md132}
+Students and contributors are welcome to improve this repository by adding new nodes, launch files, or other auxiliary tools. Feel free to open issues or submit pull requests.
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md134}{}\doxysubsection{\texorpdfstring{License}{License}}\label{README.md_autotoc_md134}
+This project is licensed under the MIT License. See the \mbox{[}LICENSE\mbox{]}(LICENSE) file for details. 

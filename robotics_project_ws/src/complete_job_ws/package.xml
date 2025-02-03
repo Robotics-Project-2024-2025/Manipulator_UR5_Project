@@ -8,12 +8,12 @@
   <license>TODO: License declaration</license>
   <depend>rclcpp</depend>
   <depend>vision_ws_msgs</depend>
+  <depend>camera_ws</depend>
+  <depend>ros2_ur5_interface</depend>
   <buildtool_depend>ament_cmake</buildtool_depend>
  
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  <build_depend>camera_ws</build_depend>
-  <exec_depend>camera_ws</exec_depend>
   <!--<build_depend>vision_ws_msgs</build_depend>
   <exec_depend>vision_ws_msgs</exec_depend>
   <build_depend>vision_ws</build_depend>

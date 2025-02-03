@@ -18,6 +18,7 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(camera_ws REQUIRED)
 find_package(vision_ws_msgs REQUIRED)
+find_package(ros2_ur5_interface REQUIRED)
 # Generate Interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Moving.srv"
@@ -67,6 +68,7 @@ ament_target_dependencies(
   rclcpp_action
   camera_ws
   vision_ws_msgs
+  ros2_ur5_interface
 )
 
 # Include directories for the target

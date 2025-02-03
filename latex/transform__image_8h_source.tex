@@ -1,0 +1,42 @@
+\doxysection{transform\+\_\+image.\+h}
+\hypertarget{transform__image_8h_source}{}\label{transform__image_8h_source}\index{robotics\_project\_ws/src/camera\_ws/include/transform\_image.h@{robotics\_project\_ws/src/camera\_ws/include/transform\_image.h}}
+\mbox{\hyperlink{transform__image_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ transform\_image.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Transform\_image}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Niccolò\ Cristoforetti\ on\ 19/12/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_TRANSFORM\_IMAGE\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_TRANSFORM\_IMAGE\_\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <rclcpp/rclcpp.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}camera\_ws/srv/conversion.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ TABLE\_TOP\_LEFT\_X\ -\/0.25}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ TABLE\_TOP\_LEFT\_Y\ 0.45}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TABLE\_BOTTOM\_RIGHT\_X\ -\/1.15}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ TABLE\_BOTTOM\_RIGHT\_Y\ -\/0.45}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_table_transform_service_acd10e7ce004628fb9e1627325540ef8a}{TableTransformService}}\ :\ \textcolor{keyword}{public}\ rclcpp::Node\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_table_transform_service_acd10e7ce004628fb9e1627325540ef8a}{TableTransformService}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ cv::Mat\ perspectiveMatrix\_;\ \ \ \textcolor{comment}{//\ Transformation\ matrix}}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<cv::Point2f>\ sourcePoints\_;\ \textcolor{comment}{//\ Source\ points\ (3D\ image\ table\ corners)}}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<cv::Point2f>\ destinationPoints\_;\ \textcolor{comment}{//\ Destination\ points\ (2D\ table\ plane)}}
+\DoxyCodeLine{00029\ \ \ \ \ rclcpp::Service<camera\_ws::srv::Conversion>::SharedPtr\ service\_;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Callback\ function\ for\ the\ service}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ projectCallback(\textcolor{keyword}{const}\ std::shared\_ptr<camera\_ws::srv::Conversion::Request>\ req,\ std::shared\_ptr<camera\_ws::srv::Conversion::Response>\ res);}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*trasform\_image.h*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

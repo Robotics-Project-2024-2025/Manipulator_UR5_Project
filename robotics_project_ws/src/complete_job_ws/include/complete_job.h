@@ -19,6 +19,7 @@
 #include <Eigen/Dense>
 #include "kin_communication.h"
 #include "kinematics.h"
+#include "ros2_ur5_interface/srv/set_float64.hpp"
 using namespace std;
 
 typedef struct Point2D {
@@ -37,12 +38,16 @@ public:
     GripperCommunicator() : Node("gripper_communicator") {
         open_gripper_client_ = this->create_client<std_srvs::srv::Trigger>("open_gripper");
         close_gripper_client_ = this->create_client<std_srvs::srv::Trigger>("close_gripper");
-        if (!open_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
+        rotation_gripper_client_=this->create_client<ros2_ur5_interface::srv::SetFloat64>("rotate_gripper");
+        while(!open_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
             RCLCPP_ERROR(this->get_logger(), "Service open_gripper not available.");
         }
-        if (!close_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
-                    RCLCPP_ERROR(this->get_logger(), "Service close_gripper not available.");
-                }
+        while(!close_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
+            RCLCPP_ERROR(this->get_logger(), "Service close_gripper not available.");
+        }
+        while(!rotation_gripper_client_->wait_for_service(std::chrono::seconds(5))) {
+            RCLCPP_ERROR(this->get_logger(), "Service rotate_gripper not available.");
+        }
 
     }
     void open() {
@@ -52,9 +57,32 @@ public:
       void close() {
           callService(close_gripper_client_, "Closing the gripper");
       }
+    void rotate_gripper(float rot) {
+        callServiceRotate(rotation_gripper_client_, rot, "Rotating Service Sending");
+    }
 private:
     rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr open_gripper_client_;
     rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr close_gripper_client_;
+    rclcpp::Client<ros2_ur5_interface::srv::SetFloat64>::SharedPtr rotation_gripper_client_;
+    template<typename ServiceClient> void callServiceRotate(ServiceClient client, float rot, const std::string &action) {
+        RCLCPP_INFO(this->get_logger(), "%s", action.c_str());
+        auto request=std::make_shared<ros2_ur5_interface::srv::SetFloat64::Request>();
+        request->data=rot;
+        auto future=client->async_send_request(request);
+        if(rclcpp::spin_until_future_complete(this->get_node_base_interface(), future)==rclcpp::FutureReturnCode::SUCCESS) {
+            auto response=future.get();
+            if(response->success) {
+                RCLCPP_INFO(this->get_logger(), "%s: Rotation Sent Successfully", action.c_str());
+            }
+            else {
+                RCLCPP_WARN(this->get_logger(), "%s: Rotation Went Wrong", action.c_str());
+            }
+        }
+        else {
+            RCLCPP_ERROR(this->get_logger(), "%s service call timed out.", action.c_str());
+        }
+    }
+    
     template<typename ServiceClient>
         void callService(ServiceClient client, const std::string &action) {
             RCLCPP_INFO(this->get_logger(), "%s", action.c_str());
@@ -104,12 +132,15 @@ private:
 extern Point3D blockPos;
 extern Point3D finalPos;
 extern Vector3d phiEf;
+extern float startFrameZ;
+extern Vector3d posHome;
 void oneIteration(std::shared_ptr<rclcpp::Node> node);
 Point2D findCenter(Point2D pmin, Point2D pmax);
 Point2D getDestination(int class_id);
 void initializeBlocks(float block_x, float block_y, float dest_x, float dest_y, double startFrameZ);
 bool areEqual(double n1, double n2, double precision);
-bool motion (Matrix16 qEs, Vector3d xEf, Vector3d phiEf, double minT, double maxT, MatrixD6* Th, std::shared_ptr<rclcpp::Node> node);
+bool motion (Matrix16 qEs, Vector3d xEs, Vector3d xEf, Vector3d phiEf, double minT, double maxT, MatrixD6* Th, std::shared_ptr<rclcpp::Node> node);
+Point3D convertFromWorldFrameToMFrame(Vector3d start);
 #endif /* path_h */
 
 

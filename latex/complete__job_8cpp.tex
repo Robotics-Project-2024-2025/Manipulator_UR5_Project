@@ -1,0 +1,119 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/complete\+\_\+job\+\_\+ws/src/complete\+\_\+job.cpp File Reference}
+\hypertarget{complete__job_8cpp}{}\label{complete__job_8cpp}\index{robotics\_project\_ws/src/complete\_job\_ws/src/complete\_job.cpp@{robotics\_project\_ws/src/complete\_job\_ws/src/complete\_job.cpp}}
+{\ttfamily \#include "{}complete\+\_\+job.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{complete__job_8cpp_a3a5e38345cdee2586a11e542a92dff4e}{are\+Equal}} (double n1, double n2, double precision)
+\item 
+\mbox{\hyperlink{struct_point2_d}{Point2D}} \mbox{\hyperlink{complete__job_8cpp_a8582576ca2dec0f7fb7c3caaa1998b38}{get\+Destination}} (int class\+\_\+id)
+\item 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} \mbox{\hyperlink{complete__job_8cpp_a744a32d089a25b792c23d046f1e0a71d}{convert\+From\+World\+Frame\+To\+MFrame}} (Vector3d start)
+\item 
+void \mbox{\hyperlink{complete__job_8cpp_af5ba605b1d4b9b84455facad867294e6}{initialize\+Blocks}} (float block\+\_\+x, float block\+\_\+y, float dest\+\_\+x, float dest\+\_\+y, double s\+FZ)
+\item 
+bool \mbox{\hyperlink{complete__job_8cpp_a50b184b7f8101fe0de16854fc752159a}{motion}} (\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} q\+Es, Vector3d x\+Es, Vector3d x\+Ef, Vector3d \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phi\+Ef}}, double minT, double maxT, \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}Th, std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$ node)
+\item 
+void \mbox{\hyperlink{complete__job_8cpp_a185d4d011a03c725937ebffb1ade9748}{one\+Iteration}} (std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$ node)
+\item 
+\mbox{\hyperlink{struct_point2_d}{Point2D}} \mbox{\hyperlink{complete__job_8cpp_a5330563f4f001a8df7104faa702a9688}{find\+Center}} (\mbox{\hyperlink{struct_point2_d}{Point2D}} pmin, \mbox{\hyperlink{struct_point2_d}{Point2D}} pmax)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{complete__job_8cpp_ad155fe5a68eb888a7e0eb897a3dfc015}{control}}
+\item 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} \mbox{\hyperlink{complete__job_8cpp_aded154c8fd65f3f1ed96d3f32c632ea8}{block\+Pos}}
+\item 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} \mbox{\hyperlink{complete__job_8cpp_ad44a08aeddb245746da08270ba1e46de}{final\+Pos}}
+\item 
+Vector3d \mbox{\hyperlink{complete__job_8cpp_a7fada962077203e64c9f845711f78451}{phi\+Ef}}
+\item 
+float \mbox{\hyperlink{complete__job_8cpp_a41bd25c5d9e93dd6ac8569fb1c1be154}{start\+FrameZ}}
+\item 
+Vector3d \mbox{\hyperlink{complete__job_8cpp_a3626c698f12419d2f6d3d55026c531b9}{pos\+Home}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{complete__job_8cpp_a3a5e38345cdee2586a11e542a92dff4e}\index{complete\_job.cpp@{complete\_job.cpp}!areEqual@{areEqual}}
+\index{areEqual@{areEqual}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{areEqual()}{areEqual()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a3a5e38345cdee2586a11e542a92dff4e} 
+bool are\+Equal (\begin{DoxyParamCaption}\item[{double}]{n1}{, }\item[{double}]{n2}{, }\item[{double}]{precision}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_a744a32d089a25b792c23d046f1e0a71d}\index{complete\_job.cpp@{complete\_job.cpp}!convertFromWorldFrameToMFrame@{convertFromWorldFrameToMFrame}}
+\index{convertFromWorldFrameToMFrame@{convertFromWorldFrameToMFrame}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{convertFromWorldFrameToMFrame()}{convertFromWorldFrameToMFrame()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a744a32d089a25b792c23d046f1e0a71d} 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} convert\+From\+World\+Frame\+To\+MFrame (\begin{DoxyParamCaption}\item[{Vector3d}]{start}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_a5330563f4f001a8df7104faa702a9688}\index{complete\_job.cpp@{complete\_job.cpp}!findCenter@{findCenter}}
+\index{findCenter@{findCenter}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{findCenter()}{findCenter()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a5330563f4f001a8df7104faa702a9688} 
+\mbox{\hyperlink{struct_point2_d}{Point2D}} find\+Center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point2_d}{Point2D}}}]{pmin}{, }\item[{\mbox{\hyperlink{struct_point2_d}{Point2D}}}]{pmax}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_a8582576ca2dec0f7fb7c3caaa1998b38}\index{complete\_job.cpp@{complete\_job.cpp}!getDestination@{getDestination}}
+\index{getDestination@{getDestination}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{getDestination()}{getDestination()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a8582576ca2dec0f7fb7c3caaa1998b38} 
+\mbox{\hyperlink{struct_point2_d}{Point2D}} get\+Destination (\begin{DoxyParamCaption}\item[{int}]{class\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_af5ba605b1d4b9b84455facad867294e6}\index{complete\_job.cpp@{complete\_job.cpp}!initializeBlocks@{initializeBlocks}}
+\index{initializeBlocks@{initializeBlocks}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeBlocks()}{initializeBlocks()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_af5ba605b1d4b9b84455facad867294e6} 
+void initialize\+Blocks (\begin{DoxyParamCaption}\item[{float}]{block\+\_\+x}{, }\item[{float}]{block\+\_\+y}{, }\item[{float}]{dest\+\_\+x}{, }\item[{float}]{dest\+\_\+y}{, }\item[{double}]{s\+FZ}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_a50b184b7f8101fe0de16854fc752159a}\index{complete\_job.cpp@{complete\_job.cpp}!motion@{motion}}
+\index{motion@{motion}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{motion()}{motion()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a50b184b7f8101fe0de16854fc752159a} 
+bool motion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}}]{q\+Es}{, }\item[{Vector3d}]{x\+Es}{, }\item[{Vector3d}]{x\+Ef}{, }\item[{Vector3d}]{phi\+Ef}{, }\item[{double}]{minT}{, }\item[{double}]{maxT}{, }\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}}]{Th}{, }\item[{std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{complete__job_8cpp_a185d4d011a03c725937ebffb1ade9748}\index{complete\_job.cpp@{complete\_job.cpp}!oneIteration@{oneIteration}}
+\index{oneIteration@{oneIteration}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{oneIteration()}{oneIteration()}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a185d4d011a03c725937ebffb1ade9748} 
+void one\+Iteration (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ rclcpp\+::\+Node $>$}]{node}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{complete__job_8cpp_aded154c8fd65f3f1ed96d3f32c632ea8}\index{complete\_job.cpp@{complete\_job.cpp}!blockPos@{blockPos}}
+\index{blockPos@{blockPos}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{blockPos}{blockPos}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_aded154c8fd65f3f1ed96d3f32c632ea8} 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} block\+Pos}
+
+\Hypertarget{complete__job_8cpp_ad155fe5a68eb888a7e0eb897a3dfc015}\index{complete\_job.cpp@{complete\_job.cpp}!control@{control}}
+\index{control@{control}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{control}{control}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_ad155fe5a68eb888a7e0eb897a3dfc015} 
+bool control}
+
+\Hypertarget{complete__job_8cpp_ad44a08aeddb245746da08270ba1e46de}\index{complete\_job.cpp@{complete\_job.cpp}!finalPos@{finalPos}}
+\index{finalPos@{finalPos}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{finalPos}{finalPos}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_ad44a08aeddb245746da08270ba1e46de} 
+\mbox{\hyperlink{struct_point3_d}{Point3D}} final\+Pos}
+
+\Hypertarget{complete__job_8cpp_a7fada962077203e64c9f845711f78451}\index{complete\_job.cpp@{complete\_job.cpp}!phiEf@{phiEf}}
+\index{phiEf@{phiEf}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{phiEf}{phiEf}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a7fada962077203e64c9f845711f78451} 
+Vector3d phi\+Ef}
+
+\Hypertarget{complete__job_8cpp_a3626c698f12419d2f6d3d55026c531b9}\index{complete\_job.cpp@{complete\_job.cpp}!posHome@{posHome}}
+\index{posHome@{posHome}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{posHome}{posHome}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a3626c698f12419d2f6d3d55026c531b9} 
+Vector3d pos\+Home}
+
+\Hypertarget{complete__job_8cpp_a41bd25c5d9e93dd6ac8569fb1c1be154}\index{complete\_job.cpp@{complete\_job.cpp}!startFrameZ@{startFrameZ}}
+\index{startFrameZ@{startFrameZ}!complete\_job.cpp@{complete\_job.cpp}}
+\doxysubsubsection{\texorpdfstring{startFrameZ}{startFrameZ}}
+{\footnotesize\ttfamily \label{complete__job_8cpp_a41bd25c5d9e93dd6ac8569fb1c1be154} 
+float start\+FrameZ}
+

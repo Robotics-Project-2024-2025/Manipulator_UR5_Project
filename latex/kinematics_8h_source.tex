@@ -1,0 +1,85 @@
+\doxysection{kinematics.\+h}
+\hypertarget{kinematics_8h_source}{}\label{kinematics_8h_source}\index{robotics\_project\_ws/src/move\_ws/include/kinematics.h@{robotics\_project\_ws/src/move\_ws/include/kinematics.h}}
+\mbox{\hyperlink{kinematics_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ kinematics.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ Kinematics}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Matteo\ Gottardelli\ on\ 21/11/24.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ kinematics\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ kinematics\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kinematics_8h}{kinematics.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ DELTAT\ 0.01}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ERROR\ 0.0025}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ MINT\ 0}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ MAXT\ 6}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ NUM\_JOINTS\ 6}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ XMIN\ -\/0.7}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ XMAX\ 0.7}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ YMIN\ -\/0.7}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ YMAX(i)\ ((i<NUM\_JOINTS/2)\ ?\ 0.22\ :\ 0.12)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ ZMIN\ 0.0}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ ZMAX(i)\ ((i<NUM\_JOINTS/2)\ ?\ 0.9\ :\ 0.9)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ MIN(a,\ b)\ ((a)\ <\ (b)\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ MAX(a,\ b)\ ((a)\ >\ (b)\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{using\ namespace\ }Eigen;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}=Matrix<double,\ -\/1,\ \mbox{\hyperlink{kin__communication_8h_af742980593d698725375a7d12711c24f}{NUM\_JOINTS}}>;}
+\DoxyCodeLine{00036\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}=Matrix<double,\ NUM\_JOINTS,\ 1>;}
+\DoxyCodeLine{00037\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}=Matrix<double,\ 1,\ NUM\_JOINTS>;}
+\DoxyCodeLine{00038\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}}=Matrix<double,\ 8,\ NUM\_JOINTS>;}
+\DoxyCodeLine{00039\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}}=Matrix<double,\ 4,\ 4>;}
+\DoxyCodeLine{00040\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_a0261604892668dca64d9c05515501376}{Matrix41}}=Matrix<double,\ 4,\ 1>;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_ad9ce2c972244e725be619c991a8f3a14}{Matrix14}}=Matrix<double,\ 1,\ 4>;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_aa564b6e062dfbd7bf31c2b55c61df90a}{MatrixD4}}=Matrix<double,\ -\/1,\ 4>;}
+\DoxyCodeLine{00043\ \textcolor{keyword}{using\ }\mbox{\hyperlink{kinematics_8h_afb62938142317c39dea213f0e4afbffd}{Matrix66}}=Matrix<double,\ 6,\ 6>;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{InverseType}}\ \{\mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89a1a88641fcd39f2ed3e58a18526e97138}{VERTICAL}},\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89a4dd51ad73508d6fc83a502966779e48e}{HORIZONTAL}},\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89a88ec7d5086d2469ba843c7fcceade8a6}{DEFAULT}}\}\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{InverseType}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_afd024653db3bbd17ca67e537a2fce9a9}{p2pMotionPlan}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ qES,\ Vector3d\ xEf,\ Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}},\ \textcolor{keywordtype}{int}\ minT,\ \textcolor{keywordtype}{int}\ maxT,\ \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}*\ T,\ \textcolor{keywordtype}{bool}\ velocity,\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{InverseType}}\ inv,\ \textcolor{keywordtype}{double}\ rot\_gripper);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_ae8edaa3b3ca05dd8354568b249061a54}{control\_collision}}(\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}*\ th);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a2901cdf4794bf674d5d3d401780f0a95}{checkAngles}}(\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}*\ th);}
+\DoxyCodeLine{00050\ Matrix3d\ \mbox{\hyperlink{kinematics_8h_ae25c5ccf88ce3f21fb4df0b6f0b810ea}{xRot}}(\textcolor{keywordtype}{double}\ theta);}
+\DoxyCodeLine{00051\ Matrix3d\ \mbox{\hyperlink{kinematics_8h_a1d775d75a5fc6523073c4dd4bd5ae05c}{yRot}}(\textcolor{keywordtype}{double}\ theta);}
+\DoxyCodeLine{00052\ Matrix3d\ \mbox{\hyperlink{kinematics_8h_a8d5b18d36819e2295baade5a7efa8d67}{zRot}}(\textcolor{keywordtype}{double}\ theta);}
+\DoxyCodeLine{00053\ \mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}}\ \mbox{\hyperlink{kinematics_8h_a9d121625febe2993577b0cc83a95bbd2}{HomogeneousTransformGen}}(\textcolor{keywordtype}{double}\ theta,\ \textcolor{keywordtype}{double}\ alpha,\ \textcolor{keywordtype}{double}\ d,\ \textcolor{keywordtype}{double}\ a);}
+\DoxyCodeLine{00054\ \mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}}\ \mbox{\hyperlink{kinematics_8h_a3baa18a79aea9112686ccd16a494e539}{HomogeneousTransformSpecific}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{double}\ theta);}
+\DoxyCodeLine{00055\ pair<Vector3d,\ Matrix3d>\ \mbox{\hyperlink{kinematics_8h_a157ded1df7f96d5216557e8e9cc0f340}{Ur5Direct}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ Th);}
+\DoxyCodeLine{00056\ \textcolor{comment}{//Matrix86\ Ur5Inverse(Vector3d\ v,\ Matrix3d\ m);}}
+\DoxyCodeLine{00057\ \mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}}\ \mbox{\hyperlink{kinematics_8h_af6bba9c0c11d61907ec0c3f03a49b1c8}{Ur5Inverse}}(Vector3d\ pe,\ Matrix3d\ re);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a6ffe4c0c38eeefc299e03f29ad7c9d8b}{bestInverse}}(\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ start,\ \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}\&\ end);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a2901cdf4794bf674d5d3d401780f0a95}{checkAngles}}(\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}*\ th);}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_ae8edaa3b3ca05dd8354568b249061a54}{control\_collision}}(\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ th);}
+\DoxyCodeLine{00061\ Matrix3d\ \mbox{\hyperlink{kinematics_8h_a4fd5b2d67858e12f3b33099a33c264f1}{eul2rotm}}(Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}});}
+\DoxyCodeLine{00062\ Vector3d\ \mbox{\hyperlink{kinematics_8h_a8fab05d663ee1efd7316eae8e32a7ff5}{rotm2eul}}(Matrix3d\ m);}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{kinematics_8h_a0165e241e8261f69868591d8b4223433}{adjust\_acos}}(\textcolor{keywordtype}{float}\ x);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a1db0b4f98951a7a682b4c03ecc766290}{checkPosition}}\ (Vector3d\ pos,\ \mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}\ q);}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{kinematics_8h_ae72a580e5790e9f9d8be624ee66b3c6e}{hypot}}(\textcolor{keywordtype}{double}\ x1,\ \textcolor{keywordtype}{double}\ x2);}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{kinematics_8h_a6c7c4a012354c80f5d9b992093fef665}{singularityCheck}}(\textcolor{keywordtype}{int}\ angle,\ \textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kinematics_8h_aa0a9d7f5e92a1e1b0f03e0aac8218aee}{removeRow}}(\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}*\ m,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ remove);}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a86fda554f3f4892a8fe36398200d1411}{linear\_interpolation}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ qEs,\ Vector3d\ xES,\ Vector3d\ xEF,\ Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}},\ \textcolor{keywordtype}{int}\ minT,\ \textcolor{keywordtype}{int}\ maxT,\ \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}*\ Th);}
+\DoxyCodeLine{00069\ Vector3d\ \mbox{\hyperlink{kinematics_8h_a1ef2a411326142c2e0fb1dfbd44fa525}{smoothBlend}}(Vector3d\ old\_xE,\ Vector3d\ new\_xE,\ \textcolor{keywordtype}{double}\ alpha);}
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a40a5d5f1ca682dafb97a1a6e57bd6930}{checkJointOperationalSpace}}(\textcolor{keyword}{const}\ vector<Vector3d>\ jointPositions,\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{namespaceval}{val}});}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kinematics_8h_a92d9914d16ea974b4e3358ab03a337b9}{clampJointAngles}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\&\ q);}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kinematics_8h_aed0e45d42993441261ce5440c3334bdd}{computeJointPositions}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ th,\ Vector3d\ jointPositions[\mbox{\hyperlink{kin__communication_8h_af742980593d698725375a7d12711c24f}{NUM\_JOINTS}}]);}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kinematics_8h_acb3a7463a230dc47f829d2f317f89c20}{adjustTrajectory}}(\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\&\ q);}
+\DoxyCodeLine{00074\ \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ \mbox{\hyperlink{kinematics_8h_aa2be3e2797ad07fdd1f33da07d8684c4}{computeJointAdjustment}}(Vector3d\ pos\_error,\ Vector3d\ ori\_error,\ \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ current);}
+\DoxyCodeLine{00075\ \mbox{\hyperlink{kinematics_8h_afb62938142317c39dea213f0e4afbffd}{Matrix66}}\ \mbox{\hyperlink{kinematics_8h_a13d98a97640639f43cd826ca63a54730}{computeJacobian}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\&\ q);}
+\DoxyCodeLine{00076\ \mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}}\ \mbox{\hyperlink{kinematics_8h_a50011c760acbe4cefda7b0d0552fa8cc}{Ur5InverseVerticalZ}}(Vector3d\ v,\ Matrix3d\ m,\ \textcolor{keywordtype}{double}\ th1,\ \textcolor{keywordtype}{double}\ th5,\ \textcolor{keywordtype}{double}\ th6);}
+\DoxyCodeLine{00077\ \textcolor{comment}{//Matrix86\ Ur5InverseHorizontalXY(Vector3d\ v,\ Matrix3d\ m,\ double\ th4,\ double\ th5,\ double\ th6);}}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kinematics_8h_a505810336062a01fe086f3309be6502a}{cartesianInterpolation}}\ (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}\ qES,\ Vector3d\ xEf,\ Vector3d\ \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phiEf}},\ \textcolor{keywordtype}{int}\ minT,\ \textcolor{keywordtype}{int}\ maxT,\ \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{MatrixD6}}*\ Th,\ \textcolor{keywordtype}{bool}\ velocity,\ \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{InverseType}}\ inv,\ \textcolor{keywordtype}{double}\ rot\_gripper);}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ kinematics\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

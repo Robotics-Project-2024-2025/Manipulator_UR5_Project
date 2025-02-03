@@ -1,0 +1,73 @@
+\doxysection{models.\+tf.\+TFConv2d Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_conv2d}{}\label{classmodels_1_1tf_1_1_t_f_conv2d}\index{models.tf.TFConv2d@{models.tf.TFConv2d}}
+Inheritance diagram for models.\+tf.\+TFConv2d\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_conv2d}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv2d_aae227b89b3719936b782ef9d3a869443}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, k, s=1, g=1, bias=True, w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv2d_a48bce30b2c11a444a2bb79e35e1e144a}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv2d_a4aca60680ce1486590d15cc6c9e6153e}{conv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements a TensorFlow 2D convolution layer, mimicking PyTorch's nn.Conv2D for specified filters and stride.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv2d_aae227b89b3719936b782ef9d3a869443}\index{models.tf.TFConv2d@{models.tf.TFConv2d}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFConv2d@{models.tf.TFConv2d}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv2d_aae227b89b3719936b782ef9d3a869443} 
+models.\+tf.\+TFConv2d.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{k}{, }\item[{}]{s}{ = {\ttfamily 1}, }\item[{}]{g}{ = {\ttfamily 1}, }\item[{}]{bias}{ = {\ttfamily True}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a TensorFlow 2D convolution layer, mimicking PyTorch's nn.Conv2D functionality for given filter
+sizes and stride.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv2d_a48bce30b2c11a444a2bb79e35e1e144a}\index{models.tf.TFConv2d@{models.tf.TFConv2d}!call@{call}}
+\index{call@{call}!models.tf.TFConv2d@{models.tf.TFConv2d}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv2d_a48bce30b2c11a444a2bb79e35e1e144a} 
+models.\+tf.\+TFConv2d.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies a convolution operation to the inputs and returns the result.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv2d_a4aca60680ce1486590d15cc6c9e6153e}\index{models.tf.TFConv2d@{models.tf.TFConv2d}!conv@{conv}}
+\index{conv@{conv}!models.tf.TFConv2d@{models.tf.TFConv2d}}
+\doxysubsubsection{\texorpdfstring{conv}{conv}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv2d_a4aca60680ce1486590d15cc6c9e6153e} 
+models.\+tf.\+TFConv2d.\+conv}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ keras.layers.Conv2D(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ filters=c2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ kernel\_size=k,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ strides=s,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ padding=\textcolor{stringliteral}{"{}VALID"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ use\_bias=bias,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ kernel\_initializer=keras.initializers.Constant(w.weight.permute(2,\ 3,\ 1,\ 0).numpy()),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ bias\_initializer=keras.initializers.Constant(w.bias.numpy())\ \textcolor{keywordflow}{if}\ bias\ \textcolor{keywordflow}{else}\ \textcolor{keywordtype}{None},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

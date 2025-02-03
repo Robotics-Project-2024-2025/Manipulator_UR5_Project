@@ -1,0 +1,98 @@
+\doxysection{utils.\+dataloaders.\+Classification\+Dataset Class Reference}
+\hypertarget{classutils_1_1dataloaders_1_1_classification_dataset}{}\label{classutils_1_1dataloaders_1_1_classification_dataset}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+Inheritance diagram for utils.\+dataloaders.\+Classification\+Dataset\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classutils_1_1dataloaders_1_1_classification_dataset}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a5353e25b0e779b228825d065edc99937}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, root, augment, imgsz, cache=False)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a6524463dd3079640b1f3298f1c31139b}{\+\_\+\+\_\+getitem\+\_\+\+\_\+}} (self, i)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a3e0dfb6f8c6af6ab3715573e27d42dbf}{torch\+\_\+transforms}} = classify\+\_\+transforms(imgsz)
+\item 
+\mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a6a3a025e85995d4b8403aeb667f0e0a2}{album\+\_\+transforms}} = classify\+\_\+albumentations(augment, imgsz) if augment else None
+\item 
+bool \mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a72461a0858b02d7c6e617f0d4f653922}{cache\+\_\+ram}} = "{}ram"{}
+\item 
+str \mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_ac7c3b1e14d2688e8f5b26d6b766e6bd7}{cache\+\_\+disk}} = "{}disk"{}
+\item 
+list \mbox{\hyperlink{classutils_1_1dataloaders_1_1_classification_dataset_a7e41b5ae140b3074cacbf47b655efb6c}{samples}} = \mbox{[}list(x) + \mbox{[}Path(x\mbox{[}0\mbox{]}).with\+\_\+suffix("{}.npy"{}), None\mbox{]} for x in self.\+samples\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}YOLOv5 Classification Dataset.
+
+Arguments:
+    root:  Dataset path
+    transform:  torchvision transforms, used by default
+    album_transform: Albumentations transforms, used if installed
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a5353e25b0e779b228825d065edc99937}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a5353e25b0e779b228825d065edc99937} 
+utils.\+dataloaders.\+Classification\+Dataset.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{root}{, }\item[{}]{augment}{, }\item[{}]{imgsz}{, }\item[{}]{cache}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes YOLOv5 Classification Dataset with optional caching, augmentations, and transforms for image
+classification.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a6524463dd3079640b1f3298f1c31139b}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!\_\_getitem\_\_@{\_\_getitem\_\_}}
+\index{\_\_getitem\_\_@{\_\_getitem\_\_}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{\_\_getitem\_\_()}{\_\_getitem\_\_()}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a6524463dd3079640b1f3298f1c31139b} 
+utils.\+dataloaders.\+Classification\+Dataset.\+\_\+\+\_\+getitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{i}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Fetches and transforms an image sample by index, supporting RAM/disk caching and Augmentations.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a6a3a025e85995d4b8403aeb667f0e0a2}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!album\_transforms@{album\_transforms}}
+\index{album\_transforms@{album\_transforms}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{album\_transforms}{album\_transforms}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a6a3a025e85995d4b8403aeb667f0e0a2} 
+utils.\+dataloaders.\+Classification\+Dataset.\+album\+\_\+transforms = classify\+\_\+albumentations(augment, imgsz) if augment else None}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_ac7c3b1e14d2688e8f5b26d6b766e6bd7}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!cache\_disk@{cache\_disk}}
+\index{cache\_disk@{cache\_disk}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{cache\_disk}{cache\_disk}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_ac7c3b1e14d2688e8f5b26d6b766e6bd7} 
+str utils.\+dataloaders.\+Classification\+Dataset.\+cache\+\_\+disk = "{}disk"{}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a72461a0858b02d7c6e617f0d4f653922}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!cache\_ram@{cache\_ram}}
+\index{cache\_ram@{cache\_ram}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{cache\_ram}{cache\_ram}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a72461a0858b02d7c6e617f0d4f653922} 
+bool utils.\+dataloaders.\+Classification\+Dataset.\+cache\+\_\+ram = "{}ram"{}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a7e41b5ae140b3074cacbf47b655efb6c}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!samples@{samples}}
+\index{samples@{samples}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{samples}{samples}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a7e41b5ae140b3074cacbf47b655efb6c} 
+list utils.\+dataloaders.\+Classification\+Dataset.\+samples = \mbox{[}list(x) + \mbox{[}Path(x\mbox{[}0\mbox{]}).with\+\_\+suffix("{}.npy"{}), None\mbox{]} for x in self.\+samples\mbox{]}}
+
+\Hypertarget{classutils_1_1dataloaders_1_1_classification_dataset_a3e0dfb6f8c6af6ab3715573e27d42dbf}\index{utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}!torch\_transforms@{torch\_transforms}}
+\index{torch\_transforms@{torch\_transforms}!utils.dataloaders.ClassificationDataset@{utils.dataloaders.ClassificationDataset}}
+\doxysubsubsection{\texorpdfstring{torch\_transforms}{torch\_transforms}}
+{\footnotesize\ttfamily \label{classutils_1_1dataloaders_1_1_classification_dataset_a3e0dfb6f8c6af6ab3715573e27d42dbf} 
+utils.\+dataloaders.\+Classification\+Dataset.\+torch\+\_\+transforms = classify\+\_\+transforms(imgsz)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/utils/\mbox{\hyperlink{dataloaders_8py}{dataloaders.\+py}}\end{DoxyCompactItemize}

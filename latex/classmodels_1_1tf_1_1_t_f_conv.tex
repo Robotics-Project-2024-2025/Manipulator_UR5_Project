@@ -1,0 +1,78 @@
+\doxysection{models.\+tf.\+TFConv Class Reference}
+\hypertarget{classmodels_1_1tf_1_1_t_f_conv}{}\label{classmodels_1_1tf_1_1_t_f_conv}\index{models.tf.TFConv@{models.tf.TFConv}}
+Inheritance diagram for models.\+tf.\+TFConv\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmodels_1_1tf_1_1_t_f_conv}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_a7b5a5bf9f6604821d9e1a4f80f5e3f7b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, c1, c2, k=1, s=1, p=None, g=1, \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_aa22f6f6daf5b7c1f3c35969d8e8ff692}{act}}=True, w=None)
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_aed1829791d416da0effb7bd74da44694}{call}} (self, inputs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_a6d77d687716789792e5ab38b981d85c1}{conv}} = 1 else keras.\+Sequential(\mbox{[}\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_pad}{TFPad}}(autopad(k, p)), conv\mbox{]})
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_a66100543b1cc5166bdca0f36b670e6ef}{bn}} = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_b_n}{TFBN}}(w.\+bn) if hasattr(w, "{}bn"{}) else tf.\+identity
+\item 
+\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_conv_aa22f6f6daf5b7c1f3c35969d8e8ff692}{act}} = \mbox{\hyperlink{namespacemodels_1_1tf_aa75918dd4849c007e562b1abd138dab1}{activations}}(w.\+act) if act else tf.\+identity
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Implements a standard convolutional layer with optional batch normalization and activation for TensorFlow.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv_a7b5a5bf9f6604821d9e1a4f80f5e3f7b}\index{models.tf.TFConv@{models.tf.TFConv}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!models.tf.TFConv@{models.tf.TFConv}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv_a7b5a5bf9f6604821d9e1a4f80f5e3f7b} 
+models.\+tf.\+TFConv.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{c1}{, }\item[{}]{c2}{, }\item[{}]{k}{ = {\ttfamily 1}, }\item[{}]{s}{ = {\ttfamily 1}, }\item[{}]{p}{ = {\ttfamily None}, }\item[{}]{g}{ = {\ttfamily 1}, }\item[{}]{act}{ = {\ttfamily True}, }\item[{}]{w}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes a standard convolution layer with optional batch normalization and activation; supports only
+group=1.
+
+Inputs are ch_in, ch_out, weights, kernel, stride, padding, groups.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv_aed1829791d416da0effb7bd74da44694}\index{models.tf.TFConv@{models.tf.TFConv}!call@{call}}
+\index{call@{call}!models.tf.TFConv@{models.tf.TFConv}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv_aed1829791d416da0effb7bd74da44694} 
+models.\+tf.\+TFConv.\+call (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{inputs}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies convolution, batch normalization, and activation function to input tensors.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv_aa22f6f6daf5b7c1f3c35969d8e8ff692}\index{models.tf.TFConv@{models.tf.TFConv}!act@{act}}
+\index{act@{act}!models.tf.TFConv@{models.tf.TFConv}}
+\doxysubsubsection{\texorpdfstring{act}{act}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv_aa22f6f6daf5b7c1f3c35969d8e8ff692} 
+models.\+tf.\+TFConv.\+act = \mbox{\hyperlink{namespacemodels_1_1tf_aa75918dd4849c007e562b1abd138dab1}{activations}}(w.\+act) if act else tf.\+identity}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv_a66100543b1cc5166bdca0f36b670e6ef}\index{models.tf.TFConv@{models.tf.TFConv}!bn@{bn}}
+\index{bn@{bn}!models.tf.TFConv@{models.tf.TFConv}}
+\doxysubsubsection{\texorpdfstring{bn}{bn}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv_a66100543b1cc5166bdca0f36b670e6ef} 
+models.\+tf.\+TFConv.\+bn = \mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_b_n}{TFBN}}(w.\+bn) if hasattr(w, "{}bn"{}) else tf.\+identity}
+
+\Hypertarget{classmodels_1_1tf_1_1_t_f_conv_a6d77d687716789792e5ab38b981d85c1}\index{models.tf.TFConv@{models.tf.TFConv}!conv@{conv}}
+\index{conv@{conv}!models.tf.TFConv@{models.tf.TFConv}}
+\doxysubsubsection{\texorpdfstring{conv}{conv}}
+{\footnotesize\ttfamily \label{classmodels_1_1tf_1_1_t_f_conv_a6d77d687716789792e5ab38b981d85c1} 
+int models.\+tf.\+TFConv.\+conv = 1 else keras.\+Sequential(\mbox{[}\mbox{\hyperlink{classmodels_1_1tf_1_1_t_f_pad}{TFPad}}(autopad(k, p)), conv\mbox{]})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+robotics\+\_\+project\+\_\+ws/src/vision\+\_\+ws/yolov5/models/\mbox{\hyperlink{tf_8py}{tf.\+py}}\end{DoxyCompactItemize}

@@ -34,13 +34,13 @@ void MyVector::calculatePath(
         qES(i)=request->joints[i];
     }
     RCLCPP_INFO(this->get_logger(), "Checking Position");
-    if (!checkPosition(v, qES)) {
+   /* if (!checkPosition(v, qES)) {
         RCLCPP_ERROR(this->get_logger(), "Target position is unreachable");
         response->result = false;
         return;
-    }
+    }*/
 
-    if (!p2pMotionPlan(qES, v, p, MINT, MAXT, &th, true)) {
+    if (!p2pMotionPlan(qES, v, p, MINT, MAXT, &th, true, DEFAULT, 0.0)) {
         RCLCPP_ERROR(this->get_logger(), "Error in trajectory computation");
         response->result = false;
         return;
@@ -133,8 +133,8 @@ void MyVector::calculatePath(
 bool path(Vector3d xe1, Vector3d phie1, Matrix61 joint_states, std::shared_ptr<rclcpp::Node> node){
     MatrixD6 th;
     RCLCPP_INFO(node->get_logger(), "Checking Position");
-    if(checkPosition(xe1, joint_states)) {
-        if(p2pMotionPlan(joint_states, xe1, phie1, MINT, MAXT, &th, true)) {
+    //if(checkPosition(xe1, joint_states)) {
+        if(p2pMotionPlan(joint_states, xe1, phie1, MINT, MAXT, &th, true, DEFAULT, 0.0)) {
             RCLCPP_INFO(node->get_logger(), "Moving to HOME");
             send_trajectory(th, node);
         }
@@ -142,11 +142,11 @@ bool path(Vector3d xe1, Vector3d phie1, Matrix61 joint_states, std::shared_ptr<r
             RCLCPP_INFO(node->get_logger(), "Error in computation of trajectory to point ");
             return false;
         }
-    }
+   /* }
     else {
         RCLCPP_INFO(node->get_logger(), "Impossible to Reach the final Position ");
         return false;
-    }
+    }*/
     return true;
 }
 

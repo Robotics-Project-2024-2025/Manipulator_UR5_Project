@@ -1,0 +1,311 @@
+\doxysection{robotics\+\_\+project\+\_\+ws/src/move\+\_\+ws/src/kinematics.cpp File Reference}
+\hypertarget{kinematics_8cpp}{}\label{kinematics_8cpp}\index{robotics\_project\_ws/src/move\_ws/src/kinematics.cpp@{robotics\_project\_ws/src/move\_ws/src/kinematics.cpp}}
+{\ttfamily \#include "{}kinematics.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{kinematics_8cpp_a5ce02ffaeefc92a195a5934c5038a49f}{adjust\+\_\+value}} (float x)
+\item 
+float \mbox{\hyperlink{kinematics_8cpp_ad55f6fa7dd8d7809ae072131ea9c2c8b}{adjust\+\_\+asin}} (float x)
+\item 
+float \mbox{\hyperlink{kinematics_8cpp_a0165e241e8261f69868591d8b4223433}{adjust\+\_\+acos}} (float x)
+\item 
+Matrix3d \mbox{\hyperlink{kinematics_8cpp_a4fd5b2d67858e12f3b33099a33c264f1}{eul2rotm}} (Vector3d \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phi\+Ef}})
+\item 
+Vector3d \mbox{\hyperlink{kinematics_8cpp_a8fab05d663ee1efd7316eae8e32a7ff5}{rotm2eul}} (Matrix3d m)
+\item 
+void \mbox{\hyperlink{kinematics_8cpp_aa0a9d7f5e92a1e1b0f03e0aac8218aee}{remove\+Row}} (\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}m, unsigned int remove)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a6ffe4c0c38eeefc299e03f29ad7c9d8b}{best\+Inverse}} (\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} start, \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \&end)
+\item 
+double \mbox{\hyperlink{kinematics_8cpp_ae72a580e5790e9f9d8be624ee66b3c6e}{hypot}} (double x1, double x2)
+\item 
+void \mbox{\hyperlink{kinematics_8cpp_aed0e45d42993441261ce5440c3334bdd}{compute\+Joint\+Positions}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} th, Vector3d joint\+Positions\mbox{[}\mbox{\hyperlink{kin__communication_8h_af742980593d698725375a7d12711c24f}{NUM\+\_\+\+JOINTS}}\mbox{]})
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a2901cdf4794bf674d5d3d401780f0a95}{check\+Angles}} (\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \texorpdfstring{$\ast$}{*}th)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_ae8edaa3b3ca05dd8354568b249061a54}{control\+\_\+collision}} (\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \texorpdfstring{$\ast$}{*}th)
+\item 
+Vector\+Xd \mbox{\hyperlink{kinematics_8cpp_ac8039f0a8c1165863b38d14af24aedba}{cubic\+Polynomial}} (double P\+\_\+start, double P\+\_\+end, int minT, int maxT)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a3e69c098191d0468c24e0233a7f8aa79}{check\+Joint\+Limits}} (const \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} q)
+\item 
+double \mbox{\hyperlink{kinematics_8cpp_a3d09357a087b42155fcfc347b0170654}{evaluate\+Cubic}} (const Vector\+Xd \&coeffs, double t)
+\item 
+Vector3d \mbox{\hyperlink{kinematics_8cpp_a1ef2a411326142c2e0fb1dfbd44fa525}{smooth\+Blend}} (Vector3d old\+\_\+xE, Vector3d new\+\_\+xE, double alpha)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a1c02b3be47348287e3b1138e814f6f71}{check\+Joint\+Operational\+Space}} (const Vector3d joint\+Positions\mbox{[}\mbox{\hyperlink{kin__communication_8h_af742980593d698725375a7d12711c24f}{NUM\+\_\+\+JOINTS}}\mbox{]}, int \&val)
+\item 
+void \mbox{\hyperlink{kinematics_8cpp_acb3a7463a230dc47f829d2f317f89c20}{adjust\+Trajectory}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&q)
+\item 
+void \mbox{\hyperlink{kinematics_8cpp_a92d9914d16ea974b4e3358ab03a337b9}{clamp\+Joint\+Angles}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&q)
+\item 
+\mbox{\hyperlink{kinematics_8h_afb62938142317c39dea213f0e4afbffd}{Matrix66}} \mbox{\hyperlink{kinematics_8cpp_a13d98a97640639f43cd826ca63a54730}{compute\+Jacobian}} (const \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&q)
+\item 
+\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \mbox{\hyperlink{kinematics_8cpp_aa2be3e2797ad07fdd1f33da07d8684c4}{compute\+Joint\+Adjustment}} (Vector3d pos\+\_\+error, Vector3d ori\+\_\+error, \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} current)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a86fda554f3f4892a8fe36398200d1411}{linear\+\_\+interpolation}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} q\+Es, Vector3d x\+ES, Vector3d x\+EF, Vector3d \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phi\+Ef}}, int minT, int maxT, \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}Th)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a417dceee04eb83bf9739744b1c799005}{p2p\+Motion\+Plan}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} q\+ES, Vector3d x\+Ef, Vector3d \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phi\+Ef}}, int minT, int maxT, \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}Th, bool velocity, \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{Inverse\+Type}} inv, double rot\+\_\+gripper)
+\item 
+Matrix3d \mbox{\hyperlink{kinematics_8cpp_ae25c5ccf88ce3f21fb4df0b6f0b810ea}{x\+Rot}} (double theta)
+\item 
+Matrix3d \mbox{\hyperlink{kinematics_8cpp_a1d775d75a5fc6523073c4dd4bd5ae05c}{y\+Rot}} (double theta)
+\item 
+Matrix3d \mbox{\hyperlink{kinematics_8cpp_a8d5b18d36819e2295baade5a7efa8d67}{z\+Rot}} (double theta)
+\item 
+\mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}} \mbox{\hyperlink{kinematics_8cpp_aecae2c48455e66075f88ed3102f33043}{Homogeneous\+Transform\+Gen}} (int i, double theta, double alpha, double d, double a)
+\item 
+\mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}} \mbox{\hyperlink{kinematics_8cpp_a3baa18a79aea9112686ccd16a494e539}{Homogeneous\+Transform\+Specific}} (int i, double theta)
+\item 
+pair$<$ Vector3d, Matrix3d $>$ \mbox{\hyperlink{kinematics_8cpp_a157ded1df7f96d5216557e8e9cc0f340}{Ur5\+Direct}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} Th)
+\item 
+double \mbox{\hyperlink{kinematics_8cpp_a6c7c4a012354c80f5d9b992093fef665}{singularity\+Check}} (int angle, double value)
+\item 
+\mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}} \mbox{\hyperlink{kinematics_8cpp_ab8f8fad8cd66ecfb3bcbed817014a49a}{Ur5\+Inverse}} (Vector3d v, Matrix3d m)
+\item 
+\mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}} \mbox{\hyperlink{kinematics_8cpp_a50011c760acbe4cefda7b0d0552fa8cc}{Ur5\+Inverse\+VerticalZ}} (Vector3d v, Matrix3d m, double th1, double th5, double th6)
+\item 
+bool \mbox{\hyperlink{kinematics_8cpp_a505810336062a01fe086f3309be6502a}{cartesian\+Interpolation}} (\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} q\+ES, Vector3d x\+Ef, Vector3d \mbox{\hyperlink{complete__job-old_8h_a7fada962077203e64c9f845711f78451}{phi\+Ef}}, int minT, int maxT, \mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}Th, bool velocity, \mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{Inverse\+Type}} inv, double rot\+\_\+gripper)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{kinematics_8cpp_ab89b4182b04fbcced7fb421815610248}{A}} =\{0, -\/0.\+425, -\/0.\+3922, 0, 0, 0\}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{kinematics_8cpp_a31641cd0868031d63aa7018a113e1e0e}{D}} =\{0.\+1625, 0, 0, 0.\+1333, 0.\+0997, 0.\+0996\}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{kinematics_8cpp_a13eabcabcc476258459d5b89c583b17c}{alfa}} =\{M\+\_\+\+PI/2, 0, 0, M\+\_\+\+PI/2, -\/M\+\_\+\+PI/2, 0\}
+\item 
+const double \mbox{\hyperlink{kinematics_8cpp_aa966db0b82fc78149c074ad045271e6d}{JOINT\+\_\+\+MIN}} \mbox{[}$\,$\mbox{]} = \{-\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/M\+\_\+\+PI, -\/M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\}
+\item 
+const double \mbox{\hyperlink{kinematics_8cpp_adc0ea5376f61a1252cd62ca56979ed11}{JOINT\+\_\+\+MAX}} \mbox{[}$\,$\mbox{]} = \{ 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, 0, M\+\_\+\+PI, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\+\_\+2, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kinematics_8cpp_a0165e241e8261f69868591d8b4223433}\index{kinematics.cpp@{kinematics.cpp}!adjust\_acos@{adjust\_acos}}
+\index{adjust\_acos@{adjust\_acos}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{adjust\_acos()}{adjust\_acos()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a0165e241e8261f69868591d8b4223433} 
+float adjust\+\_\+acos (\begin{DoxyParamCaption}\item[{float}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ad55f6fa7dd8d7809ae072131ea9c2c8b}\index{kinematics.cpp@{kinematics.cpp}!adjust\_asin@{adjust\_asin}}
+\index{adjust\_asin@{adjust\_asin}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{adjust\_asin()}{adjust\_asin()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ad55f6fa7dd8d7809ae072131ea9c2c8b} 
+float adjust\+\_\+asin (\begin{DoxyParamCaption}\item[{float}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a5ce02ffaeefc92a195a5934c5038a49f}\index{kinematics.cpp@{kinematics.cpp}!adjust\_value@{adjust\_value}}
+\index{adjust\_value@{adjust\_value}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{adjust\_value()}{adjust\_value()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a5ce02ffaeefc92a195a5934c5038a49f} 
+float adjust\+\_\+value (\begin{DoxyParamCaption}\item[{float}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_acb3a7463a230dc47f829d2f317f89c20}\index{kinematics.cpp@{kinematics.cpp}!adjustTrajectory@{adjustTrajectory}}
+\index{adjustTrajectory@{adjustTrajectory}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{adjustTrajectory()}{adjustTrajectory()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_acb3a7463a230dc47f829d2f317f89c20} 
+void adjust\+Trajectory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&}]{q}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a6ffe4c0c38eeefc299e03f29ad7c9d8b}\index{kinematics.cpp@{kinematics.cpp}!bestInverse@{bestInverse}}
+\index{bestInverse@{bestInverse}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{bestInverse()}{bestInverse()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a6ffe4c0c38eeefc299e03f29ad7c9d8b} 
+bool best\+Inverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}}}]{start}{, }\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \&}]{end}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a505810336062a01fe086f3309be6502a}\index{kinematics.cpp@{kinematics.cpp}!cartesianInterpolation@{cartesianInterpolation}}
+\index{cartesianInterpolation@{cartesianInterpolation}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{cartesianInterpolation()}{cartesianInterpolation()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a505810336062a01fe086f3309be6502a} 
+bool cartesian\+Interpolation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{q\+ES}{, }\item[{Vector3d}]{x\+Ef}{, }\item[{Vector3d}]{phi\+Ef}{, }\item[{int}]{minT}{, }\item[{int}]{maxT}{, }\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}}]{Th}{, }\item[{bool}]{velocity}{, }\item[{\mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{Inverse\+Type}}}]{inv}{, }\item[{double}]{rot\+\_\+gripper}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a2901cdf4794bf674d5d3d401780f0a95}\index{kinematics.cpp@{kinematics.cpp}!checkAngles@{checkAngles}}
+\index{checkAngles@{checkAngles}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{checkAngles()}{checkAngles()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a2901cdf4794bf674d5d3d401780f0a95} 
+bool check\+Angles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \texorpdfstring{$\ast$}{*}}]{th}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a3e69c098191d0468c24e0233a7f8aa79}\index{kinematics.cpp@{kinematics.cpp}!checkJointLimits@{checkJointLimits}}
+\index{checkJointLimits@{checkJointLimits}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{checkJointLimits()}{checkJointLimits()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a3e69c098191d0468c24e0233a7f8aa79} 
+bool check\+Joint\+Limits (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{q}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a1c02b3be47348287e3b1138e814f6f71}\index{kinematics.cpp@{kinematics.cpp}!checkJointOperationalSpace@{checkJointOperationalSpace}}
+\index{checkJointOperationalSpace@{checkJointOperationalSpace}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{checkJointOperationalSpace()}{checkJointOperationalSpace()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a1c02b3be47348287e3b1138e814f6f71} 
+bool check\+Joint\+Operational\+Space (\begin{DoxyParamCaption}\item[{const Vector3d}]{joint\+Positions}{\mbox{[}\+NUM\+\_\+\+JOINTS\mbox{]}, }\item[{int \&}]{val}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a92d9914d16ea974b4e3358ab03a337b9}\index{kinematics.cpp@{kinematics.cpp}!clampJointAngles@{clampJointAngles}}
+\index{clampJointAngles@{clampJointAngles}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{clampJointAngles()}{clampJointAngles()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a92d9914d16ea974b4e3358ab03a337b9} 
+void clamp\+Joint\+Angles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&}]{q}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a13d98a97640639f43cd826ca63a54730}\index{kinematics.cpp@{kinematics.cpp}!computeJacobian@{computeJacobian}}
+\index{computeJacobian@{computeJacobian}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{computeJacobian()}{computeJacobian()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a13d98a97640639f43cd826ca63a54730} 
+\mbox{\hyperlink{kinematics_8h_afb62938142317c39dea213f0e4afbffd}{Matrix66}} compute\+Jacobian (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} \&}]{q}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_aa2be3e2797ad07fdd1f33da07d8684c4}\index{kinematics.cpp@{kinematics.cpp}!computeJointAdjustment@{computeJointAdjustment}}
+\index{computeJointAdjustment@{computeJointAdjustment}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{computeJointAdjustment()}{computeJointAdjustment()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_aa2be3e2797ad07fdd1f33da07d8684c4} 
+\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}} compute\+Joint\+Adjustment (\begin{DoxyParamCaption}\item[{Vector3d}]{pos\+\_\+error}{, }\item[{Vector3d}]{ori\+\_\+error}{, }\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{current}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_aed0e45d42993441261ce5440c3334bdd}\index{kinematics.cpp@{kinematics.cpp}!computeJointPositions@{computeJointPositions}}
+\index{computeJointPositions@{computeJointPositions}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{computeJointPositions()}{computeJointPositions()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_aed0e45d42993441261ce5440c3334bdd} 
+void compute\+Joint\+Positions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{th}{, }\item[{Vector3d}]{joint\+Positions}{\mbox{[}\+NUM\+\_\+\+JOINTS\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ae8edaa3b3ca05dd8354568b249061a54}\index{kinematics.cpp@{kinematics.cpp}!control\_collision@{control\_collision}}
+\index{control\_collision@{control\_collision}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{control\_collision()}{control\_collision()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ae8edaa3b3ca05dd8354568b249061a54} 
+bool control\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_a31369f7338197b078f81c471ac1c80f3}{Matrix16}} \texorpdfstring{$\ast$}{*}}]{th}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ac8039f0a8c1165863b38d14af24aedba}\index{kinematics.cpp@{kinematics.cpp}!cubicPolynomial@{cubicPolynomial}}
+\index{cubicPolynomial@{cubicPolynomial}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{cubicPolynomial()}{cubicPolynomial()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ac8039f0a8c1165863b38d14af24aedba} 
+Vector\+Xd cubic\+Polynomial (\begin{DoxyParamCaption}\item[{double}]{P\+\_\+start}{, }\item[{double}]{P\+\_\+end}{, }\item[{int}]{minT}{, }\item[{int}]{maxT}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a4fd5b2d67858e12f3b33099a33c264f1}\index{kinematics.cpp@{kinematics.cpp}!eul2rotm@{eul2rotm}}
+\index{eul2rotm@{eul2rotm}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{eul2rotm()}{eul2rotm()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a4fd5b2d67858e12f3b33099a33c264f1} 
+Matrix3d eul2rotm (\begin{DoxyParamCaption}\item[{Vector3d}]{phi\+Ef}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a3d09357a087b42155fcfc347b0170654}\index{kinematics.cpp@{kinematics.cpp}!evaluateCubic@{evaluateCubic}}
+\index{evaluateCubic@{evaluateCubic}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{evaluateCubic()}{evaluateCubic()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a3d09357a087b42155fcfc347b0170654} 
+double evaluate\+Cubic (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{coeffs}{, }\item[{double}]{t}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_aecae2c48455e66075f88ed3102f33043}\index{kinematics.cpp@{kinematics.cpp}!HomogeneousTransformGen@{HomogeneousTransformGen}}
+\index{HomogeneousTransformGen@{HomogeneousTransformGen}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{HomogeneousTransformGen()}{HomogeneousTransformGen()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_aecae2c48455e66075f88ed3102f33043} 
+\mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}} Homogeneous\+Transform\+Gen (\begin{DoxyParamCaption}\item[{int}]{i}{, }\item[{double}]{theta}{, }\item[{double}]{alpha}{, }\item[{double}]{d}{, }\item[{double}]{a}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a3baa18a79aea9112686ccd16a494e539}\index{kinematics.cpp@{kinematics.cpp}!HomogeneousTransformSpecific@{HomogeneousTransformSpecific}}
+\index{HomogeneousTransformSpecific@{HomogeneousTransformSpecific}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{HomogeneousTransformSpecific()}{HomogeneousTransformSpecific()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a3baa18a79aea9112686ccd16a494e539} 
+\mbox{\hyperlink{kinematics_8h_af3080b2040d386c4ff774d3f01091567}{Matrix44}} Homogeneous\+Transform\+Specific (\begin{DoxyParamCaption}\item[{int}]{i}{, }\item[{double}]{theta}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ae72a580e5790e9f9d8be624ee66b3c6e}\index{kinematics.cpp@{kinematics.cpp}!hypot@{hypot}}
+\index{hypot@{hypot}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{hypot()}{hypot()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ae72a580e5790e9f9d8be624ee66b3c6e} 
+double hypot (\begin{DoxyParamCaption}\item[{double}]{x1}{, }\item[{double}]{x2}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a86fda554f3f4892a8fe36398200d1411}\index{kinematics.cpp@{kinematics.cpp}!linear\_interpolation@{linear\_interpolation}}
+\index{linear\_interpolation@{linear\_interpolation}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{linear\_interpolation()}{linear\_interpolation()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a86fda554f3f4892a8fe36398200d1411} 
+bool linear\+\_\+interpolation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{q\+Es}{, }\item[{Vector3d}]{x\+ES}{, }\item[{Vector3d}]{x\+EF}{, }\item[{Vector3d}]{phi\+Ef}{, }\item[{int}]{minT}{, }\item[{int}]{maxT}{, }\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}}]{Th}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a417dceee04eb83bf9739744b1c799005}\index{kinematics.cpp@{kinematics.cpp}!p2pMotionPlan@{p2pMotionPlan}}
+\index{p2pMotionPlan@{p2pMotionPlan}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{p2pMotionPlan()}{p2pMotionPlan()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a417dceee04eb83bf9739744b1c799005} 
+bool p2p\+Motion\+Plan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{q\+ES}{, }\item[{Vector3d}]{x\+Ef}{, }\item[{Vector3d}]{phi\+Ef}{, }\item[{int}]{minT}{, }\item[{int}]{maxT}{, }\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}}]{Th}{, }\item[{bool}]{velocity}{, }\item[{\mbox{\hyperlink{kinematics_8h_a86fe56c7c0b9a371cc1bacc213aa6e89}{Inverse\+Type}}}]{inv}{, }\item[{double}]{rot\+\_\+gripper}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_aa0a9d7f5e92a1e1b0f03e0aac8218aee}\index{kinematics.cpp@{kinematics.cpp}!removeRow@{removeRow}}
+\index{removeRow@{removeRow}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{removeRow()}{removeRow()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_aa0a9d7f5e92a1e1b0f03e0aac8218aee} 
+void remove\+Row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kin__communication_8h_ab33a09d42ef2a36925f0d484fb475185}{Matrix\+D6}} \texorpdfstring{$\ast$}{*}}]{m}{, }\item[{unsigned int}]{remove}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a8fab05d663ee1efd7316eae8e32a7ff5}\index{kinematics.cpp@{kinematics.cpp}!rotm2eul@{rotm2eul}}
+\index{rotm2eul@{rotm2eul}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{rotm2eul()}{rotm2eul()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a8fab05d663ee1efd7316eae8e32a7ff5} 
+Vector3d rotm2eul (\begin{DoxyParamCaption}\item[{Matrix3d}]{m}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a6c7c4a012354c80f5d9b992093fef665}\index{kinematics.cpp@{kinematics.cpp}!singularityCheck@{singularityCheck}}
+\index{singularityCheck@{singularityCheck}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{singularityCheck()}{singularityCheck()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a6c7c4a012354c80f5d9b992093fef665} 
+double singularity\+Check (\begin{DoxyParamCaption}\item[{int}]{angle}{, }\item[{double}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a1ef2a411326142c2e0fb1dfbd44fa525}\index{kinematics.cpp@{kinematics.cpp}!smoothBlend@{smoothBlend}}
+\index{smoothBlend@{smoothBlend}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{smoothBlend()}{smoothBlend()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a1ef2a411326142c2e0fb1dfbd44fa525} 
+Vector3d smooth\+Blend (\begin{DoxyParamCaption}\item[{Vector3d}]{old\+\_\+xE}{, }\item[{Vector3d}]{new\+\_\+xE}{, }\item[{double}]{alpha}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a157ded1df7f96d5216557e8e9cc0f340}\index{kinematics.cpp@{kinematics.cpp}!Ur5Direct@{Ur5Direct}}
+\index{Ur5Direct@{Ur5Direct}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{Ur5Direct()}{Ur5Direct()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a157ded1df7f96d5216557e8e9cc0f340} 
+pair$<$ Vector3d, Matrix3d $>$ Ur5\+Direct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kinematics_8h_aeba45aba36411ba9b0370774ab2f85fd}{Matrix61}}}]{Th}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ab8f8fad8cd66ecfb3bcbed817014a49a}\index{kinematics.cpp@{kinematics.cpp}!Ur5Inverse@{Ur5Inverse}}
+\index{Ur5Inverse@{Ur5Inverse}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{Ur5Inverse()}{Ur5Inverse()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ab8f8fad8cd66ecfb3bcbed817014a49a} 
+\mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}} Ur5\+Inverse (\begin{DoxyParamCaption}\item[{Vector3d}]{v}{, }\item[{Matrix3d}]{m}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a50011c760acbe4cefda7b0d0552fa8cc}\index{kinematics.cpp@{kinematics.cpp}!Ur5InverseVerticalZ@{Ur5InverseVerticalZ}}
+\index{Ur5InverseVerticalZ@{Ur5InverseVerticalZ}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{Ur5InverseVerticalZ()}{Ur5InverseVerticalZ()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a50011c760acbe4cefda7b0d0552fa8cc} 
+\mbox{\hyperlink{kinematics_8h_a60aead5ff997bd737d6f4bcc0becc0fe}{Matrix86}} Ur5\+Inverse\+VerticalZ (\begin{DoxyParamCaption}\item[{Vector3d}]{v}{, }\item[{Matrix3d}]{m}{, }\item[{double}]{th1}{, }\item[{double}]{th5}{, }\item[{double}]{th6}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_ae25c5ccf88ce3f21fb4df0b6f0b810ea}\index{kinematics.cpp@{kinematics.cpp}!xRot@{xRot}}
+\index{xRot@{xRot}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{xRot()}{xRot()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ae25c5ccf88ce3f21fb4df0b6f0b810ea} 
+Matrix3d x\+Rot (\begin{DoxyParamCaption}\item[{double}]{theta}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a1d775d75a5fc6523073c4dd4bd5ae05c}\index{kinematics.cpp@{kinematics.cpp}!yRot@{yRot}}
+\index{yRot@{yRot}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{yRot()}{yRot()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a1d775d75a5fc6523073c4dd4bd5ae05c} 
+Matrix3d y\+Rot (\begin{DoxyParamCaption}\item[{double}]{theta}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kinematics_8cpp_a8d5b18d36819e2295baade5a7efa8d67}\index{kinematics.cpp@{kinematics.cpp}!zRot@{zRot}}
+\index{zRot@{zRot}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{zRot()}{zRot()}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a8d5b18d36819e2295baade5a7efa8d67} 
+Matrix3d z\+Rot (\begin{DoxyParamCaption}\item[{double}]{theta}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{kinematics_8cpp_ab89b4182b04fbcced7fb421815610248}\index{kinematics.cpp@{kinematics.cpp}!A@{A}}
+\index{A@{A}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{A}{A}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_ab89b4182b04fbcced7fb421815610248} 
+vector$<$double$>$ A =\{0, -\/0.\+425, -\/0.\+3922, 0, 0, 0\}}
+
+\Hypertarget{kinematics_8cpp_a13eabcabcc476258459d5b89c583b17c}\index{kinematics.cpp@{kinematics.cpp}!alfa@{alfa}}
+\index{alfa@{alfa}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{alfa}{alfa}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a13eabcabcc476258459d5b89c583b17c} 
+vector$<$double$>$ alfa =\{M\+\_\+\+PI/2, 0, 0, M\+\_\+\+PI/2, -\/M\+\_\+\+PI/2, 0\}}
+
+\Hypertarget{kinematics_8cpp_a31641cd0868031d63aa7018a113e1e0e}\index{kinematics.cpp@{kinematics.cpp}!D@{D}}
+\index{D@{D}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{D}{D}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_a31641cd0868031d63aa7018a113e1e0e} 
+vector$<$double$>$ D =\{0.\+1625, 0, 0, 0.\+1333, 0.\+0997, 0.\+0996\}}
+
+\Hypertarget{kinematics_8cpp_adc0ea5376f61a1252cd62ca56979ed11}\index{kinematics.cpp@{kinematics.cpp}!JOINT\_MAX@{JOINT\_MAX}}
+\index{JOINT\_MAX@{JOINT\_MAX}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{JOINT\_MAX}{JOINT\_MAX}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_adc0ea5376f61a1252cd62ca56979ed11} 
+const double JOINT\+\_\+\+MAX\mbox{[}$\,$\mbox{]} = \{ 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, 0, M\+\_\+\+PI, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\+\_\+2, 2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\}}
+
+\Hypertarget{kinematics_8cpp_aa966db0b82fc78149c074ad045271e6d}\index{kinematics.cpp@{kinematics.cpp}!JOINT\_MIN@{JOINT\_MIN}}
+\index{JOINT\_MIN@{JOINT\_MIN}!kinematics.cpp@{kinematics.cpp}}
+\doxysubsubsection{\texorpdfstring{JOINT\_MIN}{JOINT\_MIN}}
+{\footnotesize\ttfamily \label{kinematics_8cpp_aa966db0b82fc78149c074ad045271e6d} 
+const double JOINT\+\_\+\+MIN\mbox{[}$\,$\mbox{]} = \{-\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/M\+\_\+\+PI, -\/M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI, -\/2\texorpdfstring{$\ast$}{*}M\+\_\+\+PI\}}
+

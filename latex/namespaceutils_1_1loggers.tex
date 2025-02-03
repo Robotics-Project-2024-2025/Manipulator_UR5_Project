@@ -1,0 +1,121 @@
+\doxysection{utils.\+loggers Namespace Reference}
+\hypertarget{namespaceutils_1_1loggers}{}\label{namespaceutils_1_1loggers}\index{utils.loggers@{utils.loggers}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceutils_1_1loggers_1_1clearml}{clearml}}
+\item 
+namespace \mbox{\hyperlink{namespaceutils_1_1loggers_1_1comet}{comet}}
+\item 
+namespace \mbox{\hyperlink{namespaceutils_1_1loggers_1_1wandb}{wandb}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classutils_1_1loggers_1_1_generic_logger}{Generic\+Logger}}
+\item 
+class \mbox{\hyperlink{classutils_1_1loggers_1_1_loggers}{Loggers}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a4e297a09bfec5399af864c1f99977f7d}{Summary\+Writer}} (\texorpdfstring{$\ast$}{*}args)
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a2e3c67079d54f2a2afe31eea6b05802e}{\+\_\+json\+\_\+default}} (value)
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a38b39ba8e751a1d1fb3e03c46efc346c}{log\+\_\+tensorboard\+\_\+graph}} (tb, model, imgsz=(640, 640))
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_abc25f8ac12691941f4e1009b4fdaaabe}{web\+\_\+project\+\_\+name}} (project)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{namespaceutils_1_1loggers_aa0e1d33484981f790ef2dc5cc6009381}{LOGGERS}} = ("{}csv"{}, "{}tb"{}, "{}wandb"{}, "{}clearml"{}, "{}comet"{})
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a7934fd83843ce269bc87debfe17eeff9}{RANK}} = int(os.\+getenv("{}RANK"{}, -\/1))
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a6ac5cbf3ecfb9b4f5c9ea7c2136da87b}{wandb\+\_\+login\+\_\+success}} = wandb.\+login(timeout=30)
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a7a06e9e3281887ea7594ff5b78d2e05e}{wandb}} = None
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_adbec0126d0a8d91e80ef83109b4b091b}{clearml}} = None
+\item 
+\mbox{\hyperlink{namespaceutils_1_1loggers_a5bc19f93b457386bf9fe8fb037d7af50}{comet\+\_\+ml}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Logging utils.\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceutils_1_1loggers_a2e3c67079d54f2a2afe31eea6b05802e}\index{utils.loggers@{utils.loggers}!\_json\_default@{\_json\_default}}
+\index{\_json\_default@{\_json\_default}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{\_json\_default()}{\_json\_default()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a2e3c67079d54f2a2afe31eea6b05802e} 
+utils.\+loggers.\+\_\+json\+\_\+default (\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Format `value` for JSON serialization (e.g. unwrap tensors).
+
+Fall back to strings.
+\end{DoxyVerb}
+ \Hypertarget{namespaceutils_1_1loggers_a38b39ba8e751a1d1fb3e03c46efc346c}\index{utils.loggers@{utils.loggers}!log\_tensorboard\_graph@{log\_tensorboard\_graph}}
+\index{log\_tensorboard\_graph@{log\_tensorboard\_graph}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{log\_tensorboard\_graph()}{log\_tensorboard\_graph()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a38b39ba8e751a1d1fb3e03c46efc346c} 
+utils.\+loggers.\+log\+\_\+tensorboard\+\_\+graph (\begin{DoxyParamCaption}\item[{}]{tb}{, }\item[{}]{model}{, }\item[{}]{imgsz}{ = {\ttfamily (640,~640)}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Logs the model graph to TensorBoard with specified image size and model.\end{DoxyVerb}
+ \Hypertarget{namespaceutils_1_1loggers_a4e297a09bfec5399af864c1f99977f7d}\index{utils.loggers@{utils.loggers}!SummaryWriter@{SummaryWriter}}
+\index{SummaryWriter@{SummaryWriter}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{SummaryWriter()}{SummaryWriter()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a4e297a09bfec5399af864c1f99977f7d} 
+utils.\+loggers.\+Summary\+Writer (\begin{DoxyParamCaption}\item[{\texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Fall back to SummaryWriter returning None if TensorBoard is not installed.\end{DoxyVerb}
+ \Hypertarget{namespaceutils_1_1loggers_abc25f8ac12691941f4e1009b4fdaaabe}\index{utils.loggers@{utils.loggers}!web\_project\_name@{web\_project\_name}}
+\index{web\_project\_name@{web\_project\_name}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{web\_project\_name()}{web\_project\_name()}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_abc25f8ac12691941f4e1009b4fdaaabe} 
+utils.\+loggers.\+web\+\_\+project\+\_\+name (\begin{DoxyParamCaption}\item[{}]{project}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a local project name to a standardized web project name with optional suffixes.\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceutils_1_1loggers_adbec0126d0a8d91e80ef83109b4b091b}\index{utils.loggers@{utils.loggers}!clearml@{clearml}}
+\index{clearml@{clearml}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{clearml}{clearml}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_adbec0126d0a8d91e80ef83109b4b091b} 
+utils.\+loggers.\+clearml = None}
+
+\Hypertarget{namespaceutils_1_1loggers_a5bc19f93b457386bf9fe8fb037d7af50}\index{utils.loggers@{utils.loggers}!comet\_ml@{comet\_ml}}
+\index{comet\_ml@{comet\_ml}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{comet\_ml}{comet\_ml}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a5bc19f93b457386bf9fe8fb037d7af50} 
+utils.\+loggers.\+comet\+\_\+ml = None}
+
+\Hypertarget{namespaceutils_1_1loggers_aa0e1d33484981f790ef2dc5cc6009381}\index{utils.loggers@{utils.loggers}!LOGGERS@{LOGGERS}}
+\index{LOGGERS@{LOGGERS}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{LOGGERS}{LOGGERS}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_aa0e1d33484981f790ef2dc5cc6009381} 
+tuple utils.\+loggers.\+LOGGERS = ("{}csv"{}, "{}tb"{}, "{}wandb"{}, "{}clearml"{}, "{}comet"{})}
+
+\Hypertarget{namespaceutils_1_1loggers_a7934fd83843ce269bc87debfe17eeff9}\index{utils.loggers@{utils.loggers}!RANK@{RANK}}
+\index{RANK@{RANK}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{RANK}{RANK}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a7934fd83843ce269bc87debfe17eeff9} 
+utils.\+loggers.\+RANK = int(os.\+getenv("{}RANK"{}, -\/1))}
+
+\Hypertarget{namespaceutils_1_1loggers_a7a06e9e3281887ea7594ff5b78d2e05e}\index{utils.loggers@{utils.loggers}!wandb@{wandb}}
+\index{wandb@{wandb}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{wandb}{wandb}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a7a06e9e3281887ea7594ff5b78d2e05e} 
+utils.\+loggers.\+wandb = None}
+
+\Hypertarget{namespaceutils_1_1loggers_a6ac5cbf3ecfb9b4f5c9ea7c2136da87b}\index{utils.loggers@{utils.loggers}!wandb\_login\_success@{wandb\_login\_success}}
+\index{wandb\_login\_success@{wandb\_login\_success}!utils.loggers@{utils.loggers}}
+\doxysubsubsection{\texorpdfstring{wandb\_login\_success}{wandb\_login\_success}}
+{\footnotesize\ttfamily \label{namespaceutils_1_1loggers_a6ac5cbf3ecfb9b4f5c9ea7c2136da87b} 
+bool utils.\+loggers.\+wandb\+\_\+login\+\_\+success = wandb.\+login(timeout=30)}
+

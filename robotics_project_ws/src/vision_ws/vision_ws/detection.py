@@ -1,3 +1,10 @@
+#
+#  detection.py
+#  Robotics
+#
+#  Created by Alessandro Benassi on 22/12/24.
+#
+
 import rclpy
 from rclpy.node import Node
 from vision_ws_msgs.srv import Boundingbox
