@@ -21,11 +21,7 @@
 [![Guarda il video](https://img.youtube.com/vi/8OYcTMWVcdk/0.jpg)](https://youtu.be/8OYcTMWVcdk)
 
 <video width="600" controls>
-  <source src="https://youtu.be/9zNNU6IMwzo](https://youtu.be/Nvdm1BBGjmU" type="video/mp4">
-  Il tuo browser non supporta il tag video.
-</video>
-<video width="600" controls>
-  <source src="https://youtu.be/9zNNU6IMwzo](https://youtu.be/asKY3cJsWYA" type="video/mp4">
+  <source src="https://youtu.be/9zNNU6IMwzo" type="video/mp4">
   Il tuo browser non supporta il tag video.
 </video>
 This paper describes the methodology and the results achieved by a ros2 based program
